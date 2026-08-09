@@ -86,75 +86,462 @@
 
 ---
 
-## 🧮 Calculateur de moyenne
-
-Le calculateur intégré permet de :
-- Saisir les notes (0-20) pour chaque matière
-- Calculer automatique de la moyenne pondérée
-- Afficher la mention (Passable, Assez Bien, Bien, Très Bien)
-- Visualiser les points sur 620
-
----
-
 ## 📚 Programmes Officiels MINESEC — Terminale C
 
 ### 📐 Mathématiques (coef 7)
-- Nombres complexes (forme algébrique, trigonométrique, exponentielle)
-- Fonctions numériques (exp, ln, puissances, polynômes)
-- Suites numériques (arithmétiques, géométriques, convergence)
-- Arithmétique (divisibilité, PGCD, PPCM, congruences)
-- Probabilités et statistiques (loi binomiale, espérance, variance)
-- Géométrie dans l'espace (droites, plans, intersections)
-- Équations différentielles
-- Analyse vectorielle et matricielle
+
+**Programme officiel MINESEC :**
+
+1. **Nombres complexes**
+   - Forme algébrique : z = a + ib
+   - Forme trigonométrique : r(cos θ + i sin θ)
+   - Forme exponentielle : re^(iθ)
+   - Module et argument
+   - Résolution d'équations du 2nd degré dans ℂ
+   - Racines n-ièmes de l'unité
+   - Transformations géométriques du plan complexe
+
+2. **Fonctions numériques**
+   - Fonction logarithme népérien (ln)
+   - Fonction exponentielle (e^x)
+   - Fonctions puissances
+   - Limites et continuité
+   - Dérivation et primitives
+   - Étude de fonctions (variations, extrema, asymptotes)
+
+3. **Suites numériques**
+   - Suites arithmétiques
+   - Suites géométriques
+   - Convergence des suites
+   - Suites récurrentes
+   - Limites de suites
+
+4. **Analyse**
+   - Calcul intégral (primitives, intégrales définies)
+   - Intégration par parties
+   - Équations différentielles linéaires (y' + ay = b)
+   - Calcul d'aires et de volumes
+
+5. **Probabilités et statistiques**
+   - Probabilités conditionnelles
+   - Indépendance
+   - Variables aléatoires
+   - Loi binomiale ℬ(n,p)
+   - Espérance mathématique
+   - Variance et écart-type
+   - Inégalité de Bienaymé-Tchebychev
+   - Loi des grands nombres
+
+6. **Géométrie dans l'espace**
+   - Repérage dans l'espace
+   - Droites et plans
+   - Produit scalaire et vectoriel
+   - Orthogonalité et distances
+   - Équations cartésienne et paramétrique
+
+7. **Arithmétique**
+   - Divisibilité dans ℤ
+   - PGCD et PPCM
+   - Nombres premiers entre eux
+   - Identité de Bézout
+   - Théorème de Gauss
+   - Congruences
+
+8. **Algèbre linéaire**
+   - Matrices et déterminants
+   - Systèmes d'équations linéaires
+   - Diagonalisation de matrices
+
+---
 
 ### ⚡ Physique (coef 4)
-- Mécanique (lois de Newton, mouvement, gravitation, satellites)
-- Électrostatique (champ électrique, potentiel, condensateurs)
-- Électrocinétique (loi d'Ohm, Kirchhoff, RC, RL)
-- Magnétisme et induction (Lorentz, Lenz, Faraday)
-- Optique ondulatoire (diffraction, interférence)
-- Physique nucléaire (radioactivité, datation, énergie)
-- Thermodynamique
+
+**Programme officiel MINESEC :**
+
+1. **Mécanique**
+   - Cinématique du point (mouvement rectiligne, circulaire, hélicoïdal)
+   - Dynamique du point (lois de Newton)
+   - Mouvement dans un champ de pesanteur
+   - Mouvement des satellites
+   - Théorème de l'énergie cinétique
+   - Moment cinétique et moment d'inertie
+
+2. **Électrostatique**
+   - Loi de Coulomb
+   - Champ électrostatique
+   - Potentiel électrique
+   - Condensateurs (capacité, énergie stockée)
+   - Groupements de condensateurs
+
+3. **Électrocinétique**
+   - Loi d'Ohm
+   - Lois de Kirchhoff
+   - Circuits RC, RL, RLC
+   - Régime transitoire et permanent
+   - Impédance et phase
+
+4. **Magnétisme et induction**
+   - Champ magnétique
+   - Force de Lorentz
+   - Induction électromagnétique (Loi de Lenz, Faraday)
+   - Auto-induction
+   - Inductance
+
+5. **Optique ondulatoire**
+   - Diffraction de la lumière
+   - Interférences
+   - Réseaux de diffraction
+   - Pouvoir séparateur
+
+6. **Physique nucléaire**
+   - Radioactivité (α, β, γ)
+   - Loi de décroissance
+   - Datation au carbone 14
+   - Fission et fusion nucléaire
+   - Énergie libérée (E = mc²)
+
+7. **Thermodynamique**
+   - Premier principe
+   - Gaz parfaits
+   - Changements d'état
+   - Transferts thermiques
+
+---
 
 ### 🧪 Chimie (coef 2)
-- Cinétique chimique (vitesse, facteurs cinétiques)
-- Équilibres chimiques (acido-basiques, précipitation, complexation)
-- Oxydoréduction et électrochimie (pile, électrolyse)
-- Chimie organique (estérification, saponification, polymérisation)
-- Chimie industrielle (Haber, contact, etc.)
+
+**Programme officiel MINESEC :**
+
+1. **Cinétique chimique**
+   - Vitesse de réaction
+   - Facteurs cinétiques (température, concentration, catalyseur)
+   - Ordre d'une réaction
+   - Temps de demi-réaction
+
+2. **Équilibres chimiques**
+   - Constante d'équilibre K
+   - Quotient de réaction Q
+   - Principe de Le Chatelier
+   - Équilibres acido-basiques (pH, Ka, Kb)
+   - Titrages acido-basiques
+   - Produit de solubilité
+   - Précipitation et complexation
+
+3. **Oxydoréduction et électrochimie**
+   - Nombre d'oxydation
+   - Couples redox
+   - Piles électrochimiques
+   - Électrolyse
+   - Lois de Faraday
+
+4. **Chimie organique**
+   - Nomenclature des composés organiques
+   - Estérification et hydrolyse
+   - Saponification
+   - Polymérisation
+   - Alcools, aldéhydes, cétones, acides carboxyliques
+
+5. **Chimie industrielle**
+   - Procédé Haber (ammoniac)
+   - Procédé de Contact (acide sulfurique)
+   - Production d'aluminium
+
+---
 
 ### 🧬 SVTEEHB (coef 2)
-- Génétique (Mendel, hérédité, biotechnologie)
-- Géologie (tectonique des plaques, géodynamique)
-- Physiologie humaine (système nerveux, endocrinien, reproducteur)
-- Écologie et environnement
-- Hygiène et santé publique
+
+**Programme officiel MINESEC :**
+
+1. **Génétique**
+   - Hérédité mendélienne (lois de Mendel)
+   - Monohybridisme et dihybridisme
+   - Hérédité liée au sexe
+   - Génétique des populations
+   - Biotechnologie (OGM, clonage)
+
+2. **Géologie**
+   - Tectonique des plaques
+   - Séismes et volcans
+   - Géodynamique interne et externe
+   - Roches et minéraux
+   - Datation relative et absolue
+
+3. **Physiologie humaine**
+   - Système nerveux (neurone, synapse, influx nerveux)
+   - Système endocrinien (hormones)
+   - Système reproducteur
+   - Système immunitaire
+   - Nutrition et digestion
+
+4. **Écologie et environnement**
+   - Écosystèmes et biotopes
+   - Chaînes alimentaires
+   - Cycles biogéochimiques (carbone, azote)
+   - Pollution et développement durable
+   - Conservation de la biodiversité
+
+5. **Hygiène et santé publique**
+   - Maladies infectieuses
+   - Prévention et vaccination
+   - Hygiène alimentaire
+   - Éducation à la santé
+
+---
 
 ### 📖 Langue Française (coef 1)
-- Dissertation (thèse, antithèse, synthèse)
-- Commentaire composé (analyse de texte)
-- Contraction de texte (résumé, reformulation)
-- Épreuve orale (exposé, entretien)
 
-### 🤔 Philosophie (coef 2)
-- Notions : Liberté, Justice, Vérité, Langage, Travail, État
-- Dissertation dialectique
-- Analyse de texte philosophique
-- Culture philosophique (auteurs, courants)
+**Programme officiel MINESEC :**
+
+1. **Dissertation**
+   - Analyse du sujet
+   - Recherche d'arguments
+   - Plan dialectique (thèse, antithèse, synthèse)
+   - Rédaction et style
+
+2. **Commentaire composé**
+   - Lecture analytique
+   - Repérage des procédés
+   - Interprétation et synthèse
+   - Plan détaillé
+
+3. **Contraction de texte**
+   - Résumé (réduction de moitié)
+   - Reformulation personnelle
+   - Respect du sens original
+
+4. **Épreuve orale**
+   - Exposé structuré
+   - Entretien avec le jury
+   - Expression orale
+
+---
 
 ### 🇬🇧 Anglais (coef 3)
-- Grammar (temps, voix, modaux, subordonnées)
-- Vocabulary (thèmes : santé, éducation, environnement)
-- Essay Writing (argumentatif, narratif, descriptif)
-- Reading Comprehension
 
-### 📚 Autres matières
-- **ECM (coef 2)** : Éducation à la Citoyenneté et à la Morale
-- **Géographie (coef 2)** : Ressources, environnement, développement
-- **Littérature (coef 2)** : Analyse littéraire, dissertation
-- **EPS (coef 2)** : Éducation Physique et Sportive
-- **Informatique (coef 2)** : Algorithmique, programmation
+**Programme officiel MINESEC :**
+
+1. **Grammar**
+   - Tenses (present, past, future, perfect)
+   - Passive voice
+   - Conditionals (type 1, 2, 3)
+   - Reported speech
+   - Relative clauses
+   - Modal verbs
+
+2. **Vocabulary**
+   - Health and medicine
+   - Education and school life
+   - Environment and ecology
+   - Technology and social media
+   - Economy and globalization
+
+3. **Essay Writing**
+   - Argumentative essay
+   - Narrative essay
+   - Descriptive essay
+   - Formal and informal letters
+
+4. **Reading Comprehension**
+   - Skimming and scanning
+   - Inference and deduction
+   - Vocabulary in context
+
+---
+
+### 🤔 Philosophie (coef 2)
+
+**Programme officiel MINESEC :**
+
+1. **Notions philosophiques**
+   - La liberté
+   - La justice
+   - La vérité
+   - Le langage
+   - Le travail
+   - L'État
+   - La conscience
+   - Le bonheur
+
+2. **Auteurs et courants**
+   - Platon, Aristote
+   - Descartes, Kant
+   - Rousseau, Voltaire
+   - Sartre, Camus
+   - Marx, Nietzsche
+
+3. **Dissertation philosophique**
+   - Analyse du sujet
+   - Problématisation
+   - Argumentation
+   - Plan dialectique
+
+4. **Analyse de texte**
+   - Explication de texte
+   - Commentaire composé
+   - Critique interne et externa
+
+---
+
+### 🌍 Géographie (coef 2)
+
+**Programme officiel MINESEC :**
+
+1. **Le Cameroun : milieux et ressources**
+   - Relief et climat
+   - Hydrographie
+   - Végétation et sols
+   - Ressources naturelles
+
+2. **La population du Cameroun**
+   - Densité et répartition
+   - Croissance démographique
+   - Migrations urbanisation
+   - Défis démographiques
+
+3. **L'économie du Cameroun**
+   - Agriculture et élevage
+   - Industrie et énergie
+   - Commerce et services
+   - Développement économique
+
+4. **Le Cameroun dans le monde**
+   - Relations internationales
+   - Coopération régionale (CEMAC, CEEAC)
+   - Mondialisation
+   - Enjeux géopolitiques
+
+5. **Développement durable**
+   - Gestion des ressources
+   - Protection de l'environnement
+   - Objectifs du développement durable (ODD)
+
+---
+
+### 📚 Littérature (coef 2)
+
+**Programme officiel MINESEC :**
+
+1. **Œuvres au programme**
+   - Romans africains et francophons
+   - Théâtre classique et moderne
+   - Poésie
+   - Essais et critiques
+
+2. **Analyse littéraire**
+   - Genres littéraires
+   - Procédés stylistiques
+   - Figures de style
+   - Narratologie
+
+3. **Dissertation littéraire**
+   - Commentaire de texte
+   - Dissertation sur une œuvre
+   - Exposé oral
+
+4. **Contraction et discussion**
+   - Résumé de texte
+   - Discussion critique
+   - Argumentation
+
+---
+
+### 📚 ECM — Éducation à la Citoyenneté et à la Morale (coef 2)
+
+**Programme officiel MINESEC :**
+
+1. **La citoyenneté et la démocratie**
+   - Droits et devoirs du citoyen
+   - Institutions démocratiques
+   - Élections et participation politique
+   - Liberté d'expression
+
+2. **Les droits de l'homme**
+   - Déclaration universelle des droits de l'homme
+   - Droits des femmes et des enfants
+   - Lutte contre les discriminations
+
+3. **La mondialisation**
+   - Impact sur le développement du Cameroun
+   - Coopération internationale
+   - Organisations internationales (ONU, UA, CEMAC)
+
+4. **Le développement économique et social**
+   - Pauvreté et inégalités
+   - Éducation et santé
+   - Environnement et développement durable
+
+5. **La paix et la sécurité**
+   - Conflits et résolution
+   - Maintien de la paix
+   - Patriotisme et civisme
+
+---
+
+### 🏃 EPS (coef 2)
+
+**Programme officiel MINESEC :**
+
+1. **Épreuves pratiques**
+   - Courses (sprint, demi-fond, fond)
+   - Sauts (en hauteur, en longueur)
+   - Lancer (poids, javelot)
+   - Gymnastique
+   - Natation
+   - Sports collectifs (football, basketball, handball)
+
+2. **Épreuve théorique**
+   - Règles des sports
+   - Anatomie de base
+   - Physiologie de l'effort
+   - Hygiène sportive
+
+---
+
+### 💻 Informatique (coef 2)
+
+**Programme officiel MINESEC :**
+
+1. **Algorithmique et programmation**
+   - Variables et types de données
+   - Structures de contrôle (conditions, boucles)
+   - Fonctions et procédures
+   - Tableaux et enregistrements
+
+2. **Bases de données**
+   - Modèle relationnel
+   - SQL (requêtes)
+   - Création et gestion de bases
+
+3. **Réseaux informatiques**
+   - Architecture des réseaux
+   - Protocoles (TCP/IP, HTTP)
+   - Sécurité informatique
+
+4. **Systèmes d'exploitation**
+   - Windows, Linux
+   - Gestion des fichiers
+   - Commandes de base
+
+5. **Bureautique**
+   - Traitement de texte
+   - Tableur (Excel)
+   - Présentation (PowerPoint)
+
+---
+
+### 🔨 TM — Travaux Manuels (facultatif)
+
+**Programme officiel MINESEC :**
+
+1. **Artisanat**
+   - Travaux manuels créatifs
+   - Dessin technique
+   - Couture et cuisine
+
+2. **Travaux d'entretien**
+   - Réparations domestiques
+   - Électricité de base
+   - Plomberie
 
 ---
 
@@ -210,35 +597,6 @@ Liens directs vers les sujets officiels :
 git clone https://github.com/madiba-elate/TerminaleC-Prep.git
 cd TerminaleC-Prep
 # Ouvrir index.html dans le navigateur
-```
-
----
-
-## 📁 Structure
-
-```
-TerminaleC-Prep/
-├── index.html              # App complète (quiz, flashcards, calculateur)
-├── README.md               # Documentation
-├── matieres/               # Dossiers par matière
-│   ├── maths/
-│   ├── physique/
-│   ├── chimie/
-│   ├── svteehb/
-│   ├── francais/
-│   ├── philosophie/
-│   ├── anglais/
-│   ├── ecm/
-│   ├── tm/
-│   ├── litterature/
-│   └── info/
-├── assets/
-│   ├── flashcards/
-│   ├── quiz/
-│   ├── pdf/
-│   └── images/
-└── docs/
-    └── PLAN_HUB.md         # Plan de développement
 ```
 
 ---
