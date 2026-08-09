@@ -1,104 +1,134 @@
 <!DOCTYPE html>
-<html lang="fr">
+<html lang="fr" data-theme="dark">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Terminale C - Préparation Bac 18/20</title>
+    <title>Terminale C Prep — Objectif 18/20 au Bac</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
     <style>
         :root {
-            --primary: #1a5f7a;
-            --primary-light: #2d8bba;
-            --secondary: #159895;
-            --accent: #57c5b6;
-            --bg: #f8fafc;
-            --card-bg: #ffffff;
-            --text: #1e293b;
-            --text-light: #64748b;
+            --primary: #3b82f6;
+            --primary-dark: #2563eb;
+            --secondary: #8b5cf6;
+            --accent: #06b6d4;
             --success: #10b981;
             --warning: #f59e0b;
             --danger: #ef4444;
+            --bg: #0f172a;
+            --bg-card: #1e293b;
+            --bg-elevated: #334155;
+            --text: #f1f5f9;
+            --text-muted: #94a3b8;
+            --text-dim: #64748b;
+            --border: #334155;
+            --shadow: 0 4px 6px -1px rgba(0,0,0,0.3);
+            --shadow-lg: 0 10px 15px -3px rgba(0,0,0,0.4);
+            --radius: 12px;
+            --radius-lg: 16px;
+            --transition: all 0.2s ease;
+        }
+
+        [data-theme="light"] {
+            --bg: #f8fafc;
+            --bg-card: #ffffff;
+            --bg-elevated: #f1f5f9;
+            --text: #1e293b;
+            --text-muted: #64748b;
+            --text-dim: #94a3b8;
             --border: #e2e8f0;
-            --shadow: 0 4px 6px -1px rgba(0,0,0,0.1), 0 2px 4px -1px rgba(0,0,0,0.06);
-            --shadow-lg: 0 10px 15px -3px rgba(0,0,0,0.1), 0 4px 6px -2px rgba(0,0,0,0.05);
+            --shadow: 0 4px 6px -1px rgba(0,0,0,0.1);
+            --shadow-lg: 0 10px 15px -3px rgba(0,0,0,0.1);
         }
 
         * { margin: 0; padding: 0; box-sizing: border-box; }
 
         body {
-            font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
+            font-family: 'Inter', system-ui, -apple-system, sans-serif;
             background: var(--bg);
             color: var(--text);
             line-height: 1.6;
+            min-height: 100vh;
+            transition: var(--transition);
         }
 
-        /* Header */
         .header {
-            background: linear-gradient(135deg, var(--primary) 0%, var(--secondary) 100%);
+            background: linear-gradient(135deg, #1e3a5f 0%, #1a5f7a 50%, #159895 100%);
             color: white;
-            padding: 2rem;
+            padding: 3rem 2rem;
             text-align: center;
-            box-shadow: var(--shadow-lg);
+            position: relative;
+            overflow: hidden;
         }
 
-        .header h1 { font-size: 2.5rem; margin-bottom: 0.5rem; }
-        .header p { font-size: 1.1rem; opacity: 0.9; }
-        .header .stats {
+        .header-content { position: relative; z-index: 1; }
+        .header h1 { font-size: 2.8rem; font-weight: 800; margin-bottom: 0.5rem; letter-spacing: -0.02em; }
+        .header .subtitle { font-size: 1.2rem; opacity: 0.9; font-weight: 400; }
+
+        .header-stats {
             display: flex;
             justify-content: center;
-            gap: 2rem;
-            margin-top: 1.5rem;
+            gap: 1.5rem;
+            margin-top: 2rem;
             flex-wrap: wrap;
         }
 
-        .stat-item {
-            background: rgba(255,255,255,0.2);
-            padding: 0.75rem 1.5rem;
-            border-radius: 12px;
+        .stat-card {
+            background: rgba(255,255,255,0.15);
+            padding: 1rem 1.5rem;
+            border-radius: var(--radius);
             backdrop-filter: blur(10px);
+            min-width: 120px;
+            border: 1px solid rgba(255,255,255,0.2);
         }
 
-        .stat-item .number { font-size: 1.8rem; font-weight: bold; }
-        .stat-item .label { font-size: 0.85rem; opacity: 0.9; }
+        .stat-card .value { font-size: 2rem; font-weight: 700; }
+        .stat-card .label { font-size: 0.75rem; opacity: 0.9; text-transform: uppercase; letter-spacing: 0.05em; }
 
-        /* Navigation */
         .nav {
-            background: var(--card-bg);
-            padding: 1rem;
+            background: var(--bg-card);
+            padding: 0.75rem 1rem;
             display: flex;
             justify-content: center;
             gap: 0.5rem;
             flex-wrap: wrap;
-            box-shadow: var(--shadow);
             position: sticky;
             top: 0;
             z-index: 100;
+            border-bottom: 1px solid var(--border);
+            box-shadow: var(--shadow);
         }
 
         .nav-btn {
             padding: 0.6rem 1.2rem;
             border: none;
             background: transparent;
-            color: var(--text-light);
+            color: var(--text-muted);
             border-radius: 8px;
             cursor: pointer;
-            font-size: 0.9rem;
+            font-size: 0.85rem;
             font-weight: 500;
-            transition: all 0.2s;
+            transition: var(--transition);
+            display: flex;
+            align-items: center;
+            gap: 0.4rem;
         }
 
-        .nav-btn:hover { background: var(--bg); color: var(--primary); }
+        .nav-btn:hover { background: var(--bg-elevated); color: var(--text); }
         .nav-btn.active { background: var(--primary); color: white; }
 
-        /* Main Content */
         .main { max-width: 1200px; margin: 0 auto; padding: 2rem; }
 
-        .section { display: none; }
+        .section { display: none; animation: fadeIn 0.3s ease; }
         .section.active { display: block; }
 
-        /* Cards */
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
         .card {
-            background: var(--card-bg);
-            border-radius: 16px;
+            background: var(--bg-card);
+            border-radius: var(--radius-lg);
             padding: 1.5rem;
             margin-bottom: 1.5rem;
             box-shadow: var(--shadow);
@@ -107,30 +137,54 @@
 
         .card-title {
             font-size: 1.3rem;
-            font-weight: 600;
+            font-weight: 700;
             margin-bottom: 1rem;
             display: flex;
             align-items: center;
             gap: 0.5rem;
         }
 
-        /* Week Cards */
+        .tabs {
+            display: flex;
+            gap: 0.5rem;
+            margin-bottom: 1.5rem;
+            flex-wrap: wrap;
+        }
+
+        .tab-btn {
+            padding: 0.5rem 1rem;
+            border: 2px solid var(--border);
+            background: transparent;
+            color: var(--text-muted);
+            border-radius: 8px;
+            cursor: pointer;
+            font-size: 0.85rem;
+            font-weight: 600;
+            transition: var(--transition);
+        }
+
+        .tab-btn:hover { border-color: var(--primary); color: var(--text); }
+        .tab-btn.active { background: var(--primary); border-color: var(--primary); color: white; }
+
+        .tab-content { display: none; }
+        .tab-content.active { display: block; }
+
         .week-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
             gap: 1.5rem;
         }
 
         .week-card {
-            background: var(--card-bg);
-            border-radius: 16px;
+            background: var(--bg-card);
+            border-radius: var(--radius-lg);
             padding: 1.5rem;
             box-shadow: var(--shadow);
             border: 2px solid var(--border);
-            transition: all 0.3s;
+            transition: var(--transition);
         }
 
-        .week-card:hover { border-color: var(--primary-light); transform: translateY(-2px); }
+        .week-card:hover { border-color: var(--primary); transform: translateY(-2px); }
 
         .week-header {
             display: flex;
@@ -139,14 +193,15 @@
             margin-bottom: 1rem;
         }
 
-        .week-title { font-size: 1.2rem; font-weight: 600; color: var(--primary); }
+        .week-title { font-size: 1.1rem; font-weight: 700; color: var(--primary); }
 
-        .week-progress {
-            background: var(--bg);
-            padding: 0.3rem 0.8rem;
+        .week-badge {
+            background: var(--bg-elevated);
+            padding: 0.25rem 0.75rem;
             border-radius: 20px;
-            font-size: 0.8rem;
-            color: var(--text-light);
+            font-size: 0.75rem;
+            color: var(--text-muted);
+            font-weight: 500;
         }
 
         .day-item {
@@ -155,13 +210,15 @@
             gap: 0.75rem;
             padding: 0.6rem 0;
             border-bottom: 1px solid var(--border);
+            cursor: pointer;
+            transition: var(--transition);
         }
 
         .day-item:last-child { border-bottom: none; }
 
         .day-checkbox {
-            width: 20px;
-            height: 20px;
+            width: 22px;
+            height: 22px;
             border: 2px solid var(--border);
             border-radius: 6px;
             cursor: pointer;
@@ -170,99 +227,128 @@
             justify-content: center;
             flex-shrink: 0;
             margin-top: 2px;
-            transition: all 0.2s;
+            transition: var(--transition);
+            font-size: 0.75rem;
         }
 
         .day-checkbox.checked { background: var(--success); border-color: var(--success); color: white; }
-        .day-checkbox:hover { border-color: var(--primary); }
 
         .day-content { flex: 1; }
-        .day-title { font-weight: 500; font-size: 0.95rem; }
-        .day-desc { font-size: 0.8rem; color: var(--text-light); margin-top: 2px; }
-        .day-time { font-size: 0.75rem; color: var(--primary); font-weight: 600; margin-top: 2px; }
+        .day-title { font-weight: 600; font-size: 0.9rem; }
+        .day-title.completed { text-decoration: line-through; color: var(--text-dim); }
+        .day-desc { font-size: 0.78rem; color: var(--text-muted); margin-top: 2px; }
+        .day-meta { display: flex; gap: 0.5rem; margin-top: 4px; flex-wrap: wrap; }
+        .day-tag {
+            font-size: 0.68rem;
+            padding: 0.15rem 0.5rem;
+            border-radius: 4px;
+            background: var(--bg-elevated);
+            color: var(--text-dim);
+            font-weight: 500;
+        }
 
-        /* Subjects */
+        .day-tag.math { background: rgba(59,130,246,0.15); color: #60a5fa; }
+        .day-tag.physics { background: rgba(139,92,246,0.15); color: #a78bfa; }
+        .day-tag.chemistry { background: rgba(16,185,129,0.15); color: #34d399; }
+        .day-tag.svt { background: rgba(245,158,11,0.15); color: #fbbf24; }
+        .day-tag.philo { background: rgba(236,72,153,0.15); color: #f472b6; }
+        .day-tag.english { background: rgba(6,182,212,0.15); color: #22d3ee; }
+        .day-tag.info { background: rgba(168,85,247,0.15); color: #c084fc; }
+        .day-tag.french { background: rgba(249,115,22,0.15); color: #fb923c; }
+        .day-tag.geo { background: rgba(34,197,94,0.15); color: #4ade80; }
+
         .subjects-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
             gap: 1rem;
         }
 
         .subject-card {
-            background: var(--card-bg);
-            border-radius: 12px;
-            padding: 1.2rem;
+            background: var(--bg-card);
+            border-radius: var(--radius);
+            padding: 1.25rem;
             box-shadow: var(--shadow);
+            border: 1px solid var(--border);
             border-left: 4px solid var(--primary);
-            cursor: pointer;
-            transition: all 0.2s;
+            transition: var(--transition);
         }
 
         .subject-card:hover { transform: translateX(4px); }
-
         .subject-card.math { border-left-color: #3b82f6; }
         .subject-card.physics { border-left-color: #8b5cf6; }
         .subject-card.chemistry { border-left-color: #10b981; }
         .subject-card.svt { border-left-color: #f59e0b; }
         .subject-card.philo { border-left-color: #ec4899; }
         .subject-card.english { border-left-color: #06b6d4; }
+        .subject-card.info { border-left-color: #a855f7; }
+        .subject-card.french { border-left-color: #f97316; }
+        .subject-card.geo { border-left-color: #22c55e; }
 
         .subject-name { font-weight: 600; margin-bottom: 0.3rem; }
-        .subject-progress { font-size: 0.8rem; color: var(--text-light); }
-        .subject-bar {
-            height: 6px;
-            background: var(--border);
-            border-radius: 3px;
-            margin-top: 0.5rem;
-            overflow: hidden;
-        }
-        .subject-bar-fill {
-            height: 100%;
-            border-radius: 3px;
-            transition: width 0.3s;
+        .subject-details { font-size: 0.8rem; color: var(--text-muted); }
+        .subject-coeff {
+            display: inline-block;
+            background: var(--bg-elevated);
+            padding: 0.2rem 0.6rem;
+            border-radius: 4px;
+            font-size: 0.75rem;
+            font-weight: 600;
+            color: var(--primary);
+            margin-top: 0.4rem;
         }
 
-        .math .subject-bar-fill { background: #3b82f6; }
-        .physics .subject-bar-fill { background: #8b5cf6; }
-        .chemistry .subject-bar-fill { background: #10b981; }
-        .svt .subject-bar-fill { background: #f59e0b; }
-        .philo .subject-bar-fill { background: #ec4899; }
-        .english .subject-bar-fill { background: #06b6d4; }
+        .timer-container { text-align: center; padding: 2rem; }
+        .timer-display { font-size: 5rem; font-weight: 700; color: var(--primary); font-variant-numeric: tabular-nums; }
+        .timer-controls { display: flex; justify-content: center; gap: 1rem; margin-top: 1.5rem; }
+        .timer-btn {
+            padding: 0.8rem 2rem;
+            border: none;
+            border-radius: 12px;
+            font-size: 1rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: var(--transition);
+        }
+        .timer-btn.start { background: var(--success); color: white; }
+        .timer-btn.pause { background: var(--warning); color: white; }
+        .timer-btn.reset { background: var(--bg-elevated); color: var(--text); }
 
-        /* Resources */
+        .timer-presets { display: flex; justify-content: center; gap: 0.5rem; margin-top: 1rem; }
+        .timer-preset {
+            padding: 0.4rem 0.8rem;
+            background: var(--bg-elevated);
+            border: 1px solid var(--border);
+            border-radius: 6px;
+            cursor: pointer;
+            font-size: 0.85rem;
+        }
+
         .resource-list { display: flex; flex-direction: column; gap: 0.75rem; }
-
         .resource-item {
             display: flex;
             align-items: center;
             gap: 1rem;
             padding: 1rem;
-            background: var(--bg);
+            background: var(--bg-elevated);
             border-radius: 10px;
-            transition: all 0.2s;
+            transition: var(--transition);
         }
-
         .resource-item:hover { background: var(--border); }
-
         .resource-icon {
-            width: 45px;
-            height: 45px;
+            width: 45px; height: 45px;
             border-radius: 10px;
             display: flex;
             align-items: center;
             justify-content: center;
             font-size: 1.3rem;
         }
-
-        .resource-icon.pdf { background: #fee2e2; color: #dc2626; }
-        .resource-icon.video { background: #dbeafe; color: #2563eb; }
-        .resource-icon.link { background: #dcfce7; color: #16a34a; }
-        .resource-icon.file { background: #fef3c7; color: #d97706; }
+        .resource-icon.pdf { background: rgba(239,68,68,0.15); color: #ef4444; }
+        .resource-icon.video { background: rgba(59,130,246,0.15); color: #3b82f6; }
+        .resource-icon.link { background: rgba(16,185,129,0.15); color: #10b981; }
 
         .resource-info { flex: 1; }
-        .resource-name { font-weight: 500; }
-        .resource-desc { font-size: 0.8rem; color: var(--text-light); }
-
+        .resource-name { font-weight: 600; }
+        .resource-desc { font-size: 0.8rem; color: var(--text-muted); }
         .resource-btn {
             padding: 0.5rem 1rem;
             background: var(--primary);
@@ -275,88 +361,6 @@
             display: inline-block;
         }
 
-        .resource-btn:hover { background: var(--primary-light); }
-
-        /* Timer */
-        .timer-container {
-            text-align: center;
-            padding: 2rem;
-        }
-
-        .timer-display {
-            font-size: 5rem;
-            font-weight: 700;
-            color: var(--primary);
-            font-variant-numeric: tabular-nums;
-        }
-
-        .timer-controls {
-            display: flex;
-            justify-content: center;
-            gap: 1rem;
-            margin-top: 1.5rem;
-        }
-
-        .timer-btn {
-            padding: 0.8rem 2rem;
-            border: none;
-            border-radius: 12px;
-            font-size: 1rem;
-            font-weight: 600;
-            cursor: pointer;
-            transition: all 0.2s;
-        }
-
-        .timer-btn.start { background: var(--success); color: white; }
-        .timer-btn.pause { background: var(--warning); color: white; }
-        .timer-btn.reset { background: var(--border); color: var(--text); }
-
-        .timer-presets {
-            display: flex;
-            justify-content: center;
-            gap: 0.5rem;
-            margin-top: 1rem;
-        }
-
-        .timer-preset {
-            padding: 0.4rem 0.8rem;
-            background: var(--bg);
-            border: 1px solid var(--border);
-            border-radius: 6px;
-            cursor: pointer;
-            font-size: 0.85rem;
-        }
-
-        .timer-preset:hover { border-color: var(--primary); }
-
-        /* Notes */
-        .notes-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-            gap: 1rem;
-        }
-
-        .note-card {
-            background: var(--card-bg);
-            border-radius: 12px;
-            padding: 1.2rem;
-            box-shadow: var(--shadow);
-            border: 1px solid var(--border);
-        }
-
-        .note-title { font-weight: 600; margin-bottom: 0.5rem; }
-        .note-content { font-size: 0.9rem; color: var(--text-light); }
-        .note-date { font-size: 0.75rem; color: var(--primary); margin-top: 0.5rem; }
-
-        /* Responsive */
-        @media (max-width: 768px) {
-            .header h1 { font-size: 1.8rem; }
-            .header .stats { gap: 1rem; }
-            .main { padding: 1rem; }
-            .timer-display { font-size: 3.5rem; }
-        }
-
-        /* Dark mode toggle */
         .dark-mode-toggle {
             position: fixed;
             bottom: 2rem;
@@ -373,453 +377,230 @@
             z-index: 1000;
         }
 
-        /* Print styles */
-        @media print {
-            .nav, .dark-mode-toggle { display: none; }
-            .section { display: block !important; }
-            body { background: white; }
-            .card { break-inside: avoid; }
-        }
-
-        /* Animations */
-        @keyframes fadeIn {
-            from { opacity: 0; transform: translateY(10px); }
-            to { opacity: 1; transform: translateY(0); }
-        }
-
-        .section.active { animation: fadeIn 0.3s ease; }
-
-        /* Toast notifications */
         .toast {
             position: fixed;
             bottom: 2rem;
             left: 50%;
             transform: translateX(-50%) translateY(100px);
             background: var(--text);
-            color: white;
+            color: var(--bg);
             padding: 0.8rem 1.5rem;
             border-radius: 10px;
             opacity: 0;
             transition: all 0.3s;
             z-index: 2000;
+            font-weight: 500;
         }
 
-        .toast.show {
-            opacity: 1;
-            transform: translateX(-50%) translateY(0);
+        .toast.show { opacity: 1; transform: translateX(-50%) translateY(0); }
+
+        @media (max-width: 768px) {
+            .header h1 { font-size: 1.8rem; }
+            .header-stats { gap: 1rem; }
+            .main { padding: 1rem; }
+            .timer-display { font-size: 3.5rem; }
+        }
+
+        @media print {
+            .nav, .dark-mode-toggle { display: none; }
+            .section { display: block !important; }
         }
     </style>
 </head>
 <body>
     <header class="header">
-        <h1>🎓 Terminale C — Préparation Bac</h1>
-        <p>Objectif : 18/20 | 30 jours de préparation intensive</p>
-        <div class="stats">
-            <div class="stat-item">
-                <div class="number" id="daysLeft">30</div>
-                <div class="label">Jours restants</div>
-            </div>
-            <div class="stat-item">
-                <div class="number" id="tasksDone">0</div>
-                <div class="label">Tâches complétées</div>
-            </div>
-            <div class="stat-item">
-                <div class="number" id="hoursStudied">0</div>
-                <div class="label">Heures étudiées</div>
-            </div>
-            <div class="stat-item">
-                <div class="number" id="streak">0</div>
-                <div class="label">Jours consécutifs</div>
+        <div class="header-content">
+            <h1>🎓 Terminale C — Préparation Bac</h1>
+            <p class="subtitle">Objectif : 18/20 | Planning Vacances + Séquences Première</p>
+            <div class="header-stats">
+                <div class="stat-card">
+                    <div class="value" id="daysLeft">30</div>
+                    <div class="label">Jours</div>
+                </div>
+                <div class="stat-card">
+                    <div class="value" id="tasksDone">0</div>
+                    <div class="label">Tâches</div>
+                </div>
+                <div class="stat-card">
+                    <div class="value" id="hoursStudied">0</div>
+                    <div class="label">Heures</div>
+                </div>
+                <div class="stat-card">
+                    <div class="value" id="streak">0</div>
+                    <div class="label">Streak</div>
+                </div>
             </div>
         </div>
     </header>
 
     <nav class="nav">
         <button class="nav-btn active" data-section="dashboard">📊 Dashboard</button>
-        <button class="nav-btn" data-section="planning">📅 Planning</button>
-        <button class="nav-btn" data-section="subjects">📚 Matières</button>
+        <button class="nav-btn" data-section="vacances">🏖️ Vacances</button>
+        <button class="nav-btn" data-section="sequences">📝 Séquences</button>
+        <button class="nav-btn" data-section="coefficients">📋 Coefficients</button>
         <button class="nav-btn" data-section="resources">📥 Ressources</button>
         <button class="nav-btn" data-section="timer">⏱️ Timer</button>
-        <button class="nav-btn" data-section="notes">📝 Notes</button>
     </nav>
 
     <main class="main">
         <!-- Dashboard -->
         <section class="section active" id="dashboard">
+            <div class="card">
+                <div class="card-title">🎯 Objectif : 18/20 au Bac C</div>
+                <p style="color:var(--text-muted);">Bienvenue sur ton planning personnalisé. 30 jours de préparation pendant les vacances + suivi des séquences de Première.</p>
+            </div>
             <div class="week-grid">
                 <div class="week-card">
-                    <div class="week-header">
-                        <span class="week-title">Semaine 1</span>
-                        <span class="week-progress" id="week1-progress">0/7</span>
-                    </div>
-                    <p style="font-size:0.85rem;color:var(--text-light);">Diagnostic + Maths : Suites & Fonctions</p>
+                    <div class="week-header"><span class="week-title">🏖️ Prépa Vacances</span><span class="week-badge">30 jours</span></div>
+                    <p style="font-size:0.85rem;color:var(--text-muted);">4 semaines pour maîtriser les bases : Suites, Fonctions, Exp/ln, Intégrales, Probas</p>
                 </div>
                 <div class="week-card">
-                    <div class="week-header">
-                        <span class="week-title">Semaine 2</span>
-                        <span class="week-progress" id="week2-progress">0/7</span>
-                    </div>
-                    <p style="font-size:0.85rem;color:var(--text-light);">Exponentielles, Logarithmes + Physique</p>
-                </div>
-                <div class="week-card">
-                    <div class="week-header">
-                        <span class="week-title">Semaine 3</span>
-                        <span class="week-progress" id="week3-progress">0/7</span>
-                    </div>
-                    <p style="font-size:0.85rem;color:var(--text-light);">Intégrales, Probabilités + Chimie</p>
-                </div>
-                <div class="week-card">
-                    <div class="week-header">
-                        <span class="week-title">Semaine 4</span>
-                        <span class="week-progress" id="week4-progress">0/7</span>
-                    </div>
-                    <p style="font-size:0.85rem;color:var(--text-light);">Consolidation + Prérentrée</p>
-                </div>
-            </div>
-
-            <div class="card" style="margin-top: 1.5rem;">
-                <div class="card-title">🔥 Prochains objectifs</div>
-                <div class="day-item">
-                    <div class="day-checkbox" onclick="toggle(this)"></div>
-                    <div class="day-content">
-                        <div class="day-title">Revoir les suites numériques</div>
-                        <div class="day-desc">Arithmétiques, géométriques, convergence</div>
-                        <div class="day-time">⏱️ 3h</div>
-                    </div>
-                </div>
-                <div class="day-item">
-                    <div class="day-checkbox" onclick="toggle(this)"></div>
-                    <div class="day-content">
-                        <div class="day-title">Exercices suites (15 exercices)</div>
-                        <div class="day-desc">Difficulté croissante, annales Bac</div>
-                        <div class="day-time">⏱️ 3h</div>
-                    </div>
-                </div>
-                <div class="day-item">
-                    <div class="day-checkbox" onclick="toggle(this)"></div>
-                    <div class="day-content">
-                        <div class="day-title">Mécanique de Première</div>
-                        <div class="day-desc">Cinématique, dynamique, lois de Newton</div>
-                        <div class="day-time">⏱️ 2h</div>
-                    </div>
+                    <div class="week-header"><span class="week-title">📝 Séquences 1-3</span><span class="week-badge">Première</span></div>
+                    <p style="font-size:0.85rem;color:var(--text-muted);">Suivi semaine par semaine des cours en classe + révisions</p>
                 </div>
             </div>
         </section>
 
-        <!-- Planning -->
-        <section class="section" id="planning">
-            <div class="week-grid">
-                <!-- Week 1 -->
+        <!-- Vacances -->
+        <section class="section" id="vacances">
+            <div class="tabs">
+                <button class="tab-btn active" data-tab="week1">Semaine 1</button>
+                <button class="tab-btn" data-tab="week2">Semaine 2</button>
+                <button class="tab-btn" data-tab="week3">Semaine 3</button>
+                <button class="tab-btn" data-tab="week4">Semaine 4</button>
+            </div>
+            
+            <!-- Week 1 -->
+            <div class="tab-content active" id="week1">
                 <div class="week-card">
-                    <div class="week-header">
-                        <span class="week-title">📅 Semaine 1</span>
-                        <span class="week-progress">7 jours</span>
-                    </div>
-                    <div class="day-item">
-                        <div class="day-checkbox" onclick="toggle(this)"></div>
-                        <div class="day-content">
-                            <div class="day-title">Lundi — Maths</div>
-                            <div class="day-desc">Suites arithmétiques et géométriques</div>
-                            <div class="day-time">⏱️ 3h</div>
-                        </div>
-                    </div>
-                    <div class="day-item">
-                        <div class="day-checkbox" onclick="toggle(this)"></div>
-                        <div class="day-content">
-                            <div class="day-title">Mardi — Maths</div>
-                            <div class="day-desc">Exercices suites (15 exercices)</div>
-                            <div class="day-time">⏱️ 3h</div>
-                        </div>
-                    </div>
-                    <div class="day-item">
-                        <div class="day-checkbox" onclick="toggle(this)"></div>
-                        <div class="day-content">
-                            <div class="day-title">Mercredi — Physique</div>
-                            <div class="day-desc">Mécanique : cinématique, dynamique</div>
-                            <div class="day-time">⏱️ 2h</div>
-                        </div>
-                    </div>
-                    <div class="day-item">
-                        <div class="day-checkbox" onclick="toggle(this)"></div>
-                        <div class="day-content">
-                            <div class="day-title">Jeudi — Maths</div>
-                            <div class="day-desc">Fonctions continues, théorème valeurs intermédiaires</div>
-                            <div class="day-time">⏱️ 3h</div>
-                        </div>
-                    </div>
-                    <div class="day-item">
-                        <div class="day-checkbox" onclick="toggle(this)"></div>
-                        <div class="day-content">
-                            <div class="day-title">Vendredi — Chimie</div>
-                            <div class="day-desc">Bases : tableau d'avancement, réactions</div>
-                            <div class="day-time">⏱️ 2h</div>
-                        </div>
-                    </div>
-                    <div class="day-item">
-                        <div class="day-checkbox" onclick="toggle(this)"></div>
-                        <div class="day-content">
-                            <div class="day-title">Samedi — Maths</div>
-                            <div class="day-desc">Exercices fonctions + continuité</div>
-                            <div class="day-time">⏱️ 3h</div>
-                        </div>
-                    </div>
-                    <div class="day-item">
-                        <div class="day-checkbox" onclick="toggle(this)"></div>
-                        <div class="day-content">
-                            <div class="day-title">Dimanche — Repos</div>
-                            <div class="day-desc">Lecture, détente, projets</div>
-                            <div class="day-time">Repos</div>
-                        </div>
-                    </div>
+                    <div class="week-header"><span class="week-title">📅 Semaine 1 — Suites & Fonctions</span></div>
+                    <div class="day-item"><div class="day-checkbox" onclick="toggle(this)"></div><div class="day-content"><div class="day-title">Lundi — Maths</div><div class="day-desc">Suites arithmétiques et géométriques</div><div class="day-meta"><span class="day-tag math">Maths</span><span class="day-tag">3h</span></div></div></div>
+                    <div class="day-item"><div class="day-checkbox" onclick="toggle(this)"></div><div class="day-content"><div class="day-title">Mardi — Maths</div><div class="day-desc">Exercices suites (15 exercices)</div><div class="day-meta"><span class="day-tag math">Maths</span><span class="day-tag">3h</span></div></div></div>
+                    <div class="day-item"><div class="day-checkbox" onclick="toggle(this)"></div><div class="day-content"><div class="day-title">Mercredi — Physique</div><div class="day-desc">Mécanique : cinématique, dynamique</div><div class="day-meta"><span class="day-tag physics">Physique</span><span class="day-tag">2h</span></div></div></div>
+                    <div class="day-item"><div class="day-checkbox" onclick="toggle(this)"></div><div class="day-content"><div class="day-title">Jeudi — Maths</div><div class="day-desc">Fonctions continues, théorème valeurs intermédiaires</div><div class="day-meta"><span class="day-tag math">Maths</span><span class="day-tag">3h</span></div></div></div>
+                    <div class="day-item"><div class="day-checkbox" onclick="toggle(this)"></div><div class="day-content"><div class="day-title">Vendredi — Chimie</div><div class="day-desc">Bases : tableau d'avancement, réactions</div><div class="day-meta"><span class="day-tag chemistry">Chimie</span><span class="day-tag">2h</span></div></div></div>
+                    <div class="day-item"><div class="day-checkbox" onclick="toggle(this)"></div><div class="day-content"><div class="day-title">Samedi — Maths</div><div class="day-desc">Exercices fonctions + continuité</div><div class="day-meta"><span class="day-tag math">Maths</span><span class="day-tag">3h</span></div></div></div>
+                    <div class="day-item"><div class="day-checkbox" onclick="toggle(this)"></div><div class="day-content"><div class="day-title">Dimanche — Repos</div><div class="day-desc">Lecture, détente, projets</div></div></div>
                 </div>
+            </div>
 
-                <!-- Week 2 -->
+            <!-- Week 2 -->
+            <div class="tab-content" id="week2">
                 <div class="week-card">
-                    <div class="week-header">
-                        <span class="week-title">📅 Semaine 2</span>
-                        <span class="week-progress">7 jours</span>
-                    </div>
-                    <div class="day-item">
-                        <div class="day-checkbox" onclick="toggle(this)"></div>
-                        <div class="day-content">
-                            <div class="day-title">Lundi — Maths</div>
-                            <div class="day-desc">Exponentielles et logarithmes</div>
-                            <div class="day-time">⏱️ 3h</div>
-                        </div>
-                    </div>
-                    <div class="day-item">
-                        <div class="day-checkbox" onclick="toggle(this)"></div>
-                        <div class="day-content">
-                            <div class="day-title">Mardi — Maths</div>
-                            <div class="day-desc">Exercices exp/ln (20 exercices)</div>
-                            <div class="day-time">⏱️ 3h</div>
-                        </div>
-                    </div>
-                    <div class="day-item">
-                        <div class="day-checkbox" onclick="toggle(this)"></div>
-                        <div class="day-content">
-                            <div class="day-title">Mercredi — Physique</div>
-                            <div class="day-desc">Électricité : loi d'Ohm, Kirchhoff, RC</div>
-                            <div class="day-time">⏱️ 3h</div>
-                        </div>
-                    </div>
-                    <div class="day-item">
-                        <div class="day-checkbox" onclick="toggle(this)"></div>
-                        <div class="day-content">
-                            <div class="day-title">Jeudi — Maths</div>
-                            <div class="day-desc">Équations/inéquations avec exp/ln</div>
-                            <div class="day-time">⏱️ 3h</div>
-                        </div>
-                    </div>
-                    <div class="day-item">
-                        <div class="day-checkbox" onclick="toggle(this)"></div>
-                        <div class="day-content">
-                            <div class="day-title">Vendredi — Physique</div>
-                            <div class="day-desc">Exercices électricité</div>
-                            <div class="day-time">⏱️ 2h</div>
-                        </div>
-                    </div>
-                    <div class="day-item">
-                        <div class="day-checkbox" onclick="toggle(this)"></div>
-                        <div class="day-content">
-                            <div class="day-title">Samedi — Maths</div>
-                            <div class="day-desc">Problèmes synthétiques (sujets zéro Bac)</div>
-                            <div class="day-time">⏱️ 3h</div>
-                        </div>
-                    </div>
-                    <div class="day-item">
-                        <div class="day-checkbox" onclick="toggle(this)"></div>
-                        <div class="day-content">
-                            <div class="day-title">Dimanche — Repos</div>
-                            <div class="day-desc">Détente, projets personnels</div>
-                            <div class="day-time">Repos</div>
-                        </div>
-                    </div>
+                    <div class="week-header"><span class="week-title">📅 Semaine 2 — Exp/ln + Physique</span></div>
+                    <div class="day-item"><div class="day-checkbox" onclick="toggle(this)"></div><div class="day-content"><div class="day-title">Lundi — Maths</div><div class="day-desc">Exponentielles et logarithmes</div><div class="day-meta"><span class="day-tag math">Maths</span><span class="day-tag">3h</span></div></div></div>
+                    <div class="day-item"><div class="day-checkbox" onclick="toggle(this)"></div><div class="day-content"><div class="day-title">Mardi — Maths</div><div class="day-desc">Exercices exp/ln (20 exercices)</div><div class="day-meta"><span class="day-tag math">Maths</span><span class="day-tag">3h</span></div></div></div>
+                    <div class="day-item"><div class="day-checkbox" onclick="toggle(this)"></div><div class="day-content"><div class="day-title">Mercredi — Physique</div><div class="day-desc">Électricité : loi d'Ohm, Kirchhoff, RC</div><div class="day-meta"><span class="day-tag physics">Physique</span><span class="day-tag">3h</span></div></div></div>
+                    <div class="day-item"><div class="day-checkbox" onclick="toggle(this)"></div><div class="day-content"><div class="day-title">Jeudi — Maths</div><div class="day-desc">Équations/inéquations avec exp/ln</div><div class="day-meta"><span class="day-tag math">Maths</span><span class="day-tag">3h</span></div></div></div>
+                    <div class="day-item"><div class="day-checkbox" onclick="toggle(this)"></div><div class="day-content"><div class="day-title">Vendredi — Physique</div><div class="day-desc">Exercices électricité</div><div class="day-meta"><span class="day-tag physics">Physique</span><span class="day-tag">2h</span></div></div></div>
+                    <div class="day-item"><div class="day-checkbox" onclick="toggle(this)"></div><div class="day-content"><div class="day-title">Samedi — Maths</div><div class="day-desc">Problèmes synthétiques</div><div class="day-meta"><span class="day-tag math">Maths</span><span class="day-tag">3h</span></div></div></div>
+                    <div class="day-item"><div class="day-checkbox" onclick="toggle(this)"></div><div class="day-content"><div class="day-title">Dimanche — Repos</div></div></div>
                 </div>
+            </div>
 
-                <!-- Week 3 -->
+            <!-- Week 3 -->
+            <div class="tab-content" id="week3">
                 <div class="week-card">
-                    <div class="week-header">
-                        <span class="week-title">📅 Semaine 3</span>
-                        <span class="week-progress">7 jours</span>
-                    </div>
-                    <div class="day-item">
-                        <div class="day-checkbox" onclick="toggle(this)"></div>
-                        <div class="day-content">
-                            <div class="day-title">Lundi — Maths</div>
-                            <div class="day-desc">Primitives, intégrales (parties, changement variable)</div>
-                            <div class="day-time">⏱️ 3h</div>
-                        </div>
-                    </div>
-                    <div class="day-item">
-                        <div class="day-checkbox" onclick="toggle(this)"></div>
-                        <div class="day-content">
-                            <div class="day-title">Mardi — Maths</div>
-                            <div class="day-desc">Calcul d'aires, volumes</div>
-                            <div class="day-time">⏱️ 3h</div>
-                        </div>
-                    </div>
-                    <div class="day-item">
-                        <div class="day-checkbox" onclick="toggle(this)"></div>
-                        <div class="day-content">
-                            <div class="day-title">Mercredi — Chimie</div>
-                            <div class="day-desc">Cinétique chimique, facteurs cinétiques</div>
-                            <div class="day-time">⏱️ 3h</div>
-                        </div>
-                    </div>
-                    <div class="day-item">
-                        <div class="day-checkbox" onclick="toggle(this)"></div>
-                        <div class="day-content">
-                            <div class="day-title">Jeudi — Maths</div>
-                            <div class="day-desc">Probabilités conditionnelles, variables aléatoires</div>
-                            <div class="day-time">⏱️ 3h</div>
-                        </div>
-                    </div>
-                    <div class="day-item">
-                        <div class="day-checkbox" onclick="toggle(this)"></div>
-                        <div class="day-content">
-                            <div class="day-title">Vendredi — Chimie</div>
-                            <div class="day-desc">Exercices cinétique + équilibres</div>
-                            <div class="day-time">⏱️ 2h</div>
-                        </div>
-                    </div>
-                    <div class="day-item">
-                        <div class="day-checkbox" onclick="toggle(this)"></div>
-                        <div class="day-content">
-                            <div class="day-title">Samedi — Maths</div>
-                            <div class="day-desc">Sujet Bac complet (chronométré 4h)</div>
-                            <div class="day-time">⏱️ 4h</div>
-                        </div>
-                    </div>
-                    <div class="day-item">
-                        <div class="day-checkbox" onclick="toggle(this)"></div>
-                        <div class="day-content">
-                            <div class="day-title">Dimanche — Repos</div>
-                            <div class="day-desc">Correction sujet + analyse erreurs</div>
-                            <div class="day-time">Repos</div>
-                        </div>
-                    </div>
+                    <div class="week-header"><span class="week-title">📅 Semaine 3 — Intégrales + Chimie</span></div>
+                    <div class="day-item"><div class="day-checkbox" onclick="toggle(this)"></div><div class="day-content"><div class="day-title">Lundi — Maths</div><div class="day-desc">Primitives, intégrales (parties, changement variable)</div><div class="day-meta"><span class="day-tag math">Maths</span><span class="day-tag">3h</span></div></div></div>
+                    <div class="day-item"><div class="day-checkbox" onclick="toggle(this)"></div><div class="day-content"><div class="day-title">Mardi — Maths</div><div class="day-desc">Calcul d'aires, volumes</div><div class="day-meta"><span class="day-tag math">Maths</span><span class="day-tag">3h</span></div></div></div>
+                    <div class="day-item"><div class="day-checkbox" onclick="toggle(this)"></div><div class="day-content"><div class="day-title">Mercredi — Chimie</div><div class="day-desc">Cinétique chimique</div><div class="day-meta"><span class="day-tag chemistry">Chimie</span><span class="day-tag">3h</span></div></div></div>
+                    <div class="day-item"><div class="day-checkbox" onclick="toggle(this)"></div><div class="day-content"><div class="day-title">Jeudi — Maths</div><div class="day-desc">Probabilités conditionnelles, variables aléatoires</div><div class="day-meta"><span class="day-tag math">Maths</span><span class="day-tag">3h</span></div></div></div>
+                    <div class="day-item"><div class="day-checkbox" onclick="toggle(this)"></div><div class="day-content"><div class="day-title">Vendredi — Chimie</div><div class="day-desc">Exercices cinétique + équilibres</div><div class="day-meta"><span class="day-tag chemistry">Chimie</span><span class="day-tag">2h</span></div></div></div>
+                    <div class="day-item"><div class="day-checkbox" onclick="toggle(this)"></div><div class="day-content"><div class="day-title">Samedi — Maths</div><div class="day-desc">Sujet Bac complet (chronométré)</div><div class="day-meta"><span class="day-tag math">Maths</span><span class="day-tag">4h</span></div></div></div>
+                    <div class="day-item"><div class="day-checkbox" onclick="toggle(this)"></div><div class="day-content"><div class="day-title">Dimanche — Repos</div></div></div>
                 </div>
+            </div>
 
-                <!-- Week 4 -->
+            <!-- Week 4 -->
+            <div class="tab-content" id="week4">
                 <div class="week-card">
-                    <div class="week-header">
-                        <span class="week-title">📅 Semaine 4</span>
-                        <span class="week-progress">7 jours</span>
-                    </div>
-                    <div class="day-item">
-                        <div class="day-checkbox" onclick="toggle(this)"></div>
-                        <div class="day-content">
-                            <div class="day-title">Lundi — Maths</div>
-                            <div class="day-desc">Nombres complexes (formes algébrique, trigonométrique)</div>
-                            <div class="day-time">⏱️ 3h</div>
-                        </div>
-                    </div>
-                    <div class="day-item">
-                        <div class="day-checkbox" onclick="toggle(this)"></div>
-                        <div class="day-content">
-                            <div class="day-title">Mardi — Physique</div>
-                            <div class="day-desc">Optique : lentilles, interférences</div>
-                            <div class="day-time">⏱️ 3h</div>
-                        </div>
-                    </div>
-                    <div class="day-item">
-                        <div class="day-checkbox" onclick="toggle(this)"></div>
-                        <div class="day-content">
-                            <div class="day-title">Mercredi — SVT</div>
-                            <div class="day-desc">Génétique : Mendel, lois de l'hérédité</div>
-                            <div class="day-time">⏱️ 2h</div>
-                        </div>
-                    </div>
-                    <div class="day-item">
-                        <div class="day-checkbox" onclick="toggle(this)"></div>
-                        <div class="day-content">
-                            <div class="day-title">Jeudi — Maths</div>
-                            <div class="day-desc">Géométrie dans l'espace</div>
-                            <div class="day-time">⏱️ 3h</div>
-                        </div>
-                    </div>
-                    <div class="day-item">
-                        <div class="day-checkbox" onclick="toggle(this)"></div>
-                        <div class="day-content">
-                            <div class="day-title">Vendredi — Philosophie</div>
-                            <div class="day-desc">Lire 2-3 notions (Le langage, La justice)</div>
-                            <div class="day-time">⏱️ 2h</div>
-                        </div>
-                    </div>
-                    <div class="day-item">
-                        <div class="day-checkbox" onclick="toggle(this)"></div>
-                        <div class="day-content">
-                            <div class="day-title">Samedi — Tout</div>
-                            <div class="day-desc">Sujet Bac complet (Maths + Physique)</div>
-                            <div class="day-time">⏱️ 5h</div>
-                        </div>
-                    </div>
-                    <div class="day-item">
-                        <div class="day-checkbox" onclick="toggle(this)"></div>
-                        <div class="day-content">
-                            <div class="day-title">Dimanche — Repos</div>
-                            <div class="day-desc">Préparer affaires, objectif clair</div>
-                            <div class="day-time">Repos</div>
-                        </div>
-                    </div>
+                    <div class="week-header"><span class="week-title">📅 Semaine 4 — Consolidation</span></div>
+                    <div class="day-item"><div class="day-checkbox" onclick="toggle(this)"></div><div class="day-content"><div class="day-title">Lundi — Maths</div><div class="day-desc">Nombres complexes</div><div class="day-meta"><span class="day-tag math">Maths</span><span class="day-tag">3h</span></div></div></div>
+                    <div class="day-item"><div class="day-checkbox" onclick="toggle(this)"></div><div class="day-content"><div class="day-title">Mardi — Physique</div><div class="day-desc">Optique : lentilles, interférences</div><div class="day-meta"><span class="day-tag physics">Physique</span><span class="day-tag">3h</span></div></div></div>
+                    <div class="day-item"><div class="day-checkbox" onclick="toggle(this)"></div><div class="day-content"><div class="day-title">Mercredi — SVT</div><div class="day-desc">Génétique : Mendel, lois de l'hérédité</div><div class="day-meta"><span class="day-tag svt">SVT</span><span class="day-tag">2h</span></div></div></div>
+                    <div class="day-item"><div class="day-checkbox" onclick="toggle(this)"></div><div class="day-content"><div class="day-title">Jeudi — Maths</div><div class="day-desc">Géométrie dans l'espace</div><div class="day-meta"><span class="day-tag math">Maths</span><span class="day-tag">3h</span></div></div></div>
+                    <div class="day-item"><div class="day-checkbox" onclick="toggle(this)"></div><div class="day-content"><div class="day-title">Vendredi — Philosophie</div><div class="day-desc">Lire 2-3 notions</div><div class="day-meta"><span class="day-tag philo">Philo</span><span class="day-tag">2h</span></div></div></div>
+                    <div class="day-item"><div class="day-checkbox" onclick="toggle(this)"></div><div class="day-content"><div class="day-title">Samedi — Tout</div><div class="day-desc">Sujet Bac complet (Maths + Physique)</div><div class="day-meta"><span class="day-tag math">Maths</span><span class="day-tag physics">Physique</span><span class="day-tag">5h</span></div></div></div>
+                    <div class="day-item"><div class="day-checkbox" onclick="toggle(this)"></div><div class="day-content"><div class="day-title">Dimanche — Repos</div></div></div>
                 </div>
             </div>
         </section>
 
-        <!-- Subjects -->
-        <section class="section" id="subjects">
-            <div class="subjects-grid">
-                <div class="subject-card math">
-                    <div class="subject-name">📐 Mathématiques</div>
-                    <div class="subject-progress">Suites, Fonctions, Exp/ln, Intégrales, Probas</div>
-                    <div class="subject-bar"><div class="subject-bar-fill" style="width: 0%"></div></div>
-                </div>
-                <div class="subject-card physics">
-                    <div class="subject-name">⚡ Physique</div>
-                    <div class="subject-progress">Mécanique, Électricité, Optique</div>
-                    <div class="subject-bar"><div class="subject-bar-fill" style="width: 0%"></div></div>
-                </div>
-                <div class="subject-card chemistry">
-                    <div class="subject-name">🧪 Chimie</div>
-                    <div class="subject-progress">Cinétique, Équilibres, Organique</div>
-                    <div class="subject-bar"><div class="subject-bar-fill" style="width: 0%"></div></div>
-                </div>
-                <div class="subject-card svt">
-                    <div class="subject-name">🧬 SVT</div>
-                    <div class="subject-progress">Génétique, Géologie, Physiologie</div>
-                    <div class="subject-bar"><div class="subject-bar-fill" style="width: 0%"></div></div>
-                </div>
-                <div class="subject-card philo">
-                    <div class="subject-name">🤔 Philosophie</div>
-                    <div class="subject-progress">Le langage, La justice, Le devoir</div>
-                    <div class="subject-bar"><div class="subject-bar-fill" style="width: 0%"></div></div>
-                </div>
-                <div class="subject-card english">
-                    <div class="subject-name">🇬🇧 Anglais</div>
-                    <div class="subject-progress">Grammar, Vocabulary, Essay Writing</div>
-                    <div class="subject-bar"><div class="subject-bar-fill" style="width: 0%"></div></div>
+        <!-- Sequences -->
+        <section class="section" id="sequences">
+            <div class="tabs">
+                <button class="tab-btn active" data-tab="seq1">Séquence 1</button>
+                <button class="tab-btn" data-tab="seq2">Séquence 2</button>
+                <button class="tab-btn" data-tab="seq3">Séquence 3</button>
+            </div>
+
+            <div class="tab-content active" id="seq1">
+                <div class="card">
+                    <div class="card-title">📝 Séquence 1 — Suites Numériques & Fonctions</div>
+                    <p style="color:var(--text-muted);margin-bottom:1rem;">Première séquence : maîtrise des suites et des fonctions, fondements de l'analyse en Terminale C.</p>
+                    <div class="day-item"><div class="day-checkbox" onclick="toggle(this)"></div><div class="day-content"><div class="day-title">Suites arithmétiques et géométriques</div><div class="day-desc">Définition, terme général, somme des premiers termes</div></div></div>
+                    <div class="day-item"><div class="day-checkbox" onclick="toggle(this)"></div><div class="day-content"><div class="day-title">Convergence des suites</div><div class="day-desc">Limite, théorème des gendarmes, suites adjacentes</div></div></div>
+                    <div class="day-item"><div class="day-checkbox" onclick="toggle(this)"></div><div class="day-content"><div class="day-title">Fonctions continues</div><div class="day-desc">Théorème des valeurs intermédiaires, fonctions monotones</div></div></div>
+                    <div class="day-item"><div class="day-checkbox" onclick="toggle(this)"></div><div class="day-content"><div class="day-title">Devoir de Séquence 1</div><div class="day-desc">Préparation et révision complète</div></div></div>
                 </div>
             </div>
 
-            <div class="card" style="margin-top: 1.5rem;">
-                <div class="card-title">📋 Coefficients Bac C</div>
-                <table style="width:100%; border-collapse: collapse;">
-                    <tr style="background: var(--bg);">
-                        <th style="padding:0.75rem; text-align:left;">Matière</th>
-                        <th style="padding:0.75rem; text-align:center;">Coefficient</th>
-                        <th style="padding:0.75rem; text-align:center;">Cible</th>
-                        <th style="padding:0.75rem; text-align:center;">Points</th>
-                    </tr>
-                    <tr><td style="padding:0.6rem; border-bottom:1px solid var(--border);">📐 Mathématiques</td><td style="text-align:center;">5-6</td><td style="text-align:center;color:var(--success);">17-18</td><td style="text-align:center;">85-108</td></tr>
-                    <tr><td style="padding:0.6rem; border-bottom:1px solid var(--border);">⚡ Physique</td><td style="text-align:center;">4-5</td><td style="text-align:center;color:var(--success);">16-17</td><td style="text-align:center;">64-85</td></tr>
-                    <tr><td style="padding:0.6rem; border-bottom:1px solid var(--border);">🧪 Chimie</td><td style="text-align:center;">3-4</td><td style="text-align:center;color:var(--success);">16-17</td><td style="text-align:center;">48-68</td></tr>
-                    <tr><td style="padding:0.6rem; border-bottom:1px solid var(--border);">🧬 SVT</td><td style="text-align:center;">2-3</td><td style="text-align:center;color:var(--warning);">14-15</td><td style="text-align:center;">28-45</td></tr>
-                    <tr><td style="padding:0.6rem; border-bottom:1px solid var(--border);">🤔 Philosophie</td><td style="text-align:center;">2</td><td style="text-align:center;color:var(--warning);">12-13</td><td style="text-align:center;">24-26</td></tr>
-                    <tr><td style="padding:0.6rem; border-bottom:1px solid var(--border);">🇬🇧 Anglais</td><td style="text-align:center;">2</td><td style="text-align:center;color:var(--warning);">14-15</td><td style="text-align:center;">28-30</td></tr>
-                    <tr style="background: var(--bg); font-weight:bold;"><td style="padding:0.6rem;">Total</td><td style="text-align:center;">~18-22</td><td style="text-align:center;"></td><td style="text-align:center;color:var(--primary);">~277-362</td></tr>
+            <div class="tab-content" id="seq2">
+                <div class="card">
+                    <div class="card-title">📝 Séquence 2 — Exponentielles & Logarithmes</div>
+                    <p style="color:var(--text-muted);margin-bottom:1rem;">Deuxième séquence : exponentielles et logarithmes, outils essentiels pour la physique et les probabilités.</p>
+                    <div class="day-item"><div class="day-checkbox" onclick="toggle(this)"></div><div class="day-content"><div class="day-title">Fonction exponentielle</div><div class="day-desc">Propriétés, limites, représentation graphique</div></div></div>
+                    <div class="day-item"><div class="day-checkbox" onclick="toggle(this)"></div><div class="day-content"><div class="day-title">Fonction logarithme népérien</div><div class="day-desc">Définition, propriétés algébriques, dérivée</div></div></div>
+                    <div class="day-item"><div class="day-checkbox" onclick="toggle(this)"></div><div class="day-content"><div class="day-title">Équations et inéquations</div><div class="day-desc">Résolution avec exp et ln</div></div></div>
+                    <div class="day-item"><div class="day-checkbox" onclick="toggle(this)"></div><div class="day-content"><div class="day-title">Devoir de Séquence 2</div><div class="day-desc">Préparation et révision complète</div></div></div>
+                </div>
+            </div>
+
+            <div class="tab-content" id="seq3">
+                <div class="card">
+                    <div class="card-title">📝 Séquence 3 — Intégrales & Probabilités</div>
+                    <p style="color:var(--text-muted);margin-bottom:1rem;">Troisième séquence : intégrales et probabilités, chapitres à fort coefficient au Bac.</p>
+                    <div class="day-item"><div class="day-checkbox" onclick="toggle(this)"></div><div class="day-content"><div class="day-title">Primitives et intégrales</div><div class="day-desc">Intégrales définies, calcul d'aires, volumes</div></div></div>
+                    <div class="day-item"><div class="day-checkbox" onclick="toggle(this)"></div><div class="day-content"><div class="day-title">Probabilités conditionnelles</div><div class="day-desc">Formule de Bayes, arbres pondérés</div></div></div>
+                    <div class="day-item"><div class="day-checkbox" onclick="toggle(this)"></div><div class="day-content"><div class="day-title">Variables aléatoires</div><div class="day-desc">Espérance, variance, loi binomiale</div></div></div>
+                    <div class="day-item"><div class="day-checkbox" onclick="toggle(this)"></div><div class="day-content"><div class="day-title">Devoir de Séquence 3</div><div class="day-desc">Préparation et révision complète</div></div></div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Coefficients -->
+        <section class="section" id="coefficients">
+            <div class="card">
+                <div class="card-title">📋 Bac C — Vrais Coefficients & Points</div>
+                <table style="width:100%;border-collapse:collapse;margin-top:1rem;">
+                    <thead><tr style="background:var(--bg-elevated);"><th style="padding:0.75rem;text-align:left;">Matière</th><th style="padding:0.75rem;text-align:center;">Coeff</th><th style="padding:0.75rem;text-align:center;">Cible</th><th style="padding:0.75rem;text-align:center;">Points</th></tr></thead>
+                    <tbody>
+                        <tr><td style="padding:0.6rem;border-bottom:1px solid var(--border);">📐 Mathématiques</td><td style="text-align:center;font-weight:700;">5</td><td style="text-align:center;color:var(--success);">17-18</td><td style="text-align:center;">85-90</td></tr>
+                        <tr><td style="padding:0.6rem;border-bottom:1px solid var(--border);">⚡ Physique</td><td style="text-align:center;font-weight:700;">4</td><td style="text-align:center;color:var(--success);">16-17</td><td style="text-align:center;">64-68</td></tr>
+                        <tr><td style="padding:0.6rem;border-bottom:1px solid var(--border);">🧪 Chimie</td><td style="text-align:center;font-weight:700;">3</td><td style="text-align:center;color:var(--success);">16-17</td><td style="text-align:center;">48-51</td></tr>
+                        <tr><td style="padding:0.6rem;border-bottom:1px solid var(--border);">🧬 SVT</td><td style="text-align:center;font-weight:700;">2</td><td style="text-align:center;color:var(--warning);">14-15</td><td style="text-align:center;">28-30</td></tr>
+                        <tr><td style="padding:0.6rem;border-bottom:1px solid var(--border);">🤔 Philosophie</td><td style="text-align:center;font-weight:700;">2</td><td style="text-align:center;color:var(--warning);">12-13</td><td style="text-align:center;">24-26</td></tr>
+                        <tr><td style="padding:0.6rem;border-bottom:1px solid var(--border);">🇬🇧 Anglais (LV1)</td><td style="text-align:center;font-weight:700;">2</td><td style="text-align:center;color:var(--warning);">14-15</td><td style="text-align:center;">28-30</td></tr>
+                        <tr><td style="padding:0.6rem;border-bottom:1px solid var(--border);">🌍 Histoire-Géo</td><td style="text-align:center;font-weight:700;">2</td><td style="text-align:center;color:var(--warning);">13-14</td><td style="text-align:center;">26-28</td></tr>
+                        <tr><td style="padding:0.6rem;border-bottom:1px solid var(--border);">🗣️ LV2 (Espagnol/Allemand)</td><td style="text-align:center;font-weight:700;">1</td><td style="text-align:center;color:var(--warning);">14-15</td><td style="text-align:center;">14-15</td></tr>
+                        <tr><td style="padding:0.6rem;border-bottom:1px solid var(--border);">🏃 EPS</td><td style="text-align:center;font-weight:700;">1</td><td style="text-align:center;color:var(--success);">16-18</td><td style="text-align:center;">16-18</td></tr>
+                        <tr><td style="padding:0.6rem;border-bottom:1px solid var(--border);">📖 Français (anticipé)</td><td style="text-align:center;font-weight:700;">2</td><td style="text-align:center;color:var(--warning);">13-14</td><td style="text-align:center;">26-28</td></tr>
+                        <tr style="background:var(--bg-elevated);font-weight:700;"><td style="padding:0.6rem;">TOTAL</td><td style="text-align:center;">24</td><td style="text-align:center;"></td><td style="text-align:center;color:var(--primary);">~360-410</td></tr>
+                    </tbody>
                 </table>
-                <p style="margin-top:1rem; font-size:0.85rem; color:var(--text-light);">Pour 18/20 de moyenne, il faut ~324-360 points sur 360-400 possibles.</p>
+                <p style="margin-top:1rem;font-size:0.85rem;color:var(--text-muted);">Pour 18/20 de moyenne, il faut viser <strong>360+ points</strong> sur 480 maximum (24 coeff × 20).</p>
+            </div>
+
+            <div class="subjects-grid">
+                <div class="subject-card math"><div class="subject-name">📐 Mathématiques</div><div class="subject-details">Suites, Fonctions, Analyse, Probas, Complexes, Géométrie</div><span class="subject-coeff">Coefficient 5</span></div>
+                <div class="subject-card physics"><div class="subject-name">⚡ Physique</div><div class="subject-details">Mécanique, Électricité, Optique, Thermodynamique</div><span class="subject-coeff">Coefficient 4</span></div>
+                <div class="subject-card chemistry"><div class="subject-name">🧪 Chimie</div><div class="subject-details">Cinétique, Équilibres, Organique, Minérale</div><span class="subject-coeff">Coefficient 3</span></div>
+                <div class="subject-card svt"><div class="subject-name">🧬 SVT</div><div class="subject-details">Génétique, Géologie, Physiologie, Écologie</div><span class="subject-coeff">Coefficient 2</span></div>
+                <div class="subject-card philo"><div class="subject-name">🤔 Philosophie</div><div class="subject-details">Le langage, La justice, Le devoir, La conscience</div><span class="subject-coeff">Coefficient 2</span></div>
+                <div class="subject-card english"><div class="subject-name">🇬🇧 Anglais</div><div class="subject-details">Grammar, Vocabulary, Essay, Comprehension</div><span class="subject-coeff">Coefficient 2</span></div>
+                <div class="subject-card french"><div class="subject-name">📖 Français</div><div class="subject-details">Dissertation, Commentaire, Contraction, Oral</div><span class="subject-coeff">Coefficient 2</span></div>
+                <div class="subject-card geo"><div class="subject-name">🌍 Histoire-Géo</div><div class="subject-details">Histoire contemporaine, Géographie économique</div><span class="subject-coeff">Coefficient 2</span></div>
             </div>
         </section>
 
@@ -828,86 +609,14 @@
             <div class="card">
                 <div class="card-title">📥 Ressources Téléchargeables</div>
                 <div class="resource-list">
-                    <div class="resource-item">
-                        <div class="resource-icon pdf">📄</div>
-                        <div class="resource-info">
-                            <div class="day-title">Planning Complet 30 jours</div>
-                            <div class="day-desc">PDF détaillé avec toutes les semaines</div>
-                        </div>
-                        <button class="resource-btn" onclick="downloadPDF()">Télécharger</button>
-                    </div>
-                    <div class="resource-item">
-                        <div class="resource-icon pdf">📄</div>
-                        <div class="resource-info">
-                            <div class="day-title">Fiches Formules Maths</div>
-                            <div class="day-desc">Toutes les formules essentielles</div>
-                        </div>
-                        <button class="resource-btn" onclick="showToast('Bientôt disponible')">Bientôt</button>
-                    </div>
-                    <div class="resource-item">
-                        <div class="resource-icon pdf">📄</div>
-                        <div class="resource-info">
-                            <div class="day-title">Fiches Physique-Chimie</div>
-                            <div class="day-desc">Lois, formules, démonstrations</div>
-                        </div>
-                        <button class="resource-btn" onclick="showToast('Bientôt disponible')">Bientôt</button>
-                    </div>
-                    <div class="resource-item">
-                        <div class="resource-icon pdf">📄</div>
-                        <div class="resource-info">
-                            <div class="day-title">Annales Bac C 2015-2024</div>
-                            <div class="day-desc">Sujets + corrections détaillées</div>
-                        </div>
-                        <button class="resource-btn" onclick="showToast('Bientôt disponible')">Bientôt</button>
-                    </div>
-                    <div class="resource-item">
-                        <div class="resource-icon video">🎥</div>
-                        <div class="resource-info">
-                            <div class="day-title">Yvan Monka — Terminale</div>
-                            <div class="day-desc">Vidéos YouTube recommandées</div>
-                        </div>
-                        <a href="https://www.youtube.com/@YvanMonka" target="_blank" class="resource-btn">Accéder</a>
-                    </div>
-                    <div class="resource-item">
-                        <div class="resource-icon video">🎥</div>
-                        <div class="resource-info">
-                            <div class="day-title">Khan Academy FR</div>
-                            <div class="day-desc">Cours interactifs gratuits</div>
-                        </div>
-                        <a href="https://fr.khanacademy.org" target="_blank" class="resource-btn">Accéder</a>
-                    </div>
-                    <div class="resource-item">
-                        <div class="resource-icon link">🔗</div>
-                        <div class="resource-info">
-                            <div class="day-title">Exo7 — Maths Terminale</div>
-                            <div class="day-desc">Exercices corrigés en ligne</div>
-                        </div>
-                        <a href="http://exo7.emath.fr" target="_blank" class="resource-btn">Accéder</a>
-                    </div>
-                    <div class="resource-item">
-                        <div class="resource-icon link">🔗</div>
-                        <div class="resource-info">
-                            <div class="day-title">Les Bons Profs</div>
-                            <div class="day-desc">Vidéos Physique-Chimie</div>
-                        </div>
-                        <a href="https://www.lesbonsprofs.com" target="_blank" class="resource-btn">Accéder</a>
-                    </div>
-                    <div class="resource-item">
-                        <div class="resource-icon link">🔗</div>
-                        <div class="resource-info">
-                            <div class="day-title">Serial Thinker</div>
-                            <div class="day-desc">Philosophie Terminale</div>
-                        </div>
-                        <a href="https://www.youtube.com/@SerialThinker" target="_blank" class="resource-btn">Accéder</a>
-                    </div>
-                    <div class="resource-item">
-                        <div class="resource-icon file">📝</div>
-                        <div class="resource-info">
-                            <div class="day-title">Cahier d'erreurs (template)</div>
-                            <div class="day-desc">Modèle pour noter tes erreurs</div>
-                        </div>
-                        <button class="resource-btn" onclick="showToast('Bientôt disponible')">Bientôt</button>
-                    </div>
+                    <div class="resource-item"><div class="resource-icon pdf">📄</div><div class="resource-info"><div class="resource-name">Planning Vacances 30 jours</div><div class="resource-desc">PDF complet avec toutes les semaines</div></div><button class="resource-btn" onclick="showToast('PDF bientôt disponible')">Télécharger</button></div>
+                    <div class="resource-item"><div class="resource-icon pdf">📄</div><div class="resource-info"><div class="resource-name">Fiches Formules Maths Terminale C</div><div class="resource-desc">Toutes les formules essentielles</div></div><button class="resource-btn" onclick="showToast('PDF bientôt disponible')">Télécharger</button></div>
+                    <div class="resource-item"><div class="resource-icon pdf">📄</div><div class="resource-info"><div class="resource-name">Fiches Physique-Chimie</div><div class="resource-desc">Lois, formules, démonstrations</div></div><button class="resource-btn" onclick="showToast('PDF bientôt disponible')">Télécharger</button></div>
+                    <div class="resource-item"><div class="resource-icon pdf">📄</div><div class="resource-info"><div class="resource-name">Annales Bac C 2015-2024</div><div class="resource-desc">Sujets + corrections détaillées</div></div><button class="resource-btn" onclick="showToast('PDF bientôt disponible')">Télécharger</button></div>
+                    <div class="resource-item"><div class="resource-icon video">🎥</div><div class="resource-info"><div class="resource-name">Yvan Monka — Terminale</div><div class="resource-desc">Vidéos YouTube recommandées</div></div><a href="https://www.youtube.com/@YvanMonka" target="_blank" class="resource-btn">Accéder</a></div>
+                    <div class="resource-item"><div class="resource-icon video">🎥</div><div class="resource-info"><div class="resource-name">Khan Academy FR</div><div class="resource-desc">Cours interactifs gratuits</div></div><a href="https://fr.khanacademy.org" target="_blank" class="resource-btn">Accéder</a></div>
+                    <div class="resource-item"><div class="resource-icon link">🔗</div><div class="resource-info"><div class="resource-name">Exo7 — Maths Terminale</div><div class="resource-desc">Exercices corrigés en ligne</div></div><a href="http://exo7.emath.fr" target="_blank" class="resource-btn">Accéder</a></div>
+                    <div class="resource-item"><div class="resource-icon link">🔗</div><div class="resource-info"><div class="resource-name">Les Bons Profs</div><div class="resource-desc">Vidéos Physique-Chimie</div></div><a href="https://www.lesbonsprofs.com" target="_blank" class="resource-btn">Accéder</a></div>
                 </div>
             </div>
         </section>
@@ -927,68 +636,17 @@
                     <button class="timer-preset" onclick="setTimer(30)">30 min</button>
                     <button class="timer-preset" onclick="setTimer(45)">45 min</button>
                     <button class="timer-preset" onclick="setTimer(60)">1h</button>
-                    <button class="timer-preset" onclick="setTimer(90)">1h30</button>
                 </div>
-                <p style="margin-top:1.5rem; font-size:0.85rem; color:var(--text-light);">
-                    🍅 Technique Pomodoro : 25 min travail → 5 min pause. Après 4 cycles : 15-30 min pause.
-                </p>
-            </div>
-
-            <div class="card">
-                <div class="card-title">📊 Statistiques d'étude</div>
-                <div class="stats" style="justify-content: space-around; flex-wrap: wrap;">
-                    <div class="stat-item" style="background: var(--bg); color: var(--text);">
-                        <div class="number" id="todayMinutes">0</div>
-                        <div class="label">Minutes aujourd'hui</div>
-                    </div>
-                    <div class="stat-item" style="background: var(--bg); color: var(--text);">
-                        <div class="number" id="weekMinutes">0</div>
-                        <div class="label">Minutes cette semaine</div>
-                    </div>
-                    <div class="stat-item" style="background: var(--bg); color: var(--text);">
-                        <div class="number" id="totalMinutes">0</div>
-                        <div class="label">Total minutes</div>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <!-- Notes -->
-        <section class="section" id="notes">
-            <div class="card" style="margin-bottom: 1.5rem;">
-                <div class="card-title">📝 Mes Notes</div>
-                <div style="display:flex; gap:0.5rem; margin-bottom:1rem;">
-                    <input type="text" id="noteTitle" placeholder="Titre de la note..." style="flex:1; padding:0.6rem; border:1px solid var(--border); border-radius:8px;">
-                    <button class="resource-btn" onclick="addNote()">Ajouter</button>
-                </div>
-                <textarea id="noteContent" placeholder="Contenu de la note..." rows="4" style="width:100%; padding:0.8rem; border:1px solid var(--border); border-radius:8px; resize:vertical;"></textarea>
-            </div>
-            <div class="notes-grid" id="notesGrid">
-                <!-- Notes will be added here -->
             </div>
         </section>
     </main>
 
     <button class="dark-mode-toggle" onclick="toggleDarkMode()">🌙</button>
-
     <div class="toast" id="toast"></div>
 
     <script>
-        // State
-        let state = {
-            tasksDone: 0,
-            totalTasks: 28,
-            hoursStudied: 0,
-            streak: 0,
-            timerSeconds: 25 * 60,
-            timerInterval: null,
-            timerRunning: false,
-            darkMode: false,
-            notes: [],
-            completedTasks: new Set()
-        };
+        let state = { tasksDone: 0, hoursStudied: 0, streak: 0, timerSeconds: 1500, timerInterval: null, timerRunning: false, darkMode: true, completedTasks: new Set() };
 
-        // Load from localStorage
         function loadState() {
             const saved = localStorage.getItem('terminaleCState');
             if (saved) {
@@ -997,18 +655,12 @@
                 state.completedTasks = new Set(state.completedTasks || []);
             }
             updateDisplay();
-            renderNotes();
         }
 
-        // Save to localStorage
         function saveState() {
-            localStorage.setItem('terminaleCState', JSON.stringify({
-                ...state,
-                completedTasks: Array.from(state.completedTasks)
-            }));
+            localStorage.setItem('terminaleCState', JSON.stringify({ ...state, completedTasks: Array.from(state.completedTasks) }));
         }
 
-        // Navigation
         document.querySelectorAll('.nav-btn').forEach(btn => {
             btn.addEventListener('click', () => {
                 document.querySelectorAll('.nav-btn').forEach(b => b.classList.remove('active'));
@@ -1018,46 +670,49 @@
             });
         });
 
-        // Toggle task completion
+        document.querySelectorAll('.tab-btn').forEach(btn => {
+            btn.addEventListener('click', () => {
+                const parent = btn.closest('.tabs') || btn.closest('.section');
+                parent.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
+                btn.classList.add('active');
+                const tabId = btn.dataset.tab;
+                if (tabId) {
+                    const container = btn.closest('.section') || btn.closest('.card');
+                    container.querySelectorAll('.tab-content').forEach(c => c.classList.remove('active'));
+                    container.querySelector('#' + tabId).classList.add('active');
+                }
+            });
+        });
+
         function toggle(element) {
             const dayItem = element.closest('.day-item');
             const dayTitle = dayItem.querySelector('.day-title').textContent;
-            
             if (element.classList.contains('checked')) {
                 element.classList.remove('checked');
+                dayItem.querySelector('.day-title').classList.remove('completed');
                 state.completedTasks.delete(dayTitle);
                 state.tasksDone = Math.max(0, state.tasksDone - 1);
             } else {
                 element.classList.add('checked');
+                dayItem.querySelector('.day-title').classList.add('completed');
                 state.completedTasks.add(dayTitle);
                 state.tasksDone++;
                 showToast('✅ Tâche complétée !');
             }
-            
             saveState();
             updateDisplay();
         }
 
-        // Update display
         function updateDisplay() {
             document.getElementById('tasksDone').textContent = state.tasksDone;
             document.getElementById('hoursStudied').textContent = state.hoursStudied;
             document.getElementById('streak').textContent = state.streak;
-            document.getElementById('totalMinutes').textContent = state.hoursStudied * 60;
-            
-            // Update week progress
-            for (let i = 1; i <= 4; i++) {
-                const el = document.getElementById(`week${i}-progress`);
-                if (el) el.textContent = `${Math.min(state.tasksDone, 7)}/7`;
-            }
         }
 
-        // Timer
         function updateTimerDisplay() {
             const mins = Math.floor(state.timerSeconds / 60);
             const secs = state.timerSeconds % 60;
-            document.getElementById('timerDisplay').textContent = 
-                `${mins.toString().padStart(2, '0')}:${secs.toString().padStart(2, '0')}`;
+            document.getElementById('timerDisplay').textContent = `${mins.toString().padStart(2, '0')}:${secs.toString().padStart(2, '0')}`;
         }
 
         function startTimer() {
@@ -1065,18 +720,16 @@
             state.timerRunning = true;
             document.getElementById('startBtn').style.display = 'none';
             document.getElementById('pauseBtn').style.display = 'inline-block';
-            
             state.timerInterval = setInterval(() => {
                 state.timerSeconds--;
                 updateTimerDisplay();
-                
                 if (state.timerSeconds <= 0) {
                     clearInterval(state.timerInterval);
                     state.timerRunning = false;
-                    state.hoursStudied += Math.floor((25 * 60 - state.timerSeconds) / 60);
+                    state.hoursStudied += Math.floor((1500) / 60);
                     document.getElementById('startBtn').style.display = 'inline-block';
                     document.getElementById('pauseBtn').style.display = 'none';
-                    showToast('🍅 Session terminée ! Prends une pause.');
+                    showToast('🍅 Session terminée !');
                     saveState();
                     updateDisplay();
                 }
@@ -1093,7 +746,7 @@
         function resetTimer() {
             clearInterval(state.timerInterval);
             state.timerRunning = false;
-            state.timerSeconds = 25 * 60;
+            state.timerSeconds = 1500;
             updateTimerDisplay();
             document.getElementById('startBtn').style.display = 'inline-block';
             document.getElementById('pauseBtn').style.display = 'none';
@@ -1105,42 +758,12 @@
             updateTimerDisplay();
         }
 
-        // Notes
-        function addNote() {
-            const title = document.getElementById('noteTitle').value;
-            const content = document.getElementById('noteContent').value;
-            
-            if (!title || !content) {
-                showToast('⚠️ Remplis le titre et le contenu');
-                return;
-            }
-            
-            state.notes.push({
-                title,
-                content,
-                date: new Date().toLocaleDateString('fr-FR')
-            });
-            
-            document.getElementById('noteTitle').value = '';
-            document.getElementById('noteContent').value = '';
-            
-            saveState();
-            renderNotes();
-            showToast('📝 Note ajoutée !');
+        function toggleDarkMode() {
+            state.darkMode = !state.darkMode;
+            document.documentElement.setAttribute('data-theme', state.darkMode ? 'dark' : 'light');
+            document.querySelector('.dark-mode-toggle').textContent = state.darkMode ? '🌙' : '☀️';
         }
 
-        function renderNotes() {
-            const grid = document.getElementById('notesGrid');
-            grid.innerHTML = state.notes.map((note, i) => `
-                <div class="note-card">
-                    <div class="note-title">${note.title}</div>
-                    <div class="note-content">${note.content}</div>
-                    <div class="note-date">📅 ${note.date}</div>
-                </div>
-            `).join('');
-        }
-
-        // Toast
         function showToast(message) {
             const toast = document.getElementById('toast');
             toast.textContent = message;
@@ -1148,22 +771,6 @@
             setTimeout(() => toast.classList.remove('show'), 3000);
         }
 
-        // Dark mode
-        function toggleDarkMode() {
-            state.darkMode = !state.darkMode;
-            document.body.style.background = state.darkMode ? '#1e293b' : '#f8fafc';
-            document.body.style.color = state.darkMode ? '#f1f5f9' : '#1e293b';
-            document.querySelector('.dark-mode-toggle').textContent = state.darkMode ? '☀️' : '🌙';
-        }
-
-        // Download PDF (placeholder)
-        function downloadPDF() {
-            showToast('📄 Génération du PDF...');
-            // In a real implementation, this would generate a PDF
-            setTimeout(() => showToast('✅ PDF téléchargé !'), 1500);
-        }
-
-        // Initialize
         loadState();
         updateTimerDisplay();
     </script>
