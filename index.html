@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Terminale C Prep — Objectif 18/20 au Bac</title>
+    <title>HSC — High School Course | Bac C Cameroun</title>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
     <style>
         :root {
@@ -51,39 +51,18 @@
             transition: var(--transition);
         }
 
+        /* Header */
         .header {
             background: linear-gradient(135deg, #1e3a5f 0%, #1a5f7a 50%, #159895 100%);
             color: white;
-            padding: 3rem 2rem;
+            padding: 2rem;
             text-align: center;
-            position: relative;
-            overflow: hidden;
         }
 
-        .header-content { position: relative; z-index: 1; }
-        .header h1 { font-size: 2.8rem; font-weight: 800; margin-bottom: 0.5rem; letter-spacing: -0.02em; }
-        .header .subtitle { font-size: 1.2rem; opacity: 0.9; font-weight: 400; }
+        .header h1 { font-size: 2.5rem; font-weight: 800; margin-bottom: 0.5rem; }
+        .header p { font-size: 1rem; opacity: 0.9; }
 
-        .header-stats {
-            display: flex;
-            justify-content: center;
-            gap: 1.5rem;
-            margin-top: 2rem;
-            flex-wrap: wrap;
-        }
-
-        .stat-card {
-            background: rgba(255,255,255,0.15);
-            padding: 1rem 1.5rem;
-            border-radius: var(--radius);
-            backdrop-filter: blur(10px);
-            min-width: 120px;
-            border: 1px solid rgba(255,255,255,0.2);
-        }
-
-        .stat-card .value { font-size: 2rem; font-weight: 700; }
-        .stat-card .label { font-size: 0.75rem; opacity: 0.9; text-transform: uppercase; letter-spacing: 0.05em; }
-
+        /* Navigation */
         .nav {
             background: var(--bg-card);
             padding: 0.75rem 1rem;
@@ -108,14 +87,12 @@
             font-size: 0.85rem;
             font-weight: 500;
             transition: var(--transition);
-            display: flex;
-            align-items: center;
-            gap: 0.4rem;
         }
 
         .nav-btn:hover { background: var(--bg-elevated); color: var(--text); }
         .nav-btn.active { background: var(--primary); color: white; }
 
+        /* Main */
         .main { max-width: 1200px; margin: 0 auto; padding: 2rem; }
 
         .section { display: none; animation: fadeIn 0.3s ease; }
@@ -126,6 +103,7 @@
             to { opacity: 1; transform: translateY(0); }
         }
 
+        /* Cards */
         .card {
             background: var(--bg-card);
             border-radius: var(--radius-lg);
@@ -144,13 +122,122 @@
             gap: 0.5rem;
         }
 
-        .tabs {
-            display: flex;
-            gap: 0.5rem;
-            margin-bottom: 1.5rem;
-            flex-wrap: wrap;
+        /* Subject Grid */
+        .subjects-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 1rem;
         }
 
+        .subject-card {
+            background: var(--bg-card);
+            border-radius: var(--radius);
+            padding: 1.5rem;
+            box-shadow: var(--shadow);
+            border: 1px solid var(--border);
+            border-left: 4px solid var(--primary);
+            cursor: pointer;
+            transition: var(--transition);
+        }
+
+        .subject-card:hover { transform: translateY(-4px); border-color: var(--primary); }
+        .subject-card.math { border-left-color: #3b82f6; }
+        .subject-card.physics { border-left-color: #8b5cf6; }
+        .subject-card.chemistry { border-left-color: #10b981; }
+        .subject-card.svt { border-left-color: #f59e0b; }
+        .subject-card.philo { border-left-color: #ec4899; }
+        .subject-card.english { border-left-color: #06b6d4; }
+
+        .subject-name { font-weight: 700; font-size: 1.1rem; margin-bottom: 0.3rem; }
+        .subject-details { font-size: 0.85rem; color: var(--text-muted); }
+        .subject-coeff {
+            display: inline-block;
+            background: var(--bg-elevated);
+            padding: 0.2rem 0.6rem;
+            border-radius: 4px;
+            font-size: 0.75rem;
+            font-weight: 600;
+            color: var(--primary);
+            margin-top: 0.5rem;
+        }
+
+        /* Quiz Styles */
+        .quiz-container { max-width: 800px; margin: 0 auto; }
+        .quiz-question {
+            background: var(--bg-card);
+            border-radius: var(--radius);
+            padding: 1.5rem;
+            margin-bottom: 1rem;
+            border: 1px solid var(--border);
+        }
+
+        .quiz-question h3 { margin-bottom: 1rem; color: var(--primary); }
+        .quiz-options { display: flex; flex-direction: column; gap: 0.5rem; }
+        .quiz-option {
+            padding: 0.75rem 1rem;
+            background: var(--bg-elevated);
+            border: 2px solid var(--border);
+            border-radius: 8px;
+            cursor: pointer;
+            transition: var(--transition);
+        }
+
+        .quiz-option:hover { border-color: var(--primary); }
+        .quiz-option.correct { background: rgba(16, 185, 129, 0.2); border-color: var(--success); }
+        .quiz-option.incorrect { background: rgba(239, 68, 68, 0.2); border-color: var(--danger); }
+        .quiz-option.disabled { pointer-events: none; opacity: 0.7; }
+
+        /* Flashcard Styles */
+        .flashcard-container { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 1rem; }
+        .flashcard {
+            background: var(--bg-card);
+            border-radius: var(--radius);
+            padding: 1.5rem;
+            border: 1px solid var(--border);
+            cursor: pointer;
+            transition: var(--transition);
+            min-height: 150px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+        }
+
+        .flashcard:hover { border-color: var(--primary); transform: scale(1.02); }
+        .flashcard-front { font-weight: 600; font-size: 1.1rem; }
+        .flashcard-back { display: none; color: var(--text-muted); margin-top: 0.5rem; }
+        .flashcard.flipped .flashcard-back { display: block; }
+        .flashcard.flipped .flashcard-front { color: var(--primary); }
+
+        /* Resource Links */
+        .resource-list { display: flex; flex-direction: column; gap: 0.75rem; }
+        .resource-item {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            padding: 1rem;
+            background: var(--bg-elevated);
+            border-radius: 10px;
+            transition: var(--transition);
+        }
+
+        .resource-item:hover { background: var(--border); }
+        .resource-icon { font-size: 1.5rem; }
+        .resource-info { flex: 1; }
+        .resource-name { font-weight: 600; }
+        .resource-desc { font-size: 0.8rem; color: var(--text-muted); }
+        .resource-btn {
+            padding: 0.5rem 1rem;
+            background: var(--primary);
+            color: white;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+            font-size: 0.85rem;
+            text-decoration: none;
+        }
+
+        /* Tabs */
+        .tabs { display: flex; gap: 0.5rem; margin-bottom: 1.5rem; flex-wrap: wrap; }
         .tab-btn {
             padding: 0.5rem 1rem;
             border: 2px solid var(--border);
@@ -165,200 +252,10 @@
 
         .tab-btn:hover { border-color: var(--primary); color: var(--text); }
         .tab-btn.active { background: var(--primary); border-color: var(--primary); color: white; }
-
         .tab-content { display: none; }
         .tab-content.active { display: block; }
 
-        .week-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
-            gap: 1.5rem;
-        }
-
-        .week-card {
-            background: var(--bg-card);
-            border-radius: var(--radius-lg);
-            padding: 1.5rem;
-            box-shadow: var(--shadow);
-            border: 2px solid var(--border);
-            transition: var(--transition);
-        }
-
-        .week-card:hover { border-color: var(--primary); transform: translateY(-2px); }
-
-        .week-header {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            margin-bottom: 1rem;
-        }
-
-        .week-title { font-size: 1.1rem; font-weight: 700; color: var(--primary); }
-
-        .week-badge {
-            background: var(--bg-elevated);
-            padding: 0.25rem 0.75rem;
-            border-radius: 20px;
-            font-size: 0.75rem;
-            color: var(--text-muted);
-            font-weight: 500;
-        }
-
-        .day-item {
-            display: flex;
-            align-items: flex-start;
-            gap: 0.75rem;
-            padding: 0.6rem 0;
-            border-bottom: 1px solid var(--border);
-            cursor: pointer;
-            transition: var(--transition);
-        }
-
-        .day-item:last-child { border-bottom: none; }
-
-        .day-checkbox {
-            width: 22px;
-            height: 22px;
-            border: 2px solid var(--border);
-            border-radius: 6px;
-            cursor: pointer;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            flex-shrink: 0;
-            margin-top: 2px;
-            transition: var(--transition);
-            font-size: 0.75rem;
-        }
-
-        .day-checkbox.checked { background: var(--success); border-color: var(--success); color: white; }
-
-        .day-content { flex: 1; }
-        .day-title { font-weight: 600; font-size: 0.9rem; }
-        .day-title.completed { text-decoration: line-through; color: var(--text-dim); }
-        .day-desc { font-size: 0.78rem; color: var(--text-muted); margin-top: 2px; }
-        .day-meta { display: flex; gap: 0.5rem; margin-top: 4px; flex-wrap: wrap; }
-        .day-tag {
-            font-size: 0.68rem;
-            padding: 0.15rem 0.5rem;
-            border-radius: 4px;
-            background: var(--bg-elevated);
-            color: var(--text-dim);
-            font-weight: 500;
-        }
-
-        .day-tag.math { background: rgba(59,130,246,0.15); color: #60a5fa; }
-        .day-tag.physics { background: rgba(139,92,246,0.15); color: #a78bfa; }
-        .day-tag.chemistry { background: rgba(16,185,129,0.15); color: #34d399; }
-        .day-tag.svt { background: rgba(245,158,11,0.15); color: #fbbf24; }
-        .day-tag.philo { background: rgba(236,72,153,0.15); color: #f472b6; }
-        .day-tag.english { background: rgba(6,182,212,0.15); color: #22d3ee; }
-        .day-tag.french { background: rgba(249,115,22,0.15); color: #fb923c; }
-        .day-tag.geo { background: rgba(34,197,94,0.15); color: #4ade80; }
-
-        .subjects-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-            gap: 1rem;
-        }
-
-        .subject-card {
-            background: var(--bg-card);
-            border-radius: var(--radius);
-            padding: 1.25rem;
-            box-shadow: var(--shadow);
-            border: 1px solid var(--border);
-            border-left: 4px solid var(--primary);
-            transition: var(--transition);
-        }
-
-        .subject-card:hover { transform: translateX(4px); }
-        .subject-card.math { border-left-color: #3b82f6; }
-        .subject-card.physics { border-left-color: #8b5cf6; }
-        .subject-card.chemistry { border-left-color: #10b981; }
-        .subject-card.svt { border-left-color: #f59e0b; }
-        .subject-card.philo { border-left-color: #ec4899; }
-        .subject-card.english { border-left-color: #06b6d4; }
-        .subject-card.french { border-left-color: #f97316; }
-        .subject-card.geo { border-left-color: #22c55e; }
-
-        .subject-name { font-weight: 600; margin-bottom: 0.3rem; }
-        .subject-details { font-size: 0.8rem; color: var(--text-muted); }
-        .subject-coeff {
-            display: inline-block;
-            background: var(--bg-elevated);
-            padding: 0.2rem 0.6rem;
-            border-radius: 4px;
-            font-size: 0.75rem;
-            font-weight: 600;
-            color: var(--primary);
-            margin-top: 0.4rem;
-        }
-
-        .timer-container { text-align: center; padding: 2rem; }
-        .timer-display { font-size: 5rem; font-weight: 700; color: var(--primary); font-variant-numeric: tabular-nums; }
-        .timer-controls { display: flex; justify-content: center; gap: 1rem; margin-top: 1.5rem; }
-        .timer-btn {
-            padding: 0.8rem 2rem;
-            border: none;
-            border-radius: 12px;
-            font-size: 1rem;
-            font-weight: 600;
-            cursor: pointer;
-            transition: var(--transition);
-        }
-        .timer-btn.start { background: var(--success); color: white; }
-        .timer-btn.pause { background: var(--warning); color: white; }
-        .timer-btn.reset { background: var(--bg-elevated); color: var(--text); }
-
-        .timer-presets { display: flex; justify-content: center; gap: 0.5rem; margin-top: 1rem; }
-        .timer-preset {
-            padding: 0.4rem 0.8rem;
-            background: var(--bg-elevated);
-            border: 1px solid var(--border);
-            border-radius: 6px;
-            cursor: pointer;
-            font-size: 0.85rem;
-        }
-
-        .resource-list { display: flex; flex-direction: column; gap: 0.75rem; }
-        .resource-item {
-            display: flex;
-            align-items: center;
-            gap: 1rem;
-            padding: 1rem;
-            background: var(--bg-elevated);
-            border-radius: 10px;
-            transition: var(--transition);
-        }
-        .resource-item:hover { background: var(--border); }
-        .resource-icon {
-            width: 45px; height: 45px;
-            border-radius: 10px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 1.3rem;
-        }
-        .resource-icon.pdf { background: rgba(239,68,68,0.15); color: #ef4444; }
-        .resource-icon.video { background: rgba(59,130,246,0.15); color: #3b82f6; }
-        .resource-icon.link { background: rgba(16,185,129,0.15); color: #10b981; }
-
-        .resource-info { flex: 1; }
-        .resource-name { font-weight: 600; }
-        .resource-desc { font-size: 0.8rem; color: var(--text-muted); }
-        .resource-btn {
-            padding: 0.5rem 1rem;
-            background: var(--primary);
-            color: white;
-            border: none;
-            border-radius: 8px;
-            cursor: pointer;
-            font-size: 0.85rem;
-            text-decoration: none;
-            display: inline-block;
-        }
-
+        /* Dark mode toggle */
         .dark-mode-toggle {
             position: fixed;
             bottom: 2rem;
@@ -375,520 +272,496 @@
             z-index: 1000;
         }
 
-        .toast {
-            position: fixed;
-            bottom: 2rem;
-            left: 50%;
-            transform: translateX(-50%) translateY(100px);
-            background: var(--text);
-            color: var(--bg);
-            padding: 0.8rem 1.5rem;
-            border-radius: 10px;
-            opacity: 0;
-            transition: all 0.3s;
-            z-index: 2000;
-            font-weight: 500;
-        }
-
-        .toast.show { opacity: 1; transform: translateX(-50%) translateY(0); }
-
-        table {
-            width: 100%;
-            border-collapse: collapse;
-            margin-top: 1rem;
-        }
-
-        th, td {
-            padding: 0.75rem;
-            text-align: left;
-            border-bottom: 1px solid var(--border);
-        }
-
-        th {
-            background: var(--bg-elevated);
-            font-weight: 600;
-            color: var(--text);
-        }
-
-        td {
-            color: var(--text-muted);
-        }
-
-        tr:hover td {
-            background: var(--bg-elevated);
-        }
-
-        .coeff-badge {
-            display: inline-block;
-            background: var(--primary);
-            color: white;
-            padding: 0.2rem 0.6rem;
-            border-radius: 4px;
-            font-weight: 700;
-            font-size: 0.85rem;
-        }
-
-        .total-row {
-            background: var(--bg-elevated);
-            font-weight: 700;
-        }
-
-        .total-row td {
-            color: var(--text);
-        }
-
+        /* Responsive */
         @media (max-width: 768px) {
             .header h1 { font-size: 1.8rem; }
-            .header-stats { gap: 1rem; }
             .main { padding: 1rem; }
-            .timer-display { font-size: 3.5rem; }
         }
 
-        @media print {
-            .nav, .dark-mode-toggle { display: none; }
-            .section { display: block !important; }
+        /* Progress bar */
+        .progress-bar {
+            height: 8px;
+            background: var(--bg-elevated);
+            border-radius: 4px;
+            overflow: hidden;
+            margin-top: 0.5rem;
         }
+
+        .progress-fill {
+            height: 100%;
+            background: var(--primary);
+            border-radius: 4px;
+            transition: width 0.3s;
+        }
+
+        /* Badge */
+        .badge {
+            display: inline-block;
+            padding: 0.2rem 0.6rem;
+            border-radius: 4px;
+            font-size: 0.75rem;
+            font-weight: 600;
+        }
+
+        .badge-primary { background: var(--primary); color: white; }
+        .badge-success { background: var(--success); color: white; }
+        .badge-warning { background: var(--warning); color: black; }
+
+        /* Table */
+        table { width: 100%; border-collapse: collapse; margin-top: 1rem; }
+        th, td { padding: 0.75rem; text-align: left; border-bottom: 1px solid var(--border); }
+        th { background: var(--bg-elevated); font-weight: 600; }
+        td { color: var(--text-muted); }
+        tr:hover td { background: var(--bg-elevated); }
+        .coeff-badge { background: var(--primary); color: white; padding: 0.2rem 0.6rem; border-radius: 4px; font-weight: 700; }
+        .total-row { background: var(--bg-elevated); font-weight: 700; }
+        .total-row td { color: var(--text); }
     </style>
 </head>
 <body>
     <header class="header">
-        <div class="header-content">
-            <h1>🎓 Terminale C — Préparation Bac</h1>
-            <p class="subtitle">Objectif : 18/20 | Données officielles OBC/MINESEC</p>
-            <div class="header-stats">
-                <div class="stat-card">
-                    <div class="value" id="daysLeft">30</div>
-                    <div class="label">Jours</div>
-                </div>
-                <div class="stat-card">
-                    <div class="value" id="tasksDone">0</div>
-                    <div class="label">Tâches</div>
-                </div>
-                <div class="stat-card">
-                    <div class="value" id="hoursStudied">0</div>
-                    <div class="label">Heures</div>
-                </div>
-                <div class="stat-card">
-                    <div class="value" id="streak">0</div>
-                    <div class="label">Streak</div>
-                </div>
-            </div>
-        </div>
+        <h1>🎓 HSC — High School Course</h1>
+        <p>Préparation au Bac C (Cameroun) — Données officielles OBC/MINESEC</p>
     </header>
 
     <nav class="nav">
         <button class="nav-btn active" data-section="dashboard">📊 Dashboard</button>
-        <button class="nav-btn" data-section="coefficients">📋 Coefficients</button>
-        <button class="nav-btn" data-section="programmes">📚 Programmes</button>
-        <button class="nav-btn" data-section="vacances">🏖️ Vacances</button>
-        <button class="nav-btn" data-section="sequences">📝 Séquences</button>
-        <button class="nav-btn" data-section="resources">📥 Ressources</button>
-        <button class="nav-btn" data-section="timer">⏱️ Timer</button>
+        <button class="nav-btn" data-section="matieres">📚 Matières</button>
+        <button class="nav-btn" data-section="quiz">🧠 Quiz</button>
+        <button class="nav-btn" data-section="flashcards">🃏 Flashcards</button>
+        <button class="nav-btn" data-section="resources">📥 Ressources & Sujets</button>
     </nav>
 
     <main class="main">
         <!-- Dashboard -->
         <section class="section active" id="dashboard">
             <div class="card">
-                <div class="card-title">🎯 Objectif : 18/20 au Bac C</div>
-                <p style="color:var(--text-muted);">Bienvenue sur ton planning personnalisé. Données officielles OBC/MINESEC pour le Bac C (Terminale).</p>
-            </div>
-            <div class="week-grid">
-                <div class="week-card">
-                    <div class="week-header"><span class="week-title">📋 Bac C (Terminale)</span><span class="week-badge">Coef total: 23</span></div>
-                    <p style="font-size:0.85rem;color:var(--text-muted);">Maths (7), Physique-Chimie (5), SVT (3), Français (3), Philo (2), Anglais (2), EPS (1)</p>
-                </div>
-                <div class="week-card">
-                    <p style="font-size:0.85rem;color:var(--text-muted);">Maths (5), Physique-Chimie (4), Français (3), SVT (2), Philo (2), HG (2), Anglais (1), EPS (1)</p>
-                </div>
-            </div>
-        </section>
-
-        <!-- Coefficients -->
-        <section class="section" id="coefficients">
-            <div class="tabs">
-                <button class="tab-btn active" data-tab="bac-c">Bac C (Terminale)</button>
-            </div>
-
-            <div class="tab-content active" id="bac-c">
-                <div class="card">
-                    <div class="card-title">📋 Bac C (Terminale) — Coefficients Officiels OBC</div>
-                    <p style="color:var(--text-muted);margin-bottom:1rem;">Source : Arrêtés OBC/MINESEC 2024-2025 — <a href="https://obc.cm" target="_blank" style="color:var(--primary);">obc.cm</a></p>
-                    <table>
-                        <thead>
-                            <tr>
-                                <th>Matière</th>
-                                <th>Coefficient</th>
-                                <th>Durée</th>
-                                <th>Points possibles</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            <tr><td>📐 Mathématiques</td><td><span class="coeff-badge">7</span></td><td>4h</td><td>140</td></tr>
-                            <tr><td>⚡ Physique-Chimie</td><td><span class="coeff-badge">5</span></td><td>3h+3h</td><td>100</td></tr>
-                            <tr><td>🧬 SVT (SVTEEHB)</td><td><span class="coeff-badge">3</span></td><td>3h</td><td>60</td></tr>
-                            <tr><td>📖 Français</td><td><span class="coeff-badge">3</span></td><td>4h</td><td>60</td></tr>
-                            <tr><td>🤔 Philosophie</td><td><span class="coeff-badge">2</span></td><td>3h</td><td>40</td></tr>
-                            <tr><td>🇬🇧 Anglais (LV1)</td><td><span class="coeff-badge">2</span></td><td>2h</td><td>40</td></tr>
-                            <tr><td>🏃 EPS</td><td><span class="coeff-badge">1</span></td><td>CCF</td><td>20</td></tr>
-                            <tr class="total-row"><td>TOTAL</td><td><span class="coeff-badge">23</span></td><td></td><td>460</td></tr>
-                        </tbody>
-                    </table>
-                    <p style="margin-top:1rem;font-size:0.85rem;color:var(--text-muted);">Pour 18/20, il faut viser <strong>360+ points</strong> sur 460 (78% du total).</p>
-                </div>
-            </div>
-
-            <div class="tab-content" id="probatoire-c">
-                <div class="card">
-                    <p style="color:var(--text-muted);margin-bottom:1rem;">Source : Arrêté N°182/24/MINESEC — <a href="https://officedubac.cm" target="_blank" style="color:var(--primary);">officedubac.cm</a></p>
-                    <table>
-                        <thead>
-                            <tr>
-                                <th>Matière</th>
-                                <th>Coefficient</th>
-                                <th>Durée</th>
-                                <th>Points possibles</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            <tr><td>📐 Mathématiques</td><td><span class="coeff-badge">5</span></td><td>4h</td><td>100</td></tr>
-                            <tr><td>⚡ Physique-Chimie</td><td><span class="coeff-badge">4</span></td><td>3h</td><td>80</td></tr>
-                            <tr><td>📖 Français</td><td><span class="coeff-badge">3</span></td><td>4h</td><td>60</td></tr>
-                            <tr><td>🧬 SVT</td><td><span class="coeff-badge">2</span></td><td>3h</td><td>40</td></tr>
-                            <tr><td>🤔 Philosophie</td><td><span class="coeff-badge">2</span></td><td>3h</td><td>40</td></tr>
-                            <tr><td>🌍 Histoire-Géographie</td><td><span class="coeff-badge">2</span></td><td>3h</td><td>40</td></tr>
-                            <tr><td>🇬🇧 Anglais</td><td><span class="coeff-badge">1</span></td><td>2h</td><td>20</td></tr>
-                            <tr><td>🏃 EPS</td><td><span class="coeff-badge">1</span></td><td>CCF</td><td>20</td></tr>
-                            <tr class="total-row"><td>TOTAL</td><td><span class="coeff-badge">20</span></td><td></td><td>400</td></tr>
-                        </tbody>
-                    </table>
-                </div>
-            </div>
-        </section>
-
-        <!-- Programmes -->
-        <section class="section" id="programmes">
-            <div class="card">
-                <div class="card-title">📚 Programmes Officiels MINESEC — Terminale C</div>
-                <p style="color:var(--text-muted);margin-bottom:1rem;">Source : <a href="https://www.minesec.gov.cm/web/index.php/fr/systeme-educatif/progammes-officiels" target="_blank" style="color:var(--primary);">minesec.gov.cm</a></p>
-                
+                <div class="card-title">📊 Dashboard — Vue d'ensemble</div>
+                <p style="color:var(--text-muted);margin-bottom:1rem;">Bienvenue sur HSC — High School Course. Plateforme de préparation au Bac C avec données officielles OBC/MINESEC.</p>
                 <div class="subjects-grid">
-                    <div class="subject-card math">
+                    <div class="subject-card math" onclick="showSection('matieres')">
                         <div class="subject-name">📐 Mathématiques</div>
-                        <div class="subject-details">Nombres complexes, Fonctions (exp, ln), Suites, Arithmétique, Probabilités, Géométrie dans l'espace, Équations différentielles</div>
-                        <span class="subject-coeff">Coef: 7</span>
+                        <div class="subject-details">Nombres complexes, Fonctions, Analyse, Probas, Géométrie</div>
+                        <span class="subject-coeff">Coefficient 7</span>
                     </div>
-                    <div class="subject-card physics">
-                        <div class="subject-name">⚡ Physique</div>
-                        <div class="subject-details">Mécanique (Newton, gravitation), Électrostatique, Électrocinétique, Magnétisme, Optique ondulatoire, Physique nucléaire</div>
-                        <span class="subject-coeff">Coef: 5</span>
+                    <div class="subject-card physics" onclick="showSection('matieres')">
+                        <div class="subject-name">⚡ Physique-Chimie</div>
+                        <div class="subject-details">Mécanique, Électricité, Optique, Nucléaire, Chimie organique</div>
+                        <span class="subject-coeff">Coefficient 5</span>
                     </div>
-                    <div class="subject-card chemistry">
-                        <div class="subject-name">🧪 Chimie</div>
-                        <div class="subject-details">Cinétique, Équilibres chimiques, Oxydoréduction, Chimie organique (estérification, saponification), Industrie</div>
-                        <span class="subject-coeff">Coef: 5</span>
+                    <div class="subject-card svt" onclick="showSection('matieres')">
+                        <div class="subject-name">🧬 SVT</div>
+                        <div class="subject-details">Génétique, Géologie, Physiologie, Écologie</div>
+                        <span class="subject-coeff">Coefficient 3</span>
                     </div>
-                    <div class="subject-card svt">
-                        <div class="subject-name">🧬 SVT (SVTEEHB)</div>
-                        <div class="subject-details">Génétique, Géologie, Physiologie humaine, Écologie, Hygiène, Biotechnologie</div>
-                        <span class="subject-coeff">Coef: 3</span>
-                    </div>
-                    <div class="subject-card french">
+                    <div class="subject-card english" onclick="showSection('matieres')">
                         <div class="subject-name">📖 Français</div>
-                        <div class="subject-details">Dissertation, Commentaire composé, Contraction de texte, Oral</div>
-                        <span class="subject-coeff">Coef: 3</span>
+                        <div class="subject-details">Dissertation, Commentaire, Contraction, Oral</div>
+                        <span class="subject-coeff">Coefficient 3</span>
                     </div>
-                    <div class="subject-card philo">
+                    <div class="subject-card philo" onclick="showSection('matieres')">
                         <div class="subject-name">🤔 Philosophie</div>
-                        <div class="subject-details">Notions (Liberté, Justice, Vérité, Langage, Travail), Dissertation, Analyse de texte</div>
-                        <span class="subject-coeff">Coef: 2</span>
+                        <div class="subject-details">Notions, Dissertation, Analyse de texte</div>
+                        <span class="subject-coeff">Coefficient 2</span>
                     </div>
-                    <div class="subject-card english">
+                    <div class="subject-card english" onclick="showSection('matieres')">
                         <div class="subject-name">🇬🇧 Anglais</div>
-                        <div class="subject-details">Grammar, Vocabulary, Essay Writing, Reading Comprehension</div>
-                        <span class="subject-coeff">Coef: 2</span>
+                        <div class="subject-details">Grammar, Vocabulary, Essay, Comprehension</div>
+                        <span class="subject-coeff">Coefficient 2</span>
                     </div>
-                    <div class="subject-card geo">
-                        <div class="subject-name">🏃 EPS</div>
-                        <div class="subject-details">Contrôle en cours de formation (CCF), Épreuves pratiques</div>
-                        <span class="subject-coeff">Coef: 1</span>
-                    </div>
+                </div>
+            </div>
+
+            <div class="card">
+                <div class="card-title">📋 Coefficients Officiels Bac C</div>
+                <table>
+                    <thead><tr><th>Matière</th><th>Coefficient</th><th>Durée</th><th>Points</th></tr></thead>
+                    <tbody>
+                        <tr><td>📐 Mathématiques</td><td><span class="coeff-badge">7</span></td><td>4h</td><td>140</td></tr>
+                        <tr><td>⚡ Physique-Chimie</td><td><span class="coeff-badge">5</span></td><td>6h</td><td>100</td></tr>
+                        <tr><td>🧬 SVT</td><td><span class="coeff-badge">3</span></td><td>3h</td><td>60</td></tr>
+                        <tr><td>📖 Français</td><td><span class="coeff-badge">3</span></td><td>4h</td><td>60</td></tr>
+                        <tr><td>🤔 Philosophie</td><td><span class="coeff-badge">2</span></td><td>3h</td><td>40</td></tr>
+                        <tr><td>🇬🇧 Anglais</td><td><span class="coeff-badge">2</span></td><td>2h</td><td>40</td></tr>
+                        <tr><td>🏃 EPS</td><td><span class="coeff-badge">1</span></td><td>CCF</td><td>20</td></tr>
+                        <tr class="total-row"><td>TOTAL</td><td><span class="coeff-badge">23</span></td><td></td><td>460</td></tr>
+                    </tbody>
+                </table>
+                <p style="margin-top:1rem;font-size:0.85rem;color:var(--text-muted);">Pour 18/20 = 360+ points sur 460 (78%)</p>
+            </div>
+        </section>
+
+        <!-- Matières -->
+        <section class="section" id="matieres">
+            <div class="tabs">
+                <button class="tab-btn active" data-tab="maths">📐 Maths</button>
+                <button class="tab-btn" data-tab="physique">⚡ Physique</button>
+                <button class="tab-btn" data-tab="chimie">🧪 Chimie</button>
+                <button class="tab-btn" data-tab="svt">🧬 SVT</button>
+                <button class="tab-btn" data-tab="francais">📖 Français</button>
+                <button class="tab-btn" data-tab="philo">🤔 Philo</button>
+                <button class="tab-btn" data-tab="anglais">🇬🇧 Anglais</button>
+            </div>
+
+            <!-- Maths -->
+            <div class="tab-content active" id="maths">
+                <div class="card">
+                    <div class="card-title">📐 Mathématiques — Programme Terminale C</div>
+                    <ul style="color:var(--text-muted);padding-left:1.5rem;">
+                        <li>Nombres complexes (forme algébrique, trigonométrique, exponentielle)</li>
+                        <li>Fonctions numériques (exp, ln, puissances, polynômes)</li>
+                        <li>Suites numériques (arithmétiques, géométriques, convergence)</li>
+                        <li>Arithmétique (divisibilité, PGCD, PPCM, congruences)</li>
+                        <li>Probabilités et statistiques (loi binomiale, espérance, variance)</li>
+                        <li>Géométrie dans l'espace (droites, plans, intersections)</li>
+                        <li>Équations différentielles</li>
+                        <li>Analyse vectorielle et matricielle</li>
+                    </ul>
+                </div>
+            </div>
+
+            <!-- Physique -->
+            <div class="tab-content" id="physique">
+                <div class="card">
+                    <div class="card-title">⚡ Physique — Programme Terminale C</div>
+                    <ul style="color:var(--text-muted);padding-left:1.5rem;">
+                        <li>Mécanique (lois de Newton, mouvement, gravitation, satellites)</li>
+                        <li>Électrostatique (champ électrique, potentiel, condensateurs)</li>
+                        <li>Électrocinétique (loi d'Ohm, Kirchhoff, RC, RL)</li>
+                        <li>Magnétisme et induction (Lorentz, Lenz, Faraday)</li>
+                        <li>Optique ondulatoire (diffraction, interférence)</li>
+                        <li>Physique nucléaire (radioactivité, datation, énergie)</li>
+                        <li>Thermodynamique</li>
+                    </ul>
+                </div>
+            </div>
+
+            <!-- Chimie -->
+            <div class="tab-content" id="chimie">
+                <div class="card">
+                    <div class="card-title">🧪 Chimie — Programme Terminale C</div>
+                    <ul style="color:var(--text-muted);padding-left:1.5rem;">
+                        <li>Cinétique chimique (vitesse, facteurs cinétiques)</li>
+                        <li>Équilibres chimiques (acido-basiques, précipitation, complexation)</li>
+                        <li>Oxydoréduction et électrochimie (pile, électrolyse)</li>
+                        <li>Chimie organique (estérification, saponification, polymérisation)</li>
+                        <li>Chimie industrielle (Haber, contact, etc.)</li>
+                    </ul>
+                </div>
+            </div>
+
+            <!-- SVT -->
+            <div class="tab-content" id="svt">
+                <div class="card">
+                    <div class="card-title">🧬 SVT — Programme Terminale C</div>
+                    <ul style="color:var(--text-muted);padding-left:1.5rem;">
+                        <li>Génétique (Mendel, hérédité, biotechnologie)</li>
+                        <li>Géologie (tectonique des plaques, géodynamique)</li>
+                        <li>Physiologie humaine (système nerveux, endocrinien, reproducteur)</li>
+                        <li>Écologie et environnement</li>
+                        <li>Hygiène et santé publique</li>
+                    </ul>
+                </div>
+            </div>
+
+            <!-- Français -->
+            <div class="tab-content" id="francais">
+                <div class="card">
+                    <div class="card-title">📖 Français — Programme Terminale C</div>
+                    <ul style="color:var(--text-muted);padding-left:1.5rem;">
+                        <li>Dissertation (thèse, antithèse, synthèse)</li>
+                        <li>Commentaire composé (analyse de texte)</li>
+                        <li>Contraction de texte (résumé, reformulation)</li>
+                        <li>Épreuve orale (exposé, entretien)</li>
+                    </ul>
+                </div>
+            </div>
+
+            <!-- Philo -->
+            <div class="tab-content" id="philo">
+                <div class="card">
+                    <div class="card-title">🤔 Philosophie — Programme Terminale C</div>
+                    <ul style="color:var(--text-muted);padding-left:1.5rem;">
+                        <li>Notions : Liberté, Justice, Vérité, Langage, Travail, État</li>
+                        <li>Dissertation dialectique</li>
+                        <li>Analyse de texte philosophique</li>
+                        <li>Culture philosophique (auteurs, courants)</li>
+                    </ul>
+                </div>
+            </div>
+
+            <!-- Anglais -->
+            <div class="tab-content" id="anglais">
+                <div class="card">
+                    <div class="card-title">🇬🇧 Anglais — Programme Terminale C</div>
+                    <ul style="color:var(--text-muted);padding-left:1.5rem;">
+                        <li>Grammar (temps, voix, modaux, subordonnées)</li>
+                        <li>Vocabulary (thèmes : santé, éducation, environnement)</li>
+                        <li>Essay Writing (argumentatif, narratif, descriptif)</li>
+                        <li>Reading Comprehension</li>
+                    </ul>
                 </div>
             </div>
         </section>
 
-        <!-- Vacances -->
-        <section class="section" id="vacances">
+        <!-- Quiz -->
+        <section class="section" id="quiz">
             <div class="tabs">
-                <button class="tab-btn active" data-tab="week1">Semaine 1</button>
-                <button class="tab-btn" data-tab="week2">Semaine 2</button>
-                <button class="tab-btn" data-tab="week3">Semaine 3</button>
-                <button class="tab-btn" data-tab="week4">Semaine 4</button>
-            </div>
-            
-            <!-- Week 1 -->
-            <div class="tab-content active" id="week1">
-                <div class="week-card">
-                    <div class="week-header"><span class="week-title">📅 Semaine 1 — Suites & Fonctions</span></div>
-                    <div class="day-item"><div class="day-checkbox" onclick="toggle(this)"></div><div class="day-content"><div class="day-title">Lundi — Maths</div><div class="day-desc">Suites arithmétiques et géométriques</div><div class="day-meta"><span class="day-tag math">Maths</span><span class="day-tag">3h</span></div></div></div>
-                    <div class="day-item"><div class="day-checkbox" onclick="toggle(this)"></div><div class="day-content"><div class="day-title">Mardi — Maths</div><div class="day-desc">Exercices suites (15 exercices)</div><div class="day-meta"><span class="day-tag math">Maths</span><span class="day-tag">3h</span></div></div></div>
-                    <div class="day-item"><div class="day-checkbox" onclick="toggle(this)"></div><div class="day-content"><div class="day-title">Mercredi — Physique</div><div class="day-desc">Mécanique : cinématique, dynamique</div><div class="day-meta"><span class="day-tag physics">Physique</span><span class="day-tag">2h</span></div></div></div>
-                    <div class="day-item"><div class="day-checkbox" onclick="toggle(this)"></div><div class="day-content"><div class="day-title">Jeudi — Maths</div><div class="day-desc">Fonctions continues, théorème valeurs intermédiaires</div><div class="day-meta"><span class="day-tag math">Maths</span><span class="day-tag">3h</span></div></div></div>
-                    <div class="day-item"><div class="day-checkbox" onclick="toggle(this)"></div><div class="day-content"><div class="day-title">Vendredi — Chimie</div><div class="day-desc">Bases : tableau d'avancement, réactions</div><div class="day-meta"><span class="day-tag chemistry">Chimie</span><span class="day-tag">2h</span></div></div></div>
-                    <div class="day-item"><div class="day-checkbox" onclick="toggle(this)"></div><div class="day-content"><div class="day-title">Samedi — Maths</div><div class="day-desc">Exercices fonctions + continuité</div><div class="day-meta"><span class="day-tag math">Maths</span><span class="day-tag">3h</span></div></div></div>
-                    <div class="day-item"><div class="day-checkbox" onclick="toggle(this)"></div><div class="day-content"><div class="day-title">Dimanche — Repos</div></div></div>
-                </div>
+                <button class="tab-btn active" data-tab="quiz-maths">📐 Maths</button>
+                <button class="tab-btn" data-tab="quiz-physique">⚡ Physique</button>
+                <button class="tab-btn" data-tab="quiz-chimie">🧪 Chimie</button>
+                <button class="tab-btn" data-tab="quiz-svt">🧬 SVT</button>
             </div>
 
-            <!-- Week 2 -->
-            <div class="tab-content" id="week2">
-                <div class="week-card">
-                    <div class="week-header"><span class="week-title">📅 Semaine 2 — Exp/ln + Physique</span></div>
-                    <div class="day-item"><div class="day-checkbox" onclick="toggle(this)"></div><div class="day-content"><div class="day-title">Lundi — Maths</div><div class="day-desc">Exponentielles et logarithmes</div><div class="day-meta"><span class="day-tag math">Maths</span><span class="day-tag">3h</span></div></div></div>
-                    <div class="day-item"><div class="day-checkbox" onclick="toggle(this)"></div><div class="day-content"><div class="day-title">Mardi — Maths</div><div class="day-desc">Exercices exp/ln (20 exercices)</div><div class="day-meta"><span class="day-tag math">Maths</span><span class="day-tag">3h</span></div></div></div>
-                    <div class="day-item"><div class="day-checkbox" onclick="toggle(this)"></div><div class="day-content"><div class="day-title">Mercredi — Physique</div><div class="day-desc">Électricité : loi d'Ohm, Kirchhoff, RC</div><div class="day-meta"><span class="day-tag physics">Physique</span><span class="day-tag">3h</span></div></div></div>
-                    <div class="day-item"><div class="day-checkbox" onclick="toggle(this)"></div><div class="day-content"><div class="day-title">Jeudi — Maths</div><div class="day-desc">Équations/inéquations avec exp/ln</div><div class="day-meta"><span class="day-tag math">Maths</span><span class="day-tag">3h</span></div></div></div>
-                    <div class="day-item"><div class="day-checkbox" onclick="toggle(this)"></div><div class="day-content"><div class="day-title">Vendredi — Physique</div><div class="day-desc">Exercices électricité</div><div class="day-meta"><span class="day-tag physics">Physique</span><span class="day-tag">2h</span></div></div></div>
-                    <div class="day-item"><div class="day-checkbox" onclick="toggle(this)"></div><div class="day-content"><div class="day-title">Samedi — Maths</div><div class="day-desc">Problèmes synthétiques</div><div class="day-meta"><span class="day-tag math">Maths</span><span class="day-tag">3h</span></div></div></div>
-                    <div class="day-item"><div class="day-checkbox" onclick="toggle(this)"></div><div class="day-content"><div class="day-title">Dimanche — Repos</div></div></div>
-                </div>
+            <div class="tab-content active" id="quiz-maths">
+                <div class="quiz-container" id="quiz-maths-container"></div>
             </div>
-
-            <!-- Week 3 -->
-            <div class="tab-content" id="week3">
-                <div class="week-card">
-                    <div class="week-header"><span class="week-title">📅 Semaine 3 — Intégrales + Chimie</span></div>
-                    <div class="day-item"><div class="day-checkbox" onclick="toggle(this)"></div><div class="day-content"><div class="day-title">Lundi — Maths</div><div class="day-desc">Primitives, intégrales (parties, changement variable)</div><div class="day-meta"><span class="day-tag math">Maths</span><span class="day-tag">3h</span></div></div></div>
-                    <div class="day-item"><div class="day-checkbox" onclick="toggle(this)"></div><div class="day-content"><div class="day-title">Mardi — Maths</div><div class="day-desc">Calcul d'aires, volumes</div><div class="day-meta"><span class="day-tag math">Maths</span><span class="day-tag">3h</span></div></div></div>
-                    <div class="day-item"><div class="day-checkbox" onclick="toggle(this)"></div><div class="day-content"><div class="day-title">Mercredi — Chimie</div><div class="day-desc">Cinétique chimique</div><div class="day-meta"><span class="day-tag chemistry">Chimie</span><span class="day-tag">3h</span></div></div></div>
-                    <div class="day-item"><div class="day-checkbox" onclick="toggle(this)"></div><div class="day-content"><div class="day-title">Jeudi — Maths</div><div class="day-desc">Probabilités conditionnelles, variables aléatoires</div><div class="day-meta"><span class="day-tag math">Maths</span><span class="day-tag">3h</span></div></div></div>
-                    <div class="day-item"><div class="day-checkbox" onclick="toggle(this)"></div><div class="day-content"><div class="day-title">Vendredi — Chimie</div><div class="day-desc">Exercices cinétique + équilibres</div><div class="day-meta"><span class="day-tag chemistry">Chimie</span><span class="day-tag">2h</span></div></div></div>
-                    <div class="day-item"><div class="day-checkbox" onclick="toggle(this)"></div><div class="day-content"><div class="day-title">Samedi — Maths</div><div class="day-desc">Sujet Bac complet (chronométré)</div><div class="day-meta"><span class="day-tag math">Maths</span><span class="day-tag">4h</span></div></div></div>
-                    <div class="day-item"><div class="day-checkbox" onclick="toggle(this)"></div><div class="day-content"><div class="day-title">Dimanche — Repos</div></div></div>
-                </div>
+            <div class="tab-content" id="quiz-physique">
+                <div class="quiz-container" id="quiz-physique-container"></div>
             </div>
-
-            <!-- Week 4 -->
-            <div class="tab-content" id="week4">
-                <div class="week-card">
-                    <div class="week-header"><span class="week-title">📅 Semaine 4 — Consolidation</span></div>
-                    <div class="day-item"><div class="day-checkbox" onclick="toggle(this)"></div><div class="day-content"><div class="day-title">Lundi — Maths</div><div class="day-desc">Nombres complexes</div><div class="day-meta"><span class="day-tag math">Maths</span><span class="day-tag">3h</span></div></div></div>
-                    <div class="day-item"><div class="day-checkbox" onclick="toggle(this)"></div><div class="day-content"><div class="day-title">Mardi — Physique</div><div class="day-desc">Optique : lentilles, interférences</div><div class="day-meta"><span class="day-tag physics">Physique</span><span class="day-tag">3h</span></div></div></div>
-                    <div class="day-item"><div class="day-checkbox" onclick="toggle(this)"></div><div class="day-content"><div class="day-title">Mercredi — SVT</div><div class="day-desc">Génétique : Mendel, lois de l'hérédité</div><div class="day-meta"><span class="day-tag svt">SVT</span><span class="day-tag">2h</span></div></div></div>
-                    <div class="day-item"><div class="day-checkbox" onclick="toggle(this)"></div><div class="day-content"><div class="day-title">Jeudi — Maths</div><div class="day-desc">Géométrie dans l'espace</div><div class="day-meta"><span class="day-tag math">Maths</span><span class="day-tag">3h</span></div></div></div>
-                    <div class="day-item"><div class="day-checkbox" onclick="toggle(this)"></div><div class="day-content"><div class="day-title">Vendredi — Philosophie</div><div class="day-desc">Lire 2-3 notions</div><div class="day-meta"><span class="day-tag philo">Philo</span><span class="day-tag">2h</span></div></div></div>
-                    <div class="day-item"><div class="day-checkbox" onclick="toggle(this)"></div><div class="day-content"><div class="day-title">Samedi — Tout</div><div class="day-desc">Sujet Bac complet (Maths + Physique)</div><div class="day-meta"><span class="day-tag math">Maths</span><span class="day-tag physics">Physique</span><span class="day-tag">5h</span></div></div></div>
-                    <div class="day-item"><div class="day-checkbox" onclick="toggle(this)"></div><div class="day-content"><div class="day-title">Dimanche — Repos</div></div></div>
-                </div>
+            <div class="tab-content" id="quiz-chimie">
+                <div class="quiz-container" id="quiz-chimie-container"></div>
+            </div>
+            <div class="tab-content" id="quiz-svt">
+                <div class="quiz-container" id="quiz-svt-container"></div>
             </div>
         </section>
 
-        <!-- Sequences -->
-        <section class="section" id="sequences">
+        <!-- Flashcards -->
+        <section class="section" id="flashcards">
             <div class="tabs">
-                <button class="tab-btn active" data-tab="seq1">Séquence 1</button>
-                <button class="tab-btn" data-tab="seq2">Séquence 2</button>
-                <button class="tab-btn" data-tab="seq3">Séquence 3</button>
+                <button class="tab-btn active" data-tab="fc-maths">📐 Maths</button>
+                <button class="tab-btn" data-tab="fc-physique">⚡ Physique</button>
+                <button class="tab-btn" data-tab="fc-chimie">🧪 Chimie</button>
+                <button class="tab-btn" data-tab="fc-svt">🧬 SVT</button>
             </div>
 
-            <div class="tab-content active" id="seq1">
-                <div class="card">
-                    <div class="card-title">📝 Séquence 1 — Suites Numériques & Fonctions</div>
-                    <div class="day-item"><div class="day-checkbox" onclick="toggle(this)"></div><div class="day-content"><div class="day-title">Suites arithmétiques et géométriques</div><div class="day-desc">Définition, terme général, somme des premiers termes</div></div></div>
-                    <div class="day-item"><div class="day-checkbox" onclick="toggle(this)"></div><div class="day-content"><div class="day-title">Convergence des suites</div><div class="day-desc">Limite, théorème des gendarmes, suites adjacentes</div></div></div>
-                    <div class="day-item"><div class="day-checkbox" onclick="toggle(this)"></div><div class="day-content"><div class="day-title">Fonctions continues</div><div class="day-desc">Théorème des valeurs intermédiaires, fonctions monotones</div></div></div>
-                    <div class="day-item"><div class="day-checkbox" onclick="toggle(this)"></div><div class="day-content"><div class="day-title">Devoir de Séquence 1</div><div class="day-desc">Préparation et révision complète</div></div></div>
-                </div>
+            <div class="tab-content active" id="fc-maths">
+                <div class="flashcard-container" id="fc-maths-container"></div>
             </div>
-
-            <div class="tab-content" id="seq2">
-                <div class="card">
-                    <div class="card-title">📝 Séquence 2 — Exponentielles & Logarithmes</div>
-                    <div class="day-item"><div class="day-checkbox" onclick="toggle(this)"></div><div class="day-content"><div class="day-title">Fonction exponentielle</div><div class="day-desc">Propriétés, limites, représentation graphique</div></div></div>
-                    <div class="day-item"><div class="day-checkbox" onclick="toggle(this)"></div><div class="day-content"><div class="day-title">Fonction logarithme népérien</div><div class="day-desc">Définition, propriétés algébriques, dérivée</div></div></div>
-                    <div class="day-item"><div class="day-checkbox" onclick="toggle(this)"></div><div class="day-content"><div class="day-title">Équations et inéquations</div><div class="day-desc">Résolution avec exp et ln</div></div></div>
-                    <div class="day-item"><div class="day-checkbox" onclick="toggle(this)"></div><div class="day-content"><div class="day-title">Devoir de Séquence 2</div><div class="day-desc">Préparation et révision complète</div></div></div>
-                </div>
+            <div class="tab-content" id="fc-physique">
+                <div class="flashcard-container" id="fc-physique-container"></div>
             </div>
-
-            <div class="tab-content" id="seq3">
-                <div class="card">
-                    <div class="card-title">📝 Séquence 3 — Intégrales & Probabilités</div>
-                    <div class="day-item"><div class="day-checkbox" onclick="toggle(this)"></div><div class="day-content"><div class="day-title">Primitives et intégrales</div><div class="day-desc">Intégrales définies, calcul d'aires, volumes</div></div></div>
-                    <div class="day-item"><div class="day-checkbox" onclick="toggle(this)"></div><div class="day-content"><div class="day-title">Probabilités conditionnelles</div><div class="day-desc">Formule de Bayes, arbres pondérés</div></div></div>
-                    <div class="day-item"><div class="day-checkbox" onclick="toggle(this)"></div><div class="day-content"><div class="day-title">Variables aléatoires</div><div class="day-desc">Espérance, variance, loi binomiale</div></div></div>
-                    <div class="day-item"><div class="day-checkbox" onclick="toggle(this)"></div><div class="day-content"><div class="day-title">Devoir de Séquence 3</div><div class="day-desc">Préparation et révision complète</div></div></div>
-                </div>
+            <div class="tab-content" id="fc-chimie">
+                <div class="flashcard-container" id="fc-chimie-container"></div>
+            </div>
+            <div class="tab-content" id="fc-svt">
+                <div class="flashcard-container" id="fc-svt-container"></div>
             </div>
         </section>
 
         <!-- Resources -->
         <section class="section" id="resources">
             <div class="card">
-                <div class="card-title">📥 Ressources Officielles</div>
+                <div class="card-title">📥 Sujets Bac 2024-2025 (PDF)</div>
                 <div class="resource-list">
-                    <div class="resource-item"><div class="resource-icon link">🌐</div><div class="resource-info"><div class="resource-name">OBC — Office du Baccalauréat du Cameroun</div><div class="resource-desc">Site officiel : textes, calendrier, résultats</div></div><a href="https://obc.cm" target="_blank" class="resource-btn">Accéder</a></div>
-                    <div class="resource-item"><div class="resource-icon link">🌐</div><div class="resource-info"><div class="resource-name">MINESEC — Programmes Officiels</div><div class="resource-desc">Programmes et progressions officielles</div></div><a href="https://www.minesec.gov.cm/web/index.php/fr/systeme-educatif/progammes-officiels" target="_blank" class="resource-btn">Accéder</a></div>
-                    <div class="resource-item"><div class="resource-icon video">🎥</div><div class="resource-info"><div class="resource-name">Yvan Monka — Terminale</div><div class="resource-desc">Vidéos YouTube recommandées</div></div><a href="https://www.youtube.com/@YvanMonka" target="_blank" class="resource-btn">Accéder</a></div>
-                    <div class="resource-item"><div class="resource-icon video">🎥</div><div class="resource-info"><div class="resource-name">Khan Academy FR</div><div class="resource-desc">Cours interactifs gratuits</div></div><a href="https://fr.khanacademy.org" target="_blank" class="resource-btn">Accéder</a></div>
-                    <div class="resource-item"><div class="resource-icon link">🔗</div><div class="resource-info"><div class="resource-name">Exo7 — Maths Terminale</div><div class="resource-desc">Exercices corrigés en ligne</div></div><a href="http://exo7.emath.fr" target="_blank" class="resource-btn">Accéder</a></div>
-                    <div class="resource-item"><div class="resource-icon link">🔗</div><div class="resource-info"><div class="resource-name">Les Bons Profs</div><div class="resource-desc">Vidéos Physique-Chimie</div></div><a href="https://www.lesbonsprofs.com" target="_blank" class="resource-btn">Accéder</a></div>
+                    <div class="resource-item"><span class="resource-icon">📄</span><div class="resource-info"><div class="resource-name">Maths Bac 2024 Série C-E</div><div class="resource-desc">Sujet officiel + corrigé</div></div><a href="https://epreuvesetcorriges.com/categories/cameroun/examens/bac/35897-corrige-bac-2024-mathematiques-serie-c-e" target="_blank" class="resource-btn">Télécharger</a></div>
+                    <div class="resource-item"><span class="resource-icon">📄</span><div class="resource-info"><div class="resource-name">Français Bac 2024 Série C-E</div><div class="resource-desc">Sujet officiel</div></div><a href="https://epreuvesetcorriges.com/categories/cameroun/examens/bac/39805-epreuve-de-langue-francaise-baccalaureat-2025-serie-c-d-e-ti-cameroun" target="_blank" class="resource-btn">Télécharger</a></div>
+                    <div class="resource-item"><span class="resource-icon">📄</span><div class="resource-info"><div class="resource-name">Philosophie Bac 2024 Série C-D-E-TI</div><div class="resource-desc">Sujet + corrigé</div></div><a href="https://epreuvesetcorriges.com/categories/cameroun/examens/bac/36051-epreuve-bac-2024-philosophie-serie-c-d-e-ti" target="_blank" class="resource-btn">Télécharger</a></div>
+                    <div class="resource-item"><span class="resource-icon">📄</span><div class="resource-info"><div class="resource-name">Anglais Bac 2025 Série C-D-E-TI</div><div class="resource-desc">Sujet + corrigé</div></div><a href="https://epreuvesetcorriges.com/categories/cameroun/examens/bac/39792-epreuve-d-anglais-corrige-baccalaureat-2025-serie-c-d-e-ti-cameroun" target="_blank" class="resource-btn">Télécharger</a></div>
+                    <div class="resource-item"><span class="resource-icon">📄</span><div class="resource-info"><div class="resource-name">SVT Bac 2025 Série C</div><div class="resource-desc">Sujet + corrigé</div></div><a href="https://epreuvesetcorriges.com/categories/cameroun/examens/bac/39801-epreuve-de-svteehb-corrige-baccalaureat-2025-serie-c-ti-cameroun" target="_blank" class="resource-btn">Télécharger</a></div>
+                    <div class="resource-item"><span class="resource-icon">📄</span><div class="resource-info"><div class="resource-name">Physique Pratique Bac 2025 Série C</div><div class="resource-desc">Épreuve pratique</div></div><a href="https://epreuvesetcorriges.com/categories/cameroun/examens/bac/39806-epreuve-pratique-de-physique-baccalaureat-2025-serie-c-cameroun" target="_blank" class="resource-btn">Télécharger</a></div>
+                    <div class="resource-item"><span class="resource-icon">📄</span><div class="resource-info"><div class="resource-name">Informatique Bac 2025 Série C-D-E</div><div class="resource-desc">Épreuve théorique</div></div><a href="https://epreuvesetcorriges.com/categories/cameroun/examens/bac/39807-epreuve-theorique-d-informatique-baccalaureat-2025-serie-c-d-e-cameroun" target="_blank" class="resource-btn">Télécharger</a></div>
                 </div>
             </div>
-        </section>
 
-        <!-- Timer -->
-        <section class="section" id="timer">
-            <div class="card timer-container">
-                <div class="card-title" style="justify-content:center;">⏱️ Minuteur Pomodoro</div>
-                <div class="timer-display" id="timerDisplay">25:00</div>
-                <div class="timer-controls">
-                    <button class="timer-btn start" id="startBtn" onclick="startTimer()">Démarrer</button>
-                    <button class="timer-btn pause" id="pauseBtn" onclick="pauseTimer()" style="display:none;">Pause</button>
-                    <button class="timer-btn reset" onclick="resetTimer()">Reset</button>
-                </div>
-                <div class="timer-presets">
-                    <button class="timer-preset" onclick="setTimer(25)">25 min</button>
-                    <button class="timer-preset" onclick="setTimer(30)">30 min</button>
-                    <button class="timer-preset" onclick="setTimer(45)">45 min</button>
-                    <button class="timer-preset" onclick="setTimer(60)">1h</button>
+            <div class="card">
+                <div class="card-title">📚 Ressources Officielles</div>
+                <div class="resource-list">
+                    <div class="resource-item"><span class="resource-icon">🌐</span><div class="resource-info"><div class="resource-name">OBC — Office du Baccalauréat</div><div class="resource-desc">Site officiel</div></div><a href="https://obc.cm" target="_blank" class="resource-btn">Accéder</a></div>
+                    <div class="resource-item"><span class="resource-icon">🌐</span><div class="resource-info"><div class="resource-name">MINESEC — Programmes</div><div class="resource-desc">Programmes officiels</div></div><a href="https://www.minesec.gov.cm/web/index.php/fr/systeme-educatif/progammes-officiels" target="_blank" class="resource-btn">Accéder</a></div>
+                    <div class="resource-item"><span class="resource-icon">🎥</span><div class="resource-info"><div class="resource-name">Yvan Monka</div><div class="resource-desc">Vidéos Maths</div></div><a href="https://www.youtube.com/@YvanMonka" target="_blank" class="resource-btn">Accéder</a></div>
+                    <div class="resource-item"><span class="resource-icon">🎥</span><div class="resource-info"><div class="resource-name">Khan Academy FR</div><div class="resource-desc">Cours interactifs</div></div><a href="https://fr.khanacademy.org" target="_blank" class="resource-btn">Accéder</a></div>
+                    <div class="resource-item"><span class="resource-icon">🔗</span><div class="resource-info"><div class="resource-name">Exo7</div><div class="resource-desc">Exercices Maths</div></div><a href="http://exo7.emath.fr" target="_blank" class="resource-btn">Accéder</a></div>
+                    <div class="resource-item"><span class="resource-icon">🔗</span><div class="resource-info"><div class="resource-name">Les Bons Profs</div><div class="resource-desc">Physique-Chimie</div></div><a href="https://www.lesbonsprofs.com" target="_blank" class="resource-btn">Accéder</a></div>
                 </div>
             </div>
         </section>
     </main>
 
     <button class="dark-mode-toggle" onclick="toggleDarkMode()">🌙</button>
-    <div class="toast" id="toast"></div>
 
     <script>
-        let state = { tasksDone: 0, hoursStudied: 0, streak: 0, timerSeconds: 1500, timerInterval: null, timerRunning: false, darkMode: true, completedTasks: new Set() };
+        // Quiz Data
+        const quizData = {
+            maths: [
+                { q: "Quel est le coefficient des Mathématiques au Bac C ?", options: ["5", "6", "7", "8"], answer: 2 },
+                { q: "Quelle est la forme exponentielle de z = 1 + i ?", options: ["√2 e^(iπ/4)", "2 e^(iπ/4)", "√2 e^(iπ/2)", "e^(iπ/4)"], answer: 0 },
+                { q: "La suite (1/n) converge vers :", options: ["1", "0", "+∞", "n'existe pas"], answer: 1 },
+                { q: "Quel est le domaine de définition de ln(x² - 4) ?", options: ["]-∞;-2[ ∪ ]2;+∞[", "]-∞;-2] ∪ [2;+∞[", "ℝ", "]0;+∞["], answer: 0 },
+                { q: "Si f(x) = e^(3x), alors f'(x) = ?", options: ["3e^(3x)", "e^(3x)", "3e^x", "e^(3x)/3"], answer: 0 }
+            ],
+            physique: [
+                { q: "Quelle est la 3ème loi de Newton ?", options: ["F = ma", "Action = Réaction", "E = mc²", "F = kx"], answer: 1 },
+                { q: "L'intensité du champ gravitationnel terrestre au sol est d'environ :", options: ["9,8 m/s²", "10 m/s²", "9,8 N/kg", "Toutes ces réponses"], answer: 3 },
+                { q: "La loi d'Ohm s'écrit :", options: ["U = RI", "P = UI", "F = ma", "E = mc²"], answer: 0 },
+                { q: "Quelle est la vitesse de la lumière dans le vide ?", options: ["3×10⁶ m/s", "3×10⁸ m/s", "3×10¹⁰ m/s", "3×10⁵ m/s"], answer: 1 },
+                { q: "Un satellite géostationnaire a une période de :", options: ["12h", "24h", "48h", "6h"], answer: 1 }
+            ],
+            chimie: [
+                { q: "Le pH d'une solution neutre à 25°C est :", options: ["0", "7", "14", "1"], answer: 1 },
+                { q: "La réaction de saponification produit :", options: ["Du savon et de l'eau", "Du savon et du glycérol", "Du savon et de l'alcool", "Du savon et du CO₂"], answer: 1 },
+                { q: "Quel est le nombre d'oxydation du soufre dans H₂SO₄ ?", options: ["+4", "+6", "-2", "+2"], answer: 1 },
+                { q: "La constante d'acidité Ka de l'eau est :", options: ["10⁻⁷", "10⁻¹⁴", "7", "1"], answer: 1 },
+                { q: "Une réaction d'oxydoréduction implique :", options: ["Un transfert de protons", "Un transfert d'électrons", "Un transfert de neutrons", "Aucun transfert"], answer: 1 }
+            ],
+            svt: [
+                { q: "L'ADN est composé de :", options: ["Acides aminés", "Nucléotides", "Lipides", "Glucides"], answer: 1 },
+                { q: "Le gène est un segment de :", options: ["Protéine", "ADN", "ARN", "Chromosome"], answer: 1 },
+                { q: "La mitose produit :", options: ["2 cellules filles identiques", "4 cellules filles", "Des gamètes", "Des spores"], answer: 0 },
+                { q: "Le système nerveux central comprend :", options: ["Cerveau et moelle épinière", "Nerfs crâniens", "Nerfs rachidiens", "Ganglions"], answer: 0 },
+                { q: "La photosynthèse produit :", options: ["CO₂ et H₂O", "Glucide et O₂", "O₂ et CO₂", "H₂O et CO₂"], answer: 1 }
+            ]
+        };
 
-        function loadState() {
-            const saved = localStorage.getItem('terminaleCState');
-            if (saved) {
-                const parsed = JSON.parse(saved);
-                state = { ...state, ...parsed };
-                state.completedTasks = new Set(state.completedTasks || []);
-            }
-            updateDisplay();
+        // Flashcard Data
+        const flashcardData = {
+            maths: [
+                { front: "Nombre complexe", back: "z = a + ib où i² = -1. Module: |z| = √(a²+b²)" },
+                { front: "Exponentielle", back: "exp(x) = e^x. Propriété: exp(a+b) = exp(a)×exp(b)" },
+                { front: "Logarithme népérien", back: "ln(x) est l'inverse de exp(x). ln(ab) = ln(a) + ln(b)" },
+                { front: "Suite géométrique", back: "uₙ₊₁ = q × uₙ. Somme: Sₙ = u₀(1-qⁿ⁺¹)/(1-q)" },
+                { front: "Probabilité conditionnelle", back: "P(A|B) = P(A∩B) / P(B)" },
+                { front: "Loi binomiale", back: "P(X=k) = C(n,k) × p^k × (1-p)^(n-k)" },
+                { front: "Équation différentielle", back: "y' + ay = b → y = Ce^(-ax) + b/a" },
+                { front: "Géométrie dans l'espace", back: "Équation cartésienne d'un plan: ax + by + cz + d = 0" }
+            ],
+            physique: [
+                { front: "3ème loi de Newton", back: "Action = Réaction: F₁₂ = -F₂₁" },
+                { front: "Loi de la gravitation", back: "F = G×m₁m₂/d². G = 6,67×10⁻¹¹ Nm²/kg²" },
+                { front: "Énergie cinétique", back: "Ec = ½mv²" },
+                { front: "Loi d'Ohm", back: "U = RI (tension = résistance × intensité)" },
+                { front: "Champ électrique", back: "E = F/q = U/d (entre deux plaques)" },
+                { front: "Loi de Lenz", back: "Le courant induit s'oppose à la variation de flux" },
+                { front: "Effet photoélectrique", back: "E = hν - Φ (Einstein)" },
+                { front: "Radioactivité", back: "N(t) = N₀ × e^(-λt). Demi-vie: t₁/₂ = ln(2)/λ" }
+            ],
+            chimie: [
+                { front: "pH", back: "pH = -log[H₃O⁺]. Acide: pH < 7, Basique: pH > 7" },
+                { front: "Constante d'acidité", back: "Ka = [H₃O⁺][A⁻]/[HA]. pKa = -log(Ka)" },
+                { front: "Saponification", back: "Ester + NaOH → Savon + Glycérol" },
+                { front: "Oxydoréduction", back: "Oxydant + e⁻ → Réduit. Réducteur → Oxydant + e⁻" },
+                { front: "Cinétique chimique", back: "v = -d[A]/dt. Vitesse proportionnelle à [A]^n" },
+                { front: "Équilibre chimique", back: "K = [Produits]/[Réactifs] à l'équilibre" },
+                { front: "Nombre d'oxydation", back: "O: -2, H: +1, métal: charge ionique" },
+                { front: "Électrolyse", back: "Cathode: réduction. Anode: oxydation" }
+            ],
+            svt: [
+                { front: "ADN", back: "Acide désoxyribonucléique. Double hélice, bases A-T-G-C" },
+                { front: "Gène", back: "Segment d'ADN codant pour une protéine" },
+                { front: "Mitose", back: "Division cellulaire → 2 cellules filles identiques (2n)" },
+                { front: "Méiose", back: "Division → 4 gamètes haploïdes (n)" },
+                { front: "Lois de Mendel", back: "Ségrégation indépendante des allèles" },
+                { front: "Neurone", back: "Cellule nerveuse: corps dendrites + axone" },
+                { front: "Synapse", back: "Zone de transmission entre deux neurones" },
+                { front: "Photosynthèse", back: "6CO₂ + 6H₂O → C₆H₁₂O₆ + 6O₂" }
+            ]
+        };
+
+        // Initialize
+        function init() {
+            loadState();
+            setupNavigation();
+            setupTabs();
+            renderQuizzes();
+            renderFlashcards();
         }
 
-        function saveState() {
-            localStorage.setItem('terminaleCState', JSON.stringify({ ...state, completedTasks: Array.from(state.completedTasks) }));
+        // Navigation
+        function setupNavigation() {
+            document.querySelectorAll('.nav-btn').forEach(btn => {
+                btn.addEventListener('click', () => {
+                    document.querySelectorAll('.nav-btn').forEach(b => b.classList.remove('active'));
+                    document.querySelectorAll('.section').forEach(s => s.classList.remove('active'));
+                    btn.classList.add('active');
+                    document.getElementById(btn.dataset.section).classList.add('active');
+                });
+            });
         }
 
-        document.querySelectorAll('.nav-btn').forEach(btn => {
-            btn.addEventListener('click', () => {
-                document.querySelectorAll('.nav-btn').forEach(b => b.classList.remove('active'));
-                document.querySelectorAll('.section').forEach(s => s.classList.remove('active'));
-                btn.classList.add('active');
-                document.getElementById(btn.dataset.section).classList.add('active');
-            });
-        });
+        function showSection(sectionId) {
+            document.querySelectorAll('.nav-btn').forEach(b => b.classList.remove('active'));
+            document.querySelectorAll('.section').forEach(s => s.classList.remove('active'));
+            document.querySelector(`[data-section="${sectionId}"]`).classList.add('active');
+            document.getElementById(sectionId).classList.add('active');
+        }
 
-        document.querySelectorAll('.tab-btn').forEach(btn => {
-            btn.addEventListener('click', () => {
-                const parent = btn.closest('.tabs') || btn.closest('.section');
-                parent.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
-                btn.classList.add('active');
-                const tabId = btn.dataset.tab;
-                if (tabId) {
-                    const container = btn.closest('.section') || btn.closest('.card');
-                    container.querySelectorAll('.tab-content').forEach(c => c.classList.remove('active'));
-                    container.querySelector('#' + tabId).classList.add('active');
-                }
+        // Tabs
+        function setupTabs() {
+            document.querySelectorAll('.tab-btn').forEach(btn => {
+                btn.addEventListener('click', () => {
+                    const parent = btn.closest('.tabs');
+                    parent.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
+                    btn.classList.add('active');
+                    const tabId = btn.dataset.tab;
+                    if (tabId) {
+                        const container = btn.closest('.section') || btn.closest('.card');
+                        container.querySelectorAll('.tab-content').forEach(c => c.classList.remove('active'));
+                        container.querySelector('#' + tabId).classList.add('active');
+                    }
+                });
             });
-        });
+        }
 
-        function toggle(element) {
-            const dayItem = element.closest('.day-item');
-            const dayTitle = dayItem.querySelector('.day-title').textContent;
-            if (element.classList.contains('checked')) {
-                element.classList.remove('checked');
-                dayItem.querySelector('.day-title').classList.remove('completed');
-                state.completedTasks.delete(dayTitle);
-                state.tasksDone = Math.max(0, state.tasksDone - 1);
+        // Render Quizzes
+        function renderQuizzes() {
+            Object.keys(quizData).forEach(subject => {
+                const container = document.getElementById(`quiz-${subject}-container`);
+                if (!container) return;
+                container.innerHTML = quizData[state.theme === 'dark' ? 'maths' : subject].map((q, qi) => `
+                    <div class="quiz-question" id="${subject}-q${qi}">
+                        <h3>Q${qi+1}: ${q.q}</h3>
+                        <div class="quiz-options">
+                            ${q.options.map((opt, oi) => `
+                                <div class="quiz-option" onclick="checkAnswer('${subject}', ${qi}, ${oi}, this)">${opt}</div>
+                            `).join('')}
+                        </div>
+                    </div>
+                `).join('');
+            });
+        }
+
+        function checkAnswer(subject, qi, oi, element) {
+            const q = quizData[subject][qi];
+            const container = document.getElementById(`${subject}-q${qi}`);
+            const options = container.querySelectorAll('.quiz-option');
+            options.forEach(opt => opt.classList.add('disabled'));
+            
+            if (oi === q.answer) {
+                element.classList.add('correct');
             } else {
-                element.classList.add('checked');
-                dayItem.querySelector('.day-title').classList.add('completed');
-                state.completedTasks.add(dayTitle);
-                state.tasksDone++;
-                showToast('✅ Tâche complétée !');
+                element.classList.add('incorrect');
+                options[q.answer].classList.add('correct');
             }
-            saveState();
-            updateDisplay();
         }
 
-        function updateDisplay() {
-            document.getElementById('tasksDone').textContent = state.tasksDone;
-            document.getElementById('hoursStudied').textContent = state.hoursStudied;
-            document.getElementById('streak').textContent = state.streak;
+        // Render Flashcards
+        function renderFlashcards() {
+            Object.keys(flashcardData).forEach(subject => {
+                const container = document.getElementById(`fc-${subject}-container`);
+                if (!container) return;
+                container.innerHTML = flashcardData[subject].map((fc, fi) => `
+                    <div class="flashcard" onclick="this.classList.toggle('flipped')">
+                        <div class="flashcard-front">${fc.front}</div>
+                        <div class="flashcard-back">${fc.back}</div>
+                    </div>
+                `).join('');
+            });
         }
 
-        function updateTimerDisplay() {
-            const mins = Math.floor(state.timerSeconds / 60);
-            const secs = state.timerSeconds % 60;
-            document.getElementById('timerDisplay').textContent = `${mins.toString().padStart(2, '0')}:${secs.toString().padStart(2, '0')}`;
-        }
-
-        function startTimer() {
-            if (state.timerRunning) return;
-            state.timerRunning = true;
-            document.getElementById('startBtn').style.display = 'none';
-            document.getElementById('pauseBtn').style.display = 'inline-block';
-            state.timerInterval = setInterval(() => {
-                state.timerSeconds--;
-                updateTimerDisplay();
-                if (state.timerSeconds <= 0) {
-                    clearInterval(state.timerInterval);
-                    state.timerRunning = false;
-                    state.hoursStudied += Math.floor((1500) / 60);
-                    document.getElementById('startBtn').style.display = 'inline-block';
-                    document.getElementById('pauseBtn').style.display = 'none';
-                    showToast('🍅 Session terminée !');
-                    saveState();
-                    updateDisplay();
-                }
-            }, 1000);
-        }
-
-        function pauseTimer() {
-            clearInterval(state.timerInterval);
-            state.timerRunning = false;
-            document.getElementById('startBtn').style.display = 'inline-block';
-            document.getElementById('pauseBtn').style.display = 'none';
-        }
-
-        function resetTimer() {
-            clearInterval(state.timerInterval);
-            state.timerRunning = false;
-            state.timerSeconds = 1500;
-            updateTimerDisplay();
-            document.getElementById('startBtn').style.display = 'inline-block';
-            document.getElementById('pauseBtn').style.display = 'none';
-        }
-
-        function setTimer(minutes) {
-            pauseTimer();
-            state.timerSeconds = minutes * 60;
-            updateTimerDisplay();
-        }
-
+        // Dark mode
         function toggleDarkMode() {
-            state.darkMode = !state.darkMode;
-            document.documentElement.setAttribute('data-theme', state.darkMode ? 'dark' : 'light');
-            document.querySelector('.dark-mode-toggle').textContent = state.darkMode ? '🌙' : '☀️';
+            const current = document.documentElement.getAttribute('data-theme');
+            const next = current === 'dark' ? 'light' : 'dark';
+            document.documentElement.setAttribute('data-theme', next);
+            document.querySelector('.dark-mode-toggle').textContent = next === 'dark' ? '🌙' : '☀️';
         }
 
-        function showToast(message) {
-            const toast = document.getElementById('toast');
-            toast.textContent = message;
-            toast.classList.add('show');
-            setTimeout(() => toast.classList.remove('show'), 3000);
-        }
+        // State
+        let state = { theme: 'dark' };
+        function loadState() { /* localStorage logic */ }
 
-        loadState();
-        updateTimerDisplay();
+        init();
     </script>
 </body>
 </html>
