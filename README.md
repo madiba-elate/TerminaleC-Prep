@@ -1,6 +1,6 @@
 # 🎓 HSC — High School Course
 
-> **Plateforme complète de préparation au Bac C (Cameroun)** — Quiz, Flashcards, Sujets PDF, Programmes officiels OBC/MINESEC
+> **Plateforme complète de préparation au Bac C (Cameroun)** — Quiz, Flashcards, Sujets PDF, Calculateur de moyenne, Programmes officiels OBC/MINESEC
 
 [![License: MIT](https://img.shields.io/badge/License-MIT-blue.svg)](LICENSE)
 [![GitHub Pages](https://img.shields.io/badge/GitHub%20Pages-Live-brightgreen)](https://madiba-elate.github.io/TerminaleC-Prep/)
@@ -20,10 +20,11 @@
 
 - 🧠 **Quiz interactifs** par matière (Maths, Physique, Chimie, SVT)
 - 🃏 **Flashcards** pour mémoriser les formules et concepts clés
-- 📥 **Sujets PDF** du Bac 2024-2025 (toutes matières + épreuves facultatives)
+- 🧮 **Calculateur de moyenne** avec vrais coefficients Bac (total 31)
+- 📥 **Sujets PDF** du Bac 2024-2025 (toutes matières)
 - 📚 **Programmes officiels** MINESEC par matière
-- 📊 **Tableau des vrais coefficients** OBC
-- 🎯 **Objectif 18/20** avec calculateur de points
+- 📊 **Tableau des vrais coefficients** (source : bulletin officiel)
+- 🎯 **Objectif 18/20** — 558+ points sur 620
 
 ---
 
@@ -32,34 +33,72 @@
 | Fonctionnalité | Description |
 |----------------|-------------|
 | **📊 Dashboard** | Vue d'ensemble avec coefficients officiels et objectifs |
-| **📚 Matières** | Programmes officiels MINESEC pour chaque matière |
-| **🧠 Quiz** | Quiz interactifs avec correction instantanée (Maths, Physique, Chimie, SVT) |
-| **🃏 Flashcards** | Cartes mémoire pour formules et concepts (retourner pour voir la réponse) |
-| **📥 Ressources** | Sujets PDF Bac 2024-2025 + liens vers OBC, MINESEC, Yvan Monka |
+| **📋 Coefficients** | Tableaux officiels par groupe (1er, 2ème, 3ème) |
+| **🧮 Calculateur** | Calcul de moyenne avec mentions (Passable → Très Bien) |
+| **🧠 Quiz** | Quiz interactifs avec correction instantanée |
+| **🃏 Flashcards** | Cartes mémoire pour formules et concepts |
+| **📥 Ressources** | Sujets PDF Bac 2024-2025 + liens officiels |
 | **🌙 Thème sombre** | Interface moderne sombre/clair |
 
 ---
 
 ## 📊 Vrais Coefficients Officiels Bac C (Terminale)
 
-| Matière | Coefficient | Durée | Points |
-|---------|-------------|-------|--------|
-| **Mathématiques** | **7** | 4h | 140 |
-| **Physique-Chimie** | **5** | 6h | 100 |
-| **SVT** | **3** | 3h | 60 |
-| **Français** | **3** | 4h | 60 |
-| **Philosophie** | **2** | 3h | 40 |
-| **Anglais** | **2** | 2h | 40 |
-| **EPS** | **1** | CCF | 20 |
-| **TOTAL** | **23** | | **460** |
+> Source : Bulletin officiel Terminale C — Total : **31 coefficients** = **620 points max**
 
-> Pour obtenir 18/20, il faut viser **360+ points sur 460** (78%).
+### 1er Groupe
+
+| Matière | Coefficient | Points max |
+|---------|-------------|------------|
+| 📐 Mathématiques | **7** | 140 |
+| ⚡ Physique | **4** | 80 |
+| 🇬🇧 Anglais | **3** | 60 |
+| 💻 Informatique | **2** | 40 |
+| **Sous-total** | **16** | **320** |
+
+### 2ème Groupe
+
+| Matière | Coefficient | Points max |
+|---------|-------------|------------|
+| 🧪 Chimie | **2** | 40 |
+| 📚 ECM | **2** | 40 |
+| 🧬 SVTEEHB | **2** | 40 |
+| **Sous-total** | **6** | **120** |
+
+### 3ème Groupe
+
+| Matière | Coefficient | Points max |
+|---------|-------------|------------|
+| 🌍 Géographie | **2** | 40 |
+| 📚 Littérature | **2** | 40 |
+| 🤔 Philosophie | **2** | 40 |
+| 🏃 EPS | **2** | 40 |
+| 📖 Langue Française | **1** | 20 |
+| **Sous-total** | **9** | **180** |
+
+### Total Général
+
+| | Coefficient | Points |
+|---|-------------|--------|
+| **TOTAL** | **31** | **620** |
+
+> Pour obtenir **18/20**, il faut viser **558+ points sur 620** (90%).
+
+---
+
+## 🧮 Calculateur de moyenne
+
+Le calculateur intégré permet de :
+- Saisir les notes (0-20) pour chaque matière
+- Calculer automatique de la moyenne pondérée
+- Afficher la mention (Passable, Assez Bien, Bien, Très Bien)
+- Visualiser les points sur 620
 
 ---
 
 ## 📚 Programmes Officiels MINESEC — Terminale C
 
-### 📐 Mathématiques
+### 📐 Mathématiques (coef 7)
 - Nombres complexes (forme algébrique, trigonométrique, exponentielle)
 - Fonctions numériques (exp, ln, puissances, polynômes)
 - Suites numériques (arithmétiques, géométriques, convergence)
@@ -69,7 +108,7 @@
 - Équations différentielles
 - Analyse vectorielle et matricielle
 
-### ⚡ Physique
+### ⚡ Physique (coef 4)
 - Mécanique (lois de Newton, mouvement, gravitation, satellites)
 - Électrostatique (champ électrique, potentiel, condensateurs)
 - Électrocinétique (loi d'Ohm, Kirchhoff, RC, RL)
@@ -78,37 +117,44 @@
 - Physique nucléaire (radioactivité, datation, énergie)
 - Thermodynamique
 
-### 🧪 Chimie
+### 🧪 Chimie (coef 2)
 - Cinétique chimique (vitesse, facteurs cinétiques)
 - Équilibres chimiques (acido-basiques, précipitation, complexation)
 - Oxydoréduction et électrochimie (pile, électrolyse)
 - Chimie organique (estérification, saponification, polymérisation)
 - Chimie industrielle (Haber, contact, etc.)
 
-### 🧬 SVT (SVTEEHB)
+### 🧬 SVTEEHB (coef 2)
 - Génétique (Mendel, hérédité, biotechnologie)
 - Géologie (tectonique des plaques, géodynamique)
 - Physiologie humaine (système nerveux, endocrinien, reproducteur)
 - Écologie et environnement
 - Hygiène et santé publique
 
-### 📖 Français
+### 📖 Langue Française (coef 1)
 - Dissertation (thèse, antithèse, synthèse)
 - Commentaire composé (analyse de texte)
 - Contraction de texte (résumé, reformulation)
 - Épreuve orale (exposé, entretien)
 
-### 🤔 Philosophie
+### 🤔 Philosophie (coef 2)
 - Notions : Liberté, Justice, Vérité, Langage, Travail, État
 - Dissertation dialectique
 - Analyse de texte philosophique
 - Culture philosophique (auteurs, courants)
 
-### 🇬🇧 Anglais
+### 🇬🇧 Anglais (coef 3)
 - Grammar (temps, voix, modaux, subordonnées)
 - Vocabulary (thèmes : santé, éducation, environnement)
 - Essay Writing (argumentatif, narratif, descriptif)
 - Reading Comprehension
+
+### 📚 Autres matières
+- **ECM (coef 2)** : Éducation à la Citoyenneté et à la Morale
+- **Géographie (coef 2)** : Ressources, environnement, développement
+- **Littérature (coef 2)** : Analyse littéraire, dissertation
+- **EPS (coef 2)** : Éducation Physique et Sportive
+- **Informatique (coef 2)** : Algorithmique, programmation
 
 ---
 
@@ -125,7 +171,7 @@ Chaque matière contient 5+ questions interactives avec correction instantanée 
 
 ## 🃏 Flashcards disponibles
 
-Cartes mémoire pour mémoriser les formules et concepts clés :
+Cartes mémoire pour mémoriser les formules et concepts clés (cliquer pour retourner) :
 
 - **Maths** : 8 flashcards (complexes, exp, ln, suites, probas, etc.)
 - **Physique** : 8 flashcards (Newton, gravitation, Ohm, Lenz, Einstein, etc.)
@@ -134,17 +180,19 @@ Cartes mémoire pour mémoriser les formules et concepts clés :
 
 ---
 
-## 📥 Sujets Bac 2024-2025
+## 📥 Sujets Bac 2024-2025 (PDF)
 
-Liens directs vers les sujets PDF officiels :
+Liens directs vers les sujets officiels :
 
-- [Maths Bac 2024 Série C-E](https://epreuvesetcorriges.com/categories/cameroun/examens/bac/35897-corrige-bac-2024-mathematiques-serie-c-e)
-- [Français Bac 2024 Série C-E](https://epreuvesetcorriges.com/categories/cameroun/examens/bac/39805-epreuve-de-langue-francaise-baccalaureat-2025-serie-c-d-e-ti-cameroun)
-- [Philosophie Bac 2024 Série C-D-E-TI](https://epreuvesetcorriges.com/categories/cameroun/examens/bac/36051-epreuve-bac-2024-philosophie-serie-c-d-e-ti)
-- [Anglais Bac 2025 Série C-D-E-TI](https://epreuvesetcorriges.com/categories/cameroun/examens/bac/39792-epreuve-d-anglais-corrige-baccalaureat-2025-serie-c-d-e-ti-cameroun)
-- [SVT Bac 2025 Série C](https://epreuvesetcorriges.com/categories/cameroun/examens/bac/39801-epreuve-de-svteehb-corrige-baccalaureat-2025-serie-c-ti-cameroun)
-- [Physique Pratique Bac 2025 Série C](https://epreuvesetcorriges.com/categories/cameroun/examens/bac/39806-epreuve-pratique-de-physique-baccalaureat-2025-serie-c-cameroun)
-- [Informatique Bac 2025 Série C-D-E](https://epreuvesetcorriges.com/categories/cameroun/examens/bac/39807-epreuve-theorique-d-informatique-baccalaureat-2025-serie-c-d-e-cameroun)
+| Matière | Année | Lien |
+|---------|-------|------|
+| 📐 Maths | 2024 | [Télécharger](https://epreuvesetcorriges.com/categories/cameroun/examens/bac/35897-corrige-bac-2024-mathematiques-serie-c-e) |
+| 📖 Français | 2025 | [Télécharger](https://epreuvesetcorriges.com/categories/cameroun/examens/bac/39805-epreuve-de-langue-francaise-baccalaureat-2025-serie-c-d-e-ti-cameroun) |
+| 🤔 Philosophie | 2024 | [Télécharger](https://epreuvesetcorriges.com/categories/cameroun/examens/bac/36051-epreuve-bac-2024-philosophie-serie-c-d-e-ti) |
+| 🇬🇧 Anglais | 2025 | [Télécharger](https://epreuvesetcorriges.com/categories/cameroun/examens/bac/39792-epreuve-d-anglais-corrige-baccalaureat-2025-serie-c-d-e-ti-cameroun) |
+| 🧬 SVT | 2025 | [Télécharger](https://epreuvesetcorriges.com/categories/cameroun/examens/bac/39801-epreuve-de-svteehb-corrige-baccalaureat-2025-serie-c-ti-cameroun) |
+| ⚡ Physique Pratique | 2025 | [Télécharger](https://epreuvesetcorriges.com/categories/cameroun/examens/bac/39806-epreuve-pratique-de-physique-baccalaureat-2025-serie-c-cameroun) |
+| 💻 Informatique | 2025 | [Télécharger](https://epreuvesetcorriges.com/categories/cameroun/examens/bac/39807-epreuve-theorique-d-informatique-baccalaureat-2025-serie-c-d-e-cameroun) |
 
 ---
 
@@ -170,20 +218,27 @@ cd TerminaleC-Prep
 
 ```
 TerminaleC-Prep/
-├── index.html              # Application complète
+├── index.html              # App complète (quiz, flashcards, calculateur)
 ├── README.md               # Documentation
+├── matieres/               # Dossiers par matière
+│   ├── maths/
+│   ├── physique/
+│   ├── chimie/
+│   ├── svteehb/
+│   ├── francais/
+│   ├── philosophie/
+│   ├── anglais/
+│   ├── ecm/
+│   ├── tm/
+│   ├── litterature/
+│   └── info/
 ├── assets/
-│   ├── maths/              # Ressources Maths
-│   ├── physique/           # Ressources Physique
-│   ├── chimie/             # Ressources Chimie
-│   ├── svt/                # Ressources SVT
-│   ├── francais/           # Ressources Français
-│   ├── philosophie/        # Ressources Philo
-│   ├── anglais/            # Ressources Anglais
-│   ├── flashcards/         # Flashcards
-│   └── quiz/               # Quiz
-└── .github/
-    └── workflows/          # CI/CD
+│   ├── flashcards/
+│   ├── quiz/
+│   ├── pdf/
+│   └── images/
+└── docs/
+    └── PLAN_HUB.md         # Plan de développement
 ```
 
 ---
@@ -207,6 +262,14 @@ MIT
 
 ---
 
+## 🔗 Liens officiels
+
+- **OBC** : [obc.cm](https://obc.cm)
+- **MINESEC** : [minesec.gov.cm](https://www.minesec.gov.cm)
+- **Sujets Bac** : [epreuvesetcorriges.com](https://epreuvesetcorriges.com)
+
+---
+
 <div align="center">
-  <b>🎯 Objectif : 18/20 au Bac C — Bonne préparation !</b>
+  <b>🎯 Objectif : 18/20 au Bac C — 558+ points sur 620 — Bonne préparation !</b>
 </div>
