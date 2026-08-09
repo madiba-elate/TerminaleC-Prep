@@ -27,10 +27,8 @@ L'application ne se contente pas de lister des cours — elle fournit les **vrai
 | Fonctionnalité | Description |
 |----------------|-------------|
 | **📊 Dashboard** | Vue d'ensemble avec statistiques de progression (jours restants, tâches complétées, heures étudiées, streak) |
-| **📋 Coefficients** | Tableaux officiels OBC pour le Bac C (Terminale) ET le Probatoire C (Première) avec durées et points |
 | **📚 Programmes** | Programmes officiels MINESEC pour chaque matière avec détail des chapitres |
 | **🏖️ Vacances** | Planning détaillé de 4 semaines pour la préparation estivale (Suites, Fonctions, Exp/ln, Intégrales, Probas) |
-| **📝 Séquences** | Suivi des séquences de Première (Suites/Fonctions → Exp/ln → Intégrales/Probas) |
 | **📥 Ressources** | Liens vers les ressources officielles (OBC, MINESEC) et pédagogiques (Yvan Monka, Khan Academy, Exo7) |
 | **⏱️ Timer** | Minuteur Pomodoro intégré (25/30/45/60 min) avec statistiques d'étude |
 | **💾 Sauvegarde** | Progression sauvegardée en localStorage |
@@ -54,7 +52,6 @@ L'application ne se contente pas de lister des cours — elle fournit les **vrai
 | **EPS** | **1** | CCF | 20 |
 | **TOTAL** | **23** | | **460** |
 
-### Probatoire C (Première)
 
 | Matière | Coefficient | Durée | Points |
 |---------|-------------|-------|--------|
