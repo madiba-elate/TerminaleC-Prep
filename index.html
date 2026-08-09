@@ -8,9 +8,7 @@
     <style>
         :root {
             --primary: #3b82f6;
-            --primary-dark: #2563eb;
             --secondary: #8b5cf6;
-            --accent: #06b6d4;
             --success: #10b981;
             --warning: #f59e0b;
             --danger: #ef4444;
@@ -19,13 +17,9 @@
             --bg-elevated: #334155;
             --text: #f1f5f9;
             --text-muted: #94a3b8;
-            --text-dim: #64748b;
             --border: #334155;
-            --shadow: 0 4px 6px -1px rgba(0,0,0,0.3);
-            --shadow-lg: 0 10px 15px -3px rgba(0,0,0,0.4);
             --radius: 12px;
             --radius-lg: 16px;
-            --transition: all 0.2s ease;
         }
 
         [data-theme="light"] {
@@ -34,24 +28,19 @@
             --bg-elevated: #f1f5f9;
             --text: #1e293b;
             --text-muted: #64748b;
-            --text-dim: #94a3b8;
             --border: #e2e8f0;
-            --shadow: 0 4px 6px -1px rgba(0,0,0,0.1);
-            --shadow-lg: 0 10px 15px -3px rgba(0,0,0,0.1);
         }
 
         * { margin: 0; padding: 0; box-sizing: border-box; }
 
         body {
-            font-family: 'Inter', system-ui, -apple-system, sans-serif;
+            font-family: 'Inter', system-ui, sans-serif;
             background: var(--bg);
             color: var(--text);
             line-height: 1.6;
             min-height: 100vh;
-            transition: var(--transition);
         }
 
-        /* Header */
         .header {
             background: linear-gradient(135deg, #1e3a5f 0%, #1a5f7a 50%, #159895 100%);
             color: white;
@@ -62,7 +51,6 @@
         .header h1 { font-size: 2.5rem; font-weight: 800; margin-bottom: 0.5rem; }
         .header p { font-size: 1rem; opacity: 0.9; }
 
-        /* Navigation */
         .nav {
             background: var(--bg-card);
             padding: 0.75rem 1rem;
@@ -74,7 +62,6 @@
             top: 0;
             z-index: 100;
             border-bottom: 1px solid var(--border);
-            box-shadow: var(--shadow);
         }
 
         .nav-btn {
@@ -86,13 +73,12 @@
             cursor: pointer;
             font-size: 0.85rem;
             font-weight: 500;
-            transition: var(--transition);
+            transition: all 0.2s;
         }
 
         .nav-btn:hover { background: var(--bg-elevated); color: var(--text); }
         .nav-btn.active { background: var(--primary); color: white; }
 
-        /* Main */
         .main { max-width: 1200px; margin: 0 auto; padding: 2rem; }
 
         .section { display: none; animation: fadeIn 0.3s ease; }
@@ -103,13 +89,11 @@
             to { opacity: 1; transform: translateY(0); }
         }
 
-        /* Cards */
         .card {
             background: var(--bg-card);
             border-radius: var(--radius-lg);
             padding: 1.5rem;
             margin-bottom: 1.5rem;
-            box-shadow: var(--shadow);
             border: 1px solid var(--border);
         }
 
@@ -122,121 +106,6 @@
             gap: 0.5rem;
         }
 
-        /* Subject Grid */
-        .subjects-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-            gap: 1rem;
-        }
-
-        .subject-card {
-            background: var(--bg-card);
-            border-radius: var(--radius);
-            padding: 1.5rem;
-            box-shadow: var(--shadow);
-            border: 1px solid var(--border);
-            border-left: 4px solid var(--primary);
-            cursor: pointer;
-            transition: var(--transition);
-        }
-
-        .subject-card:hover { transform: translateY(-4px); border-color: var(--primary); }
-        .subject-card.math { border-left-color: #3b82f6; }
-        .subject-card.physics { border-left-color: #8b5cf6; }
-        .subject-card.chemistry { border-left-color: #10b981; }
-        .subject-card.svt { border-left-color: #f59e0b; }
-        .subject-card.philo { border-left-color: #ec4899; }
-        .subject-card.english { border-left-color: #06b6d4; }
-
-        .subject-name { font-weight: 700; font-size: 1.1rem; margin-bottom: 0.3rem; }
-        .subject-details { font-size: 0.85rem; color: var(--text-muted); }
-        .subject-coeff {
-            display: inline-block;
-            background: var(--bg-elevated);
-            padding: 0.2rem 0.6rem;
-            border-radius: 4px;
-            font-size: 0.75rem;
-            font-weight: 600;
-            color: var(--primary);
-            margin-top: 0.5rem;
-        }
-
-        /* Quiz Styles */
-        .quiz-container { max-width: 800px; margin: 0 auto; }
-        .quiz-question {
-            background: var(--bg-card);
-            border-radius: var(--radius);
-            padding: 1.5rem;
-            margin-bottom: 1rem;
-            border: 1px solid var(--border);
-        }
-
-        .quiz-question h3 { margin-bottom: 1rem; color: var(--primary); }
-        .quiz-options { display: flex; flex-direction: column; gap: 0.5rem; }
-        .quiz-option {
-            padding: 0.75rem 1rem;
-            background: var(--bg-elevated);
-            border: 2px solid var(--border);
-            border-radius: 8px;
-            cursor: pointer;
-            transition: var(--transition);
-        }
-
-        .quiz-option:hover { border-color: var(--primary); }
-        .quiz-option.correct { background: rgba(16, 185, 129, 0.2); border-color: var(--success); }
-        .quiz-option.incorrect { background: rgba(239, 68, 68, 0.2); border-color: var(--danger); }
-        .quiz-option.disabled { pointer-events: none; opacity: 0.7; }
-
-        /* Flashcard Styles */
-        .flashcard-container { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 1rem; }
-        .flashcard {
-            background: var(--bg-card);
-            border-radius: var(--radius);
-            padding: 1.5rem;
-            border: 1px solid var(--border);
-            cursor: pointer;
-            transition: var(--transition);
-            min-height: 150px;
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-        }
-
-        .flashcard:hover { border-color: var(--primary); transform: scale(1.02); }
-        .flashcard-front { font-weight: 600; font-size: 1.1rem; }
-        .flashcard-back { display: none; color: var(--text-muted); margin-top: 0.5rem; }
-        .flashcard.flipped .flashcard-back { display: block; }
-        .flashcard.flipped .flashcard-front { color: var(--primary); }
-
-        /* Resource Links */
-        .resource-list { display: flex; flex-direction: column; gap: 0.75rem; }
-        .resource-item {
-            display: flex;
-            align-items: center;
-            gap: 1rem;
-            padding: 1rem;
-            background: var(--bg-elevated);
-            border-radius: 10px;
-            transition: var(--transition);
-        }
-
-        .resource-item:hover { background: var(--border); }
-        .resource-icon { font-size: 1.5rem; }
-        .resource-info { flex: 1; }
-        .resource-name { font-weight: 600; }
-        .resource-desc { font-size: 0.8rem; color: var(--text-muted); }
-        .resource-btn {
-            padding: 0.5rem 1rem;
-            background: var(--primary);
-            color: white;
-            border: none;
-            border-radius: 8px;
-            cursor: pointer;
-            font-size: 0.85rem;
-            text-decoration: none;
-        }
-
-        /* Tabs */
         .tabs { display: flex; gap: 0.5rem; margin-bottom: 1.5rem; flex-wrap: wrap; }
         .tab-btn {
             padding: 0.5rem 1rem;
@@ -247,89 +116,136 @@
             cursor: pointer;
             font-size: 0.85rem;
             font-weight: 600;
-            transition: var(--transition);
+            transition: all 0.2s;
         }
-
         .tab-btn:hover { border-color: var(--primary); color: var(--text); }
         .tab-btn.active { background: var(--primary); border-color: var(--primary); color: white; }
         .tab-content { display: none; }
         .tab-content.active { display: block; }
 
-        /* Dark mode toggle */
-        .dark-mode-toggle {
-            position: fixed;
-            bottom: 2rem;
-            right: 2rem;
-            width: 50px;
-            height: 50px;
-            border-radius: 50%;
-            background: var(--primary);
-            color: white;
-            border: none;
-            cursor: pointer;
-            font-size: 1.3rem;
-            box-shadow: var(--shadow-lg);
-            z-index: 1000;
+        /* Coefficient Tables */
+        .coeff-table { width: 100%; border-collapse: collapse; margin-top: 1rem; }
+        .coeff-table th, .coeff-table td {
+            padding: 0.75rem;
+            text-align: left;
+            border-bottom: 1px solid var(--border);
         }
+        .coeff-table th { background: var(--bg-elevated); font-weight: 600; }
+        .coeff-table td { color: var(--text-muted); }
+        .coeff-table tr:hover td { background: var(--bg-elevated); }
+        .coeff-badge { background: var(--primary); color: white; padding: 0.2rem 0.6rem; border-radius: 4px; font-weight: 700; font-size: 0.85rem; }
+        .total-row { background: var(--bg-elevated); font-weight: 700; }
+        .total-row td { color: var(--text); }
+        .group-header { background: rgba(59,130,246,0.1); font-weight: 700; color: var(--primary); }
 
-        /* Responsive */
+        /* Calculator */
+        .calculator { max-width: 600px; margin: 0 auto; }
+        .calc-input {
+            width: 100%;
+            padding: 0.75rem;
+            margin-bottom: 0.5rem;
+            background: var(--bg-elevated);
+            border: 2px solid var(--border);
+            border-radius: 8px;
+            color: var(--text);
+            font-size: 1rem;
+        }
+        .calc-input:focus { border-color: var(--primary); outline: none; }
+        .calc-row { display: flex; align-items: center; gap: 1rem; margin-bottom: 0.5rem; }
+        .calc-row label { flex: 1; font-size: 0.9rem; }
+        .calc-row input { width: 80px; text-align: center; }
+        .coeff-label { color: var(--primary); font-weight: 600; min-width: 40px; }
+        .result-box {
+            background: var(--bg-elevated);
+            border-radius: var(--radius);
+            padding: 1.5rem;
+            text-align: center;
+            margin-top: 1.5rem;
+        }
+        .result-moyenne { font-size: 3rem; font-weight: 800; color: var(--primary); }
+        .result-detail { color: var(--text-muted); margin-top: 0.5rem; }
+        .mention { font-size: 1.2rem; font-weight: 600; margin-top: 0.5rem; }
+        .mention.passable { color: var(--text-muted); }
+        .mention.assez-bien { color: var(--warning); }
+        .mention.bien { color: var(--primary); }
+        .mention.tres-bien { color: var(--success); }
+
+        .subjects-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 1rem; }
+        .subject-card {
+            background: var(--bg-card);
+            border-radius: var(--radius);
+            padding: 1.25rem;
+            border: 1px solid var(--border);
+            border-left: 4px solid var(--primary);
+            cursor: pointer;
+            transition: all 0.2s;
+        }
+        .subject-card:hover { transform: translateY(-4px); border-color: var(--primary); }
+
+        .flashcard-container { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 1rem; }
+        .flashcard {
+            background: var(--bg-card);
+            border-radius: var(--radius);
+            padding: 1.5rem;
+            border: 1px solid var(--border);
+            cursor: pointer;
+            transition: all 0.2s;
+            min-height: 150px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+        }
+        .flashcard:hover { border-color: var(--primary); transform: scale(1.02); }
+        .flashcard-front { font-weight: 600; font-size: 1.1rem; }
+        .flashcard-back { display: none; color: var(--text-muted); margin-top: 0.5rem; }
+        .flashcard.flipped .flashcard-back { display: block; }
+        .flashcard.flipped .flashcard-front { color: var(--primary); }
+
+        .quiz-container { max-width: 800px; }
+        .quiz-question { background: var(--bg-card); border-radius: var(--radius); padding: 1.5rem; margin-bottom: 1rem; border: 1px solid var(--border); }
+        .quiz-question h3 { margin-bottom: 1rem; color: var(--primary); }
+        .quiz-options { display: flex; flex-direction: column; gap: 0.5rem; }
+        .quiz-option { padding: 0.75rem 1rem; background: var(--bg-elevated); border: 2px solid var(--border); border-radius: 8px; cursor: pointer; transition: all 0.2s; }
+        .quiz-option:hover { border-color: var(--primary); }
+        .quiz-option.correct { background: rgba(16,185,129,0.2); border-color: var(--success); }
+        .quiz-option.incorrect { background: rgba(239,68,68,0.2); border-color: var(--danger); }
+        .quiz-option.disabled { pointer-events: none; opacity: 0.7; }
+
+        .resource-list { display: flex; flex-direction: column; gap: 0.75rem; }
+        .resource-item { display: flex; align-items: center; gap: 1rem; padding: 1rem; background: var(--bg-elevated); border-radius: 10px; transition: all 0.2s; }
+        .resource-item:hover { background: var(--border); }
+        .resource-icon { font-size: 1.5rem; }
+        .resource-info { flex: 1; }
+        .resource-name { font-weight: 600; }
+        .resource-desc { font-size: 0.8rem; color: var(--text-muted); }
+        .resource-btn { padding: 0.5rem 1rem; background: var(--primary); color: white; border: none; border-radius: 8px; cursor: pointer; text-decoration: none; }
+
+        .dark-mode-toggle { position: fixed; bottom: 2rem; right: 2rem; width: 50px; height: 50px; border-radius: 50%; background: var(--primary); color: white; border: none; cursor: pointer; font-size: 1.3rem; z-index: 1000; }
+
         @media (max-width: 768px) {
             .header h1 { font-size: 1.8rem; }
             .main { padding: 1rem; }
         }
 
-        /* Progress bar */
-        .progress-bar {
-            height: 8px;
-            background: var(--bg-elevated);
-            border-radius: 4px;
-            overflow: hidden;
-            margin-top: 0.5rem;
+        @media print {
+            .nav, .dark-mode-toggle { display: none; }
+            .section { display: block !important; }
         }
-
-        .progress-fill {
-            height: 100%;
-            background: var(--primary);
-            border-radius: 4px;
-            transition: width 0.3s;
-        }
-
-        /* Badge */
-        .badge {
-            display: inline-block;
-            padding: 0.2rem 0.6rem;
-            border-radius: 4px;
-            font-size: 0.75rem;
-            font-weight: 600;
-        }
-
-        .badge-primary { background: var(--primary); color: white; }
-        .badge-success { background: var(--success); color: white; }
-        .badge-warning { background: var(--warning); color: black; }
-
-        /* Table */
-        table { width: 100%; border-collapse: collapse; margin-top: 1rem; }
-        th, td { padding: 0.75rem; text-align: left; border-bottom: 1px solid var(--border); }
-        th { background: var(--bg-elevated); font-weight: 600; }
-        td { color: var(--text-muted); }
-        tr:hover td { background: var(--bg-elevated); }
-        .coeff-badge { background: var(--primary); color: white; padding: 0.2rem 0.6rem; border-radius: 4px; font-weight: 700; }
-        .total-row { background: var(--bg-elevated); font-weight: 700; }
-        .total-row td { color: var(--text); }
     </style>
 </head>
 <body>
     <header class="header">
         <h1>🎓 HSC — High School Course</h1>
-        <p>Préparation au Bac C (Cameroun) — Données officielles OBC/MINESEC</p>
+        <p>Préparation au Bac C (Cameroun) — Données officielles</p>
     </header>
 
     <nav class="nav">
         <button class="nav-btn active" data-section="dashboard">📊 Dashboard</button>
-        <button class="nav-btn" data-section="matieres">📚 Matières</button>
+        <button class="nav-btn" data-section="coefficients">📋 Coefficients</button>
+        <button class="nav-btn" data-section="calculateur">🧮 Calculateur</button>
         <button class="nav-btn" data-section="quiz">🧠 Quiz</button>
         <button class="nav-btn" data-section="flashcards">🃏 Flashcards</button>
-        <button class="nav-btn" data-section="resources">📥 Ressources & Sujets</button>
+        <button class="nav-btn" data-section="resources">📥 Ressources</button>
     </nav>
 
     <main class="main">
@@ -337,169 +253,148 @@
         <section class="section active" id="dashboard">
             <div class="card">
                 <div class="card-title">📊 Dashboard — Vue d'ensemble</div>
-                <p style="color:var(--text-muted);margin-bottom:1rem;">Bienvenue sur HSC — High School Course. Plateforme de préparation au Bac C avec données officielles OBC/MINESEC.</p>
+                <p style="color:var(--text-muted);margin-bottom:1rem;">Bienvenue sur HSC. Plateforme de préparation au Bac C avec données officielles.</p>
                 <div class="subjects-grid">
-                    <div class="subject-card math" onclick="showSection('matieres')">
+                    <div class="subject-card" onclick="showSection('coefficients')">
                         <div class="subject-name">📐 Mathématiques</div>
-                        <div class="subject-details">Nombres complexes, Fonctions, Analyse, Probas, Géométrie</div>
-                        <span class="subject-coeff">Coefficient 7</span>
+                        <div class="subject-details">Nombres complexes, Fonctions, Analyse, Probas</div>
+                        <span style="color:var(--primary);font-weight:700;">Coef 7</span>
                     </div>
-                    <div class="subject-card physics" onclick="showSection('matieres')">
-                        <div class="subject-name">⚡ Physique-Chimie</div>
-                        <div class="subject-details">Mécanique, Électricité, Optique, Nucléaire, Chimie organique</div>
-                        <span class="subject-coeff">Coefficient 5</span>
+                    <div class="subject-card" onclick="showSection('coefficients')">
+                        <div class="subject-name">⚡ Physique</div>
+                        <div class="subject-details">Mécanique, Électricité, Optique, Nucléaire</div>
+                        <span style="color:var(--primary);font-weight:700;">Coef 4</span>
                     </div>
-                    <div class="subject-card svt" onclick="showSection('matieres')">
-                        <div class="subject-name">🧬 SVT</div>
-                        <div class="subject-details">Génétique, Géologie, Physiologie, Écologie</div>
-                        <span class="subject-coeff">Coefficient 3</span>
-                    </div>
-                    <div class="subject-card english" onclick="showSection('matieres')">
-                        <div class="subject-name">📖 Français</div>
-                        <div class="subject-details">Dissertation, Commentaire, Contraction, Oral</div>
-                        <span class="subject-coeff">Coefficient 3</span>
-                    </div>
-                    <div class="subject-card philo" onclick="showSection('matieres')">
-                        <div class="subject-name">🤔 Philosophie</div>
-                        <div class="subject-details">Notions, Dissertation, Analyse de texte</div>
-                        <span class="subject-coeff">Coefficient 2</span>
-                    </div>
-                    <div class="subject-card english" onclick="showSection('matieres')">
+                    <div class="subject-card" onclick="showSection('coefficients')">
                         <div class="subject-name">🇬🇧 Anglais</div>
-                        <div class="subject-details">Grammar, Vocabulary, Essay, Comprehension</div>
-                        <span class="subject-coeff">Coefficient 2</span>
+                        <div class="subject-details">Grammar, Vocabulary, Essay</div>
+                        <span style="color:var(--primary);font-weight:700;">Coef 3</span>
+                    </div>
+                    <div class="subject-card" onclick="showSection('coefficients')">
+                        <div class="subject-name">🧪 Chimie</div>
+                        <div class="subject-details">Cinétique, Équilibres, Organique</div>
+                        <span style="color:var(--primary);font-weight:700;">Coef 2</span>
+                    </div>
+                    <div class="subject-card" onclick="showSection('coefficients')">
+                        <div class="subject-name">🧬 SVTEEHB</div>
+                        <div class="subject-details">Génétique, Géologie, Physiologie</div>
+                        <span style="color:var(--primary);font-weight:700;">Coef 2</span>
+                    </div>
+                    <div class="subject-card" onclick="showSection('coefficients')">
+                        <div class="subject-name">💻 Informatique</div>
+                        <div class="subject-details">Algorithmique, Programmation</div>
+                        <span style="color:var(--primary);font-weight:700;">Coef 2</span>
                     </div>
                 </div>
             </div>
 
             <div class="card">
-                <div class="card-title">📋 Coefficients Officiels Bac C</div>
-                <table>
-                    <thead><tr><th>Matière</th><th>Coefficient</th><th>Durée</th><th>Points</th></tr></thead>
+                <div class="card-title">📋 Résumé des coefficients</div>
+                <table class="coeff-table">
+                    <thead><tr><th>Groupe</th><th>Matière</th><th>Coef</th></tr></thead>
                     <tbody>
-                        <tr><td>📐 Mathématiques</td><td><span class="coeff-badge">7</span></td><td>4h</td><td>140</td></tr>
-                        <tr><td>⚡ Physique-Chimie</td><td><span class="coeff-badge">5</span></td><td>6h</td><td>100</td></tr>
-                        <tr><td>🧬 SVT</td><td><span class="coeff-badge">3</span></td><td>3h</td><td>60</td></tr>
-                        <tr><td>📖 Français</td><td><span class="coeff-badge">3</span></td><td>4h</td><td>60</td></tr>
-                        <tr><td>🤔 Philosophie</td><td><span class="coeff-badge">2</span></td><td>3h</td><td>40</td></tr>
-                        <tr><td>🇬🇧 Anglais</td><td><span class="coeff-badge">2</span></td><td>2h</td><td>40</td></tr>
-                        <tr><td>🏃 EPS</td><td><span class="coeff-badge">1</span></td><td>CCF</td><td>20</td></tr>
-                        <tr class="total-row"><td>TOTAL</td><td><span class="coeff-badge">23</span></td><td></td><td>460</td></tr>
+                        <tr class="group-header"><td colspan="3">1ER GROUPE</td></tr>
+                        <tr><td></td><td>📐 Mathématiques</td><td><span class="coeff-badge">7</span></td></tr>
+                        <tr><td></td><td>⚡ Physique</td><td><span class="coeff-badge">4</span></td></tr>
+                        <tr><td></td><td>🇬🇧 Anglais</td><td><span class="coeff-badge">3</span></td></tr>
+                        <tr><td></td><td>💻 Informatique</td><td><span class="coeff-badge">2</span></td></tr>
+                        <tr class="group-header"><td colspan="3">2ÈME GROUPE</td></tr>
+                        <tr><td></td><td>🧪 Chimie</td><td><span class="coeff-badge">2</span></td></tr>
+                        <tr><td></td><td>📚 ECM</td><td><span class="coeff-badge">2</span></td></tr>
+                        <tr><td></td><td>🧬 SVTEEHB</td><td><span class="coeff-badge">2</span></td></tr>
+                        <tr class="group-header"><td colspan="3">3ÈME GROUPE</td></tr>
+                        <tr><td></td><td>🌍 Géographie</td><td><span class="coeff-badge">2</span></td></tr>
+                        <tr><td></td><td>📚 Littérature</td><td><span class="coeff-badge">2</span></td></tr>
+                        <tr><td></td><td>🤔 Philosophie</td><td><span class="coeff-badge">2</span></td></tr>
+                        <tr><td></td><td>🏃 EPS</td><td><span class="coeff-badge">2</span></td></tr>
+                        <tr><td></td><td>📖 Langue Française</td><td><span class="coeff-badge">1</span></td></tr>
+                        <tr class="total-row"><td></td><td>TOTAL</td><td><span class="coeff-badge">31</span></td></tr>
                     </tbody>
                 </table>
-                <p style="margin-top:1rem;font-size:0.85rem;color:var(--text-muted);">Pour 18/20 = 360+ points sur 460 (78%)</p>
+                <p style="margin-top:1rem;font-size:0.85rem;color:var(--text-muted);">Pour 18/20, il faut viser <strong>558+ points sur 620</strong>.</p>
             </div>
         </section>
 
-        <!-- Matières -->
-        <section class="section" id="matieres">
-            <div class="tabs">
-                <button class="tab-btn active" data-tab="maths">📐 Maths</button>
-                <button class="tab-btn" data-tab="physique">⚡ Physique</button>
-                <button class="tab-btn" data-tab="chimie">🧪 Chimie</button>
-                <button class="tab-btn" data-tab="svt">🧬 SVT</button>
-                <button class="tab-btn" data-tab="francais">📖 Français</button>
-                <button class="tab-btn" data-tab="philo">🤔 Philo</button>
-                <button class="tab-btn" data-tab="anglais">🇬🇧 Anglais</button>
-            </div>
+        <!-- Coefficients -->
+        <section class="section" id="coefficients">
+            <div class="card">
+                <div class="card-title">📋 Coefficients Officiels — Bac C (Terminale)</div>
+                <p style="color:var(--text-muted);margin-bottom:1rem;">Source : Bulletin officiel Terminale C</p>
+                
+                <h3 style="color:var(--primary);margin-bottom:0.5rem;">1er Groupe</h3>
+                <table class="coeff-table">
+                    <thead><tr><th>Matière</th><th>Coef</th><th>Points max</th></tr></thead>
+                    <tbody>
+                        <tr><td>📐 Mathématiques</td><td><span class="coeff-badge">7</span></td><td>140</td></tr>
+                        <tr><td>⚡ Physique</td><td><span class="coeff-badge">4</span></td><td>80</td></tr>
+                        <tr><td>🇬🇧 Anglais</td><td><span class="coeff-badge">3</span></td><td>60</td></tr>
+                        <tr><td>💻 Informatique</td><td><span class="coeff-badge">2</span></td><td>40</td></tr>
+                        <tr class="total-row"><td>Sous-total</td><td><span class="coeff-badge">16</span></td><td>320</td></tr>
+                    </tbody>
+                </table>
 
-            <!-- Maths -->
-            <div class="tab-content active" id="maths">
-                <div class="card">
-                    <div class="card-title">📐 Mathématiques — Programme Terminale C</div>
-                    <ul style="color:var(--text-muted);padding-left:1.5rem;">
-                        <li>Nombres complexes (forme algébrique, trigonométrique, exponentielle)</li>
-                        <li>Fonctions numériques (exp, ln, puissances, polynômes)</li>
-                        <li>Suites numériques (arithmétiques, géométriques, convergence)</li>
-                        <li>Arithmétique (divisibilité, PGCD, PPCM, congruences)</li>
-                        <li>Probabilités et statistiques (loi binomiale, espérance, variance)</li>
-                        <li>Géométrie dans l'espace (droites, plans, intersections)</li>
-                        <li>Équations différentielles</li>
-                        <li>Analyse vectorielle et matricielle</li>
-                    </ul>
+                <h3 style="color:var(--primary);margin:1rem 0 0.5rem;">2ème Groupe</h3>
+                <table class="coeff-table">
+                    <thead><tr><th>Matière</th><th>Coef</th><th>Points max</th></tr></thead>
+                    <tbody>
+                        <tr><td>🧪 Chimie</td><td><span class="coeff-badge">2</span></td><td>40</td></tr>
+                        <tr><td>📚 ECM</td><td><span class="coeff-badge">2</span></td><td>40</td></tr>
+                        <tr><td>🧬 SVTEEHB</td><td><span class="coeff-badge">2</span></td><td>40</td></tr>
+                        <tr class="total-row"><td>Sous-total</td><td><span class="coeff-badge">6</span></td><td>120</td></tr>
+                    </tbody>
+                </table>
+
+                <h3 style="color:var(--primary);margin:1rem 0 0.5rem;">3ème Groupe</h3>
+                <table class="coeff-table">
+                    <thead><tr><th>Matière</th><th>Coef</th><th>Points max</th></tr></thead>
+                    <tbody>
+                        <tr><td>🌍 Géographie</td><td><span class="coeff-badge">2</span></td><td>40</td></tr>
+                        <tr><td>📚 Littérature</td><td><span class="coeff-badge">2</span></td><td>40</td></tr>
+                        <tr><td>🤔 Philosophie</td><td><span class="coeff-badge">2</span></td><td>40</td></tr>
+                        <tr><td>🏃 EPS</td><td><span class="coeff-badge">2</span></td><td>40</td></tr>
+                        <tr><td>📖 Langue Française</td><td><span class="coeff-badge">1</span></td><td>20</td></tr>
+                        <tr class="total-row"><td>Sous-total</td><td><span class="coeff-badge">9</span></td><td>180</td></tr>
+                    </tbody>
+                </table>
+
+                <div style="background:var(--bg-elevated);border-radius:var(--radius);padding:1rem;margin-top:1rem;">
+                    <h3 style="color:var(--success);">TOTAL GÉNÉRAL</h3>
+                    <p style="font-size:2rem;font-weight:800;color:var(--primary);">31 <span style="font-size:1rem;color:var(--text-muted);">coefficients = 620 points max</span></p>
                 </div>
             </div>
+        </section>
 
-            <!-- Physique -->
-            <div class="tab-content" id="physique">
-                <div class="card">
-                    <div class="card-title">⚡ Physique — Programme Terminale C</div>
-                    <ul style="color:var(--text-muted);padding-left:1.5rem;">
-                        <li>Mécanique (lois de Newton, mouvement, gravitation, satellites)</li>
-                        <li>Électrostatique (champ électrique, potentiel, condensateurs)</li>
-                        <li>Électrocinétique (loi d'Ohm, Kirchhoff, RC, RL)</li>
-                        <li>Magnétisme et induction (Lorentz, Lenz, Faraday)</li>
-                        <li>Optique ondulatoire (diffraction, interférence)</li>
-                        <li>Physique nucléaire (radioactivité, datation, énergie)</li>
-                        <li>Thermodynamique</li>
-                    </ul>
-                </div>
-            </div>
+        <!-- Calculateur -->
+        <section class="section" id="calculateur">
+            <div class="card calculator">
+                <div class="card-title">🧮 Calculateur de Moyenne — Bac C</div>
+                <p style="color:var(--text-muted);margin-bottom:1rem;">Entrez vos notes pour calculer votre moyenne.</p>
 
-            <!-- Chimie -->
-            <div class="tab-content" id="chimie">
-                <div class="card">
-                    <div class="card-title">🧪 Chimie — Programme Terminale C</div>
-                    <ul style="color:var(--text-muted);padding-left:1.5rem;">
-                        <li>Cinétique chimique (vitesse, facteurs cinétiques)</li>
-                        <li>Équilibres chimiques (acido-basiques, précipitation, complexation)</li>
-                        <li>Oxydoréduction et électrochimie (pile, électrolyse)</li>
-                        <li>Chimie organique (estérification, saponification, polymérisation)</li>
-                        <li>Chimie industrielle (Haber, contact, etc.)</li>
-                    </ul>
-                </div>
-            </div>
+                <h3 style="color:var(--primary);margin-bottom:0.5rem;">1er Groupe</h3>
+                <div class="calc-row"><label>📐 Mathématiques (coef 7)</label><input type="number" class="calc-input" id="note-maths" min="0" max="20" placeholder="0-20"><span class="coeff-label">×7</span></div>
+                <div class="calc-row"><label>⚡ Physique (coef 4)</label><input type="number" class="calc-input" id="note-physique" min="0" max="20" placeholder="0-20"><span class="coeff-label">×4</span></div>
+                <div class="calc-row"><label>🇬🇧 Anglais (coef 3)</label><input type="number" class="calc-input" id="note-anglais" min="0" max="20" placeholder="0-20"><span class="coeff-label">×3</span></div>
+                <div class="calc-row"><label>💻 Informatique (coef 2)</label><input type="number" class="calc-input" id="note-info" min="0" max="20" placeholder="0-20"><span class="coeff-label">×2</span></div>
 
-            <!-- SVT -->
-            <div class="tab-content" id="svt">
-                <div class="card">
-                    <div class="card-title">🧬 SVT — Programme Terminale C</div>
-                    <ul style="color:var(--text-muted);padding-left:1.5rem;">
-                        <li>Génétique (Mendel, hérédité, biotechnologie)</li>
-                        <li>Géologie (tectonique des plaques, géodynamique)</li>
-                        <li>Physiologie humaine (système nerveux, endocrinien, reproducteur)</li>
-                        <li>Écologie et environnement</li>
-                        <li>Hygiène et santé publique</li>
-                    </ul>
-                </div>
-            </div>
+                <h3 style="color:var(--primary);margin:1rem 0 0.5rem;">2ème Groupe</h3>
+                <div class="calc-row"><label>🧪 Chimie (coef 2)</label><input type="number" class="calc-input" id="note-chimie" min="0" max="20" placeholder="0-20"><span class="coeff-label">×2</span></div>
+                <div class="calc-row"><label>📚 ECM (coef 2)</label><input type="number" class="calc-input" id="note-ecm" min="0" max="20" placeholder="0-20"><span class="coeff-label">×2</span></div>
+                <div class="calc-row"><label>🧬 SVTEEHB (coef 2)</label><input type="number" class="calc-input" id="note-svt" min="0" max="20" placeholder="0-20"><span class="coeff-label">×2</span></div>
 
-            <!-- Français -->
-            <div class="tab-content" id="francais">
-                <div class="card">
-                    <div class="card-title">📖 Français — Programme Terminale C</div>
-                    <ul style="color:var(--text-muted);padding-left:1.5rem;">
-                        <li>Dissertation (thèse, antithèse, synthèse)</li>
-                        <li>Commentaire composé (analyse de texte)</li>
-                        <li>Contraction de texte (résumé, reformulation)</li>
-                        <li>Épreuve orale (exposé, entretien)</li>
-                    </ul>
-                </div>
-            </div>
+                <h3 style="color:var(--primary);margin:1rem 0 0.5rem;">3ème Groupe</h3>
+                <div class="calc-row"><label>🌍 Géographie (coef 2)</label><input type="number" class="calc-input" id="note-geo" min="0" max="20" placeholder="0-20"><span class="coeff-label">×2</span></div>
+                <div class="calc-row"><label>📚 Littérature (coef 2)</label><input type="number" class="calc-input" id="note-litterature" min="0" max="20" placeholder="0-20"><span class="coeff-label">×2</span></div>
+                <div class="calc-row"><label>🤔 Philosophie (coef 2)</label><input type="number" class="calc-input" id="note-philo" min="0" max="20" placeholder="0-20"><span class="coeff-label">×2</span></div>
+                <div class="calc-row"><label>🏃 EPS (coef 2)</label><input type="number" class="calc-input" id="note-eps" min="0" max="20" placeholder="0-20"><span class="coeff-label">×2</span></div>
+                <div class="calc-row"><label>📖 Langue Française (coef 1)</label><input type="number" class="calc-input" id="note-francais" min="0" max="20" placeholder="0-20"><span class="coeff-label">×1</span></div>
 
-            <!-- Philo -->
-            <div class="tab-content" id="philo">
-                <div class="card">
-                    <div class="card-title">🤔 Philosophie — Programme Terminale C</div>
-                    <ul style="color:var(--text-muted);padding-left:1.5rem;">
-                        <li>Notions : Liberté, Justice, Vérité, Langage, Travail, État</li>
-                        <li>Dissertation dialectique</li>
-                        <li>Analyse de texte philosophique</li>
-                        <li>Culture philosophique (auteurs, courants)</li>
-                    </ul>
-                </div>
-            </div>
+                <button class="resource-btn" style="width:100%;margin-top:1rem;padding:1rem;font-size:1.1rem;" onclick="calculerMoyenne()">🧮 Calculer ma moyenne</button>
 
-            <!-- Anglais -->
-            <div class="tab-content" id="anglais">
-                <div class="card">
-                    <div class="card-title">🇬🇧 Anglais — Programme Terminale C</div>
-                    <ul style="color:var(--text-muted);padding-left:1.5rem;">
-                        <li>Grammar (temps, voix, modaux, subordonnées)</li>
-                        <li>Vocabulary (thèmes : santé, éducation, environnement)</li>
-                        <li>Essay Writing (argumentatif, narratif, descriptif)</li>
-                        <li>Reading Comprehension</li>
-                    </ul>
+                <div class="result-box" id="result-box" style="display:none;">
+                    <div class="result-moyenne" id="result-moyenne">0.00</div>
+                    <div style="color:var(--text-muted);">/ 20</div>
+                    <div class="result-detail" id="result-detail">Points: 0 / 620</div>
+                    <div class="mention" id="result-mention">—</div>
                 </div>
             </div>
         </section>
@@ -513,18 +408,10 @@
                 <button class="tab-btn" data-tab="quiz-svt">🧬 SVT</button>
             </div>
 
-            <div class="tab-content active" id="quiz-maths">
-                <div class="quiz-container" id="quiz-maths-container"></div>
-            </div>
-            <div class="tab-content" id="quiz-physique">
-                <div class="quiz-container" id="quiz-physique-container"></div>
-            </div>
-            <div class="tab-content" id="quiz-chimie">
-                <div class="quiz-container" id="quiz-chimie-container"></div>
-            </div>
-            <div class="tab-content" id="quiz-svt">
-                <div class="quiz-container" id="quiz-svt-container"></div>
-            </div>
+            <div class="tab-content active" id="quiz-maths"><div class="quiz-container" id="quiz-maths-container"></div></div>
+            <div class="tab-content" id="quiz-physique"><div class="quiz-container" id="quiz-physique-container"></div></div>
+            <div class="tab-content" id="quiz-chimie"><div class="quiz-container" id="quiz-chimie-container"></div></div>
+            <div class="tab-content" id="quiz-svt"><div class="quiz-container" id="quiz-svt-container"></div></div>
         </section>
 
         <!-- Flashcards -->
@@ -535,19 +422,10 @@
                 <button class="tab-btn" data-tab="fc-chimie">🧪 Chimie</button>
                 <button class="tab-btn" data-tab="fc-svt">🧬 SVT</button>
             </div>
-
-            <div class="tab-content active" id="fc-maths">
-                <div class="flashcard-container" id="fc-maths-container"></div>
-            </div>
-            <div class="tab-content" id="fc-physique">
-                <div class="flashcard-container" id="fc-physique-container"></div>
-            </div>
-            <div class="tab-content" id="fc-chimie">
-                <div class="flashcard-container" id="fc-chimie-container"></div>
-            </div>
-            <div class="tab-content" id="fc-svt">
-                <div class="flashcard-container" id="fc-svt-container"></div>
-            </div>
+            <div class="tab-content active" id="fc-maths"><div class="flashcard-container" id="fc-maths-container"></div></div>
+            <div class="tab-content" id="fc-physique"><div class="flashcard-container" id="fc-physique-container"></div></div>
+            <div class="tab-content" id="fc-chimie"><div class="flashcard-container" id="fc-chimie-container"></div></div>
+            <div class="tab-content" id="fc-svt"><div class="flashcard-container" id="fc-svt-container"></div></div>
         </section>
 
         <!-- Resources -->
@@ -555,8 +433,8 @@
             <div class="card">
                 <div class="card-title">📥 Sujets Bac 2024-2025 (PDF)</div>
                 <div class="resource-list">
-                    <div class="resource-item"><span class="resource-icon">📄</span><div class="resource-info"><div class="resource-name">Maths Bac 2024 Série C-E</div><div class="resource-desc">Sujet officiel + corrigé</div></div><a href="https://epreuvesetcorriges.com/categories/cameroun/examens/bac/35897-corrige-bac-2024-mathematiques-serie-c-e" target="_blank" class="resource-btn">Télécharger</a></div>
-                    <div class="resource-item"><span class="resource-icon">📄</span><div class="resource-info"><div class="resource-name">Français Bac 2024 Série C-E</div><div class="resource-desc">Sujet officiel</div></div><a href="https://epreuvesetcorriges.com/categories/cameroun/examens/bac/39805-epreuve-de-langue-francaise-baccalaureat-2025-serie-c-d-e-ti-cameroun" target="_blank" class="resource-btn">Télécharger</a></div>
+                    <div class="resource-item"><span class="resource-icon">📄</span><div class="resource-info"><div class="resource-name">Maths Bac 2024 Série C-E</div><div class="resource-desc">Sujet + corrigé</div></div><a href="https://epreuvesetcorriges.com/categories/cameroun/examens/bac/35897-corrige-bac-2024-mathematiques-serie-c-e" target="_blank" class="resource-btn">Télécharger</a></div>
+                    <div class="resource-item"><span class="resource-icon">📄</span><div class="resource-info"><div class="resource-name">Français Bac 2025 Série C-D-E-TI</div><div class="resource-desc">Sujet officiel</div></div><a href="https://epreuvesetcorriges.com/categories/cameroun/examens/bac/39805-epreuve-de-langue-francaise-baccalaureat-2025-serie-c-d-e-ti-cameroun" target="_blank" class="resource-btn">Télécharger</a></div>
                     <div class="resource-item"><span class="resource-icon">📄</span><div class="resource-info"><div class="resource-name">Philosophie Bac 2024 Série C-D-E-TI</div><div class="resource-desc">Sujet + corrigé</div></div><a href="https://epreuvesetcorriges.com/categories/cameroun/examens/bac/36051-epreuve-bac-2024-philosophie-serie-c-d-e-ti" target="_blank" class="resource-btn">Télécharger</a></div>
                     <div class="resource-item"><span class="resource-icon">📄</span><div class="resource-info"><div class="resource-name">Anglais Bac 2025 Série C-D-E-TI</div><div class="resource-desc">Sujet + corrigé</div></div><a href="https://epreuvesetcorriges.com/categories/cameroun/examens/bac/39792-epreuve-d-anglais-corrige-baccalaureat-2025-serie-c-d-e-ti-cameroun" target="_blank" class="resource-btn">Télécharger</a></div>
                     <div class="resource-item"><span class="resource-icon">📄</span><div class="resource-info"><div class="resource-name">SVT Bac 2025 Série C</div><div class="resource-desc">Sujet + corrigé</div></div><a href="https://epreuvesetcorriges.com/categories/cameroun/examens/bac/39801-epreuve-de-svteehb-corrige-baccalaureat-2025-serie-c-ti-cameroun" target="_blank" class="resource-btn">Télécharger</a></div>
@@ -564,16 +442,13 @@
                     <div class="resource-item"><span class="resource-icon">📄</span><div class="resource-info"><div class="resource-name">Informatique Bac 2025 Série C-D-E</div><div class="resource-desc">Épreuve théorique</div></div><a href="https://epreuvesetcorriges.com/categories/cameroun/examens/bac/39807-epreuve-theorique-d-informatique-baccalaureat-2025-serie-c-d-e-cameroun" target="_blank" class="resource-btn">Télécharger</a></div>
                 </div>
             </div>
-
             <div class="card">
                 <div class="card-title">📚 Ressources Officielles</div>
                 <div class="resource-list">
                     <div class="resource-item"><span class="resource-icon">🌐</span><div class="resource-info"><div class="resource-name">OBC — Office du Baccalauréat</div><div class="resource-desc">Site officiel</div></div><a href="https://obc.cm" target="_blank" class="resource-btn">Accéder</a></div>
                     <div class="resource-item"><span class="resource-icon">🌐</span><div class="resource-info"><div class="resource-name">MINESEC — Programmes</div><div class="resource-desc">Programmes officiels</div></div><a href="https://www.minesec.gov.cm/web/index.php/fr/systeme-educatif/progammes-officiels" target="_blank" class="resource-btn">Accéder</a></div>
                     <div class="resource-item"><span class="resource-icon">🎥</span><div class="resource-info"><div class="resource-name">Yvan Monka</div><div class="resource-desc">Vidéos Maths</div></div><a href="https://www.youtube.com/@YvanMonka" target="_blank" class="resource-btn">Accéder</a></div>
-                    <div class="resource-item"><span class="resource-icon">🎥</span><div class="resource-info"><div class="resource-name">Khan Academy FR</div><div class="resource-desc">Cours interactifs</div></div><a href="https://fr.khanacademy.org" target="_blank" class="resource-btn">Accéder</a></div>
                     <div class="resource-item"><span class="resource-icon">🔗</span><div class="resource-info"><div class="resource-name">Exo7</div><div class="resource-desc">Exercices Maths</div></div><a href="http://exo7.emath.fr" target="_blank" class="resource-btn">Accéder</a></div>
-                    <div class="resource-item"><span class="resource-icon">🔗</span><div class="resource-info"><div class="resource-name">Les Bons Profs</div><div class="resource-desc">Physique-Chimie</div></div><a href="https://www.lesbonsprofs.com" target="_blank" class="resource-btn">Accéder</a></div>
                 </div>
             </div>
         </section>
@@ -660,7 +535,6 @@
 
         // Initialize
         function init() {
-            loadState();
             setupNavigation();
             setupTabs();
             renderQuizzes();
@@ -708,13 +582,11 @@
             Object.keys(quizData).forEach(subject => {
                 const container = document.getElementById(`quiz-${subject}-container`);
                 if (!container) return;
-                container.innerHTML = quizData[state.theme === 'dark' ? 'maths' : subject].map((q, qi) => `
+                container.innerHTML = quizData[subject].map((q, qi) => `
                     <div class="quiz-question" id="${subject}-q${qi}">
                         <h3>Q${qi+1}: ${q.q}</h3>
                         <div class="quiz-options">
-                            ${q.options.map((opt, oi) => `
-                                <div class="quiz-option" onclick="checkAnswer('${subject}', ${qi}, ${oi}, this)">${opt}</div>
-                            `).join('')}
+                            ${q.options.map((opt, oi) => `<div class="quiz-option" onclick="checkAnswer('${subject}', ${qi}, ${oi}, this)">${opt}</div>`).join('')}
                         </div>
                     </div>
                 `).join('');
@@ -726,13 +598,8 @@
             const container = document.getElementById(`${subject}-q${qi}`);
             const options = container.querySelectorAll('.quiz-option');
             options.forEach(opt => opt.classList.add('disabled'));
-            
-            if (oi === q.answer) {
-                element.classList.add('correct');
-            } else {
-                element.classList.add('incorrect');
-                options[q.answer].classList.add('correct');
-            }
+            if (oi === q.answer) { element.classList.add('correct'); }
+            else { element.classList.add('incorrect'); options[q.answer].classList.add('correct'); }
         }
 
         // Render Flashcards
@@ -740,13 +607,57 @@
             Object.keys(flashcardData).forEach(subject => {
                 const container = document.getElementById(`fc-${subject}-container`);
                 if (!container) return;
-                container.innerHTML = flashcardData[subject].map((fc, fi) => `
+                container.innerHTML = flashcardData[subject].map((fc) => `
                     <div class="flashcard" onclick="this.classList.toggle('flipped')">
                         <div class="flashcard-front">${fc.front}</div>
                         <div class="flashcard-back">${fc.back}</div>
                     </div>
                 `).join('');
             });
+        }
+
+        // Calculateur de moyenne
+        function calculerMoyenne() {
+            const notes = {
+                maths: { coef: 7, val: parseFloat(document.getElementById('note-maths').value) || 0 },
+                physique: { coef: 4, val: parseFloat(document.getElementById('note-physique').value) || 0 },
+                anglais: { coef: 3, val: parseFloat(document.getElementById('note-anglais').value) || 0 },
+                info: { coef: 2, val: parseFloat(document.getElementById('note-info').value) || 0 },
+                chimie: { coef: 2, val: parseFloat(document.getElementById('note-chimie').value) || 0 },
+                ecm: { coef: 2, val: parseFloat(document.getElementById('note-ecm').value) || 0 },
+                svt: { coef: 2, val: parseFloat(document.getElementById('note-svt').value) || 0 },
+                geo: { coef: 2, val: parseFloat(document.getElementById('note-geo').value) || 0 },
+                litterature: { coef: 2, val: parseFloat(document.getElementById('note-litterature').value) || 0 },
+                philo: { coef: 2, val: parseFloat(document.getElementById('note-philo').value) || 0 },
+                eps: { coef: 2, val: parseFloat(document.getElementById('note-eps').value) || 0 },
+                francais: { coef: 1, val: parseFloat(document.getElementById('note-francais').value) || 0 }
+            };
+
+            let totalPoints = 0;
+            let totalCoef = 0;
+
+            for (const matiere in notes) {
+                const n = notes[matiere];
+                totalPoints += n.val * n.coef;
+                totalCoef += n.coef;
+            }
+
+            const moyenne = totalPoints / totalCoef;
+            const pourcentage = (moyenne / 20) * 100;
+
+            let mention = '';
+            let mentionClass = '';
+            if (moyenne >= 16) { mention = 'Très Bien 🎉'; mentionClass = 'tres-bien'; }
+            else if (moyenne >= 14) { mention = 'Bien 👏'; mentionClass = 'bien'; }
+            else if (moyenne >= 12) { mention = 'Assez Bien 👍'; mentionClass = 'assez-bien'; }
+            else if (moyenne >= 10) { mention = 'Passable ✓'; mentionClass = 'passable'; }
+            else { mention = 'Insuffisant ✗'; mentionClass = ''; }
+
+            document.getElementById('result-moyenne').textContent = moyenne.toFixed(2);
+            document.getElementById('result-detail').textContent = `Points: ${totalPoints} / 620 (${pourcentage.toFixed(1)}%)`;
+            document.getElementById('result-mention').textContent = mention;
+            document.getElementById('result-mention').className = 'mention ' + mentionClass;
+            document.getElementById('result-box').style.display = 'block';
         }
 
         // Dark mode
@@ -756,10 +667,6 @@
             document.documentElement.setAttribute('data-theme', next);
             document.querySelector('.dark-mode-toggle').textContent = next === 'dark' ? '🌙' : '☀️';
         }
-
-        // State
-        let state = { theme: 'dark' };
-        function loadState() { /* localStorage logic */ }
 
         init();
     </script>
