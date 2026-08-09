@@ -9,63 +9,21 @@
 ```
 TerminaleC-Prep/
 ├── index.html                  # Point d'entrée principal
-├── README.md                   # Documentation
-├── matieres/                   # Dossiers par matière
+├── README.md                   # Documentation avec programmes officiels
+├── matieres/                   # Dossiers par matière (programmes complets)
 │   ├── maths/                  # 📐 Mathématiques (coef 7)
-│   │   ├── cours/              # Fiches de cours
-│   │   ├── exercices/          # Exercices corrigés
-│   │   ├── quiz/               # QCM interactifs
-│   │   ├── flashcards/         # Cartes mémoire
-│   │   └── sujets_bac/         # Sujets Bac corrigés
-│   ├── physique/               # ⚡ Physique (coef 5)
-│   │   ├── cours/
-│   │   ├── exercices/
-│   │   ├── quiz/
-│   │   ├── flashcards/
-│   │   └── sujets_bac/
-│   ├── chimie/                 # 🧪 Chimie (coef 5)
-│   │   ├── cours/
-│   │   ├── exercices/
-│   │   ├── quiz/
-│   │   ├── flashcards/
-│   │   └── sujets_bac/
-│   ├── svteehb/                # 🧬 SVT (coef 3)
-│   │   ├── cours/
-│   │   ├── exercices/
-│   │   ├── quiz/
-│   │   ├── flashcards/
-│   │   └── sujets_bac/
-│   ├── francais/               # 📖 Français (coef 3)
-│   │   ├── cours/
-│   │   ├── exercices/
-│   │   ├── quiz/
-│   │   ├── flashcards/
-│   │   └── sujets_bac/
+│   ├── physique/               # ⚡ Physique (coef 4)
+│   ├── chimie/                 # 🧪 Chimie (coef 2)
+│   ├── svteehb/                # 🧬 SVT (coef 2)
+│   ├── francais/               # 📖 Langue Française (coef 1)
 │   ├── philosophie/            # 🤔 Philosophie (coef 2)
-│   │   ├── cours/
-│   │   ├── exercices/
-│   │   ├── quiz/
-│   │   ├── flashcards/
-│   │   └── sujets_bac/
-│   ├── anglais/                # 🇬🇧 Anglais (coef 2)
-│   │   ├── cours/
-│   │   ├── exercices/
-│   │   ├── quiz/
-│   │   ├── flashcards/
-│   │   └── sujets_bac/
-│   ├── ecm/                    # 📚 ECM (obligatoire)
-│   │   ├── cours/
-│   │   ├── exercices/
-│   │   └── sujets_bac/
-│   ├── tm/                     # 🔨 Travaux Manuels (facultatif)
-│   │   ├── cours/
-│   │   └── sujets_bac/
-│   ├── litterature/            # 📚 Littérature (facultatif)
-│   │   ├── cours/
-│   │   └── sujets_bac/
-│   └── info/                   # 💻 Informatique
-│       ├── cours/
-│       └── exercices/
+│   ├── anglais/                # 🇬🇧 Anglais (coef 3)
+│   ├── ecm/                    # 📚 ECM (coef 2)
+│   ├── eps/                    # 🏃 EPS (coef 2)
+│   ├── geographie/             # 🌍 Géographie (coef 2)
+│   ├── litterature/            # 📚 Littérature (coef 2)
+│   ├── info/                   # 💻 Informatique (coef 2)
+│   └── tm/                     # 🔨 Travaux Manuels (facultatif)
 ├── assets/                     # Ressources globales
 │   ├── flashcards/             # Flashcards imprimables
 │   ├── quiz/                   # Quiz globaux
@@ -77,13 +35,59 @@ TerminaleC-Prep/
 
 ---
 
+## 📊 Vrais Coefficients Officiels Bac C (Terminale)
+
+> Total : **31 coefficients** = **620 points max**
+
+### 1er Groupe
+
+| Matière | Coefficient | Points max |
+|---------|-------------|------------|
+| 📐 Mathématiques | **7** | 140 |
+| ⚡ Physique | **4** | 80 |
+| 🇬🇧 Anglais | **3** | 60 |
+| 💻 Informatique | **2** | 40 |
+| **Sous-total** | **16** | **320** |
+
+### 2ème Groupe
+
+| Matière | Coefficient | Points max |
+|---------|-------------|------------|
+| 🧪 Chimie | **2** | 40 |
+| 📚 ECM | **2** | 40 |
+| 🧬 SVTEEHB | **2** | 40 |
+| **Sous-total** | **6** | **120** |
+
+### 3ème Groupe
+
+| Matière | Coefficient | Points max |
+|---------|-------------|------------|
+| 🌍 Géographie | **2** | 40 |
+| 📚 Littérature | **2** | 40 |
+| 🤔 Philosophie | **2** | 40 |
+| 🏃 EPS | **2** | 40 |
+| 📖 Langue Française | **1** | 20 |
+| **Sous-total** | **9** | **180** |
+
+### Total Général
+
+| | Coefficient | Points |
+|---|-------------|--------|
+| **TOTAL** | **31** | **620** |
+
+> Pour **18/20**, il faut viser **558+ points sur 620** (90%).
+
+---
+
 ## 🚀 Phases de Développement
 
-### Phase 1 : Foundation (Semaine 1-2)
-- [ ] Créer les fichiers `README.md` pour chaque matière
-- [ ] Ajouter les programmes officiels MINESEC dans chaque dossier
-- [ ] Structurer la navigation principale
-- [ ] Intégrer les quiz existants dans les dossiers par matière
+### Phase 1 : Foundation ✅ COMPLÉTÉE
+- [x] Créer les fichiers `README.md` pour chaque matière
+- [x] Ajouter les programmes officiels MINESEC dans chaque dossier
+- [x] Structurer la navigation principale
+- [x] Intégrer les quiz existants dans les dossiers par matière
+- [x] Ajouter le calculateur de moyenne
+- [x] Mettre à jour la documentation avec les vrais coefficients
 
 ### Phase 2 : Contenu Pédagogique (Semaine 3-6)
 - [ ] **Maths** : Fiches de cours (chapitre par chapitre), exercices corrigés, formules
@@ -93,6 +97,11 @@ TerminaleC-Prep/
 - [ ] **Français** : Méthodologie dissertation/commentaire, exemples
 - [ ] **Philosophie** : Notions, auteurs, citations, plans de dissertation
 - [ ] **Anglais** : Grammar, vocabulary, essay templates
+- [ ] **ECM** : Cours, études de cas, actualités
+- [ ] **Géographie** : Cours, cartes, études de cas
+- [ ] **Littérature** : Œuvres au programme, analyses
+- [ ] **EPS** : Fiches techniques, règles des sports
+- [ ] **Informatique** : Cours, exercices pratiques
 
 ### Phase 3 : Outils d'Apprentissage (Semaine 7-10)
 - [ ] **Flashcards** : Cartes mémoire par chapitre (format PDF + interactif)
@@ -117,57 +126,119 @@ TerminaleC-Prep/
 | Chapitre | Contenu | Priorité |
 |----------|---------|----------|
 | Nombres complexes | Formes, opérations, géométrie | 🔴 Haute |
-| Fonctions | exp, ln, polynômes, limites | 🔴 Haute |
+| Fonctions | exp, ln, puissances, polynômes | 🔴 Haute |
 | Analyse | Dérivées, intégrales, primitives | 🔴 Haute |
 | Suites | Arithmétiques, géométriques, convergence | 🔴 Haute |
-| Probabilités | Loi binomiale, conditionnelles | 🟡 Moyenne |
+| Probabilités | Loi binomiale, espérance, variance | 🟡 Moyenne |
 | Géométrie spatiale | Droites, plans, intersections | 🟡 Moyenne |
 | Arithmétique | Divisibilité, congruences | 🟢 Basse |
 | Équations diff. | Linéaires, homogènes | 🟢 Basse |
 
-### ⚡ Physique-Chimie (coef 5)
+### ⚡ Physique (coef 4)
 
-**Physique :**
-- Mécanique (Newton, gravitation, satellites)
-- Électrostatique et électrocinétique
-- Magnétisme et induction
-- Optique ondulatoire
-- Physique nucléaire
+| Chapitre | Contenu | Priorité |
+|----------|---------|----------|
+| Mécanique | Newton, gravitation, satellites | 🔴 Haute |
+| Électrostatique | Champ, potentiel, condensateurs | 🔴 Haute |
+| Électrocinétique | Ohm, Kirchhoff, RC, RL | 🟡 Moyenne |
+| Magnétisme | Lorentz, Lenz, Faraday | 🟡 Moyenne |
+| Optique | Diffraction, interférences | 🟢 Basse |
+| Nucléaire | Radioactivité, datation | 🟢 Basse |
+| Thermodynamique | Premier principe, gaz parfaits | 🟢 Basse |
 
-**Chimie :**
-- Cinétique chimique
-- Équilibres chimiques
-- Oxydoréduction
-- Chimie organique
-- Électrochimie
+### 🧪 Chimie (coef 2)
 
-### 📖 Français (coef 3)
+| Chapitre | Contenu | Priorité |
+|----------|---------|----------|
+| Cinétique | Vitesse, facteurs cinétiques | 🔴 Haute |
+| Équilibres | Acido-basiques, pH, titrages | 🔴 Haute |
+| Oxydoréduction | Piles, électrolyse | 🟡 Moyenne |
+| Organique | Estérification, saponification | 🟡 Moyenne |
+| Industrielle | Haber, contact | 🟢 Basse |
 
-- Dissertation (méthode, plans, exemples)
-- Commentaire composé
-- Contraction de texte
-- Oral de rattrapage
+### 🧬 SVTEEHB (coef 2)
+
+| Chapitre | Contenu | Priorité |
+|----------|---------|----------|
+| Génétique | Mendel, hérédité, biotechnologie | 🔴 Haute |
+| Géologie | Tectonique, séismes | 🟡 Moyenne |
+| Physiologie | Neuro, endocrinien, reproduction | 🟡 Moyenne |
+| Écologie | Écosystèmes, pollution | 🟢 Basse |
+| Hygiène | Maladies, prévention | 🟢 Basse |
+
+### 📖 Langue Française (coef 1)
+
+| Chapitre | Contenu | Priorité |
+|----------|---------|----------|
+| Dissertation | Thèse, antithèse, synthèse | 🔴 Haute |
+| Commentaire | Lecture analytique, procédés | 🟡 Moyenne |
+| Contraction | Résumé, reformulation | 🟢 Basse |
+| Oral | Exposé, entretien | 🟢 Basse |
 
 ### 🤔 Philosophie (coef 2)
 
-- Notions : Liberté, Justice, Vérité, Langage, Travail
-- Auteurs : Sartre, Kant, Rousseau, Platon, etc.
-- Citations clés
-- Plans de dissertation
+| Chapitre | Contenu | Priorité |
+|----------|---------|----------|
+| Notions | Liberté, Justice, Vérité, Langage | 🔴 Haute |
+| Dissertation | Analyse, problématisation, plan | 🔴 Haute |
+| Auteurs | Platon, Kant, Sartre, Camus | 🟡 Moyenne |
+| Analyse de texte | Explication, commentaire | 🟡 Moyenne |
 
-### 🇬🇧 Anglais (coef 2)
+### 🇬🇧 Anglais (coef 3)
 
-- Grammar (temps, voix, modaux)
-- Vocabulary (thèmes du Bac)
-- Essay writing templates
-- Comprehension strategies
+| Chapitre | Contenu | Priorité |
+|----------|---------|----------|
+| Grammar | Tenses, voice, conditionals | 🔴 Haute |
+| Essay Writing | Argumentative, narrative | 🔴 Haute |
+| Vocabulary | Health, education, environment | 🟡 Moyenne |
+| Reading | Comprehension, inference | 🟡 Moyenne |
 
-### 🧬 SVT (coef 3)
+### 📚 ECM (coef 2)
 
-- Génétique (Mendel, biotechnologie)
-- Géologie (tectonique, géodynamique)
-- Physiologie (neuro, endocrinien, reproduction)
-- Écologie et environnement
+| Chapitre | Contenu | Priorité |
+|----------|---------|----------|
+| Citoyenneté | Droits, devoirs, démocratie | 🔴 Haute |
+| Mondialisation | Impact, coopération | 🟡 Moyenne |
+| Développement | Économie, société, environnement | 🟡 Moyenne |
+
+### 🌍 Géographie (coef 2)
+
+| Chapitre | Contenu | Priorité |
+|----------|---------|----------|
+| Cameroun | Milieux, ressources, population | 🔴 Haute |
+| Économie | Agriculture, industrie, commerce | 🟡 Moyenne |
+| Relations int. | CEMAC, UA, mondialisation | 🟡 Moyenne |
+
+### 📚 Littérature (coef 2)
+
+| Chapitre | Contenu | Priorité |
+|----------|---------|----------|
+| Œuvres | Romans, théâtre, poésie | 🔴 Haute |
+| Analyse | Stylistique, narratologie | 🟡 Moyenne |
+| Dissertation | Commentaire, discussion | 🟡 Moyenne |
+
+### 🏃 EPS (coef 2)
+
+| Chapitre | Contenu | Priorité |
+|----------|---------|----------|
+| Pratique | Courses, sauts, sports collectifs | 🔴 Haute |
+| Théorique | Règles, anatomie, physiologie | 🟡 Moyenne |
+
+### 💻 Informatique (coef 2)
+
+| Chapitre | Contenu | Priorité |
+|----------|---------|----------|
+| Algorithmique | Variables, boucles, fonctions | 🔴 Haute |
+| Programmation | Python, algorithmes | 🔴 Haute |
+| Bases de données | SQL, modélisation | 🟡 Moyenne |
+| Réseaux | TCP/IP, sécurité | 🟢 Basse |
+
+### 🔨 TM — Travaux Manuels (facultatif)
+
+| Chapitre | Contenu | Priorité |
+|----------|---------|----------|
+| Artisanat | Dessin, couture, cuisine | 🟢 Basse |
+| Entretien | Réparations, électricité | 🟢 Basse |
 
 ---
 
