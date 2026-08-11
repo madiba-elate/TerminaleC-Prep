@@ -4,327 +4,929 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>HSC — High School Course | Bac C Cameroun</title>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
     <style>
         :root {
             --primary: #3b82f6;
+            --primary-dark: #2563eb;
             --secondary: #8b5cf6;
+            --accent: #06b6d4;
             --success: #10b981;
             --warning: #f59e0b;
             --danger: #ef4444;
-            --bg: #0f172a;
-            --bg-card: #1e293b;
-            --bg-elevated: #334155;
-            --text: #f1f5f9;
-            --text-muted: #94a3b8;
-            --border: #334155;
-            --radius: 12px;
-            --radius-lg: 16px;
+            --bg-primary: #0f172a;
+            --bg-secondary: #1e293b;
+            --bg-tertiary: #334155;
+            --bg-card: rgba(30, 41, 59, 0.8);
+            --bg-elevated: rgba(51, 65, 85, 0.6);
+            --text-primary: #f1f5f9;
+            --text-secondary: #94a3b8;
+            --text-muted: #64748b;
+            --border: rgba(51, 65, 85, 0.5);
+            --shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
+            --shadow-lg: 0 16px 48px rgba(0, 0, 0, 0.4);
+            --radius: 16px;
+            --radius-sm: 8px;
+            --radius-lg: 24px;
+            --transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            --sidebar-width: 280px;
         }
 
         [data-theme="light"] {
-            --bg: #f8fafc;
-            --bg-card: #ffffff;
-            --bg-elevated: #f1f5f9;
-            --text: #1e293b;
+            --bg-primary: #f8fafc;
+            --bg-secondary: #ffffff;
+            --bg-tertiary: #f1f5f9;
+            --bg-card: rgba(255, 255, 255, 0.9);
+            --bg-elevated: rgba(241, 245, 249, 0.8);
+            --text-primary: #1e293b;
+            --text-secondary: #475569;
             --text-muted: #64748b;
-            --border: #e2e8f0;
+            --border: rgba(226, 232, 240, 0.8);
         }
 
         * { margin: 0; padding: 0; box-sizing: border-box; }
 
         body {
-            font-family: 'Inter', system-ui, sans-serif;
-            background: var(--bg);
-            color: var(--text);
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+            background: var(--bg-primary);
+            color: var(--text-primary);
             line-height: 1.6;
             min-height: 100vh;
+            overflow-x: hidden;
         }
 
-        .header {
-            background: linear-gradient(135deg, #1e3a5f 0%, #1a5f7a 50%, #159895 100%);
+        /* ===== SIDEBAR ===== */
+        .sidebar {
+            position: fixed;
+            left: 0;
+            top: 0;
+            width: var(--sidebar-width);
+            height: 100vh;
+            background: var(--bg-card);
+            backdrop-filter: blur(20px);
+            border-right: 1px solid var(--border);
+            padding: 1.5rem;
+            z-index: 1000;
+            transition: var(--transition);
+            overflow-y: auto;
+        }
+
+        .sidebar-header {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            padding-bottom: 1.5rem;
+            border-bottom: 1px solid var(--border);
+            margin-bottom: 1.5rem;
+        }
+
+        .sidebar-logo {
+            width: 48px;
+            height: 48px;
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            border-radius: var(--radius-sm);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.5rem;
+        }
+
+        .sidebar-title {
+            font-size: 1.1rem;
+            font-weight: 700;
+            color: var(--text-primary);
+        }
+
+        .sidebar-subtitle {
+            font-size: 0.75rem;
+            color: var(--text-muted);
+        }
+
+        .nav-section {
+            margin-bottom: 1.5rem;
+        }
+
+        .nav-section-title {
+            font-size: 0.7rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            color: var(--text-muted);
+            margin-bottom: 0.75rem;
+            padding-left: 0.75rem;
+        }
+
+        .nav-item {
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+            padding: 0.75rem 1rem;
+            border-radius: var(--radius-sm);
+            color: var(--text-secondary);
+            cursor: pointer;
+            transition: var(--transition);
+            margin-bottom: 0.25rem;
+            font-size: 0.9rem;
+            font-weight: 500;
+        }
+
+        .nav-item:hover {
+            background: var(--bg-elevated);
+            color: var(--text-primary);
+        }
+
+        .nav-item.active {
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
             color: white;
-            padding: 2rem;
+            box-shadow: 0 4px 12px rgba(59, 130, 246, 0.3);
+        }
+
+        .nav-icon {
+            width: 20px;
             text-align: center;
         }
 
-        .header h1 { font-size: 2.5rem; font-weight: 800; margin-bottom: 0.5rem; }
-        .header p { font-size: 1rem; opacity: 0.9; }
+        .nav-badge {
+            margin-left: auto;
+            background: var(--primary);
+            color: white;
+            font-size: 0.65rem;
+            padding: 0.2rem 0.5rem;
+            border-radius: 10px;
+            font-weight: 600;
+        }
 
-        .nav {
-            background: var(--bg-card);
-            padding: 0.75rem 1rem;
+        /* ===== MAIN CONTENT ===== */
+        .main-content {
+            margin-left: var(--sidebar-width);
+            min-height: 100vh;
+            padding: 2rem;
+        }
+
+        /* ===== HEADER ===== */
+        .header {
+            background: linear-gradient(135deg, rgba(30, 58, 95, 0.9) 0%, rgba(26, 95, 122, 0.9) 50%, rgba(21, 152, 149, 0.9) 100%);
+            backdrop-filter: blur(20px);
+            border-radius: var(--radius-lg);
+            padding: 2rem;
+            margin-bottom: 2rem;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .header::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            right: -20%;
+            width: 400px;
+            height: 400px;
+            background: radial-gradient(circle, rgba(59, 130, 246, 0.2) 0%, transparent 70%);
+            pointer-events: none;
+        }
+
+        .header-content {
+            position: relative;
+            z-index: 1;
+        }
+
+        .header h1 {
+            font-size: 2rem;
+            font-weight: 800;
+            margin-bottom: 0.5rem;
+            color: white;
+        }
+
+        .header p {
+            color: rgba(255, 255, 255, 0.8);
+            font-size: 1rem;
+        }
+
+        .header-stats {
             display: flex;
-            justify-content: center;
-            gap: 0.5rem;
+            gap: 2rem;
+            margin-top: 1.5rem;
             flex-wrap: wrap;
-            position: sticky;
-            top: 0;
-            z-index: 100;
-            border-bottom: 1px solid var(--border);
         }
 
-        .nav-btn {
-            padding: 0.6rem 1.2rem;
-            border: none;
-            background: transparent;
-            color: var(--text-muted);
-            border-radius: 8px;
-            cursor: pointer;
-            font-size: 0.85rem;
-            font-weight: 500;
-            transition: all 0.2s;
+        .header-stat {
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+            padding: 1rem 1.5rem;
+            border-radius: var(--radius);
+            border: 1px solid rgba(255, 255, 255, 0.2);
         }
 
-        .nav-btn:hover { background: var(--bg-elevated); color: var(--text); }
-        .nav-btn.active { background: var(--primary); color: white; }
+        .header-stat-value {
+            font-size: 1.8rem;
+            font-weight: 800;
+            color: white;
+        }
 
-        .main { max-width: 1200px; margin: 0 auto; padding: 2rem; }
+        .header-stat-label {
+            font-size: 0.75rem;
+            color: rgba(255, 255, 255, 0.7);
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+        }
 
-        .section { display: none; animation: fadeIn 0.3s ease; }
+        /* ===== SECTION ===== */
+        .section { display: none; animation: slideIn 0.4s ease; }
         .section.active { display: block; }
 
-        @keyframes fadeIn {
-            from { opacity: 0; transform: translateY(10px); }
+        @keyframes slideIn {
+            from { opacity: 0; transform: translateY(20px); }
             to { opacity: 1; transform: translateY(0); }
         }
 
+        /* ===== CARDS ===== */
         .card {
             background: var(--bg-card);
-            border-radius: var(--radius-lg);
+            backdrop-filter: blur(20px);
+            border-radius: var(--radius);
             padding: 1.5rem;
             margin-bottom: 1.5rem;
             border: 1px solid var(--border);
+            box-shadow: var(--shadow);
+            transition: var(--transition);
+        }
+
+        .card:hover {
+            transform: translateY(-2px);
+            box-shadow: var(--shadow-lg);
+        }
+
+        .card-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 1rem;
         }
 
         .card-title {
-            font-size: 1.3rem;
+            font-size: 1.2rem;
             font-weight: 700;
-            margin-bottom: 1rem;
+            color: var(--text-primary);
             display: flex;
             align-items: center;
             gap: 0.5rem;
         }
 
-        .tabs { display: flex; gap: 0.5rem; margin-bottom: 1.5rem; flex-wrap: wrap; }
-        .tab-btn {
+        .card-action {
+            background: var(--bg-elevated);
+            border: none;
+            color: var(--text-secondary);
             padding: 0.5rem 1rem;
-            border: 2px solid var(--border);
+            border-radius: var(--radius-sm);
+            cursor: pointer;
+            font-size: 0.8rem;
+            transition: var(--transition);
+        }
+
+        .card-action:hover {
+            background: var(--primary);
+            color: white;
+        }
+
+        /* ===== STATS GRID ===== */
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 1rem;
+            margin-bottom: 2rem;
+        }
+
+        .stat-card {
+            background: var(--bg-card);
+            backdrop-filter: blur(20px);
+            border-radius: var(--radius);
+            padding: 1.5rem;
+            border: 1px solid var(--border);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .stat-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 4px;
+            height: 100%;
+            background: linear-gradient(180deg, var(--primary), var(--secondary));
+        }
+
+        .stat-card.math::before { background: linear-gradient(180deg, #3b82f6, #60a5fa); }
+        .stat-card.physics::before { background: linear-gradient(180deg, #8b5cf6, #a78bfa); }
+        .stat-card.chemistry::before { background: linear-gradient(180deg, #10b981, #34d399); }
+        .stat-card.svt::before { background: linear-gradient(180deg, #f59e0b, #fbbf24); }
+        .stat-card.french::before { background: linear-gradient(180deg, #ec4899, #f472b6); }
+        .stat-card.english::before { background: linear-gradient(180deg, #06b6d4, #22d3ee); }
+
+        .stat-value {
+            font-size: 2rem;
+            font-weight: 800;
+            color: var(--text-primary);
+        }
+
+        .stat-label {
+            font-size: 0.85rem;
+            color: var(--text-secondary);
+            margin-top: 0.25rem;
+        }
+
+        .stat-coeff {
+            display: inline-block;
+            background: var(--bg-elevated);
+            padding: 0.25rem 0.75rem;
+            border-radius: 20px;
+            font-size: 0.75rem;
+            font-weight: 600;
+            color: var(--primary);
+            margin-top: 0.5rem;
+        }
+
+        /* ===== SUBJECTS GRID ===== */
+        .subjects-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 1rem;
+        }
+
+        .subject-card {
+            background: var(--bg-card);
+            backdrop-filter: blur(20px);
+            border-radius: var(--radius);
+            padding: 1.5rem;
+            border: 1px solid var(--border);
+            cursor: pointer;
+            transition: var(--transition);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .subject-card:hover {
+            transform: translateY(-4px) scale(1.02);
+            box-shadow: var(--shadow-lg);
+            border-color: var(--primary);
+        }
+
+        .subject-card::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            right: 0;
+            width: 100px;
+            height: 100px;
+            background: radial-gradient(circle, rgba(59, 130, 246, 0.1) 0%, transparent 70%);
+            pointer-events: none;
+        }
+
+        .subject-name {
+            font-weight: 700;
+            font-size: 1.1rem;
+            margin-bottom: 0.5rem;
+            color: var(--text-primary);
+        }
+
+        .subject-details {
+            font-size: 0.85rem;
+            color: var(--text-secondary);
+        }
+
+        .subject-progress {
+            margin-top: 1rem;
+            height: 6px;
+            background: var(--bg-elevated);
+            border-radius: 3px;
+            overflow: hidden;
+        }
+
+        .subject-progress-bar {
+            height: 100%;
+            background: linear-gradient(90deg, var(--primary), var(--secondary));
+            border-radius: 3px;
+            transition: width 0.5s ease;
+        }
+
+        /* ===== TABS ===== */
+        .tabs {
+            display: flex;
+            gap: 0.5rem;
+            margin-bottom: 1.5rem;
+            flex-wrap: wrap;
+            background: var(--bg-elevated);
+            padding: 0.5rem;
+            border-radius: var(--radius);
+        }
+
+        .tab-btn {
+            padding: 0.6rem 1.2rem;
+            border: none;
             background: transparent;
-            color: var(--text-muted);
-            border-radius: 8px;
+            color: var(--text-secondary);
+            border-radius: var(--radius-sm);
             cursor: pointer;
             font-size: 0.85rem;
-            font-weight: 600;
-            transition: all 0.2s;
+            font-weight: 500;
+            transition: var(--transition);
         }
-        .tab-btn:hover { border-color: var(--primary); color: var(--text); }
-        .tab-btn.active { background: var(--primary); border-color: var(--primary); color: white; }
-        .tab-content { display: none; }
+
+        .tab-btn:hover { background: var(--bg-card); color: var(--text-primary); }
+        .tab-btn.active { background: var(--primary); color: white; box-shadow: 0 2px 8px rgba(59, 130, 246, 0.3); }
+        .tab-content { display: none; animation: fadeIn 0.3s ease; }
         .tab-content.active { display: block; }
 
-        /* Coefficient Tables */
-        .coeff-table { width: 100%; border-collapse: collapse; margin-top: 1rem; }
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+
+        /* ===== COEFFICIENT TABLE ===== */
+        .coeff-table { width: 100%; border-collapse: collapse; }
         .coeff-table th, .coeff-table td {
-            padding: 0.75rem;
+            padding: 1rem;
             text-align: left;
             border-bottom: 1px solid var(--border);
         }
-        .coeff-table th { background: var(--bg-elevated); font-weight: 600; }
-        .coeff-table td { color: var(--text-muted); }
-        .coeff-table tr:hover td { background: var(--bg-elevated); }
-        .coeff-badge { background: var(--primary); color: white; padding: 0.2rem 0.6rem; border-radius: 4px; font-weight: 700; font-size: 0.85rem; }
-        .total-row { background: var(--bg-elevated); font-weight: 700; }
-        .total-row td { color: var(--text); }
-        .group-header { background: rgba(59,130,246,0.1); font-weight: 700; color: var(--primary); }
-
-        /* Calculator */
-        .calculator { max-width: 600px; margin: 0 auto; }
-        .calc-input {
-            width: 100%;
-            padding: 0.75rem;
-            margin-bottom: 0.5rem;
+        .coeff-table th {
             background: var(--bg-elevated);
-            border: 2px solid var(--border);
-            border-radius: 8px;
-            color: var(--text);
-            font-size: 1rem;
+            font-weight: 600;
+            font-size: 0.85rem;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
         }
-        .calc-input:focus { border-color: var(--primary); outline: none; }
-        .calc-row { display: flex; align-items: center; gap: 1rem; margin-bottom: 0.5rem; }
-        .calc-row label { flex: 1; font-size: 0.9rem; }
-        .calc-row input { width: 80px; text-align: center; }
-        .coeff-label { color: var(--primary); font-weight: 600; min-width: 40px; }
-        .result-box {
+        .coeff-table tr:hover td { background: var(--bg-elevated); }
+        .coeff-badge {
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            color: white;
+            padding: 0.3rem 0.8rem;
+            border-radius: 20px;
+            font-weight: 700;
+            font-size: 0.85rem;
+        }
+        .total-row { background: var(--bg-elevated); font-weight: 700; }
+        .total-row td { color: var(--text-primary); }
+        .group-header { background: rgba(59, 130, 246, 0.1); font-weight: 700; }
+        .group-header td { color: var(--primary); font-size: 0.85rem; text-transform: uppercase; letter-spacing: 0.05em; }
+
+        /* ===== CALCULATOR ===== */
+        .calculator { max-width: 600px; margin: 0 auto; }
+        .calc-group {
             background: var(--bg-elevated);
             border-radius: var(--radius);
-            padding: 1.5rem;
+            padding: 1rem;
+            margin-bottom: 1rem;
+        }
+        .calc-group-title {
+            font-size: 0.8rem;
+            font-weight: 600;
+            color: var(--primary);
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            margin-bottom: 0.75rem;
+        }
+        .calc-row {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            margin-bottom: 0.5rem;
+        }
+        .calc-row label { flex: 1; font-size: 0.9rem; }
+        .calc-input {
+            width: 70px;
+            padding: 0.5rem;
+            background: var(--bg-card);
+            border: 2px solid var(--border);
+            border-radius: var(--radius-sm);
+            color: var(--text-primary);
+            text-align: center;
+            font-size: 1rem;
+            transition: var(--transition);
+        }
+        .calc-input:focus { border-color: var(--primary); outline: none; }
+        .coeff-label { color: var(--primary); font-weight: 600; min-width: 30px; text-align: center; }
+
+        .result-box {
+            background: linear-gradient(135deg, var(--bg-elevated), var(--bg-card));
+            border-radius: var(--radius);
+            padding: 2rem;
             text-align: center;
             margin-top: 1.5rem;
+            border: 1px solid var(--border);
         }
-        .result-moyenne { font-size: 3rem; font-weight: 800; color: var(--primary); }
-        .result-detail { color: var(--text-muted); margin-top: 0.5rem; }
-        .mention { font-size: 1.2rem; font-weight: 600; margin-top: 0.5rem; }
+        .result-moyenne { font-size: 3.5rem; font-weight: 800; background: linear-gradient(135deg, var(--primary), var(--secondary)); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
+        .result-detail { color: var(--text-secondary); margin-top: 0.5rem; }
+        .mention { font-size: 1.3rem; font-weight: 700; margin-top: 0.5rem; }
         .mention.passable { color: var(--text-muted); }
         .mention.assez-bien { color: var(--warning); }
         .mention.bien { color: var(--primary); }
         .mention.tres-bien { color: var(--success); }
 
-        .subjects-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 1rem; }
-        .subject-card {
+        /* ===== QUIZ ===== */
+        .quiz-question {
             background: var(--bg-card);
             border-radius: var(--radius);
-            padding: 1.25rem;
+            padding: 1.5rem;
+            margin-bottom: 1rem;
             border: 1px solid var(--border);
-            border-left: 4px solid var(--primary);
-            cursor: pointer;
-            transition: all 0.2s;
+            transition: var(--transition);
         }
-        .subject-card:hover { transform: translateY(-4px); border-color: var(--primary); }
+        .quiz-question:hover { border-color: var(--primary); }
+        .quiz-question h3 { margin-bottom: 1rem; color: var(--primary); font-size: 1rem; }
+        .quiz-options { display: flex; flex-direction: column; gap: 0.5rem; }
+        .quiz-option {
+            padding: 1rem 1.25rem;
+            background: var(--bg-elevated);
+            border: 2px solid var(--border);
+            border-radius: var(--radius-sm);
+            cursor: pointer;
+            transition: var(--transition);
+            font-size: 0.9rem;
+        }
+        .quiz-option:hover { border-color: var(--primary); background: rgba(59, 130, 246, 0.1); }
+        .quiz-option.correct { background: rgba(16, 185, 129, 0.2); border-color: var(--success); }
+        .quiz-option.incorrect { background: rgba(239, 68, 68, 0.2); border-color: var(--danger); }
+        .quiz-option.disabled { pointer-events: none; opacity: 0.7; }
 
-        .flashcard-container { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 1rem; }
+        /* ===== FLASHCARDS ===== */
+        .flashcard-container { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 1rem; }
         .flashcard {
             background: var(--bg-card);
             border-radius: var(--radius);
             padding: 1.5rem;
             border: 1px solid var(--border);
             cursor: pointer;
-            transition: all 0.2s;
+            transition: var(--transition);
             min-height: 150px;
             display: flex;
             flex-direction: column;
             justify-content: center;
+            position: relative;
+            overflow: hidden;
         }
         .flashcard:hover { border-color: var(--primary); transform: scale(1.02); }
         .flashcard-front { font-weight: 600; font-size: 1.1rem; }
-        .flashcard-back { display: none; color: var(--text-muted); margin-top: 0.5rem; }
+        .flashcard-back { display: none; color: var(--text-secondary); margin-top: 0.75rem; }
         .flashcard.flipped .flashcard-back { display: block; }
         .flashcard.flipped .flashcard-front { color: var(--primary); }
 
-        .quiz-container { max-width: 800px; }
-        .quiz-question { background: var(--bg-card); border-radius: var(--radius); padding: 1.5rem; margin-bottom: 1rem; border: 1px solid var(--border); }
-        .quiz-question h3 { margin-bottom: 1rem; color: var(--primary); }
-        .quiz-options { display: flex; flex-direction: column; gap: 0.5rem; }
-        .quiz-option { padding: 0.75rem 1rem; background: var(--bg-elevated); border: 2px solid var(--border); border-radius: 8px; cursor: pointer; transition: all 0.2s; }
-        .quiz-option:hover { border-color: var(--primary); }
-        .quiz-option.correct { background: rgba(16,185,129,0.2); border-color: var(--success); }
-        .quiz-option.incorrect { background: rgba(239,68,68,0.2); border-color: var(--danger); }
-        .quiz-option.disabled { pointer-events: none; opacity: 0.7; }
-
+        /* ===== RESOURCES ===== */
         .resource-list { display: flex; flex-direction: column; gap: 0.75rem; }
-        .resource-item { display: flex; align-items: center; gap: 1rem; padding: 1rem; background: var(--bg-elevated); border-radius: 10px; transition: all 0.2s; }
-        .resource-item:hover { background: var(--border); }
+        .resource-item {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            padding: 1rem;
+            background: var(--bg-elevated);
+            border-radius: var(--radius-sm);
+            transition: var(--transition);
+        }
+        .resource-item:hover { background: var(--bg-card); }
         .resource-icon { font-size: 1.5rem; }
         .resource-info { flex: 1; }
-        .resource-name { font-weight: 600; }
+        .resource-name { font-weight: 600; font-size: 0.9rem; }
         .resource-desc { font-size: 0.8rem; color: var(--text-muted); }
-        .resource-btn { padding: 0.5rem 1rem; background: var(--primary); color: white; border: none; border-radius: 8px; cursor: pointer; text-decoration: none; }
+        .resource-btn {
+            padding: 0.5rem 1rem;
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            color: white;
+            border: none;
+            border-radius: var(--radius-sm);
+            cursor: pointer;
+            font-size: 0.85rem;
+            text-decoration: none;
+            transition: var(--transition);
+        }
+        .resource-btn:hover { transform: scale(1.05); }
 
-        .dark-mode-toggle { position: fixed; bottom: 2rem; right: 2rem; width: 50px; height: 50px; border-radius: 50%; background: var(--primary); color: white; border: none; cursor: pointer; font-size: 1.3rem; z-index: 1000; }
+        /* ===== TIMELINE (Séquence 1) ===== */
+        .timeline { position: relative; padding-left: 2rem; }
+        .timeline::before {
+            content: '';
+            position: absolute;
+            left: 0;
+            top: 0;
+            width: 3px;
+            height: 100%;
+            background: linear-gradient(180deg, var(--primary), var(--secondary));
+            border-radius: 2px;
+        }
+        .timeline-item {
+            position: relative;
+            padding-bottom: 1.5rem;
+        }
+        .timeline-item::before {
+            content: '';
+            position: absolute;
+            left: -2rem;
+            top: 0.5rem;
+            width: 12px;
+            height: 12px;
+            background: var(--bg-card);
+            border: 3px solid var(--primary);
+            border-radius: 50%;
+        }
+        .timeline-item.completed::before { background: var(--success); border-color: var(--success); }
+        .timeline-week {
+            font-size: 0.75rem;
+            font-weight: 600;
+            color: var(--primary);
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            margin-bottom: 0.25rem;
+        }
+        .timeline-title { font-weight: 600; font-size: 0.95rem; margin-bottom: 0.25rem; }
+        .timeline-desc { font-size: 0.85rem; color: var(--text-secondary); }
 
-        @media (max-width: 768px) {
-            .header h1 { font-size: 1.8rem; }
-            .main { padding: 1rem; }
+        .day-item {
+            display: flex;
+            align-items: flex-start;
+            gap: 1rem;
+            padding: 1rem;
+            background: var(--bg-elevated);
+            border-radius: var(--radius-sm);
+            margin-bottom: 0.5rem;
+            cursor: pointer;
+            transition: var(--transition);
+        }
+        .day-item:hover { background: var(--bg-card); }
+        .day-checkbox {
+            width: 24px;
+            height: 24px;
+            border: 2px solid var(--border);
+            border-radius: 6px;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-shrink: 0;
+            transition: var(--transition);
+        }
+        .day-checkbox.checked { background: var(--success); border-color: var(--success); color: white; }
+        .day-content { flex: 1; }
+        .day-title { font-weight: 600; font-size: 0.9rem; }
+        .day-title.completed { text-decoration: line-through; color: var(--text-muted); }
+        .day-desc { font-size: 0.8rem; color: var(--text-muted); margin-top: 2px; }
+
+        /* ===== DARK MODE TOGGLE ===== */
+        .dark-mode-toggle {
+            position: fixed;
+            bottom: 2rem;
+            right: 2rem;
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            color: white;
+            border: none;
+            cursor: pointer;
+            font-size: 1.3rem;
+            box-shadow: 0 4px 16px rgba(59, 130, 246, 0.4);
+            z-index: 1000;
+            transition: var(--transition);
+        }
+        .dark-mode-toggle:hover { transform: scale(1.1); }
+
+        /* ===== MOBILE ===== */
+        .menu-toggle {
+            display: none;
+            position: fixed;
+            top: 1rem;
+            left: 1rem;
+            z-index: 1001;
+            background: var(--bg-card);
+            border: 1px solid var(--border);
+            color: var(--text-primary);
+            padding: 0.75rem;
+            border-radius: var(--radius-sm);
+            cursor: pointer;
+        }
+
+        @media (max-width: 1024px) {
+            .sidebar {
+                transform: translateX(-100%);
+            }
+            .sidebar.open {
+                transform: translateX(0);
+            }
+            .main-content {
+                margin-left: 0;
+            }
+            .menu-toggle {
+                display: block;
+            }
         }
 
         @media print {
-            .nav, .dark-mode-toggle { display: none; }
+            .sidebar, .dark-mode-toggle, .menu-toggle { display: none !important; }
+            .main-content { margin-left: 0; }
             .section { display: block !important; }
         }
     </style>
 </head>
 <body>
-    <header class="header">
-        <h1>🎓 HSC — High School Course</h1>
-        <p>Préparation au Bac C (Cameroun) — Données officielles</p>
-    </header>
+    <!-- Menu Toggle (Mobile) -->
+    <button class="menu-toggle" onclick="document.querySelector('.sidebar').classList.toggle('open')">☰</button>
 
-    <nav class="nav">
-        <button class="nav-btn active" data-section="dashboard">📊 Dashboard</button>
-        <button class="nav-btn" data-section="coefficients">📋 Coefficients</button>
-        <button class="nav-btn" data-section="calculateur">🧮 Calculateur</button>
-        <button class="nav-btn" data-section="seq1">📝 Séquence 1</button>
-        <button class="nav-btn" data-section="quiz">🧠 Quiz</button>
-        <button class="nav-btn" data-section="flashcards">🃏 Flashcards</button>
-        <button class="nav-btn" data-section="resources">📥 Ressources</button>
-    </nav>
+    <!-- Sidebar -->
+    <aside class="sidebar">
+        <div class="sidebar-header">
+            <div class="sidebar-logo">🎓</div>
+            <div>
+                <div class="sidebar-title">HSC</div>
+                <div class="sidebar-subtitle">High School Course</div>
+            </div>
+        </div>
 
-    <main class="main">
+        <nav>
+            <div class="nav-section">
+                <div class="nav-section-title">Principal</div>
+                <div class="nav-item active" data-section="dashboard">
+                    <span class="nav-icon">📊</span>
+                    <span>Dashboard</span>
+                </div>
+                <div class="nav-item" data-section="coefficients">
+                    <span class="nav-icon">📋</span>
+                    <span>Coefficients</span>
+                </div>
+                <div class="nav-item" data-section="calculateur">
+                    <span class="nav-icon">🧮</span>
+                    <span>Calculateur</span>
+                </div>
+            </div>
+
+            <div class="nav-section">
+                <div class="nav-section-title">Apprentissage</div>
+                <div class="nav-item" data-section="seq1">
+                    <span class="nav-icon">📝</span>
+                    <span>Séquence 1</span>
+                </div>
+                <div class="nav-item" data-section="quiz">
+                    <span class="nav-icon">🧠</span>
+                    <span>Quiz</span>
+                    <span class="nav-badge">20</span>
+                </div>
+                <div class="nav-item" data-section="flashcards">
+                    <span class="nav-icon">🃏</span>
+                    <span>Flashcards</span>
+                    <span class="nav-badge">32</span>
+                </div>
+            </div>
+
+            <div class="nav-section">
+                <div class="nav-section-title">Ressources</div>
+                <div class="nav-item" data-section="resources">
+                    <span class="nav-icon">📥</span>
+                    <span>Sujets Bac</span>
+                </div>
+            </div>
+        </nav>
+    </aside>
+
+    <!-- Main Content -->
+    <main class="main-content">
         <!-- Dashboard -->
         <section class="section active" id="dashboard">
-            <div class="card">
-                <div class="card-title">📊 Dashboard — Vue d'ensemble</div>
-                <p style="color:var(--text-muted);margin-bottom:1rem;">Bienvenue sur HSC. Plateforme de préparation au Bac C avec données officielles.</p>
-                <div class="subjects-grid">
-                    <div class="subject-card" onclick="showSection('coefficients')">
-                        <div class="subject-name">📐 Mathématiques</div>
-                        <div class="subject-details">Nombres complexes, Fonctions, Analyse, Probas</div>
-                        <span style="color:var(--primary);font-weight:700;">Coef 7</span>
-                    </div>
-                    <div class="subject-card" onclick="showSection('coefficients')">
-                        <div class="subject-name">⚡ Physique</div>
-                        <div class="subject-details">Mécanique, Électricité, Optique, Nucléaire</div>
-                        <span style="color:var(--primary);font-weight:700;">Coef 4</span>
-                    </div>
-                    <div class="subject-card" onclick="showSection('coefficients')">
-                        <div class="subject-name">🇬🇧 Anglais</div>
-                        <div class="subject-details">Grammar, Vocabulary, Essay</div>
-                        <span style="color:var(--primary);font-weight:700;">Coef 3</span>
-                    </div>
-                    <div class="subject-card" onclick="showSection('coefficients')">
-                        <div class="subject-name">🧪 Chimie</div>
-                        <div class="subject-details">Cinétique, Équilibres, Organique</div>
-                        <span style="color:var(--primary);font-weight:700;">Coef 2</span>
-                    </div>
-                    <div class="subject-card" onclick="showSection('coefficients')">
-                        <div class="subject-name">🧬 SVTEEHB</div>
-                        <div class="subject-details">Génétique, Géologie, Physiologie</div>
-                        <span style="color:var(--primary);font-weight:700;">Coef 2</span>
-                    </div>
-                    <div class="subject-card" onclick="showSection('coefficients')">
-                        <div class="subject-name">💻 Informatique</div>
-                        <div class="subject-details">Algorithmique, Programmation</div>
-                        <span style="color:var(--primary);font-weight:700;">Coef 2</span>
+            <div class="header">
+                <div class="header-content">
+                    <h1>🎓 Tableau de Bord</h1>
+                    <p>Préparation au Bac C — Données officielles OBC/MINESEC</p>
+                    <div class="header-stats">
+                        <div class="header-stat">
+                            <div class="header-stat-value">12</div>
+                            <div class="header-stat-label">Matières</div>
+                        </div>
+                        <div class="header-stat">
+                            <div class="header-stat-value">31</div>
+                            <div class="header-stat-label">Coefficients</div>
+                        </div>
+                        <div class="header-stat">
+                            <div class="header-stat-value">620</div>
+                            <div class="header-stat-label">Points max</div>
+                        </div>
                     </div>
                 </div>
             </div>
 
+            <div class="stats-grid">
+                <div class="stat-card math">
+                    <div class="stat-value">7</div>
+                    <div class="stat-label">Mathématiques</div>
+                    <span class="stat-coeff">coef 7</span>
+                </div>
+                <div class="stat-card physics">
+                    <div class="stat-value">4</div>
+                    <div class="stat-label">Physique</div>
+                    <span class="stat-coeff">coef 4</span>
+                </div>
+                <div class="stat-card english">
+                    <div class="stat-value">3</div>
+                    <div class="stat-label">Anglais</div>
+                    <span class="stat-coeff">coef 3</span>
+                </div>
+                <div class="stat-card chemistry">
+                    <div class="stat-value">2</div>
+                    <div class="stat-label">Chimie</div>
+                    <span class="stat-coeff">coef 2</span>
+                </div>
+                <div class="stat-card svt">
+                    <div class="stat-value">2</div>
+                    <div class="stat-label">SVT</div>
+                    <span class="stat-coeff">coef 2</span>
+                </div>
+                <div class="stat-card french">
+                    <div class="stat-value">1</div>
+                    <div class="stat-label">Français</div>
+                    <span class="stat-coeff">coef 1</span>
+                </div>
+            </div>
+
             <div class="card">
-                <div class="card-title">📋 Résumé des coefficients</div>
-                <table class="coeff-table">
-                    <thead><tr><th>Groupe</th><th>Matière</th><th>Coef</th></tr></thead>
-                    <tbody>
-                        <tr class="group-header"><td colspan="3">1ER GROUPE</td></tr>
-                        <tr><td></td><td>📐 Mathématiques</td><td><span class="coeff-badge">7</span></td></tr>
-                        <tr><td></td><td>⚡ Physique</td><td><span class="coeff-badge">4</span></td></tr>
-                        <tr><td></td><td>🇬🇧 Anglais</td><td><span class="coeff-badge">3</span></td></tr>
-                        <tr><td></td><td>💻 Informatique</td><td><span class="coeff-badge">2</span></td></tr>
-                        <tr class="group-header"><td colspan="3">2ÈME GROUPE</td></tr>
-                        <tr><td></td><td>🧪 Chimie</td><td><span class="coeff-badge">2</span></td></tr>
-                        <tr><td></td><td>📚 ECM</td><td><span class="coeff-badge">2</span></td></tr>
-                        <tr><td></td><td>🧬 SVTEEHB</td><td><span class="coeff-badge">2</span></td></tr>
-                        <tr class="group-header"><td colspan="3">3ÈME GROUPE</td></tr>
-                        <tr><td></td><td>🌍 Géographie</td><td><span class="coeff-badge">2</span></td></tr>
-                        <tr><td></td><td>📚 Littérature</td><td><span class="coeff-badge">2</span></td></tr>
-                        <tr><td></td><td>🤔 Philosophie</td><td><span class="coeff-badge">2</span></td></tr>
-                        <tr><td></td><td>🏃 EPS</td><td><span class="coeff-badge">2</span></td></tr>
-                        <tr><td></td><td>📖 Langue Française</td><td><span class="coeff-badge">1</span></td></tr>
-                        <tr class="total-row"><td></td><td>TOTAL</td><td><span class="coeff-badge">31</span></td></tr>
-                    </tbody>
-                </table>
-                <p style="margin-top:1rem;font-size:0.85rem;color:var(--text-muted);">Pour 18/20, il faut viser <strong>558+ points sur 620</strong>.</p>
+                <div class="card-header">
+                    <h2 class="card-title">📚 Toutes les matières</h2>
+                    <button class="card-action" onclick="showSection('coefficients')">Voir tout</button>
+                </div>
+                <div class="subjects-grid">
+                    <div class="subject-card" onclick="showSection('coefficients')">
+                        <div class="subject-name">📐 Mathématiques</div>
+                        <div class="subject-details">Nombres complexes, Fonctions, Analyse, Probas</div>
+                        <div class="subject-progress"><div class="subject-progress-bar" style="width: 0%"></div></div>
+                    </div>
+                    <div class="subject-card" onclick="showSection('coefficients')">
+                        <div class="subject-name">⚡ Physique</div>
+                        <div class="subject-details">Mécanique, Électricité, Optique, Nucléaire</div>
+                        <div class="subject-progress"><div class="subject-progress-bar" style="width: 0%"></div></div>
+                    </div>
+                    <div class="subject-card" onclick="showSection('coefficients')">
+                        <div class="subject-name">🧪 Chimie</div>
+                        <div class="subject-details">Cinétique, Équilibres, Organique</div>
+                        <div class="subject-progress"><div class="subject-progress-bar" style="width: 0%"></div></div>
+                    </div>
+                    <div class="subject-card" onclick="showSection('coefficients')">
+                        <div class="subject-name">🧬 SVTEEHB</div>
+                        <div class="subject-details">Génétique, Géologie, Physiologie</div>
+                        <div class="subject-progress"><div class="subject-progress-bar" style="width: 0%"></div></div>
+                    </div>
+                    <div class="subject-card" onclick="showSection('coefficients')">
+                        <div class="subject-name">🇬🇧 Anglais</div>
+                        <div class="subject-details">Grammar, Vocabulary, Essay</div>
+                        <div class="subject-progress"><div class="subject-progress-bar" style="width: 0%"></div></div>
+                    </div>
+                    <div class="subject-card" onclick="showSection('coefficients')">
+                        <div class="subject-name">🤔 Philosophie</div>
+                        <div class="subject-details">Notions, Dissertation, Analyse</div>
+                        <div class="subject-progress"><div class="subject-progress-bar" style="width: 0%"></div></div>
+                    </div>
+                    <div class="subject-card" onclick="showSection('coefficients')">
+                        <div class="subject-name">📖 Langue Française</div>
+                        <div class="subject-details">Dissertation, Commentaire, Contraction</div>
+                        <div class="subject-progress"><div class="subject-progress-bar" style="width: 0%"></div></div>
+                    </div>
+                    <div class="subject-card" onclick="showSection('coefficients')">
+                        <div class="subject-name">📚 Littérature</div>
+                        <div class="subject-details">Œuvres, Analyse, Dissertation</div>
+                        <div class="subject-progress"><div class="subject-progress-bar" style="width: 0%"></div></div>
+                    </div>
+                    <div class="subject-card" onclick="showSection('coefficients')">
+                        <div class="subject-name">🌍 Géographie</div>
+                        <div class="subject-details">Cameroun, Population, Économie</div>
+                        <div class="subject-progress"><div class="subject-progress-bar" style="width: 0%"></div></div>
+                    </div>
+                    <div class="subject-card" onclick="showSection('coefficients')">
+                        <div class="subject-name">📚 ECM</div>
+                        <div class="subject-details">Citoyenneté, Droits, Mondialisation</div>
+                        <div class="subject-progress"><div class="subject-progress-bar" style="width: 0%"></div></div>
+                    </div>
+                    <div class="subject-card" onclick="showSection('coefficients')">
+                        <div class="subject-name">🏃 EPS</div>
+                        <div class="subject-details">Courses, Sauts, Sports collectifs</div>
+                        <div class="subject-progress"><div class="subject-progress-bar" style="width: 0%"></div></div>
+                    </div>
+                    <div class="subject-card" onclick="showSection('coefficients')">
+                        <div class="subject-name">💻 Informatique</div>
+                        <div class="subject-details">Algorithmique, Programmation, BDD</div>
+                        <div class="subject-progress"><div class="subject-progress-bar" style="width: 0%"></div></div>
+                    </div>
+                </div>
             </div>
         </section>
 
         <!-- Coefficients -->
         <section class="section" id="coefficients">
+            <div class="header">
+                <div class="header-content">
+                    <h1>📋 Coefficients Officiels</h1>
+                    <p>Source : Bulletin officiel Terminale C — Total : 31 coefficients = 620 points max</p>
+                </div>
+            </div>
+
             <div class="card">
-                <div class="card-title">📋 Coefficients Officiels — Bac C (Terminale)</div>
-                <p style="color:var(--text-muted);margin-bottom:1rem;">Source : Bulletin officiel Terminale C</p>
-                
-                <h3 style="color:var(--primary);margin-bottom:0.5rem;">1er Groupe</h3>
+                <div class="card-header">
+                    <h2 class="card-title">1er Groupe</h2>
+                </div>
                 <table class="coeff-table">
-                    <thead><tr><th>Matière</th><th>Coef</th><th>Points max</th></tr></thead>
+                    <thead><tr><th>Matière</th><th>Coefficient</th><th>Points max</th></tr></thead>
                     <tbody>
                         <tr><td>📐 Mathématiques</td><td><span class="coeff-badge">7</span></td><td>140</td></tr>
                         <tr><td>⚡ Physique</td><td><span class="coeff-badge">4</span></td><td>80</td></tr>
@@ -333,10 +935,14 @@
                         <tr class="total-row"><td>Sous-total</td><td><span class="coeff-badge">16</span></td><td>320</td></tr>
                     </tbody>
                 </table>
+            </div>
 
-                <h3 style="color:var(--primary);margin:1rem 0 0.5rem;">2ème Groupe</h3>
+            <div class="card">
+                <div class="card-header">
+                    <h2 class="card-title">2ème Groupe</h2>
+                </div>
                 <table class="coeff-table">
-                    <thead><tr><th>Matière</th><th>Coef</th><th>Points max</th></tr></thead>
+                    <thead><tr><th>Matière</th><th>Coefficient</th><th>Points max</th></tr></thead>
                     <tbody>
                         <tr><td>🧪 Chimie</td><td><span class="coeff-badge">2</span></td><td>40</td></tr>
                         <tr><td>📚 ECM</td><td><span class="coeff-badge">2</span></td><td>40</td></tr>
@@ -344,10 +950,14 @@
                         <tr class="total-row"><td>Sous-total</td><td><span class="coeff-badge">6</span></td><td>120</td></tr>
                     </tbody>
                 </table>
+            </div>
 
-                <h3 style="color:var(--primary);margin:1rem 0 0.5rem;">3ème Groupe</h3>
+            <div class="card">
+                <div class="card-header">
+                    <h2 class="card-title">3ème Groupe</h2>
+                </div>
                 <table class="coeff-table">
-                    <thead><tr><th>Matière</th><th>Coef</th><th>Points max</th></tr></thead>
+                    <thead><tr><th>Matière</th><th>Coefficient</th><th>Points max</th></tr></thead>
                     <tbody>
                         <tr><td>🌍 Géographie</td><td><span class="coeff-badge">2</span></td><td>40</td></tr>
                         <tr><td>📚 Littérature</td><td><span class="coeff-badge">2</span></td><td>40</td></tr>
@@ -357,43 +967,56 @@
                         <tr class="total-row"><td>Sous-total</td><td><span class="coeff-badge">9</span></td><td>180</td></tr>
                     </tbody>
                 </table>
+            </div>
 
-                <div style="background:var(--bg-elevated);border-radius:var(--radius);padding:1rem;margin-top:1rem;">
-                    <h3 style="color:var(--success);">TOTAL GÉNÉRAL</h3>
-                    <p style="font-size:2rem;font-weight:800;color:var(--primary);">31 <span style="font-size:1rem;color:var(--text-muted);">coefficients = 620 points max</span></p>
+            <div class="card" style="background: linear-gradient(135deg, var(--bg-elevated), var(--bg-card));">
+                <div style="text-align: center; padding: 1rem;">
+                    <h3 style="color: var(--success); font-size: 1.5rem; margin-bottom: 0.5rem;">TOTAL GÉNÉRAL</h3>
+                    <p style="font-size: 3rem; font-weight: 800; background: linear-gradient(135deg, var(--primary), var(--secondary)); -webkit-background-clip: text; -webkit-text-fill-color: transparent;">31</p>
+                    <p style="color: var(--text-secondary);">coefficients = 620 points max</p>
                 </div>
             </div>
         </section>
 
         <!-- Calculateur -->
         <section class="section" id="calculateur">
+            <div class="header">
+                <div class="header-content">
+                    <h1>🧮 Calculateur de Moyenne</h1>
+                    <p>Entrez vos notes pour calculer votre moyenne pondérée</p>
+                </div>
+            </div>
+
             <div class="card calculator">
-                <div class="card-title">🧮 Calculateur de Moyenne — Bac C</div>
-                <p style="color:var(--text-muted);margin-bottom:1rem;">Entrez vos notes pour calculer votre moyenne.</p>
+                <div class="calc-group">
+                    <div class="calc-group-title">1er Groupe</div>
+                    <div class="calc-row"><label>📐 Mathématiques</label><input type="number" class="calc-input" id="note-maths" min="0" max="20" placeholder="0-20"><span class="coeff-label">×7</span></div>
+                    <div class="calc-row"><label>⚡ Physique</label><input type="number" class="calc-input" id="note-physique" min="0" max="20" placeholder="0-20"><span class="coeff-label">×4</span></div>
+                    <div class="calc-row"><label>🇬🇧 Anglais</label><input type="number" class="calc-input" id="note-anglais" min="0" max="20" placeholder="0-20"><span class="coeff-label">×3</span></div>
+                    <div class="calc-row"><label>💻 Informatique</label><input type="number" class="calc-input" id="note-info" min="0" max="20" placeholder="0-20"><span class="coeff-label">×2</span></div>
+                </div>
 
-                <h3 style="color:var(--primary);margin-bottom:0.5rem;">1er Groupe</h3>
-                <div class="calc-row"><label>📐 Mathématiques (coef 7)</label><input type="number" class="calc-input" id="note-maths" min="0" max="20" placeholder="0-20"><span class="coeff-label">×7</span></div>
-                <div class="calc-row"><label>⚡ Physique (coef 4)</label><input type="number" class="calc-input" id="note-physique" min="0" max="20" placeholder="0-20"><span class="coeff-label">×4</span></div>
-                <div class="calc-row"><label>🇬🇧 Anglais (coef 3)</label><input type="number" class="calc-input" id="note-anglais" min="0" max="20" placeholder="0-20"><span class="coeff-label">×3</span></div>
-                <div class="calc-row"><label>💻 Informatique (coef 2)</label><input type="number" class="calc-input" id="note-info" min="0" max="20" placeholder="0-20"><span class="coeff-label">×2</span></div>
+                <div class="calc-group">
+                    <div class="calc-group-title">2ème Groupe</div>
+                    <div class="calc-row"><label>🧪 Chimie</label><input type="number" class="calc-input" id="note-chimie" min="0" max="20" placeholder="0-20"><span class="coeff-label">×2</span></div>
+                    <div class="calc-row"><label>📚 ECM</label><input type="number" class="calc-input" id="note-ecm" min="0" max="20" placeholder="0-20"><span class="coeff-label">×2</span></div>
+                    <div class="calc-row"><label>🧬 SVTEEHB</label><input type="number" class="calc-input" id="note-svt" min="0" max="20" placeholder="0-20"><span class="coeff-label">×2</span></div>
+                </div>
 
-                <h3 style="color:var(--primary);margin:1rem 0 0.5rem;">2ème Groupe</h3>
-                <div class="calc-row"><label>🧪 Chimie (coef 2)</label><input type="number" class="calc-input" id="note-chimie" min="0" max="20" placeholder="0-20"><span class="coeff-label">×2</span></div>
-                <div class="calc-row"><label>📚 ECM (coef 2)</label><input type="number" class="calc-input" id="note-ecm" min="0" max="20" placeholder="0-20"><span class="coeff-label">×2</span></div>
-                <div class="calc-row"><label>🧬 SVTEEHB (coef 2)</label><input type="number" class="calc-input" id="note-svt" min="0" max="20" placeholder="0-20"><span class="coeff-label">×2</span></div>
-
-                <h3 style="color:var(--primary);margin:1rem 0 0.5rem;">3ème Groupe</h3>
-                <div class="calc-row"><label>🌍 Géographie (coef 2)</label><input type="number" class="calc-input" id="note-geo" min="0" max="20" placeholder="0-20"><span class="coeff-label">×2</span></div>
-                <div class="calc-row"><label>📚 Littérature (coef 2)</label><input type="number" class="calc-input" id="note-litterature" min="0" max="20" placeholder="0-20"><span class="coeff-label">×2</span></div>
-                <div class="calc-row"><label>🤔 Philosophie (coef 2)</label><input type="number" class="calc-input" id="note-philo" min="0" max="20" placeholder="0-20"><span class="coeff-label">×2</span></div>
-                <div class="calc-row"><label>🏃 EPS (coef 2)</label><input type="number" class="calc-input" id="note-eps" min="0" max="20" placeholder="0-20"><span class="coeff-label">×2</span></div>
-                <div class="calc-row"><label>📖 Langue Française (coef 1)</label><input type="number" class="calc-input" id="note-francais" min="0" max="20" placeholder="0-20"><span class="coeff-label">×1</span></div>
+                <div class="calc-group">
+                    <div class="calc-group-title">3ème Groupe</div>
+                    <div class="calc-row"><label>🌍 Géographie</label><input type="number" class="calc-input" id="note-geo" min="0" max="20" placeholder="0-20"><span class="coeff-label">×2</span></div>
+                    <div class="calc-row"><label>📚 Littérature</label><input type="number" class="calc-input" id="note-litterature" min="0" max="20" placeholder="0-20"><span class="coeff-label">×2</span></div>
+                    <div class="calc-row"><label>🤔 Philosophie</label><input type="number" class="calc-input" id="note-philo" min="0" max="20" placeholder="0-20"><span class="coeff-label">×2</span></div>
+                    <div class="calc-row"><label>🏃 EPS</label><input type="number" class="calc-input" id="note-eps" min="0" max="20" placeholder="0-20"><span class="coeff-label">×2</span></div>
+                    <div class="calc-row"><label>📖 Langue Française</label><input type="number" class="calc-input" id="note-francais" min="0" max="20" placeholder="0-20"><span class="coeff-label">×1</span></div>
+                </div>
 
                 <button class="resource-btn" style="width:100%;margin-top:1rem;padding:1rem;font-size:1.1rem;" onclick="calculerMoyenne()">🧮 Calculer ma moyenne</button>
 
                 <div class="result-box" id="result-box" style="display:none;">
                     <div class="result-moyenne" id="result-moyenne">0.00</div>
-                    <div style="color:var(--text-muted);">/ 20</div>
+                    <div style="color:var(--text-secondary);">/ 20</div>
                     <div class="result-detail" id="result-detail">Points: 0 / 620</div>
                     <div class="mention" id="result-mention">—</div>
                 </div>
@@ -402,10 +1025,14 @@
 
         <!-- Séquence 1 -->
         <section class="section" id="seq1">
+            <div class="header">
+                <div class="header-content">
+                    <h1>📝 Préparation Séquence 1</h1>
+                    <p>Planning de révisions pour la première séquence (6 semaines)</p>
+                </div>
+            </div>
+
             <div class="card">
-                <div class="card-title">📝 Préparation Séquence 1 — Planning par matière</div>
-                <p style="color:var(--text-muted);margin-bottom:1rem;">Planning de révisions pour la première séquence (6 semaines).</p>
-                
                 <div class="tabs">
                     <button class="tab-btn active" data-tab="seq1-maths">📐 Maths</button>
                     <button class="tab-btn" data-tab="seq1-physique">⚡ Physique</button>
@@ -421,7 +1048,7 @@
                     <button class="tab-btn" data-tab="seq1-info">💻 Info</button>
                 </div>
 
-                <!-- Maths Séquence 1 -->
+                <!-- Maths -->
                 <div class="tab-content active" id="seq1-maths">
                     <h3 style="color:var(--primary);margin-bottom:1rem;">📐 Mathématiques — Séquence 1</h3>
                     <div class="day-item"><div class="day-checkbox" onclick="toggle(this)"></div><div class="day-content"><div class="day-title">Semaine 1 : Rappels sur les ensembles ℕ, ℤ, ℚ</div><div class="day-desc">Divisibilité, PGCD, PPCM, nombres premiers, identité de Bézout</div></div></div>
@@ -432,7 +1059,7 @@
                     <div class="day-item"><div class="day-checkbox" onclick="toggle(this)"></div><div class="day-content"><div class="day-title">Semaine 6 : Révision et exercices</div><div class="day-desc">Exercices de synthèse, annales, préparation devoir</div></div></div>
                 </div>
 
-                <!-- Physique Séquence 1 -->
+                <!-- Physique -->
                 <div class="tab-content" id="seq1-physique">
                     <h3 style="color:var(--primary);margin-bottom:1rem;">⚡ Physique — Séquence 1</h3>
                     <div class="day-item"><div class="day-checkbox" onclick="toggle(this)"></div><div class="day-content"><div class="day-title">Semaine 1 : Cinématique</div><div class="day-desc">Mouvement rectiligne, circulaire, vectoriel position/vitesse/accélération</div></div></div>
@@ -443,18 +1070,18 @@
                     <div class="day-item"><div class="day-checkbox" onclick="toggle(this)"></div><div class="day-content"><div class="day-title">Semaine 6 : Révision et exercices</div><div class="day-desc">Exercices de synthèse, annales, préparation devoir</div></div></div>
                 </div>
 
-                <!-- Chimie Séquence 1 -->
+                <!-- Chimie -->
                 <div class="tab-content" id="seq1-chimie">
                     <h3 style="color:var(--primary);margin-bottom:1rem;">🧪 Chimie — Séquence 1</h3>
                     <div class="day-item"><div class="day-checkbox" onclick="toggle(this)"></div><div class="day-content"><div class="day-title">Semaine 1 : Notions de base</div><div class="day-desc">Atome, molécule, mole, concentration, tableau d'avancement</div></div></div>
                     <div class="day-item"><div class="day-checkbox" onclick="toggle(this)"></div><div class="day-content"><div class="day-title">Semaine 2 : Cinétique chimique</div><div class="day-desc">Vitesse de réaction, facteurs cinétiques, ordre de réaction</div></div></div>
-                    <div class="day-item"><div class="day-checkbox" onclick="toggle(this)"></div><div class="day-content"><div class="day-title">Semaine 3 : Équilibres chimiques</div><div class="day-desc">Constante d'équilibre, quotient de réaction, principe de Le Chatelier</div></div></div>
+                    <div class="day-item"><div class="day-checkbox" onclick="toggle(this)"></div><div class="day-content"><div class="day-title">Semaine 3 : Équilibres chimiques</div><div class="day-desc">Constante d'équilibre K, quotient de réaction, principe de Le Chatelier</div></div></div>
                     <div class="day-item"><div class="day-checkbox" onclick="toggle(this)"></div><div class="day-content"><div class="day-title">Semaine 4 : Équilibres acido-basiques</div><div class="day-desc">pH, Ka, Kb, titrages acido-basiques</div></div></div>
                     <div class="day-item"><div class="day-checkbox" onclick="toggle(this)"></div><div class="day-content"><div class="day-title">Semaine 5 : Oxydoréduction</div><div class="day-desc">Nombre d'oxydation, couples redox, piles électrochimiques</div></div></div>
                     <div class="day-item"><div class="day-checkbox" onclick="toggle(this)"></div><div class="day-content"><div class="day-title">Semaine 6 : Révision et exercices</div><div class="day-desc">Exercices de synthèse, annales, préparation devoir</div></div></div>
                 </div>
 
-                <!-- SVT Séquence 1 -->
+                <!-- SVT -->
                 <div class="tab-content" id="seq1-svt">
                     <h3 style="color:var(--primary);margin-bottom:1rem;">🧬 SVTEEHB — Séquence 1</h3>
                     <div class="day-item"><div class="day-checkbox" onclick="toggle(this)"></div><div class="day-content"><div class="day-title">Semaine 1 : La cellule</div><div class="day-desc">Structure cellulaire, membrane, organites, métabolisme</div></div></div>
@@ -465,7 +1092,7 @@
                     <div class="day-item"><div class="day-checkbox" onclick="toggle(this)"></div><div class="day-content"><div class="day-title">Semaine 6 : Révision et exercices</div><div class="day-desc">Exercices de synthèse, annales, préparation devoir</div></div></div>
                 </div>
 
-                <!-- Français Séquence 1 -->
+                <!-- Français -->
                 <div class="tab-content" id="seq1-francais">
                     <h3 style="color:var(--primary);margin-bottom:1rem;">📖 Langue Française — Séquence 1</h3>
                     <div class="day-item"><div class="day-checkbox" onclick="toggle(this)"></div><div class="day-content"><div class="day-title">Semaine 1 : Dissertation (méthode)</div><div class="day-desc">Analyse du sujet, recherche d'arguments, plan dialectique</div></div></div>
@@ -476,7 +1103,7 @@
                     <div class="day-item"><div class="day-checkbox" onclick="toggle(this)"></div><div class="day-content"><div class="day-title">Semaine 6 : Révision et exercices</div><div class="day-desc">Exercices de synthèse, annales, préparation devoir</div></div></div>
                 </div>
 
-                <!-- Anglais Séquence 1 -->
+                <!-- Anglais -->
                 <div class="tab-content" id="seq1-anglais">
                     <h3 style="color:var(--primary);margin-bottom:1rem;">🇬🇧 Anglais — Séquence 1</h3>
                     <div class="day-item"><div class="day-checkbox" onclick="toggle(this)"></div><div class="day-content"><div class="day-title">Semaine 1 : Grammar (tenses)</div><div class="day-desc">Present, past, future, perfect tenses</div></div></div>
@@ -487,7 +1114,7 @@
                     <div class="day-item"><div class="day-checkbox" onclick="toggle(this)"></div><div class="day-content"><div class="day-title">Semaine 6 : Révision et exercices</div><div class="day-desc">Exercices de synthèse, annales, préparation devoir</div></div></div>
                 </div>
 
-                <!-- Philosophie Séquence 1 -->
+                <!-- Philo -->
                 <div class="tab-content" id="seq1-philo">
                     <h3 style="color:var(--primary);margin-bottom:1rem;">🤔 Philosophie — Séquence 1</h3>
                     <div class="day-item"><div class="day-checkbox" onclick="toggle(this)"></div><div class="day-content"><div class="day-title">Semaine 1 : Introduction à la philosophie</div><div class="day-desc">Qu'est-ce que la philosophie ? Histoire, méthodes, grands courants</div></div></div>
@@ -498,7 +1125,7 @@
                     <div class="day-item"><div class="day-checkbox" onclick="toggle(this)"></div><div class="day-content"><div class="day-title">Semaine 6 : Révision et exercices</div><div class="day-desc">Exercices de synthèse, annales, préparation devoir</div></div></div>
                 </div>
 
-                <!-- Géographie Séquence 1 -->
+                <!-- Géo -->
                 <div class="tab-content" id="seq1-geo">
                     <h3 style="color:var(--primary);margin-bottom:1rem;">🌍 Géographie — Séquence 1</h3>
                     <div class="day-item"><div class="day-checkbox" onclick="toggle(this)"></div><div class="day-content"><div class="day-title">Semaine 1 : Le milieu physique du Cameroun</div><div class="day-desc">Relief, climat, hydrographie, végétation</div></div></div>
@@ -509,7 +1136,7 @@
                     <div class="day-item"><div class="day-checkbox" onclick="toggle(this)"></div><div class="day-content"><div class="day-title">Semaine 6 : Révision et exercices</div><div class="day-desc">Exercices de synthèse, annales, préparation devoir</div></div></div>
                 </div>
 
-                <!-- Littérature Séquence 1 -->
+                <!-- Littérature -->
                 <div class="tab-content" id="seq1-litterature">
                     <h3 style="color:var(--primary);margin-bottom:1rem;">📚 Littérature — Séquence 1</h3>
                     <div class="day-item"><div class="day-checkbox" onclick="toggle(this)"></div><div class="day-content"><div class="day-title">Semaine 1 : Introduction à la littérature</div><div class="day-desc">Genres littéraires, procédés stylistiques, figures de style</div></div></div>
@@ -520,7 +1147,7 @@
                     <div class="day-item"><div class="day-checkbox" onclick="toggle(this)"></div><div class="day-content"><div class="day-title">Semaine 6 : Révision et exercices</div><div class="day-desc">Exercices de synthèse, annales, préparation devoir</div></div></div>
                 </div>
 
-                <!-- ECM Séquence 1 -->
+                <!-- ECM -->
                 <div class="tab-content" id="seq1-ecm">
                     <h3 style="color:var(--primary);margin-bottom:1rem;">📚 ECM — Séquence 1</h3>
                     <div class="day-item"><div class="day-checkbox" onclick="toggle(this)"></div><div class="day-content"><div class="day-title">Semaine 1 : La citoyenneté</div><div class="day-desc">Droits et devoirs du citoyen, institutions démocratiques</div></div></div>
@@ -531,7 +1158,7 @@
                     <div class="day-item"><div class="day-checkbox" onclick="toggle(this)"></div><div class="day-content"><div class="day-title">Semaine 6 : Révision et exercices</div><div class="day-desc">Exercices de synthèse, annales, préparation devoir</div></div></div>
                 </div>
 
-                <!-- EPS Séquence 1 -->
+                <!-- EPS -->
                 <div class="tab-content" id="seq1-eps">
                     <h3 style="color:var(--primary);margin-bottom:1rem;">🏃 EPS — Séquence 1</h3>
                     <div class="day-item"><div class="day-checkbox" onclick="toggle(this)"></div><div class="day-content"><div class="day-title">Semaine 1 : Courses (sprint)</div><div class="day-desc">Technique de course, départs, relais</div></div></div>
@@ -542,7 +1169,7 @@
                     <div class="day-item"><div class="day-checkbox" onclick="toggle(this)"></div><div class="day-content"><div class="day-title">Semaine 6 : Révision et évaluation</div><div class="day-desc">Préparation épreuve pratique et théorique</div></div></div>
                 </div>
 
-                <!-- Informatique Séquence 1 -->
+                <!-- Info -->
                 <div class="tab-content" id="seq1-info">
                     <h3 style="color:var(--primary);margin-bottom:1rem;">💻 Informatique — Séquence 1</h3>
                     <div class="day-item"><div class="day-checkbox" onclick="toggle(this)"></div><div class="day-content"><div class="day-title">Semaine 1 : Architecture des ordinateurs</div><div class="day-desc">Composants, mémoire, processeur, périphériques</div></div></div>
@@ -552,41 +1179,69 @@
                     <div class="day-item"><div class="day-checkbox" onclick="toggle(this)"></div><div class="day-content"><div class="day-title">Semaine 5 : Bases de données</div><div class="day-desc">Modèle relationnel, SQL, requêtes</div></div></div>
                     <div class="day-item"><div class="day-checkbox" onclick="toggle(this)"></div><div class="day-content"><div class="day-title">Semaine 6 : Révision et exercices</div><div class="day-desc">Exercices de synthèse, annales, préparation devoir</div></div></div>
                 </div>
+            </div>
         </section>
 
         <!-- Quiz -->
         <section class="section" id="quiz">
-            <div class="tabs">
-                <button class="tab-btn active" data-tab="quiz-maths">📐 Maths</button>
-                <button class="tab-btn" data-tab="quiz-physique">⚡ Physique</button>
-                <button class="tab-btn" data-tab="quiz-chimie">🧪 Chimie</button>
-                <button class="tab-btn" data-tab="quiz-svt">🧬 SVT</button>
+            <div class="header">
+                <div class="header-content">
+                    <h1>🧠 Quiz Interactifs</h1>
+                    <p>Testez vos connaissances avec des QCM corrigés</p>
+                </div>
             </div>
 
-            <div class="tab-content active" id="quiz-maths"><div class="quiz-container" id="quiz-maths-container"></div></div>
-            <div class="tab-content" id="quiz-physique"><div class="quiz-container" id="quiz-physique-container"></div></div>
-            <div class="tab-content" id="quiz-chimie"><div class="quiz-container" id="quiz-chimie-container"></div></div>
-            <div class="tab-content" id="quiz-svt"><div class="quiz-container" id="quiz-svt-container"></div></div>
+            <div class="card">
+                <div class="tabs">
+                    <button class="tab-btn active" data-tab="quiz-maths">📐 Maths</button>
+                    <button class="tab-btn" data-tab="quiz-physique">⚡ Physique</button>
+                    <button class="tab-btn" data-tab="quiz-chimie">🧪 Chimie</button>
+                    <button class="tab-btn" data-tab="quiz-svt">🧬 SVT</button>
+                </div>
+
+                <div class="tab-content active" id="quiz-maths"><div class="quiz-container" id="quiz-maths-container"></div></div>
+                <div class="tab-content" id="quiz-physique"><div class="quiz-container" id="quiz-physique-container"></div></div>
+                <div class="tab-content" id="quiz-chimie"><div class="quiz-container" id="quiz-chimie-container"></div></div>
+                <div class="tab-content" id="quiz-svt"><div class="quiz-container" id="quiz-svt-container"></div></div>
+            </div>
         </section>
 
         <!-- Flashcards -->
         <section class="section" id="flashcards">
-            <div class="tabs">
-                <button class="tab-btn active" data-tab="fc-maths">📐 Maths</button>
-                <button class="tab-btn" data-tab="fc-physique">⚡ Physique</button>
-                <button class="tab-btn" data-tab="fc-chimie">🧪 Chimie</button>
-                <button class="tab-btn" data-tab="fc-svt">🧬 SVT</button>
+            <div class="header">
+                <div class="header-content">
+                    <h1>🃏 Flashcards</h1>
+                    <p>Mémorisez les formules et concepts clés</p>
+                </div>
             </div>
-            <div class="tab-content active" id="fc-maths"><div class="flashcard-container" id="fc-maths-container"></div></div>
-            <div class="tab-content" id="fc-physique"><div class="flashcard-container" id="fc-physique-container"></div></div>
-            <div class="tab-content" id="fc-chimie"><div class="flashcard-container" id="fc-chimie-container"></div></div>
-            <div class="tab-content" id="fc-svt"><div class="flashcard-container" id="fc-svt-container"></div></div>
+
+            <div class="card">
+                <div class="tabs">
+                    <button class="tab-btn active" data-tab="fc-maths">📐 Maths</button>
+                    <button class="tab-btn" data-tab="fc-physique">⚡ Physique</button>
+                    <button class="tab-btn" data-tab="fc-chimie">🧪 Chimie</button>
+                    <button class="tab-btn" data-tab="fc-svt">🧬 SVT</button>
+                </div>
+                <div class="tab-content active" id="fc-maths"><div class="flashcard-container" id="fc-maths-container"></div></div>
+                <div class="tab-content" id="fc-physique"><div class="flashcard-container" id="fc-physique-container"></div></div>
+                <div class="tab-content" id="fc-chimie"><div class="flashcard-container" id="fc-chimie-container"></div></div>
+                <div class="tab-content" id="fc-svt"><div class="flashcard-container" id="fc-svt-container"></div></div>
+            </div>
         </section>
 
         <!-- Resources -->
         <section class="section" id="resources">
+            <div class="header">
+                <div class="header-content">
+                    <h1>📥 Ressources & Sujets Bac</h1>
+                    <p>Sujets officiels 2024-2025 avec corrigés</p>
+                </div>
+            </div>
+
             <div class="card">
-                <div class="card-title">📥 Sujets Bac 2024-2025 (PDF)</div>
+                <div class="card-header">
+                    <h2 class="card-title">Sujets Bac 2024-2025 (PDF)</h2>
+                </div>
                 <div class="resource-list">
                     <div class="resource-item"><span class="resource-icon">📄</span><div class="resource-info"><div class="resource-name">Maths Bac 2024 Série C-E</div><div class="resource-desc">Sujet + corrigé</div></div><a href="https://epreuvesetcorriges.com/categories/cameroun/examens/bac/35897-corrige-bac-2024-mathematiques-serie-c-e" target="_blank" class="resource-btn">Télécharger</a></div>
                     <div class="resource-item"><span class="resource-icon">📄</span><div class="resource-info"><div class="resource-name">Français Bac 2025 Série C-D-E-TI</div><div class="resource-desc">Sujet officiel</div></div><a href="https://epreuvesetcorriges.com/categories/cameroun/examens/bac/39805-epreuve-de-langue-francaise-baccalaureat-2025-serie-c-d-e-ti-cameroun" target="_blank" class="resource-btn">Télécharger</a></div>
@@ -597,8 +1252,11 @@
                     <div class="resource-item"><span class="resource-icon">📄</span><div class="resource-info"><div class="resource-name">Informatique Bac 2025 Série C-D-E</div><div class="resource-desc">Épreuve théorique</div></div><a href="https://epreuvesetcorriges.com/categories/cameroun/examens/bac/39807-epreuve-theorique-d-informatique-baccalaureat-2025-serie-c-d-e-cameroun" target="_blank" class="resource-btn">Télécharger</a></div>
                 </div>
             </div>
+
             <div class="card">
-                <div class="card-title">📚 Ressources Officielles</div>
+                <div class="card-header">
+                    <h2 class="card-title">Ressources Officielles</h2>
+                </div>
                 <div class="resource-list">
                     <div class="resource-item"><span class="resource-icon">🌐</span><div class="resource-info"><div class="resource-name">OBC — Office du Baccalauréat</div><div class="resource-desc">Site officiel</div></div><a href="https://obc.cm" target="_blank" class="resource-btn">Accéder</a></div>
                     <div class="resource-item"><span class="resource-icon">🌐</span><div class="resource-info"><div class="resource-name">MINESEC — Programmes</div><div class="resource-desc">Programmes officiels</div></div><a href="https://www.minesec.gov.cm/web/index.php/fr/systeme-educatif/progammes-officiels" target="_blank" class="resource-btn">Accéder</a></div>
@@ -698,18 +1356,20 @@
 
         // Navigation
         function setupNavigation() {
-            document.querySelectorAll('.nav-btn').forEach(btn => {
+            document.querySelectorAll('.nav-item').forEach(btn => {
                 btn.addEventListener('click', () => {
-                    document.querySelectorAll('.nav-btn').forEach(b => b.classList.remove('active'));
+                    document.querySelectorAll('.nav-item').forEach(b => b.classList.remove('active'));
                     document.querySelectorAll('.section').forEach(s => s.classList.remove('active'));
                     btn.classList.add('active');
                     document.getElementById(btn.dataset.section).classList.add('active');
+                    // Close sidebar on mobile
+                    document.querySelector('.sidebar').classList.remove('open');
                 });
             });
         }
 
         function showSection(sectionId) {
-            document.querySelectorAll('.nav-btn').forEach(b => b.classList.remove('active'));
+            document.querySelectorAll('.nav-item').forEach(b => b.classList.remove('active'));
             document.querySelectorAll('.section').forEach(s => s.classList.remove('active'));
             document.querySelector(`[data-section="${sectionId}"]`).classList.add('active');
             document.getElementById(sectionId).classList.add('active');
@@ -769,6 +1429,17 @@
                     </div>
                 `).join('');
             });
+        }
+
+        // Toggle task
+        function toggle(element) {
+            if (element.classList.contains('checked')) {
+                element.classList.remove('checked');
+                element.parentElement.querySelector('.day-title').classList.remove('completed');
+            } else {
+                element.classList.add('checked');
+                element.parentElement.querySelector('.day-title').classList.add('completed');
+            }
         }
 
         // Calculateur de moyenne
