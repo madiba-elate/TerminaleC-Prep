@@ -243,6 +243,7 @@
         <button class="nav-btn active" data-section="dashboard">📊 Dashboard</button>
         <button class="nav-btn" data-section="coefficients">📋 Coefficients</button>
         <button class="nav-btn" data-section="calculateur">🧮 Calculateur</button>
+        <button class="nav-btn" data-section="seq1">📝 Séquence 1</button>
         <button class="nav-btn" data-section="quiz">🧠 Quiz</button>
         <button class="nav-btn" data-section="flashcards">🃏 Flashcards</button>
         <button class="nav-btn" data-section="resources">📥 Ressources</button>
@@ -395,6 +396,89 @@
                     <div style="color:var(--text-muted);">/ 20</div>
                     <div class="result-detail" id="result-detail">Points: 0 / 620</div>
                     <div class="mention" id="result-mention">—</div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Séquence 1 -->
+        <section class="section" id="seq1">
+            <div class="card">
+                <div class="card-title">📝 Préparation Séquence 1 — Planning par matière</div>
+                <p style="color:var(--text-muted);margin-bottom:1rem;">Planning de révisions pour la première séquence (6 semaines).</p>
+                
+                <div class="tabs">
+                    <button class="tab-btn active" data-tab="seq1-maths">📐 Maths</button>
+                    <button class="tab-btn" data-tab="seq1-physique">⚡ Physique</button>
+                    <button class="tab-btn" data-tab="seq1-chimie">🧪 Chimie</button>
+                    <button class="tab-btn" data-tab="seq1-svt">🧬 SVT</button>
+                    <button class="tab-btn" data-tab="seq1-francais">📖 Français</button>
+                    <button class="tab-btn" data-tab="seq1-anglais">🇬🇧 Anglais</button>
+                </div>
+
+                <!-- Maths Séquence 1 -->
+                <div class="tab-content active" id="seq1-maths">
+                    <h3 style="color:var(--primary);margin-bottom:1rem;">📐 Mathématiques — Séquence 1</h3>
+                    <div class="day-item"><div class="day-checkbox" onclick="toggle(this)"></div><div class="day-content"><div class="day-title">Semaine 1 : Rappels sur les ensembles ℕ, ℤ, ℚ</div><div class="day-desc">Divisibilité, PGCD, PPCM, nombres premiers, identité de Bézout</div></div></div>
+                    <div class="day-item"><div class="day-checkbox" onclick="toggle(this)"></div><div class="day-content"><div class="day-title">Semaine 2 : Nombres complexes (1)</div><div class="day-desc">Forme algébrique, opérations, conjugué, module</div></div></div>
+                    <div class="day-item"><div class="day-checkbox" onclick="toggle(this)"></div><div class="day-content"><div class="day-title">Semaine 3 : Nombres complexes (2)</div><div class="day-desc">Forme trigonométrique et exponentielle, formules d'Euler et de Moivre</div></div></div>
+                    <div class="day-item"><div class="day-checkbox" onclick="toggle(this)"></div><div class="day-content"><div class="day-title">Semaine 4 : Fonctions numériques</div><div class="day-desc">Rappels sur les fonctions, limites, continuité</div></div></div>
+                    <div class="day-item"><div class="day-checkbox" onclick="toggle(this)"></div><div class="day-content"><div class="day-title">Semaine 5 : Dérivation et primitives</div><div class="day-desc">Dérivées usuelles, primitives, équations différentielles simples</div></div></div>
+                    <div class="day-item"><div class="day-checkbox" onclick="toggle(this)"></div><div class="day-content"><div class="day-title">Semaine 6 : Révision et exercices</div><div class="day-desc">Exercices de synthèse, annales, préparation devoir</div></div></div>
+                </div>
+
+                <!-- Physique Séquence 1 -->
+                <div class="tab-content" id="seq1-physique">
+                    <h3 style="color:var(--primary);margin-bottom:1rem;">⚡ Physique — Séquence 1</h3>
+                    <div class="day-item"><div class="day-checkbox" onclick="toggle(this)"></div><div class="day-content"><div class="day-title">Semaine 1 : Cinématique</div><div class="day-desc">Mouvement rectiligne, circulaire, vectoriel position/vitesse/accélération</div></div></div>
+                    <div class="day-item"><div class="day-checkbox" onclick="toggle(this)"></div><div class="day-content"><div class="day-title">Semaine 2 : Dynamique (lois de Newton)</div><div class="day-desc">Forces, poids, frottements, théorème du centre d'inertie</div></div></div>
+                    <div class="day-item"><div class="day-checkbox" onclick="toggle(this)"></div><div class="day-content"><div class="day-title">Semaine 3 : Mouvement dans un champ de pesanteur</div><div class="day-desc">Chute libre, projectile, mouvement des satellites</div></div></div>
+                    <div class="day-item"><div class="day-checkbox" onclick="toggle(this)"></div><div class="day-content"><div class="day-title">Semaine 4 : Électrostatique</div><div class="day-desc">Loi de Coulomb, champ électrique, potentiel</div></div></div>
+                    <div class="day-item"><div class="day-checkbox" onclick="toggle(this)"></div><div class="day-content"><div class="day-title">Semaine 5 : Électrocinétique</div><div class="day-desc">Loi d'Ohm, lois de Kirchhoff, circuits RC</div></div></div>
+                    <div class="day-item"><div class="day-checkbox" onclick="toggle(this)"></div><div class="day-content"><div class="day-title">Semaine 6 : Révision et exercices</div><div class="day-desc">Exercices de synthèse, annales, préparation devoir</div></div></div>
+                </div>
+
+                <!-- Chimie Séquence 1 -->
+                <div class="tab-content" id="seq1-chimie">
+                    <h3 style="color:var(--primary);margin-bottom:1rem;">🧪 Chimie — Séquence 1</h3>
+                    <div class="day-item"><div class="day-checkbox" onclick="toggle(this)"></div><div class="day-content"><div class="day-title">Semaine 1 : Notions de base</div><div class="day-desc">Atome, molécule, mole, concentration, tableau d'avancement</div></div></div>
+                    <div class="day-item"><div class="day-checkbox" onclick="toggle(this)"></div><div class="day-content"><div class="day-title">Semaine 2 : Cinétique chimique</div><div class="day-desc">Vitesse de réaction, facteurs cinétiques, ordre de réaction</div></div></div>
+                    <div class="day-item"><div class="day-checkbox" onclick="toggle(this)"></div><div class="day-content"><div class="day-title">Semaine 3 : Équilibres chimiques</div><div class="day-desc">Constante d'équilibre, quotient de réaction, principe de Le Chatelier</div></div></div>
+                    <div class="day-item"><div class="day-checkbox" onclick="toggle(this)"></div><div class="day-content"><div class="day-title">Semaine 4 : Équilibres acido-basiques</div><div class="day-desc">pH, Ka, Kb, titrages acido-basiques</div></div></div>
+                    <div class="day-item"><div class="day-checkbox" onclick="toggle(this)"></div><div class="day-content"><div class="day-title">Semaine 5 : Oxydoréduction</div><div class="day-desc">Nombre d'oxydation, couples redox, piles électrochimiques</div></div></div>
+                    <div class="day-item"><div class="day-checkbox" onclick="toggle(this)"></div><div class="day-content"><div class="day-title">Semaine 6 : Révision et exercices</div><div class="day-desc">Exercices de synthèse, annales, préparation devoir</div></div></div>
+                </div>
+
+                <!-- SVT Séquence 1 -->
+                <div class="tab-content" id="seq1-svt">
+                    <h3 style="color:var(--primary);margin-bottom:1rem;">🧬 SVTEEHB — Séquence 1</h3>
+                    <div class="day-item"><div class="day-checkbox" onclick="toggle(this)"></div><div class="day-content"><div class="day-title">Semaine 1 : La cellule</div><div class="day-desc">Structure cellulaire, membrane, organites, métabolisme</div></div></div>
+                    <div class="day-item"><div class="day-checkbox" onclick="toggle(this)"></div><div class="day-content"><div class="day-title">Semaine 2 : Génétique (1)</div><div class="day-desc">Lois de Mendel, monohybridisme, dihybridisme</div></div></div>
+                    <div class="day-item"><div class="day-checkbox" onclick="toggle(this)"></div><div class="day-content"><div class="day-title">Semaine 3 : Génétique (2)</div><div class="day-desc">Hérédité liée au sexe, génétique des populations</div></div></div>
+                    <div class="day-item"><div class="day-checkbox" onclick="toggle(this)"></div><div class="day-content"><div class="day-title">Semaine 4 : Géologie</div><div class="day-desc">Tectonique des plaques, séismes, volcans</div></div></div>
+                    <div class="day-item"><div class="day-checkbox" onclick="toggle(this)"></div><div class="day-content"><div class="day-title">Semaine 5 : Physiologie</div><div class="day-desc">Système nerveux, influx nerveux, synapse</div></div></div>
+                    <div class="day-item"><div class="day-checkbox" onclick="toggle(this)"></div><div class="day-content"><div class="day-title">Semaine 6 : Révision et exercices</div><div class="day-desc">Exercices de synthèse, annales, préparation devoir</div></div></div>
+                </div>
+
+                <!-- Français Séquence 1 -->
+                <div class="tab-content" id="seq1-francais">
+                    <h3 style="color:var(--primary);margin-bottom:1rem;">📖 Langue Française — Séquence 1</h3>
+                    <div class="day-item"><div class="day-checkbox" onclick="toggle(this)"></div><div class="day-content"><div class="day-title">Semaine 1 : Dissertation (méthode)</div><div class="day-desc">Analyse du sujet, recherche d'arguments, plan dialectique</div></div></div>
+                    <div class="day-item"><div class="day-checkbox" onclick="toggle(this)"></div><div class="day-content"><div class="day-title">Semaine 2 : Commentaire composé</div><div class="day-desc">Lecture analytique, procédés stylistiques, interprétation</div></div></div>
+                    <div class="day-item"><div class="day-checkbox" onclick="toggle(this)"></div><div class="day-content"><div class="day-title">Semaine 3 : Contraction de texte</div><div class="day-desc">Résumé, reformulation, respect du sens original</div></div></div>
+                    <div class="day-item"><div class="day-checkbox" onclick="toggle(this)"></div><div class="day-content"><div class="day-title">Semaine 4 : Grammaire et orthographe</div><div class="day-desc">Conjugaison, accords, syntaxe, vocabulaire</div></div></div>
+                    <div class="day-item"><div class="day-checkbox" onclick="toggle(this)"></div><div class="day-content"><div class="day-title">Semaine 5 : Expression écrite</div><div class="day-desc">Rédaction, argumentation, style</div></div></div>
+                    <div class="day-item"><div class="day-checkbox" onclick="toggle(this)"></div><div class="day-content"><div class="day-title">Semaine 6 : Révision et exercices</div><div class="day-desc">Exercices de synthèse, annales, préparation devoir</div></div></div>
+                </div>
+
+                <!-- Anglais Séquence 1 -->
+                <div class="tab-content" id="seq1-anglais">
+                    <h3 style="color:var(--primary);margin-bottom:1rem;">🇬🇧 Anglais — Séquence 1</h3>
+                    <div class="day-item"><div class="day-checkbox" onclick="toggle(this)"></div><div class="day-content"><div class="day-title">Semaine 1 : Grammar (tenses)</div><div class="day-desc">Present, past, future, perfect tenses</div></div></div>
+                    <div class="day-item"><div class="day-checkbox" onclick="toggle(this)"></div><div class="day-content"><div class="day-title">Semaine 2 : Grammar (voice & conditionals)</div><div class="day-desc">Passive voice, conditionals type 1, 2, 3</div></div></div>
+                    <div class="day-item"><div class="day-checkbox" onclick="toggle(this)"></div><div class="day-content"><div class="day-title">Semaine 3 : Vocabulary</div><div class="day-desc">Health, education, environment, technology</div></div></div>
+                    <div class="day-item"><div class="day-checkbox" onclick="toggle(this)"></div><div class="day-content"><div class="day-title">Semaine 4 : Essay Writing</div><div class="day-desc">Argumentative, narrative, descriptive essays</div></div></div>
+                    <div class="day-item"><div class="day-checkbox" onclick="toggle(this)"></div><div class="day-content"><div class="day-title">Semaine 5 : Reading Comprehension</div><div class="day-desc">Skimming, scanning, inference, vocabulary in context</div></div></div>
+                    <div class="day-item"><div class="day-checkbox" onclick="toggle(this)"></div><div class="day-content"><div class="day-title">Semaine 6 : Révision et exercices</div><div class="day-desc">Exercices de synthèse, annales, préparation devoir</div></div></div>
                 </div>
             </div>
         </section>
