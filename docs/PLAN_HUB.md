@@ -89,26 +89,23 @@ TerminaleC-Prep/
 - [x] Ajouter le calculateur de moyenne
 - [x] Mettre à jour la documentation avec les vrais coefficients
 
-### Phase 2 : Contenu Pédagogique (Semaine 3-6)
-- [ ] **Maths** : Fiches de cours (chapitre par chapitre), exercices corrigés, formules
-- [ ] **Physique** : Cours, formules, schémas, TP virtuels
-- [ ] **Chimie** : Cours, équations, exercices de titrage
-- [ ] **SVT** : Cours, schémas animaux/végétaux, génétique
-- [ ] **Français** : Méthodologie dissertation/commentaire, exemples
-- [ ] **Philosophie** : Notions, auteurs, citations, plans de dissertation
-- [ ] **Anglais** : Grammar, vocabulary, essay templates
-- [ ] **ECM** : Cours, études de cas, actualités
-- [ ] **Géographie** : Cours, cartes, études de cas
-- [ ] **Littérature** : Œuvres au programme, analyses
-- [ ] **EPS** : Fiches techniques, règles des sports
-- [ ] **Informatique** : Cours, exercices pratiques
+### Phase 2 : Contenu Pédagogique ✅ COMPLÉTÉE
+- [x] **Quiz interactifs** : 20 QCM (Maths, Physique, Chimie, SVT)
+- [x] **Flashcards** : 24 cartes mémoire (formules et concepts)
+- [x] **Préparation Seq 1** : Planning 6 semaines × 12 matières
+- [x] **Banque 120 Sujets** : 10 épreuves par matière avec filtres
 
-### Phase 3 : Outils d'Apprentissage (Semaine 7-10)
-- [ ] **Flashcards** : Cartes mémoire par chapitre (format PDF + interactif)
-- [ ] **Quiz** : QCM chronométrés avec correction automatique
-- [ ] **Sujets Bac** : Compilation 2015-2025 avec corrigés
-- [ ] **Minuteur Pomodoro** : Avec suivi de temps par matière
-- [ ] **Calculateur de moyenne** : Simulation notes Bac
+### Phase 3 : Outils d'Apprentissage ✅ COMPLÉTÉE
+- [x] **Calculateur de moyenne** : Simulation notes Bac avec mentions
+- [x] **Sujets Bac** : Liens vers sujets 2024-2025 (epreuvesetcorriges.com)
+- [x] **Theme Warm Scientific Neutral** : Interface crème/or unifiée
+- [x] **Mode sombre** : Thème activable via bouton toggle
+
+### Phase 4 : Hors-ligne & Distribution ✅ COMPLÉTÉE
+- [x] **Tailwind CSS local** : Bibliothèque incluse dans assets/js/
+- [x] **Chart.js local** : Graphiques inclus dans assets/js/
+- [x] **Aucune dépendance CDN** : App 100% fonctionnelle hors-ligne
+- [x] **Dashboard Séquence 1** : Page dédiée avec analyse archivage
 
 ### Phase 4 : Fonctionnalités Avancées (Semaine 11-14)
 - [ ] **Mode hors-ligne** : Service Worker pour PWA

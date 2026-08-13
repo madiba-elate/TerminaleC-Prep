@@ -1,1580 +1,771 @@
 <!DOCTYPE html>
-<html lang="fr" data-theme="dark">
+<html lang="fr" data-theme="light">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>HSC — High School Course | Bac C Cameroun</title>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+    <script src="assets/js/tailwind.js"></script>
+    <script src="assets/js/chart.js"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        brand: { 50:'#fbf8f3', 100:'#f5eee1', 200:'#e7d8be', 600:'#b8860b', 700:'#8b6508', 800:'#4a370e', 900:'#281e06' },
+                        group1: '#1e3a8a',
+                        group2: '#065f46',
+                        group3: '#991b1b',
+                    }
+                }
+            }
+        }
+    </script>
     <style>
         :root {
-            --primary: #3b82f6;
-            --primary-dark: #2563eb;
-            --secondary: #8b5cf6;
-            --accent: #06b6d4;
-            --success: #10b981;
-            --warning: #f59e0b;
-            --danger: #ef4444;
-            --bg-primary: #0f172a;
-            --bg-secondary: #1e293b;
-            --bg-tertiary: #334155;
-            --bg-card: rgba(30, 41, 59, 0.8);
-            --bg-elevated: rgba(51, 65, 85, 0.6);
-            --text-primary: #f1f5f9;
-            --text-secondary: #94a3b8;
-            --text-muted: #64748b;
-            --border: rgba(51, 65, 85, 0.5);
-            --shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
-            --shadow-lg: 0 16px 48px rgba(0, 0, 0, 0.4);
-            --radius: 16px;
-            --radius-sm: 8px;
-            --radius-lg: 24px;
-            --transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-            --sidebar-width: 280px;
-        }
-
-        [data-theme="light"] {
-            --bg-primary: #f8fafc;
-            --bg-secondary: #ffffff;
-            --bg-tertiary: #f1f5f9;
-            --bg-card: rgba(255, 255, 255, 0.9);
-            --bg-elevated: rgba(241, 245, 249, 0.8);
-            --text-primary: #1e293b;
-            --text-secondary: #475569;
-            --text-muted: #64748b;
-            --border: rgba(226, 232, 240, 0.8);
-        }
-
-        * { margin: 0; padding: 0; box-sizing: border-box; }
-
-        body {
-            font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
-            background: var(--bg-primary);
-            color: var(--text-primary);
-            line-height: 1.6;
-            min-height: 100vh;
-            overflow-x: hidden;
-        }
-
-        /* ===== SIDEBAR ===== */
-        .sidebar {
-            position: fixed;
-            left: 0;
-            top: 0;
-            width: var(--sidebar-width);
-            height: 100vh;
-            background: var(--bg-card);
-            backdrop-filter: blur(20px);
-            border-right: 1px solid var(--border);
-            padding: 1.5rem;
-            z-index: 1000;
-            transition: var(--transition);
-            overflow-y: auto;
-        }
-
-        .sidebar-header {
-            display: flex;
-            align-items: center;
-            gap: 1rem;
-            padding-bottom: 1.5rem;
-            border-bottom: 1px solid var(--border);
-            margin-bottom: 1.5rem;
-        }
-
-        .sidebar-logo {
-            width: 48px;
-            height: 48px;
-            background: linear-gradient(135deg, var(--primary), var(--secondary));
-            border-radius: var(--radius-sm);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 1.5rem;
-        }
-
-        .sidebar-title {
-            font-size: 1.1rem;
-            font-weight: 700;
-            color: var(--text-primary);
-        }
-
-        .sidebar-subtitle {
-            font-size: 0.75rem;
-            color: var(--text-muted);
-        }
-
-        .nav-section {
-            margin-bottom: 1.5rem;
-        }
-
-        .nav-section-title {
-            font-size: 0.7rem;
-            font-weight: 600;
-            text-transform: uppercase;
-            letter-spacing: 0.05em;
-            color: var(--text-muted);
-            margin-bottom: 0.75rem;
-            padding-left: 0.75rem;
-        }
-
-        .nav-item {
-            display: flex;
-            align-items: center;
-            gap: 0.75rem;
-            padding: 0.75rem 1rem;
-            border-radius: var(--radius-sm);
-            color: var(--text-secondary);
-            cursor: pointer;
-            transition: var(--transition);
-            margin-bottom: 0.25rem;
-            font-size: 0.9rem;
-            font-weight: 500;
-        }
-
-        .nav-item:hover {
-            background: var(--bg-elevated);
-            color: var(--text-primary);
-        }
-
-        .nav-item.active {
-            background: linear-gradient(135deg, var(--primary), var(--secondary));
-            color: white;
-            box-shadow: 0 4px 12px rgba(59, 130, 246, 0.3);
-        }
-
-        .nav-icon {
-            width: 20px;
-            text-align: center;
-        }
-
-        .nav-badge {
-            margin-left: auto;
-            background: var(--primary);
-            color: white;
-            font-size: 0.65rem;
-            padding: 0.2rem 0.5rem;
-            border-radius: 10px;
-            font-weight: 600;
-        }
-
-        /* ===== MAIN CONTENT ===== */
-        .main-content {
-            margin-left: var(--sidebar-width);
-            min-height: 100vh;
-            padding: 2rem;
-        }
-
-        /* ===== HEADER ===== */
-        .header {
-            background: linear-gradient(135deg, rgba(30, 58, 95, 0.9) 0%, rgba(26, 95, 122, 0.9) 50%, rgba(21, 152, 149, 0.9) 100%);
-            backdrop-filter: blur(20px);
-            border-radius: var(--radius-lg);
-            padding: 2rem;
-            margin-bottom: 2rem;
-            position: relative;
-            overflow: hidden;
-        }
-
-        .header::before {
-            content: '';
-            position: absolute;
-            top: -50%;
-            right: -20%;
-            width: 400px;
-            height: 400px;
-            background: radial-gradient(circle, rgba(59, 130, 246, 0.2) 0%, transparent 70%);
-            pointer-events: none;
-        }
-
-        .header-content {
-            position: relative;
-            z-index: 1;
-        }
-
-        .header h1 {
-            font-size: 2rem;
-            font-weight: 800;
-            margin-bottom: 0.5rem;
-            color: white;
-        }
-
-        .header p {
-            color: rgba(255, 255, 255, 0.8);
-            font-size: 1rem;
-        }
-
-        .header-stats {
-            display: flex;
-            gap: 2rem;
-            margin-top: 1.5rem;
-            flex-wrap: wrap;
-        }
-
-        .header-stat {
-            background: rgba(255, 255, 255, 0.1);
-            backdrop-filter: blur(10px);
-            padding: 1rem 1.5rem;
-            border-radius: var(--radius);
-            border: 1px solid rgba(255, 255, 255, 0.2);
-        }
-
-        .header-stat-value {
-            font-size: 1.8rem;
-            font-weight: 800;
-            color: white;
-        }
-
-        .header-stat-label {
-            font-size: 0.75rem;
-            color: rgba(255, 255, 255, 0.7);
-            text-transform: uppercase;
-            letter-spacing: 0.05em;
-        }
-
-        /* ===== SECTION ===== */
-        .section { display: none; animation: slideIn 0.4s ease; }
-        .section.active { display: block; }
-
-        @keyframes slideIn {
-            from { opacity: 0; transform: translateY(20px); }
-            to { opacity: 1; transform: translateY(0); }
-        }
-
-        /* ===== CARDS ===== */
-        .card {
-            background: var(--bg-card);
-            backdrop-filter: blur(20px);
-            border-radius: var(--radius);
-            padding: 1.5rem;
-            margin-bottom: 1.5rem;
-            border: 1px solid var(--border);
-            box-shadow: var(--shadow);
-            transition: var(--transition);
-        }
-
-        .card:hover {
-            transform: translateY(-2px);
-            box-shadow: var(--shadow-lg);
-        }
-
-        .card-header {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            margin-bottom: 1rem;
-        }
-
-        .card-title {
-            font-size: 1.2rem;
-            font-weight: 700;
-            color: var(--text-primary);
-            display: flex;
-            align-items: center;
-            gap: 0.5rem;
-        }
-
-        .card-action {
-            background: var(--bg-elevated);
-            border: none;
-            color: var(--text-secondary);
-            padding: 0.5rem 1rem;
-            border-radius: var(--radius-sm);
-            cursor: pointer;
-            font-size: 0.8rem;
-            transition: var(--transition);
-        }
-
-        .card-action:hover {
-            background: var(--primary);
-            color: white;
-        }
-
-        /* ===== STATS GRID ===== */
-        .stats-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-            gap: 1rem;
-            margin-bottom: 2rem;
-        }
-
-        .stat-card {
-            background: var(--bg-card);
-            backdrop-filter: blur(20px);
-            border-radius: var(--radius);
-            padding: 1.5rem;
-            border: 1px solid var(--border);
-            position: relative;
-            overflow: hidden;
-        }
-
-        .stat-card::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 4px;
-            height: 100%;
-            background: linear-gradient(180deg, var(--primary), var(--secondary));
-        }
-
-        .stat-card.math::before { background: linear-gradient(180deg, #3b82f6, #60a5fa); }
-        .stat-card.physics::before { background: linear-gradient(180deg, #8b5cf6, #a78bfa); }
-        .stat-card.chemistry::before { background: linear-gradient(180deg, #10b981, #34d399); }
-        .stat-card.svt::before { background: linear-gradient(180deg, #f59e0b, #fbbf24); }
-        .stat-card.french::before { background: linear-gradient(180deg, #ec4899, #f472b6); }
-        .stat-card.english::before { background: linear-gradient(180deg, #06b6d4, #22d3ee); }
-
-        .stat-value {
-            font-size: 2rem;
-            font-weight: 800;
-            color: var(--text-primary);
-        }
-
-        .stat-label {
-            font-size: 0.85rem;
-            color: var(--text-secondary);
-            margin-top: 0.25rem;
-        }
-
-        .stat-coeff {
-            display: inline-block;
-            background: var(--bg-elevated);
-            padding: 0.25rem 0.75rem;
-            border-radius: 20px;
-            font-size: 0.75rem;
-            font-weight: 600;
-            color: var(--primary);
-            margin-top: 0.5rem;
-        }
-
-        /* ===== SUBJECTS GRID ===== */
-        .subjects-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-            gap: 1rem;
-        }
-
-        .subject-card {
-            background: var(--bg-card);
-            backdrop-filter: blur(20px);
-            border-radius: var(--radius);
-            padding: 1.5rem;
-            border: 1px solid var(--border);
-            cursor: pointer;
-            transition: var(--transition);
-            position: relative;
-            overflow: hidden;
-        }
-
-        .subject-card:hover {
-            transform: translateY(-4px) scale(1.02);
-            box-shadow: var(--shadow-lg);
-            border-color: var(--primary);
-        }
-
-        .subject-card::after {
-            content: '';
-            position: absolute;
-            top: 0;
-            right: 0;
-            width: 100px;
-            height: 100px;
-            background: radial-gradient(circle, rgba(59, 130, 246, 0.1) 0%, transparent 70%);
-            pointer-events: none;
-        }
-
-        .subject-name {
-            font-weight: 700;
-            font-size: 1.1rem;
-            margin-bottom: 0.5rem;
-            color: var(--text-primary);
-        }
-
-        .subject-details {
-            font-size: 0.85rem;
-            color: var(--text-secondary);
-        }
-
-        .subject-progress {
-            margin-top: 1rem;
-            height: 6px;
-            background: var(--bg-elevated);
-            border-radius: 3px;
-            overflow: hidden;
-        }
-
-        .subject-progress-bar {
-            height: 100%;
-            background: linear-gradient(90deg, var(--primary), var(--secondary));
-            border-radius: 3px;
-            transition: width 0.5s ease;
-        }
-
-        /* ===== TABS ===== */
-        .tabs {
-            display: flex;
-            gap: 0.5rem;
-            margin-bottom: 1.5rem;
-            flex-wrap: wrap;
-            background: var(--bg-elevated);
-            padding: 0.5rem;
-            border-radius: var(--radius);
-        }
-
-        .tab-btn {
-            padding: 0.6rem 1.2rem;
-            border: none;
-            background: transparent;
-            color: var(--text-secondary);
-            border-radius: var(--radius-sm);
-            cursor: pointer;
-            font-size: 0.85rem;
-            font-weight: 500;
-            transition: var(--transition);
-        }
-
-        .tab-btn:hover { background: var(--bg-card); color: var(--text-primary); }
-        .tab-btn.active { background: var(--primary); color: white; box-shadow: 0 2px 8px rgba(59, 130, 246, 0.3); }
-        .tab-content { display: none; animation: fadeIn 0.3s ease; }
-        .tab-content.active { display: block; }
-
-        @keyframes fadeIn {
-            from { opacity: 0; }
-            to { opacity: 1; }
-        }
-
-        /* ===== COEFFICIENT TABLE ===== */
-        .coeff-table { width: 100%; border-collapse: collapse; }
-        .coeff-table th, .coeff-table td {
-            padding: 1rem;
-            text-align: left;
-            border-bottom: 1px solid var(--border);
-        }
-        .coeff-table th {
-            background: var(--bg-elevated);
-            font-weight: 600;
-            font-size: 0.85rem;
-            text-transform: uppercase;
-            letter-spacing: 0.05em;
-        }
-        .coeff-table tr:hover td { background: var(--bg-elevated); }
-        .coeff-badge {
-            background: linear-gradient(135deg, var(--primary), var(--secondary));
-            color: white;
-            padding: 0.3rem 0.8rem;
-            border-radius: 20px;
-            font-weight: 700;
-            font-size: 0.85rem;
-        }
-        .total-row { background: var(--bg-elevated); font-weight: 700; }
-        .total-row td { color: var(--text-primary); }
-        .group-header { background: rgba(59, 130, 246, 0.1); font-weight: 700; }
-        .group-header td { color: var(--primary); font-size: 0.85rem; text-transform: uppercase; letter-spacing: 0.05em; }
-
-        /* ===== CALCULATOR ===== */
-        .calculator { max-width: 600px; margin: 0 auto; }
-        .calc-group {
-            background: var(--bg-elevated);
-            border-radius: var(--radius);
-            padding: 1rem;
-            margin-bottom: 1rem;
-        }
-        .calc-group-title {
-            font-size: 0.8rem;
-            font-weight: 600;
-            color: var(--primary);
-            text-transform: uppercase;
-            letter-spacing: 0.05em;
-            margin-bottom: 0.75rem;
-        }
-        .calc-row {
-            display: flex;
-            align-items: center;
-            gap: 1rem;
-            margin-bottom: 0.5rem;
-        }
-        .calc-row label { flex: 1; font-size: 0.9rem; }
-        .calc-input {
-            width: 70px;
-            padding: 0.5rem;
-            background: var(--bg-card);
-            border: 2px solid var(--border);
-            border-radius: var(--radius-sm);
-            color: var(--text-primary);
-            text-align: center;
-            font-size: 1rem;
-            transition: var(--transition);
-        }
-        .calc-input:focus { border-color: var(--primary); outline: none; }
-        .coeff-label { color: var(--primary); font-weight: 600; min-width: 30px; text-align: center; }
-
-        .result-box {
-            background: linear-gradient(135deg, var(--bg-elevated), var(--bg-card));
-            border-radius: var(--radius);
-            padding: 2rem;
-            text-align: center;
-            margin-top: 1.5rem;
-            border: 1px solid var(--border);
-        }
-        .result-moyenne { font-size: 3.5rem; font-weight: 800; background: linear-gradient(135deg, var(--primary), var(--secondary)); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
-        .result-detail { color: var(--text-secondary); margin-top: 0.5rem; }
-        .mention { font-size: 1.3rem; font-weight: 700; margin-top: 0.5rem; }
-        .mention.passable { color: var(--text-muted); }
-        .mention.assez-bien { color: var(--warning); }
-        .mention.bien { color: var(--primary); }
-        .mention.tres-bien { color: var(--success); }
-
-        /* ===== QUIZ ===== */
-        .quiz-question {
-            background: var(--bg-card);
-            border-radius: var(--radius);
-            padding: 1.5rem;
-            margin-bottom: 1rem;
-            border: 1px solid var(--border);
-            transition: var(--transition);
-        }
-        .quiz-question:hover { border-color: var(--primary); }
-        .quiz-question h3 { margin-bottom: 1rem; color: var(--primary); font-size: 1rem; }
-        .quiz-options { display: flex; flex-direction: column; gap: 0.5rem; }
-        .quiz-option {
-            padding: 1rem 1.25rem;
-            background: var(--bg-elevated);
-            border: 2px solid var(--border);
-            border-radius: var(--radius-sm);
-            cursor: pointer;
-            transition: var(--transition);
-            font-size: 0.9rem;
-        }
-        .quiz-option:hover { border-color: var(--primary); background: rgba(59, 130, 246, 0.1); }
-        .quiz-option.correct { background: rgba(16, 185, 129, 0.2); border-color: var(--success); }
-        .quiz-option.incorrect { background: rgba(239, 68, 68, 0.2); border-color: var(--danger); }
-        .quiz-option.disabled { pointer-events: none; opacity: 0.7; }
-
-        /* ===== FLASHCARDS ===== */
-        .flashcard-container { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 1rem; }
-        .flashcard {
-            background: var(--bg-card);
-            border-radius: var(--radius);
-            padding: 1.5rem;
-            border: 1px solid var(--border);
-            cursor: pointer;
-            transition: var(--transition);
-            min-height: 150px;
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            position: relative;
-            overflow: hidden;
-        }
-        .flashcard:hover { border-color: var(--primary); transform: scale(1.02); }
-        .flashcard-front { font-weight: 600; font-size: 1.1rem; }
-        .flashcard-back { display: none; color: var(--text-secondary); margin-top: 0.75rem; }
-        .flashcard.flipped .flashcard-back { display: block; }
-        .flashcard.flipped .flashcard-front { color: var(--primary); }
-
-        /* ===== RESOURCES ===== */
-        .resource-list { display: flex; flex-direction: column; gap: 0.75rem; }
-        .resource-item {
-            display: flex;
-            align-items: center;
-            gap: 1rem;
-            padding: 1rem;
-            background: var(--bg-elevated);
-            border-radius: var(--radius-sm);
-            transition: var(--transition);
-        }
-        .resource-item:hover { background: var(--bg-card); }
-        .resource-icon { font-size: 1.5rem; }
-        .resource-info { flex: 1; }
-        .resource-name { font-weight: 600; font-size: 0.9rem; }
-        .resource-desc { font-size: 0.8rem; color: var(--text-muted); }
-        .resource-btn {
-            padding: 0.5rem 1rem;
-            background: linear-gradient(135deg, var(--primary), var(--secondary));
-            color: white;
-            border: none;
-            border-radius: var(--radius-sm);
-            cursor: pointer;
-            font-size: 0.85rem;
-            text-decoration: none;
-            transition: var(--transition);
-        }
-        .resource-btn:hover { transform: scale(1.05); }
-
-        /* ===== TIMELINE (Séquence 1) ===== */
-        .timeline { position: relative; padding-left: 2rem; }
-        .timeline::before {
-            content: '';
-            position: absolute;
-            left: 0;
-            top: 0;
-            width: 3px;
-            height: 100%;
-            background: linear-gradient(180deg, var(--primary), var(--secondary));
-            border-radius: 2px;
-        }
-        .timeline-item {
-            position: relative;
-            padding-bottom: 1.5rem;
-        }
-        .timeline-item::before {
-            content: '';
-            position: absolute;
-            left: -2rem;
-            top: 0.5rem;
-            width: 12px;
-            height: 12px;
-            background: var(--bg-card);
-            border: 3px solid var(--primary);
-            border-radius: 50%;
-        }
-        .timeline-item.completed::before { background: var(--success); border-color: var(--success); }
-        .timeline-week {
-            font-size: 0.75rem;
-            font-weight: 600;
-            color: var(--primary);
-            text-transform: uppercase;
-            letter-spacing: 0.05em;
-            margin-bottom: 0.25rem;
-        }
-        .timeline-title { font-weight: 600; font-size: 0.95rem; margin-bottom: 0.25rem; }
-        .timeline-desc { font-size: 0.85rem; color: var(--text-secondary); }
-
-        .day-item {
-            display: flex;
-            align-items: flex-start;
-            gap: 1rem;
-            padding: 1rem;
-            background: var(--bg-elevated);
-            border-radius: var(--radius-sm);
-            margin-bottom: 0.5rem;
-            cursor: pointer;
-            transition: var(--transition);
-        }
-        .day-item:hover { background: var(--bg-card); }
-        .day-checkbox {
-            width: 24px;
-            height: 24px;
-            border: 2px solid var(--border);
-            border-radius: 6px;
-            cursor: pointer;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            flex-shrink: 0;
-            transition: var(--transition);
-        }
-        .day-checkbox.checked { background: var(--success); border-color: var(--success); color: white; }
-        .day-content { flex: 1; }
-        .day-title { font-weight: 600; font-size: 0.9rem; }
-        .day-title.completed { text-decoration: line-through; color: var(--text-muted); }
-        .day-desc { font-size: 0.8rem; color: var(--text-muted); margin-top: 2px; }
-
-        /* ===== DARK MODE TOGGLE ===== */
-        .dark-mode-toggle {
-            position: fixed;
-            bottom: 2rem;
-            right: 2rem;
-            width: 50px;
-            height: 50px;
-            border-radius: 50%;
-            background: linear-gradient(135deg, var(--primary), var(--secondary));
-            color: white;
-            border: none;
-            cursor: pointer;
-            font-size: 1.3rem;
-            box-shadow: 0 4px 16px rgba(59, 130, 246, 0.4);
-            z-index: 1000;
-            transition: var(--transition);
-        }
-        .dark-mode-toggle:hover { transform: scale(1.1); }
-
-        /* ===== MOBILE ===== */
-        .menu-toggle {
-            display: none;
-            position: fixed;
-            top: 1rem;
-            left: 1rem;
-            z-index: 1001;
-            background: var(--bg-card);
-            border: 1px solid var(--border);
-            color: var(--text-primary);
-            padding: 0.75rem;
-            border-radius: var(--radius-sm);
-            cursor: pointer;
-        }
-
-        @media (max-width: 1024px) {
-            .sidebar {
-                transform: translateX(-100%);
-            }
-            .sidebar.open {
-                transform: translateX(0);
-            }
-            .main-content {
-                margin-left: 0;
-            }
-            .menu-toggle {
-                display: block;
-            }
-        }
-
-        @media print {
-            .sidebar, .dark-mode-toggle, .menu-toggle { display: none !important; }
-            .main-content { margin-left: 0; }
-            .section { display: block !important; }
-        }
+            --bg: #f8f5f0; --bg2: #ffffff; --bg3: #f1ede6; --text: #2d2a26; --text2: #5c574f; --text3: #8a847a;
+            --border: #e5e0d8; --accent: #b8860b; --accent2: #8b6508;
+            --g1: #1e3a8a; --g2: #065f46; --g3: #991b1b;
+            --sidebar-w: 260px; --radius: 12px;
+        }
+        [data-theme="dark"] {
+            --bg: #1a1814; --bg2: #242119; --bg3: #2e2a22; --text: #f0ebe3; --text2: #b8b0a4; --text3: #7a7266;
+            --border: #3d3730;
+        }
+        * { margin:0; padding:0; box-sizing:border-box; }
+        body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', system-ui, sans-serif; background: var(--bg); color: var(--text); min-height: 100vh; }
+
+        /* Sidebar */
+        .sidebar { position:fixed; left:0; top:0; width:var(--sidebar-w); height:100vh; background:var(--bg2); border-right:1px solid var(--border); padding:1.25rem; z-index:100; overflow-y:auto; transition: transform .3s; }
+        .sidebar-brand { display:flex; align-items:center; gap:.75rem; padding-bottom:1.25rem; border-bottom:1px solid var(--border); margin-bottom:1.25rem; }
+        .sidebar-logo { width:42px; height:42px; background:linear-gradient(135deg, var(--accent), var(--accent2)); border-radius:10px; display:flex; align-items:center; justify-content:center; font-size:1.3rem; }
+        .nav-sec-title { font-size:.65rem; font-weight:600; text-transform:uppercase; letter-spacing:.05em; color:var(--text3); margin:.75rem 0 .5rem .5rem; }
+        .nav-item { display:flex; align-items:center; gap:.6rem; padding:.6rem .75rem; border-radius:8px; color:var(--text2); cursor:pointer; transition:all .2s; font-size:.85rem; font-weight:500; margin-bottom:2px; }
+        .nav-item:hover { background:var(--bg3); color:var(--text); }
+        .nav-item.active { background:linear-gradient(135deg, var(--accent), var(--accent2)); color:#fff; }
+        .nav-badge { margin-left:auto; background:var(--accent); color:#fff; font-size:.6rem; padding:.15rem .45rem; border-radius:8px; font-weight:600; }
+        .nav-item.active .nav-badge { background:rgba(255,255,255,.25); }
+
+        /* Main */
+        .main { margin-left:var(--sidebar-w); padding:1.5rem; min-height:100vh; }
+
+        /* Header */
+        .hero { background:linear-gradient(135deg, #2d2a26 0%, #3d3226 50%, #4a370e 100%); color:#fff; border-radius:16px; padding:2rem; margin-bottom:1.5rem; position:relative; overflow:hidden; }
+        .hero::before { content:''; position:absolute; top:-50%; right:-15%; width:350px; height:350px; background:radial-gradient(circle, rgba(184,134,11,.2) 0%, transparent 70%); pointer-events:none; }
+        .hero h1 { font-size:1.75rem; font-weight:800; margin-bottom:.35rem; position:relative; }
+        .hero p { color:rgba(255,255,255,.75); font-size:.9rem; position:relative; }
+
+        /* Cards */
+        .card { background:var(--bg2); border-radius:var(--radius); padding:1.25rem; margin-bottom:1rem; border:1px solid var(--border); transition:all .2s; }
+        .card:hover { box-shadow:0 4px 20px rgba(0,0,0,.06); }
+        .card-title { font-size:1rem; font-weight:700; margin-bottom:.75rem; display:flex; align-items:center; gap:.5rem; }
+
+        /* Stats */
+        .stats-row { display:grid; grid-template-columns:repeat(auto-fit, minmax(150px,1fr)); gap:.75rem; margin-bottom:1.5rem; }
+        .stat { background:var(--bg2); border-radius:var(--radius); padding:1rem; border:1px solid var(--border); position:relative; overflow:hidden; }
+        .stat::before { content:''; position:absolute; top:0; left:0; width:4px; height:100%; }
+        .stat.g1::before { background:var(--g1); } .stat.g2::before { background:var(--g2); } .stat.g3::before { background:var(--g3); }
+        .stat-val { font-size:1.6rem; font-weight:800; } .stat-label { font-size:.8rem; color:var(--text2); }
+        .stat-coeff { display:inline-block; background:var(--bg3); padding:.15rem .6rem; border-radius:12px; font-size:.7rem; font-weight:600; color:var(--accent); margin-top:.35rem; }
+
+        /* Tables */
+        .coeff-table { width:100%; border-collapse:collapse; }
+        .coeff-table th,.coeff-table td { padding:.75rem; text-align:left; border-bottom:1px solid var(--border); font-size:.85rem; }
+        .coeff-table th { background:var(--bg3); font-weight:600; text-transform:uppercase; font-size:.7rem; letter-spacing:.03em; }
+        .coeff-badge { background:linear-gradient(135deg, var(--accent), var(--accent2)); color:#fff; padding:.2rem .6rem; border-radius:12px; font-weight:700; font-size:.8rem; }
+
+        /* Tabs */
+        .tabs { display:flex; gap:.35rem; margin-bottom:1rem; flex-wrap:wrap; background:var(--bg3); padding:.35rem; border-radius:var(--radius); }
+        .tab-btn { padding:.45rem .9rem; border:none; background:transparent; color:var(--text2); border-radius:8px; cursor:pointer; font-size:.8rem; font-weight:500; transition:all .2s; }
+        .tab-btn:hover { background:var(--bg2); color:var(--text); }
+        .tab-btn.active { background:var(--accent); color:#fff; }
+        .tab-content { display:none; } .tab-content.active { display:block; animation:fadeIn .3s; }
+        @keyframes fadeIn { from{opacity:0} to{opacity:1} }
+
+        /* Sequence 1 Planning */
+        .day-item { display:flex; align-items:flex-start; gap:.75rem; padding:.75rem; background:var(--bg3); border-radius:8px; margin-bottom:.4rem; cursor:pointer; transition:all .2s; }
+        .day-item:hover { background:var(--bg2); }
+        .day-cb { width:22px; height:22px; border:2px solid var(--border); border-radius:6px; cursor:pointer; display:flex; align-items:center; justify-content:center; flex-shrink:0; transition:all .2s; }
+        .day-cb.checked { background:var(--g2); border-color:var(--g2); color:#fff; }
+        .day-title { font-weight:600; font-size:.85rem; } .day-title.done { text-decoration:line-through; color:var(--text3); }
+        .day-desc { font-size:.75rem; color:var(--text3); margin-top:2px; }
+
+        /* Quiz */
+        .quiz-q { background:var(--bg2); border-radius:var(--radius); padding:1rem; margin-bottom:.75rem; border:1px solid var(--border); }
+        .quiz-q h3 { color:var(--accent); font-size:.9rem; margin-bottom:.75rem; }
+        .quiz-opt { padding:.7rem 1rem; background:var(--bg3); border:2px solid var(--border); border-radius:8px; cursor:pointer; transition:all .2s; font-size:.85rem; margin-bottom:.35rem; }
+        .quiz-opt:hover { border-color:var(--accent); background:rgba(184,134,11,.08); }
+        .quiz-opt.correct { background:rgba(6,95,70,.15); border-color:var(--g2); }
+        .quiz-opt.incorrect { background:rgba(153,27,27,.12); border-color:var(--g3); }
+        .quiz-opt.disabled { pointer-events:none; opacity:.7; }
+
+        /* Flashcards */
+        .fc-grid { display:grid; grid-template-columns:repeat(auto-fit, minmax(240px,1fr)); gap:.75rem; }
+        .fc { background:var(--bg2); border-radius:var(--radius); padding:1rem; border:1px solid var(--border); cursor:pointer; transition:all .2s; min-height:120px; display:flex; flex-direction:column; justify-content:center; }
+        .fc:hover { border-color:var(--accent); transform:scale(1.01); }
+        .fc-front { font-weight:600; font-size:.95rem; } .fc-back { display:none; color:var(--text2); margin-top:.5rem; font-size:.85rem; }
+        .fc.flipped .fc-back { display:block; } .fc.flipped .fc-front { color:var(--accent); }
+
+        /* Resources */
+        .res-item { display:flex; align-items:center; gap:.75rem; padding:.75rem; background:var(--bg3); border-radius:8px; margin-bottom:.4rem; transition:all .2s; }
+        .res-item:hover { background:var(--bg2); }
+        .res-btn { padding:.4rem .8rem; background:linear-gradient(135deg, var(--accent), var(--accent2)); color:#fff; border:none; border-radius:8px; cursor:pointer; font-size:.8rem; text-decoration:none; transition:all .2s; white-space:nowrap; }
+        .res-btn:hover { transform:scale(1.05); }
+
+        /* Calculator */
+        .calc-row { display:flex; align-items:center; gap:.75rem; margin-bottom:.4rem; }
+        .calc-row label { flex:1; font-size:.85rem; }
+        .calc-input { width:65px; padding:.4rem; background:var(--bg2); border:2px solid var(--border); border-radius:8px; color:var(--text); text-align:center; font-size:.9rem; }
+        .calc-input:focus { border-color:var(--accent); outline:none; }
+        .calc-coef { color:var(--accent); font-weight:600; min-width:28px; text-align:center; font-size:.8rem; }
+        .result-box { background:linear-gradient(135deg, var(--bg3), var(--bg2)); border-radius:var(--radius); padding:1.5rem; text-align:center; margin-top:1rem; border:1px solid var(--border); }
+        .result-val { font-size:3rem; font-weight:800; background:linear-gradient(135deg, var(--accent), var(--accent2)); -webkit-background-clip:text; -webkit-text-fill-color:transparent; }
+
+        /* Papers Grid */
+        .paper-card { background:var(--bg2); padding:1rem; border-radius:var(--radius); border:1px solid var(--border); transition:all .2s; }
+        .paper-card:hover { box-shadow:0 4px 16px rgba(0,0,0,.06); }
+        .badge { font-size:.6rem; font-weight:700; padding:.15rem .4rem; border-radius:6px; }
+        .badge-g1 { background:#dbeafe; color:#1e3a8a; } .badge-g2 { background:#d1fae5; color:#065f46; } .badge-g3 { background:#fee2e2; color:#991b1b; }
+
+        /* Chart */
+        .chart-box { position:relative; width:100%; max-width:500px; margin:0 auto; height:280px; }
+
+        /* Mobile */
+        .menu-btn { display:none; position:fixed; top:.75rem; left:.75rem; z-index:200; background:var(--bg2); border:1px solid var(--border); color:var(--text); padding:.6rem; border-radius:8px; cursor:pointer; font-size:1.1rem; }
+        @media(max-width:900px) { .sidebar{transform:translateX(-100%)} .sidebar.open{transform:translateX(0)} .main{margin-left:0} .menu-btn{display:block} }
+        @media print { .sidebar,.menu-btn{display:none!important} .main{margin-left:0} }
+
+        /* Theme toggle */
+        .theme-toggle { position:fixed; bottom:1.5rem; right:1.5rem; width:44px; height:44px; border-radius:50%; background:linear-gradient(135deg, var(--accent), var(--accent2)); color:#fff; border:none; cursor:pointer; font-size:1.1rem; box-shadow:0 4px 12px rgba(184,134,11,.3); z-index:100; }
     </style>
 </head>
 <body>
-    <!-- Menu Toggle (Mobile) -->
-    <button class="menu-toggle" onclick="document.querySelector('.sidebar').classList.toggle('open')">☰</button>
+    <button class="menu-btn" onclick="document.querySelector('.sidebar').classList.toggle('open')">☰</button>
 
-    <!-- Sidebar -->
     <aside class="sidebar">
-        <div class="sidebar-header">
+        <div class="sidebar-brand">
             <div class="sidebar-logo">🎓</div>
-            <div>
-                <div class="sidebar-title">HSC</div>
-                <div class="sidebar-subtitle">High School Course</div>
-            </div>
+            <div><div style="font-weight:700;font-size:1rem">HSC</div><div style="font-size:.7rem;color:var(--text3)">High School Course</div></div>
         </div>
-
         <nav>
-            <div class="nav-section">
-                <div class="nav-section-title">Principal</div>
-                <div class="nav-item active" data-section="dashboard">
-                    <span class="nav-icon">📊</span>
-                    <span>Dashboard</span>
-                </div>
-                <div class="nav-item" data-section="coefficients">
-                    <span class="nav-icon">📋</span>
-                    <span>Coefficients</span>
-                </div>
-                <div class="nav-item" data-section="calculateur">
-                    <span class="nav-icon">🧮</span>
-                    <span>Calculateur</span>
-                </div>
-            </div>
-
-            <div class="nav-section">
-                <div class="nav-section-title">Apprentissage</div>
-                <div class="nav-item" data-section="seq1">
-                    <span class="nav-icon">📝</span>
-                    <span>Séquence 1</span>
-                </div>
-                <div class="nav-item" data-section="quiz">
-                    <span class="nav-icon">🧠</span>
-                    <span>Quiz</span>
-                    <span class="nav-badge">20</span>
-                </div>
-                <div class="nav-item" data-section="flashcards">
-                    <span class="nav-icon">🃏</span>
-                    <span>Flashcards</span>
-                    <span class="nav-badge">32</span>
-                </div>
-            </div>
-
-            <div class="nav-section">
-                <div class="nav-section-title">Ressources</div>
-                <div class="nav-item" data-section="resources">
-                    <span class="nav-icon">📥</span>
-                    <span>Sujets Bac</span>
-                </div>
-                <div class="nav-item" data-section="sujets-seq1">
-                    <span class="nav-icon">📝</span>
-                    <span>Sujets Séquence 1</span>
-                </div>
-            </div>
+            <div class="nav-sec-title">Principal</div>
+            <div class="nav-item active" data-section="dashboard"><span>📊</span><span>Dashboard</span></div>
+            <div class="nav-item" data-section="coefficients"><span>📋</span><span>Coefficients</span></div>
+            <div class="nav-item" data-section="calculateur"><span>🧮</span><span>Calculateur</span></div>
+            <div class="nav-sec-title">Apprentissage</div>
+            <div class="nav-item" data-section="seq1"><span>📝</span><span>Préparation Seq 1</span></div>
+            <div class="nav-item" data-section="quiz"><span>🧠</span><span>Quiz</span><span class="nav-badge">20</span></div>
+            <div class="nav-item" data-section="flashcards"><span>🃏</span><span>Flashcards</span><span class="nav-badge">32</span></div>
+            <div class="nav-sec-title">Ressources</div>
+            <div class="nav-item" data-section="bank"><span>📥</span><span>Banque 120 Sujets</span></div>
+            <div class="nav-item" data-section="resources"><span>📄</span><span>Sujets Bac</span></div>
         </nav>
     </aside>
 
-    <!-- Main Content -->
-    <main class="main-content">
-        <!-- Dashboard -->
+    <main class="main">
+        <!-- ===== DASHBOARD ===== -->
         <section class="section active" id="dashboard">
-            <div class="header">
-                <div class="header-content">
-                    <h1>🎓 Tableau de Bord</h1>
-                    <p>Préparation au Bac C — Données officielles OBC/MINESEC</p>
-                    <div class="header-stats">
-                        <div class="header-stat">
-                            <div class="header-stat-value">12</div>
-                            <div class="header-stat-label">Matières</div>
-                        </div>
-                        <div class="header-stat">
-                            <div class="header-stat-value">31</div>
-                            <div class="header-stat-label">Coefficients</div>
-                        </div>
-                        <div class="header-stat">
-                            <div class="header-stat-value">620</div>
-                            <div class="header-stat-label">Points max</div>
-                        </div>
+            <div class="hero">
+                <div style="position:relative;z-1">
+                    <span style="display:inline-block;background:rgba(184,134,11,.2);color:#e7d8be;border:1px solid rgba(184,134,11,.3);font-size:.7rem;padding:.25rem .75rem;border-radius:20px;font-weight:600;margin-bottom:.75rem">Répertoire Officiel • MINESEC</span>
+                    <h1>🎓 Tableau de Bord — Séquence 1 Terminale C</h1>
+                    <p>Explorez la structure pédagogique des 12 disciplines et accédez aux 120 épreuves authentiques</p>
+                    <div style="display:flex;gap:1rem;margin-top:1rem;flex-wrap:wrap">
+                        <div style="background:rgba(255,255,255,.1);padding:.6rem 1rem;border-radius:10px;border:1px solid rgba(255,255,255,.15)"><span style="color:#e7d8be;font-weight:800;font-size:1.2rem">31</span> <span style="color:rgba(255,255,255,.7);font-size:.75rem">Coefficients</span></div>
+                        <div style="background:rgba(255,255,255,.1);padding:.6rem 1rem;border-radius:10px;border:1px solid rgba(255,255,255,.15)"><span style="color:#e7d8be;font-weight:800;font-size:1.2rem">12</span> <span style="color:rgba(255,255,255,.7);font-size:.75rem">Disciplines</span></div>
+                        <div style="background:rgba(255,255,255,.1);padding:.6rem 1rem;border-radius:10px;border:1px solid rgba(255,255,255,.15)"><span style="color:#e7d8be;font-weight:800;font-size:1.2rem">120</span> <span style="color:rgba(255,255,255,.7);font-size:.75rem">Sujets PDF</span></div>
                     </div>
                 </div>
             </div>
 
-            <div class="stats-grid">
-                <div class="stat-card math">
-                    <div class="stat-value">7</div>
-                    <div class="stat-label">Mathématiques</div>
-                    <span class="stat-coeff">coef 7</span>
+            <!-- Group Cards -->
+            <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:.75rem;margin-bottom:1rem">
+                <div class="card" style="border-left:4px solid var(--g1)">
+                    <div style="display:flex;justify-content:space-between;align-items:start">
+                        <div><span style="font-size:.65rem;font-weight:700;color:var(--g1);text-transform:uppercase">1er Groupe</span><div style="font-weight:700;font-size:.95rem">Sciences Exactes & LV1</div></div>
+                        <span style="background:#dbeafe;color:var(--g1);font-size:.65rem;font-weight:700;padding:.2rem .5rem;border-radius:8px">Coef 16</span>
+                    </div>
+                    <div style="margin-top:.5rem;font-size:.75rem;color:var(--text2)">
+                        <div style="display:flex;justify-content:space-between;padding:.15rem 0"><span>Mathématiques</span><strong>Coef 7</strong></div>
+                        <div style="display:flex;justify-content:space-between;padding:.15rem 0"><span>Physiques</span><strong>Coef 4</strong></div>
+                        <div style="display:flex;justify-content:space-between;padding:.15rem 0"><span>Anglais</span><strong>Coef 3</strong></div>
+                        <div style="display:flex;justify-content:space-between;padding:.15rem 0"><span>Informatique</span><strong>Coef 2</strong></div>
+                    </div>
                 </div>
-                <div class="stat-card physics">
-                    <div class="stat-value">4</div>
-                    <div class="stat-label">Physique</div>
-                    <span class="stat-coeff">coef 4</span>
+                <div class="card" style="border-left:4px solid var(--g2)">
+                    <div style="display:flex;justify-content:space-between;align-items:start">
+                        <div><span style="font-size:.65rem;font-weight:700;color:var(--g2);text-transform:uppercase">2e Groupe</span><div style="font-weight:700;font-size:.95rem">Sciences Appl. & Citoyenneté</div></div>
+                        <span style="background:#d1fae5;color:var(--g2);font-size:.65rem;font-weight:700;padding:.2rem .5rem;border-radius:8px">Coef 6</span>
+                    </div>
+                    <div style="margin-top:.5rem;font-size:.75rem;color:var(--text2)">
+                        <div style="display:flex;justify-content:space-between;padding:.15rem 0"><span>Chimie</span><strong>Coef 2</strong></div>
+                        <div style="display:flex;justify-content:space-between;padding:.15rem 0"><span>SVTEEHB</span><strong>Coef 2</strong></div>
+                        <div style="display:flex;justify-content:space-between;padding:.15rem 0"><span>ECM</span><strong>Coef 2</strong></div>
+                    </div>
                 </div>
-                <div class="stat-card english">
-                    <div class="stat-value">3</div>
-                    <div class="stat-label">Anglais</div>
-                    <span class="stat-coeff">coef 3</span>
-                </div>
-                <div class="stat-card chemistry">
-                    <div class="stat-value">2</div>
-                    <div class="stat-label">Chimie</div>
-                    <span class="stat-coeff">coef 2</span>
-                </div>
-                <div class="stat-card svt">
-                    <div class="stat-value">2</div>
-                    <div class="stat-label">SVT</div>
-                    <span class="stat-coeff">coef 2</span>
-                </div>
-                <div class="stat-card french">
-                    <div class="stat-value">1</div>
-                    <div class="stat-label">Français</div>
-                    <span class="stat-coeff">coef 1</span>
+                <div class="card" style="border-left:4px solid var(--g3)">
+                    <div style="display:flex;justify-content:space-between;align-items:start">
+                        <div><span style="font-size:.65rem;font-weight:700;color:var(--g3);text-transform:uppercase">3e Groupe</span><div style="font-weight:700;font-size:.95rem">Humanités, Lettres & EPS</div></div>
+                        <span style="background:#fee2e2;color:var(--g3);font-size:.65rem;font-weight:700;padding:.2rem .5rem;border-radius:8px">Coef 9</span>
+                    </div>
+                    <div style="margin-top:.5rem;font-size:.75rem;color:var(--text2)">
+                        <div style="display:flex;justify-content:space-between;padding:.15rem 0"><span>Philosophie, Géo, Litté, EPS</span><strong>Coef 2 / ch.</strong></div>
+                        <div style="display:flex;justify-content:space-between;padding:.15rem 0"><span>Langue Française</span><strong>Coef 1</strong></div>
+                    </div>
                 </div>
             </div>
 
-            <div class="card">
-                <div class="card-header">
-                    <h2 class="card-title">📚 Toutes les matières</h2>
-                    <button class="card-action" onclick="showSection('coefficients')">Voir tout</button>
-                </div>
-                <div class="subjects-grid">
-                    <div class="subject-card" onclick="showSection('coefficients')">
-                        <div class="subject-name">📐 Mathématiques</div>
-                        <div class="subject-details">Nombres complexes, Fonctions, Analyse, Probas</div>
-                        <div class="subject-progress"><div class="subject-progress-bar" style="width: 0%"></div></div>
-                    </div>
-                    <div class="subject-card" onclick="showSection('coefficients')">
-                        <div class="subject-name">⚡ Physique</div>
-                        <div class="subject-details">Mécanique, Électricité, Optique, Nucléaire</div>
-                        <div class="subject-progress"><div class="subject-progress-bar" style="width: 0%"></div></div>
-                    </div>
-                    <div class="subject-card" onclick="showSection('coefficients')">
-                        <div class="subject-name">🧪 Chimie</div>
-                        <div class="subject-details">Cinétique, Équilibres, Organique</div>
-                        <div class="subject-progress"><div class="subject-progress-bar" style="width: 0%"></div></div>
-                    </div>
-                    <div class="subject-card" onclick="showSection('coefficients')">
-                        <div class="subject-name">🧬 SVTEEHB</div>
-                        <div class="subject-details">Génétique, Géologie, Physiologie</div>
-                        <div class="subject-progress"><div class="subject-progress-bar" style="width: 0%"></div></div>
-                    </div>
-                    <div class="subject-card" onclick="showSection('coefficients')">
-                        <div class="subject-name">🇬🇧 Anglais</div>
-                        <div class="subject-details">Grammar, Vocabulary, Essay</div>
-                        <div class="subject-progress"><div class="subject-progress-bar" style="width: 0%"></div></div>
-                    </div>
-                    <div class="subject-card" onclick="showSection('coefficients')">
-                        <div class="subject-name">🤔 Philosophie</div>
-                        <div class="subject-details">Notions, Dissertation, Analyse</div>
-                        <div class="subject-progress"><div class="subject-progress-bar" style="width: 0%"></div></div>
-                    </div>
-                    <div class="subject-card" onclick="showSection('coefficients')">
-                        <div class="subject-name">📖 Langue Française</div>
-                        <div class="subject-details">Dissertation, Commentaire, Contraction</div>
-                        <div class="subject-progress"><div class="subject-progress-bar" style="width: 0%"></div></div>
-                    </div>
-                    <div class="subject-card" onclick="showSection('coefficients')">
-                        <div class="subject-name">📚 Littérature</div>
-                        <div class="subject-details">Œuvres, Analyse, Dissertation</div>
-                        <div class="subject-progress"><div class="subject-progress-bar" style="width: 0%"></div></div>
-                    </div>
-                    <div class="subject-card" onclick="showSection('coefficients')">
-                        <div class="subject-name">🌍 Géographie</div>
-                        <div class="subject-details">Cameroun, Population, Économie</div>
-                        <div class="subject-progress"><div class="subject-progress-bar" style="width: 0%"></div></div>
-                    </div>
-                    <div class="subject-card" onclick="showSection('coefficients')">
-                        <div class="subject-name">📚 ECM</div>
-                        <div class="subject-details">Citoyenneté, Droits, Mondialisation</div>
-                        <div class="subject-progress"><div class="subject-progress-bar" style="width: 0%"></div></div>
-                    </div>
-                    <div class="subject-card" onclick="showSection('coefficients')">
-                        <div class="subject-name">🏃 EPS</div>
-                        <div class="subject-details">Courses, Sauts, Sports collectifs</div>
-                        <div class="subject-progress"><div class="subject-progress-bar" style="width: 0%"></div></div>
-                    </div>
-                    <div class="subject-card" onclick="showSection('coefficients')">
-                        <div class="subject-name">💻 Informatique</div>
-                        <div class="subject-details">Algorithmique, Programmation, BDD</div>
-                        <div class="subject-progress"><div class="subject-progress-bar" style="width: 0%"></div></div>
-                    </div>
-                </div>
+            <!-- Charts -->
+            <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(320px,1fr));gap:.75rem">
+                <div class="card"><h4 style="font-weight:700;font-size:.85rem;text-align:center;margin-bottom:.5rem">Répartition des Coefficients</h4><div class="chart-box"><canvas id="chartGroup"></canvas></div></div>
+                <div class="card"><h4 style="font-weight:700;font-size:.85rem;text-align:center;margin-bottom:.5rem">Poids des 12 Disciplines</h4><div class="chart-box"><canvas id="chartSubjects"></canvas></div></div>
             </div>
         </section>
 
-        <!-- Coefficients -->
+        <!-- ===== COEFFICIENTS ===== -->
         <section class="section" id="coefficients">
-            <div class="header">
-                <div class="header-content">
-                    <h1>📋 Coefficients Officiels</h1>
-                    <p>Source : Bulletin officiel Terminale C — Total : 31 coefficients = 620 points max</p>
-                </div>
-            </div>
-
-            <div class="card">
-                <div class="card-header">
-                    <h2 class="card-title">1er Groupe</h2>
-                </div>
-                <table class="coeff-table">
-                    <thead><tr><th>Matière</th><th>Coefficient</th><th>Points max</th></tr></thead>
-                    <tbody>
-                        <tr><td>📐 Mathématiques</td><td><span class="coeff-badge">7</span></td><td>140</td></tr>
-                        <tr><td>⚡ Physique</td><td><span class="coeff-badge">4</span></td><td>80</td></tr>
-                        <tr><td>🇬🇧 Anglais</td><td><span class="coeff-badge">3</span></td><td>60</td></tr>
-                        <tr><td>💻 Informatique</td><td><span class="coeff-badge">2</span></td><td>40</td></tr>
-                        <tr class="total-row"><td>Sous-total</td><td><span class="coeff-badge">16</span></td><td>320</td></tr>
-                    </tbody>
-                </table>
-            </div>
-
-            <div class="card">
-                <div class="card-header">
-                    <h2 class="card-title">2ème Groupe</h2>
-                </div>
-                <table class="coeff-table">
-                    <thead><tr><th>Matière</th><th>Coefficient</th><th>Points max</th></tr></thead>
-                    <tbody>
-                        <tr><td>🧪 Chimie</td><td><span class="coeff-badge">2</span></td><td>40</td></tr>
-                        <tr><td>📚 ECM</td><td><span class="coeff-badge">2</span></td><td>40</td></tr>
-                        <tr><td>🧬 SVTEEHB</td><td><span class="coeff-badge">2</span></td><td>40</td></tr>
-                        <tr class="total-row"><td>Sous-total</td><td><span class="coeff-badge">6</span></td><td>120</td></tr>
-                    </tbody>
-                </table>
-            </div>
-
-            <div class="card">
-                <div class="card-header">
-                    <h2 class="card-title">3ème Groupe</h2>
-                </div>
-                <table class="coeff-table">
-                    <thead><tr><th>Matière</th><th>Coefficient</th><th>Points max</th></tr></thead>
-                    <tbody>
-                        <tr><td>🌍 Géographie</td><td><span class="coeff-badge">2</span></td><td>40</td></tr>
-                        <tr><td>📚 Littérature</td><td><span class="coeff-badge">2</span></td><td>40</td></tr>
-                        <tr><td>🤔 Philosophie</td><td><span class="coeff-badge">2</span></td><td>40</td></tr>
-                        <tr><td>🏃 EPS</td><td><span class="coeff-badge">2</span></td><td>40</td></tr>
-                        <tr><td>📖 Langue Française</td><td><span class="coeff-badge">1</span></td><td>20</td></tr>
-                        <tr class="total-row"><td>Sous-total</td><td><span class="coeff-badge">9</span></td><td>180</td></tr>
-                    </tbody>
-                </table>
-            </div>
-
-            <div class="card" style="background: linear-gradient(135deg, var(--bg-elevated), var(--bg-card));">
-                <div style="text-align: center; padding: 1rem;">
-                    <h3 style="color: var(--success); font-size: 1.5rem; margin-bottom: 0.5rem;">TOTAL GÉNÉRAL</h3>
-                    <p style="font-size: 3rem; font-weight: 800; background: linear-gradient(135deg, var(--primary), var(--secondary)); -webkit-background-clip: text; -webkit-text-fill-color: transparent;">31</p>
-                    <p style="color: var(--text-secondary);">coefficients = 620 points max</p>
-                </div>
-            </div>
+            <div class="hero"><div style="position:relative;z-1"><h1>📋 Coefficients Officiels</h1><p>Bulletin officiel Terminale C — Total : 31 coefficients = 620 points max</p></div></div>
+            <div class="card"><div class="card-title">1er Groupe — Sciences Exactes</div><table class="coeff-table"><thead><tr><th>Matière</th><th>Coeff</th><th>Points</th></tr></thead><tbody><tr><td>📐 Mathématiques</td><td><span class="coeff-badge">7</span></td><td>140</td></tr><tr><td>⚡ Physique</td><td><span class="coeff-badge">4</span></td><td>80</td></tr><tr><td>🇬🇧 Anglais</td><td><span class="coeff-badge">3</span></td><td>60</td></tr><tr><td>💻 Informatique</td><td><span class="coeff-badge">2</span></td><td>40</td></tr><tr style="font-weight:700;background:var(--bg3)"><td>Sous-total</td><td><span class="coeff-badge">16</span></td><td>320</td></tr></tbody></table></div>
+            <div class="card"><div class="card-title">2e Groupe — Sciences Appliquées</div><table class="coeff-table"><thead><tr><th>Matière</th><th>Coeff</th><th>Points</th></tr></thead><tbody><tr><td>🧪 Chimie</td><td><span class="coeff-badge">2</span></td><td>40</td></tr><tr><td>📚 ECM</td><td><span class="coeff-badge">2</span></td><td>40</td></tr><tr><td>🧬 SVTEEHB</td><td><span class="coeff-badge">2</span></td><td>40</td></tr><tr style="font-weight:700;background:var(--bg3)"><td>Sous-total</td><td><span class="coeff-badge">6</span></td><td>120</td></tr></tbody></table></div>
+            <div class="card"><div class="card-title">3e Groupe — Humanités</div><table class="coeff-table"><thead><tr><th>Matière</th><th>Coeff</th><th>Points</th></tr></thead><tbody><tr><td>🌍 Géographie</td><td><span class="coeff-badge">2</span></td><td>40</td></tr><tr><td>📚 Littérature</td><td><span class="coeff-badge">2</span></td><td>40</td></tr><tr><td>🤔 Philosophie</td><td><span class="coeff-badge">2</span></td><td>40</td></tr><tr><td>🏃 EPS</td><td><span class="coeff-badge">2</span></td><td>40</td></tr><tr><td>📖 Langue Française</td><td><span class="coeff-badge">1</span></td><td>20</td></tr><tr style="font-weight:700;background:var(--bg3)"><td>Sous-total</td><td><span class="coeff-badge">9</span></td><td>180</td></tr></tbody></table></div>
+            <div class="card" style="text-align:center;padding:1.5rem"><h3 style="color:var(--g2);font-size:1.1rem;margin-bottom:.3rem">TOTAL GÉNÉRAL</h3><div style="font-size:2.5rem;font-weight:800;background:linear-gradient(135deg,var(--accent),var(--accent2));-webkit-background-clip:text;-webkit-text-fill-color:transparent">31</div><p style="color:var(--text2);font-size:.85rem">coefficients = 620 points max</p></div>
         </section>
 
-        <!-- Calculateur -->
+        <!-- ===== CALCULATEUR ===== -->
         <section class="section" id="calculateur">
-            <div class="header">
-                <div class="header-content">
-                    <h1>🧮 Calculateur de Moyenne</h1>
-                    <p>Entrez vos notes pour calculer votre moyenne pondérée</p>
-                </div>
-            </div>
-
-            <div class="card calculator">
-                <div class="calc-group">
-                    <div class="calc-group-title">1er Groupe</div>
-                    <div class="calc-row"><label>📐 Mathématiques</label><input type="number" class="calc-input" id="note-maths" min="0" max="20" placeholder="0-20"><span class="coeff-label">×7</span></div>
-                    <div class="calc-row"><label>⚡ Physique</label><input type="number" class="calc-input" id="note-physique" min="0" max="20" placeholder="0-20"><span class="coeff-label">×4</span></div>
-                    <div class="calc-row"><label>🇬🇧 Anglais</label><input type="number" class="calc-input" id="note-anglais" min="0" max="20" placeholder="0-20"><span class="coeff-label">×3</span></div>
-                    <div class="calc-row"><label>💻 Informatique</label><input type="number" class="calc-input" id="note-info" min="0" max="20" placeholder="0-20"><span class="coeff-label">×2</span></div>
-                </div>
-
-                <div class="calc-group">
-                    <div class="calc-group-title">2ème Groupe</div>
-                    <div class="calc-row"><label>🧪 Chimie</label><input type="number" class="calc-input" id="note-chimie" min="0" max="20" placeholder="0-20"><span class="coeff-label">×2</span></div>
-                    <div class="calc-row"><label>📚 ECM</label><input type="number" class="calc-input" id="note-ecm" min="0" max="20" placeholder="0-20"><span class="coeff-label">×2</span></div>
-                    <div class="calc-row"><label>🧬 SVTEEHB</label><input type="number" class="calc-input" id="note-svt" min="0" max="20" placeholder="0-20"><span class="coeff-label">×2</span></div>
-                </div>
-
-                <div class="calc-group">
-                    <div class="calc-group-title">3ème Groupe</div>
-                    <div class="calc-row"><label>🌍 Géographie</label><input type="number" class="calc-input" id="note-geo" min="0" max="20" placeholder="0-20"><span class="coeff-label">×2</span></div>
-                    <div class="calc-row"><label>📚 Littérature</label><input type="number" class="calc-input" id="note-litterature" min="0" max="20" placeholder="0-20"><span class="coeff-label">×2</span></div>
-                    <div class="calc-row"><label>🤔 Philosophie</label><input type="number" class="calc-input" id="note-philo" min="0" max="20" placeholder="0-20"><span class="coeff-label">×2</span></div>
-                    <div class="calc-row"><label>🏃 EPS</label><input type="number" class="calc-input" id="note-eps" min="0" max="20" placeholder="0-20"><span class="coeff-label">×2</span></div>
-                    <div class="calc-row"><label>📖 Langue Française</label><input type="number" class="calc-input" id="note-francais" min="0" max="20" placeholder="0-20"><span class="coeff-label">×1</span></div>
-                </div>
-
-                <button class="resource-btn" style="width:100%;margin-top:1rem;padding:1rem;font-size:1.1rem;" onclick="calculerMoyenne()">🧮 Calculer ma moyenne</button>
-
-                <div class="result-box" id="result-box" style="display:none;">
-                    <div class="result-moyenne" id="result-moyenne">0.00</div>
-                    <div style="color:var(--text-secondary);">/ 20</div>
-                    <div class="result-detail" id="result-detail">Points: 0 / 620</div>
-                    <div class="mention" id="result-mention">—</div>
+            <div class="hero"><div style="position:relative;z-1"><h1>🧮 Calculateur de Moyenne</h1><p>Entrez vos notes pour calculer votre moyenne pondérée</p></div></div>
+            <div class="card" style="max-width:600px;margin:0 auto">
+                <div style="font-size:.7rem;font-weight:600;color:var(--accent);text-transform:uppercase;letter-spacing:.03em;margin-bottom:.5rem">1er Groupe</div>
+                <div class="calc-row"><label>📐 Mathématiques</label><input type="number" class="calc-input" id="c-maths" min="0" max="20" placeholder="0-20"><span class="calc-coef">×7</span></div>
+                <div class="calc-row"><label>⚡ Physique</label><input type="number" class="calc-input" id="c-phys" min="0" max="20" placeholder="0-20"><span class="calc-coef">×4</span></div>
+                <div class="calc-row"><label>🇬🇧 Anglais</label><input type="number" class="calc-input" id="c-ang" min="0" max="20" placeholder="0-20"><span class="calc-coef">×3</span></div>
+                <div class="calc-row"><label>💻 Informatique</label><input type="number" class="calc-input" id="c-info" min="0" max="20" placeholder="0-20"><span class="calc-coef">×2</span></div>
+                <div style="font-size:.7rem;font-weight:600;color:var(--accent);text-transform:uppercase;letter-spacing:.03em;margin:1rem 0 .5rem">2e Groupe</div>
+                <div class="calc-row"><label>🧪 Chimie</label><input type="number" class="calc-input" id="c-chi" min="0" max="20" placeholder="0-20"><span class="calc-coef">×2</span></div>
+                <div class="calc-row"><label>📚 ECM</label><input type="number" class="calc-input" id="c-ecm" min="0" max="20" placeholder="0-20"><span class="calc-coef">×2</span></div>
+                <div class="calc-row"><label>🧬 SVTEEHB</label><input type="number" class="calc-input" id="c-svt" min="0" max="20" placeholder="0-20"><span class="calc-coef">×2</span></div>
+                <div style="font-size:.7rem;font-weight:600;color:var(--accent);text-transform:uppercase;letter-spacing:.03em;margin:1rem 0 .5rem">3e Groupe</div>
+                <div class="calc-row"><label>🌍 Géographie</label><input type="number" class="calc-input" id="c-geo" min="0" max="20" placeholder="0-20"><span class="calc-coef">×2</span></div>
+                <div class="calc-row"><label>📚 Littérature</label><input type="number" class="calc-input" id="c-lit" min="0" max="20" placeholder="0-20"><span class="calc-coef">×2</span></div>
+                <div class="calc-row"><label>🤔 Philosophie</label><input type="number" class="calc-input" id="c-philo" min="0" max="20" placeholder="0-20"><span class="calc-coef">×2</span></div>
+                <div class="calc-row"><label>🏃 EPS</label><input type="number" class="calc-input" id="c-eps" min="0" max="20" placeholder="0-20"><span class="calc-coef">×2</span></div>
+                <div class="calc-row"><label>📖 Langue Française</label><input type="number" class="calc-input" id="c-fr" min="0" max="20" placeholder="0-20"><span class="calc-coef">×1</span></div>
+                <button class="res-btn" style="width:100%;margin-top:1rem;padding:.75rem;font-size:.95rem" onclick="calcMoyenne()">🧮 Calculer ma moyenne</button>
+                <div class="result-box" id="resultBox" style="display:none">
+                    <div class="result-val" id="resultVal">0.00</div>
+                    <div style="color:var(--text2);font-size:.85rem">/ 20</div>
+                    <div id="resultDetail" style="color:var(--text2);font-size:.8rem;margin-top:.3rem"></div>
+                    <div id="resultMention" style="font-weight:700;font-size:1rem;margin-top:.4rem"></div>
                 </div>
             </div>
         </section>
 
-        <!-- Séquence 1 -->
+        <!-- ===== PRÉPARATION SÉQUENCE 1 ===== -->
         <section class="section" id="seq1">
-            <div class="header">
-                <div class="header-content">
-                    <h1>📝 Préparation Séquence 1</h1>
-                    <p>Planning de révisions pour la première séquence (6 semaines)</p>
-                </div>
-            </div>
-
+            <div class="hero"><div style="position:relative;z-1"><h1>📝 Préparation Séquence 1</h1><p>Planning de révisions — 6 semaines par matière</p></div></div>
             <div class="card">
-                <div class="tabs">
-                    <button class="tab-btn active" data-tab="seq1-maths">📐 Maths</button>
-                    <button class="tab-btn" data-tab="seq1-physique">⚡ Physique</button>
-                    <button class="tab-btn" data-tab="seq1-chimie">🧪 Chimie</button>
-                    <button class="tab-btn" data-tab="seq1-svt">🧬 SVT</button>
-                    <button class="tab-btn" data-tab="seq1-francais">📖 Français</button>
-                    <button class="tab-btn" data-tab="seq1-anglais">🇬🇧 Anglais</button>
-                    <button class="tab-btn" data-tab="seq1-philo">🤔 Philo</button>
-                    <button class="tab-btn" data-tab="seq1-geo">🌍 Géo</button>
-                    <button class="tab-btn" data-tab="seq1-litterature">📚 Littérature</button>
-                    <button class="tab-btn" data-tab="seq1-ecm">📚 ECM</button>
-                    <button class="tab-btn" data-tab="seq1-eps">🏃 EPS</button>
-                    <button class="tab-btn" data-tab="seq1-info">💻 Info</button>
+                <div class="tabs" id="seq1Tabs">
+                    <button class="tab-btn active" data-tab="s1-maths">📐 Maths</button>
+                    <button class="tab-btn" data-tab="s1-phys">⚡ Physique</button>
+                    <button class="tab-btn" data-tab="s1-chi">🧪 Chimie</button>
+                    <button class="tab-btn" data-tab="s1-svt">🧬 SVT</button>
+                    <button class="tab-btn" data-tab="s1-fr">📖 Français</button>
+                    <button class="tab-btn" data-tab="s1-ang">🇬🇧 Anglais</button>
+                    <button class="tab-btn" data-tab="s1-philo">🤔 Philo</button>
+                    <button class="tab-btn" data-tab="s1-geo">🌍 Géo</button>
+                    <button class="tab-btn" data-tab="s1-lit">📚 Littérature</button>
+                    <button class="tab-btn" data-tab="s1-ecm">📚 ECM</button>
+                    <button class="tab-btn" data-tab="s1-eps">🏃 EPS</button>
+                    <button class="tab-btn" data-tab="s1-info">💻 Info</button>
                 </div>
-
-                <!-- Maths -->
-                <div class="tab-content active" id="seq1-maths">
-                    <h3 style="color:var(--primary);margin-bottom:1rem;">📐 Mathématiques — Séquence 1</h3>
-                    <div class="day-item"><div class="day-checkbox" onclick="toggle(this)"></div><div class="day-content"><div class="day-title">Semaine 1 : Rappels sur les ensembles ℕ, ℤ, ℚ</div><div class="day-desc">Divisibilité, PGCD, PPCM, nombres premiers, identité de Bézout</div></div></div>
-                    <div class="day-item"><div class="day-checkbox" onclick="toggle(this)"></div><div class="day-content"><div class="day-title">Semaine 2 : Nombres complexes (1)</div><div class="day-desc">Forme algébrique, opérations, conjugué, module</div></div></div>
-                    <div class="day-item"><div class="day-checkbox" onclick="toggle(this)"></div><div class="day-content"><div class="day-title">Semaine 3 : Nombres complexes (2)</div><div class="day-desc">Forme trigonométrique et exponentielle, formules d'Euler et de Moivre</div></div></div>
-                    <div class="day-item"><div class="day-checkbox" onclick="toggle(this)"></div><div class="day-content"><div class="day-title">Semaine 4 : Fonctions numériques</div><div class="day-desc">Rappels sur les fonctions, limites, continuité</div></div></div>
-                    <div class="day-item"><div class="day-checkbox" onclick="toggle(this)"></div><div class="day-content"><div class="day-title">Semaine 5 : Dérivation et primitives</div><div class="day-desc">Dérivées usuelles, primitives, équations différentielles simples</div></div></div>
-                    <div class="day-item"><div class="day-checkbox" onclick="toggle(this)"></div><div class="day-content"><div class="day-title">Semaine 6 : Révision et exercices</div><div class="day-desc">Exercices de synthèse, annales, préparation devoir</div></div></div>
+                <div class="tab-content active" id="s1-maths"><h3 style="color:var(--accent);margin-bottom:.75rem;font-size:.9rem">📐 Mathématiques — Séquence 1</h3>
+                    <div class="day-item"><div class="day-cb" onclick="toggleDay(this)"></div><div><div class="day-title">Semaine 1 : Arithmétique dans Z</div><div class="day-desc">Divisibilité, PGCD, PPCM, nombres premiers, identité de Bézout</div></div></div>
+                    <div class="day-item"><div class="day-cb" onclick="toggleDay(this)"></div><div><div class="day-title">Semaine 2 : Nombres complexes (1)</div><div class="day-desc">Forme algébrique, opérations, conjugué, module</div></div></div>
+                    <div class="day-item"><div class="day-cb" onclick="toggleDay(this)"></div><div><div class="day-title">Semaine 3 : Nombres complexes (2)</div><div class="day-desc">Forme trigonométrique et exponentielle, Euler, Moivre</div></div></div>
+                    <div class="day-item"><div class="day-cb" onclick="toggleDay(this)"></div><div><div class="day-title">Semaine 4 : Fonctions numériques</div><div class="day-desc">Limites, continuité, dérivées usuelles</div></div></div>
+                    <div class="day-item"><div class="day-cb" onclick="toggleDay(this)"></div><div><div class="day-title">Semaine 5 : Dérivation et primitives</div><div class="day-desc">Primitives, équations différentielles simples</div></div></div>
+                    <div class="day-item"><div class="day-cb" onclick="toggleDay(this)"></div><div><div class="day-title">Semaine 6 : Révision et exercices</div><div class="day-desc">Exercices de synthèse, annales</div></div></div>
                 </div>
-
-                <!-- Physique -->
-                <div class="tab-content" id="seq1-physique">
-                    <h3 style="color:var(--primary);margin-bottom:1rem;">⚡ Physique — Séquence 1</h3>
-                    <div class="day-item"><div class="day-checkbox" onclick="toggle(this)"></div><div class="day-content"><div class="day-title">Semaine 1 : Cinématique</div><div class="day-desc">Mouvement rectiligne, circulaire, vectoriel position/vitesse/accélération</div></div></div>
-                    <div class="day-item"><div class="day-checkbox" onclick="toggle(this)"></div><div class="day-content"><div class="day-title">Semaine 2 : Dynamique (lois de Newton)</div><div class="day-desc">Forces, poids, frottements, théorème du centre d'inertie</div></div></div>
-                    <div class="day-item"><div class="day-checkbox" onclick="toggle(this)"></div><div class="day-content"><div class="day-title">Semaine 3 : Mouvement dans un champ de pesanteur</div><div class="day-desc">Chute libre, projectile, mouvement des satellites</div></div></div>
-                    <div class="day-item"><div class="day-checkbox" onclick="toggle(this)"></div><div class="day-content"><div class="day-title">Semaine 4 : Électrostatique</div><div class="day-desc">Loi de Coulomb, champ électrique, potentiel</div></div></div>
-                    <div class="day-item"><div class="day-checkbox" onclick="toggle(this)"></div><div class="day-content"><div class="day-title">Semaine 5 : Électrocinétique</div><div class="day-desc">Loi d'Ohm, lois de Kirchhoff, circuits RC</div></div></div>
-                    <div class="day-item"><div class="day-checkbox" onclick="toggle(this)"></div><div class="day-content"><div class="day-title">Semaine 6 : Révision et exercices</div><div class="day-desc">Exercices de synthèse, annales, préparation devoir</div></div></div>
+                <div class="tab-content" id="s1-phys"><h3 style="color:var(--accent);margin-bottom:.75rem;font-size:.9rem">⚡ Physique — Séquence 1</h3>
+                    <div class="day-item"><div class="day-cb" onclick="toggleDay(this)"></div><div><div class="day-title">Semaine 1 : Cinématique</div><div class="day-desc">Mouvement rectiligne, circulaire, vecteurs</div></div></div>
+                    <div class="day-item"><div class="day-cb" onclick="toggleDay(this)"></div><div><div class="day-title">Semaine 2 : Dynamique (Newton)</div><div class="day-desc">Forces, poids, frottements, TCI</div></div></div>
+                    <div class="day-item"><div class="day-cb" onclick="toggleDay(this)"></div><div><div class="day-title">Semaine 3 : Champ de pesanteur</div><div class="day-desc">Chute libre, projectile, satellites</div></div></div>
+                    <div class="day-item"><div class="day-cb" onclick="toggleDay(this)"></div><div><div class="day-title">Semaine 4 : Travail et Énergie</div><div class="day-desc">Théorème de l'énergie cinétique</div></div></div>
+                    <div class="day-item"><div class="day-cb" onclick="toggleDay(this)"></div><div><div class="day-title">Semaine 5 : Électrostatique</div><div class="day-desc">Coulomb, champ, potentiel</div></div></div>
+                    <div class="day-item"><div class="day-cb" onclick="toggleDay(this)"></div><div><div class="day-title">Semaine 6 : Révision</div><div class="day-desc">Exercices de synthèse, annales</div></div></div>
                 </div>
-
-                <!-- Chimie -->
-                <div class="tab-content" id="seq1-chimie">
-                    <h3 style="color:var(--primary);margin-bottom:1rem;">🧪 Chimie — Séquence 1</h3>
-                    <div class="day-item"><div class="day-checkbox" onclick="toggle(this)"></div><div class="day-content"><div class="day-title">Semaine 1 : Notions de base</div><div class="day-desc">Atome, molécule, mole, concentration, tableau d'avancement</div></div></div>
-                    <div class="day-item"><div class="day-checkbox" onclick="toggle(this)"></div><div class="day-content"><div class="day-title">Semaine 2 : Cinétique chimique</div><div class="day-desc">Vitesse de réaction, facteurs cinétiques, ordre de réaction</div></div></div>
-                    <div class="day-item"><div class="day-checkbox" onclick="toggle(this)"></div><div class="day-content"><div class="day-title">Semaine 3 : Équilibres chimiques</div><div class="day-desc">Constante d'équilibre K, quotient de réaction, principe de Le Chatelier</div></div></div>
-                    <div class="day-item"><div class="day-checkbox" onclick="toggle(this)"></div><div class="day-content"><div class="day-title">Semaine 4 : Équilibres acido-basiques</div><div class="day-desc">pH, Ka, Kb, titrages acido-basiques</div></div></div>
-                    <div class="day-item"><div class="day-checkbox" onclick="toggle(this)"></div><div class="day-content"><div class="day-title">Semaine 5 : Oxydoréduction</div><div class="day-desc">Nombre d'oxydation, couples redox, piles électrochimiques</div></div></div>
-                    <div class="day-item"><div class="day-checkbox" onclick="toggle(this)"></div><div class="day-content"><div class="day-title">Semaine 6 : Révision et exercices</div><div class="day-desc">Exercices de synthèse, annales, préparation devoir</div></div></div>
+                <div class="tab-content" id="s1-chi"><h3 style="color:var(--accent);margin-bottom:.75rem;font-size:.9rem">🧪 Chimie — Séquence 1</h3>
+                    <div class="day-item"><div class="day-cb" onclick="toggleDay(this)"></div><div><div class="day-title">Semaine 1 : Cinétique chimique</div><div class="day-desc">Vitesse de réaction, facteurs cinétiques</div></div></div>
+                    <div class="day-item"><div class="day-cb" onclick="toggleDay(this)"></div><div><div class="day-title">Semaine 2 : Chimie organique</div><div class="day-desc">Alcools, amines, acides carboxyliques</div></div></div>
+                    <div class="day-item"><div class="day-cb" onclick="toggleDay(this)"></div><div><div class="day-title">Semaine 3 : Oxydation ménagée</div><div class="day-desc">Dérivés de l'alcool, décarboxylation</div></div></div>
+                    <div class="day-item"><div class="day-cb" onclick="toggleDay(this)"></div><div><div class="day-title">Semaine 4 : Équilibres</div><div class="day-desc">Acido-basiques, pH, titrages</div></div></div>
+                    <div class="day-item"><div class="day-cb" onclick="toggleDay(this)"></div><div><div class="day-title">Semaine 5 : Oxydoréduction</div><div class="day-desc">Piles, électrolyse</div></div></div>
+                    <div class="day-item"><div class="day-cb" onclick="toggleDay(this)"></div><div><div class="day-title">Semaine 6 : Révision</div><div class="day-desc">Exercices de synthèse</div></div></div>
                 </div>
-
-                <!-- SVT -->
-                <div class="tab-content" id="seq1-svt">
-                    <h3 style="color:var(--primary);margin-bottom:1rem;">🧬 SVTEEHB — Séquence 1</h3>
-                    <div class="day-item"><div class="day-checkbox" onclick="toggle(this)"></div><div class="day-content"><div class="day-title">Semaine 1 : La cellule</div><div class="day-desc">Structure cellulaire, membrane, organites, métabolisme</div></div></div>
-                    <div class="day-item"><div class="day-checkbox" onclick="toggle(this)"></div><div class="day-content"><div class="day-title">Semaine 2 : Génétique (1)</div><div class="day-desc">Lois de Mendel, monohybridisme, dihybridisme</div></div></div>
-                    <div class="day-item"><div class="day-checkbox" onclick="toggle(this)"></div><div class="day-content"><div class="day-title">Semaine 3 : Génétique (2)</div><div class="day-desc">Hérédité liée au sexe, génétique des populations</div></div></div>
-                    <div class="day-item"><div class="day-checkbox" onclick="toggle(this)"></div><div class="day-content"><div class="day-title">Semaine 4 : Géologie</div><div class="day-desc">Tectonique des plaques, séismes, volcans</div></div></div>
-                    <div class="day-item"><div class="day-checkbox" onclick="toggle(this)"></div><div class="day-content"><div class="day-title">Semaine 5 : Physiologie</div><div class="day-desc">Système nerveux, influx nerveux, synapse</div></div></div>
-                    <div class="day-item"><div class="day-checkbox" onclick="toggle(this)"></div><div class="day-content"><div class="day-title">Semaine 6 : Révision et exercices</div><div class="day-desc">Exercices de synthèse, annales, préparation devoir</div></div></div>
+                <div class="tab-content" id="s1-svt"><h3 style="color:var(--accent);margin-bottom:.75rem;font-size:.9rem">🧬 SVTEEHB — Séquence 1</h3>
+                    <div class="day-item"><div class="day-cb" onclick="toggleDay(this)"></div><div><div class="day-title">Semaine 1 : Échanges cellulaires</div><div class="day-desc">Membrane, osmose, pression osmotique</div></div></div>
+                    <div class="day-item"><div class="day-cb" onclick="toggleDay(this)"></div><div><div class="day-title">Semaine 2 : Transport cellulaire</div><div class="day-desc">Transport actif/passif, pompes Na+/K+</div></div></div>
+                    <div class="day-item"><div class="day-cb" onclick="toggleDay(this)"></div><div><div class="day-title">Semaine 3 : Ultrastructure</div><div class="day-desc">Organites, membrane plasmique</div></div></div>
+                    <div class="day-item"><div class="day-cb" onclick="toggleDay(this)"></div><div><div class="day-title">Semaine 4 : Génétique</div><div class="day-desc">Lois de Mendel, monohybridisme</div></div></div>
+                    <div class="day-item"><div class="day-cb" onclick="toggleDay(this)"></div><div><div class="day-title">Semaine 5 : Physiologie</div><div class="day-desc">Système nerveux, synapse</div></div></div>
+                    <div class="day-item"><div class="day-cb" onclick="toggleDay(this)"></div><div><div class="day-title">Semaine 6 : Révision</div><div class="day-desc">Exercices de synthèse</div></div></div>
                 </div>
-
-                <!-- Français -->
-                <div class="tab-content" id="seq1-francais">
-                    <h3 style="color:var(--primary);margin-bottom:1rem;">📖 Langue Française — Séquence 1</h3>
-                    <div class="day-item"><div class="day-checkbox" onclick="toggle(this)"></div><div class="day-content"><div class="day-title">Semaine 1 : Dissertation (méthode)</div><div class="day-desc">Analyse du sujet, recherche d'arguments, plan dialectique</div></div></div>
-                    <div class="day-item"><div class="day-checkbox" onclick="toggle(this)"></div><div class="day-content"><div class="day-title">Semaine 2 : Commentaire composé</div><div class="day-desc">Lecture analytique, procédés stylistiques, interprétation</div></div></div>
-                    <div class="day-item"><div class="day-checkbox" onclick="toggle(this)"></div><div class="day-content"><div class="day-title">Semaine 3 : Contraction de texte</div><div class="day-desc">Résumé, reformulation, respect du sens original</div></div></div>
-                    <div class="day-item"><div class="day-checkbox" onclick="toggle(this)"></div><div class="day-content"><div class="day-title">Semaine 4 : Grammaire et orthographe</div><div class="day-desc">Conjugaison, accords, syntaxe, vocabulaire</div></div></div>
-                    <div class="day-item"><div class="day-checkbox" onclick="toggle(this)"></div><div class="day-content"><div class="day-title">Semaine 5 : Expression écrite</div><div class="day-desc">Rédaction, argumentation, style</div></div></div>
-                    <div class="day-item"><div class="day-checkbox" onclick="toggle(this)"></div><div class="day-content"><div class="day-title">Semaine 6 : Révision et exercices</div><div class="day-desc">Exercices de synthèse, annales, préparation devoir</div></div></div>
+                <div class="tab-content" id="s1-fr"><h3 style="color:var(--accent);margin-bottom:.75rem;font-size:.9rem">📖 Langue Française — Séquence 1</h3>
+                    <div class="day-item"><div class="day-cb" onclick="toggleDay(this)"></div><div><div class="day-title">Semaine 1 : Dissertation</div><div class="day-desc">Analyse du sujet, plan dialectique</div></div></div>
+                    <div class="day-item"><div class="day-cb" onclick="toggleDay(this)"></div><div><div class="day-title">Semaine 2 : Commentaire composé</div><div class="day-desc">Lecture analytique, procédés stylistiques</div></div></div>
+                    <div class="day-item"><div class="day-cb" onclick="toggleDay(this)"></div><div><div class="day-title">Semaine 3 : Contraction de texte</div><div class="day-desc">Résumé, reformulation</div></div></div>
+                    <div class="day-item"><div class="day-cb" onclick="toggleDay(this)"></div><div><div class="day-title">Semaine 4 : Grammaire</div><div class="day-desc">Conjugaison, syntaxe, vocabulaire</div></div></div>
+                    <div class="day-item"><div class="day-cb" onclick="toggleDay(this)"></div><div><div class="day-title">Semaine 5 : Expression écrite</div><div class="day-desc">Rédaction, argumentation</div></div></div>
+                    <div class="day-item"><div class="day-cb" onclick="toggleDay(this)"></div><div><div class="day-title">Semaine 6 : Révision</div><div class="day-desc">Exercices de synthèse</div></div></div>
                 </div>
-
-                <!-- Anglais -->
-                <div class="tab-content" id="seq1-anglais">
-                    <h3 style="color:var(--primary);margin-bottom:1rem;">🇬🇧 Anglais — Séquence 1</h3>
-                    <div class="day-item"><div class="day-checkbox" onclick="toggle(this)"></div><div class="day-content"><div class="day-title">Semaine 1 : Grammar (tenses)</div><div class="day-desc">Present, past, future, perfect tenses</div></div></div>
-                    <div class="day-item"><div class="day-checkbox" onclick="toggle(this)"></div><div class="day-content"><div class="day-title">Semaine 2 : Grammar (voice & conditionals)</div><div class="day-desc">Passive voice, conditionals type 1, 2, 3</div></div></div>
-                    <div class="day-item"><div class="day-checkbox" onclick="toggle(this)"></div><div class="day-content"><div class="day-title">Semaine 3 : Vocabulary</div><div class="day-desc">Health, education, environment, technology</div></div></div>
-                    <div class="day-item"><div class="day-checkbox" onclick="toggle(this)"></div><div class="day-content"><div class="day-title">Semaine 4 : Essay Writing</div><div class="day-desc">Argumentative, narrative, descriptive essays</div></div></div>
-                    <div class="day-item"><div class="day-checkbox" onclick="toggle(this)"></div><div class="day-content"><div class="day-title">Semaine 5 : Reading Comprehension</div><div class="day-desc">Skimming, scanning, inference, vocabulary in context</div></div></div>
-                    <div class="day-item"><div class="day-checkbox" onclick="toggle(this)"></div><div class="day-content"><div class="day-title">Semaine 6 : Révision et exercices</div><div class="day-desc">Exercices de synthèse, annales, préparation devoir</div></div></div>
+                <div class="tab-content" id="s1-ang"><h3 style="color:var(--accent);margin-bottom:.75rem;font-size:.9rem">🇬🇧 Anglais — Séquence 1</h3>
+                    <div class="day-item"><div class="day-cb" onclick="toggleDay(this)"></div><div><div class="day-title">Semaine 1 : Grammar (Tenses)</div><div class="day-desc">Present, past, future, perfect</div></div></div>
+                    <div class="day-item"><div class="day-cb" onclick="toggleDay(this)"></div><div><div class="day-title">Semaine 2 : Voice & Conditionals</div><div class="day-desc">Passive voice, conditionals 1-2-3</div></div></div>
+                    <div class="day-item"><div class="day-cb" onclick="toggleDay(this)"></div><div><div class="day-title">Semaine 3 : Vocabulary</div><div class="day-desc">Health, education, environment</div></div></div>
+                    <div class="day-item"><div class="day-cb" onclick="toggleDay(this)"></div><div><div class="day-title">Semaine 4 : Essay Writing</div><div class="day-desc">Argumentative, narrative</div></div></div>
+                    <div class="day-item"><div class="day-cb" onclick="toggleDay(this)"></div><div><div class="day-title">Semaine 5 : Reading</div><div class="day-desc">Comprehension, inference</div></div></div>
+                    <div class="day-item"><div class="day-cb" onclick="toggleDay(this)"></div><div><div class="day-title">Semaine 6 : Révision</div><div class="day-desc">Exercices de synthèse</div></div></div>
                 </div>
-
-                <!-- Philo -->
-                <div class="tab-content" id="seq1-philo">
-                    <h3 style="color:var(--primary);margin-bottom:1rem;">🤔 Philosophie — Séquence 1</h3>
-                    <div class="day-item"><div class="day-checkbox" onclick="toggle(this)"></div><div class="day-content"><div class="day-title">Semaine 1 : Introduction à la philosophie</div><div class="day-desc">Qu'est-ce que la philosophie ? Histoire, méthodes, grands courants</div></div></div>
-                    <div class="day-item"><div class="day-checkbox" onclick="toggle(this)"></div><div class="day-content"><div class="day-title">Semaine 2 : La conscience</div><div class="day-desc">Conscience de soi, inconscient, liberté et déterminisme</div></div></div>
-                    <div class="day-item"><div class="day-checkbox" onclick="toggle(this)"></div><div class="day-content"><div class="day-title">Semaine 3 : La vérité</div><div class="day-desc">Vérité et opinion, certitude et doute, Descartes, Kant</div></div></div>
-                    <div class="day-item"><div class="day-checkbox" onclick="toggle(this)"></div><div class="day-content"><div class="day-title">Semaine 4 : Le langage</div><div class="day-desc">Langage et communication, signifiant/signifié, Saussure</div></div></div>
-                    <div class="day-item"><div class="day-checkbox" onclick="toggle(this)"></div><div class="day-content"><div class="day-title">Semaine 5 : Méthodologie dissertation</div><div class="day-desc">Analyse du sujet, problématisation, plan dialectique</div></div></div>
-                    <div class="day-item"><div class="day-checkbox" onclick="toggle(this)"></div><div class="day-content"><div class="day-title">Semaine 6 : Révision et exercices</div><div class="day-desc">Exercices de synthèse, annales, préparation devoir</div></div></div>
+                <div class="tab-content" id="s1-philo"><h3 style="color:var(--accent);margin-bottom:.75rem;font-size:.9rem">🤔 Philosophie — Séquence 1</h3>
+                    <div class="day-item"><div class="day-cb" onclick="toggleDay(this)"></div><div><div class="day-title">Semaine 1 : Introduction</div><div class="day-desc">Qu'est-ce que la philosophie ? Méthodes</div></div></div>
+                    <div class="day-item"><div class="day-cb" onclick="toggleDay(this)"></div><div><div class="day-title">Semaine 2 : La conscience</div><div class="day-desc">Liberté, déterminisme</div></div></div>
+                    <div class="day-item"><div class="day-cb" onclick="toggleDay(this)"></div><div><div class="day-title">Semaine 3 : La vérité</div><div class="day-desc">Descartes, Kant, doute</div></div></div>
+                    <div class="day-item"><div class="day-cb" onclick="toggleDay(this)"></div><div><div class="day-title">Semaine 4 : Le langage</div><div class="day-desc">Saussure, signifiant/signifié</div></div></div>
+                    <div class="day-item"><div class="day-cb" onclick="toggleDay(this)"></div><div><div class="day-title">Semaine 5 : Méthodologie</div><div class="day-desc">Dissertation, analyse de texte</div></div></div>
+                    <div class="day-item"><div class="day-cb" onclick="toggleDay(this)"></div><div><div class="day-title">Semaine 6 : Révision</div><div class="day-desc">Exercices de synthèse</div></div></div>
                 </div>
-
-                <!-- Géo -->
-                <div class="tab-content" id="seq1-geo">
-                    <h3 style="color:var(--primary);margin-bottom:1rem;">🌍 Géographie — Séquence 1</h3>
-                    <div class="day-item"><div class="day-checkbox" onclick="toggle(this)"></div><div class="day-content"><div class="day-title">Semaine 1 : Le milieu physique du Cameroun</div><div class="day-desc">Relief, climat, hydrographie, végétation</div></div></div>
-                    <div class="day-item"><div class="day-checkbox" onclick="toggle(this)"></div><div class="day-content"><div class="day-title">Semaine 2 : La population du Cameroun</div><div class="day-desc">Densité, répartition, croissance, migrations</div></div></div>
-                    <div class="day-item"><div class="day-checkbox" onclick="toggle(this)"></div><div class="day-content"><div class="day-title">Semaine 3 : L'agriculture</div><div class="day-desc">Agriculture vivrière et de rente, défis du secteur</div></div></div>
-                    <div class="day-item"><div class="day-checkbox" onclick="toggle(this)"></div><div class="day-content"><div class="day-title">Semaine 4 : L'industrie et l'énergie</div><div class="day-desc">Industrialisation, ressources énergétiques, défis</div></div></div>
-                    <div class="day-item"><div class="day-checkbox" onclick="toggle(this)"></div><div class="day-content"><div class="day-title">Semaine 5 : Méthodologie</div><div class="day-desc">Commentaire de carte, analyse de document, dissertation géographique</div></div></div>
-                    <div class="day-item"><div class="day-checkbox" onclick="toggle(this)"></div><div class="day-content"><div class="day-title">Semaine 6 : Révision et exercices</div><div class="day-desc">Exercices de synthèse, annales, préparation devoir</div></div></div>
+                <div class="tab-content" id="s1-geo"><h3 style="color:var(--accent);margin-bottom:.75rem;font-size:.9rem">🌍 Géographie — Séquence 1</h3>
+                    <div class="day-item"><div class="day-cb" onclick="toggleDay(this)"></div><div><div class="day-title">Semaine 1 : Cartographie</div><div class="day-desc">Représentations spatiales, échelles</div></div></div>
+                    <div class="day-item"><div class="day-cb" onclick="toggleDay(this)"></div><div><div class="day-title">Semaine 2 : Climatologie</div><div class="day-desc">Circulation atmosphérique, bioclimats</div></div></div>
+                    <div class="day-item"><div class="day-cb" onclick="toggleDay(this)"></div><div><div class="day-title">Semaine 3 : Dynamiques démographiques</div><div class="day-desc">Population mondiale, migrations</div></div></div>
+                    <div class="day-item"><div class="day-cb" onclick="toggleDay(this)"></div><div><div class="day-title">Semaine 4 : Géomorphologie</div><div class="day-desc">Reliefs, tectonique</div></div></div>
+                    <div class="day-item"><div class="day-cb" onclick="toggleDay(this)"></div><div><div class="day-title">Semaine 5 : Méthodologie</div><div class="day-desc">Commentaire de carte, dissertation</div></div></div>
+                    <div class="day-item"><div class="day-cb" onclick="toggleDay(this)"></div><div><div class="day-title">Semaine 6 : Révision</div><div class="day-desc">Exercices de synthèse</div></div></div>
                 </div>
-
-                <!-- Littérature -->
-                <div class="tab-content" id="seq1-litterature">
-                    <h3 style="color:var(--primary);margin-bottom:1rem;">📚 Littérature — Séquence 1</h3>
-                    <div class="day-item"><div class="day-checkbox" onclick="toggle(this)"></div><div class="day-content"><div class="day-title">Semaine 1 : Introduction à la littérature</div><div class="day-desc">Genres littéraires, procédés stylistiques, figures de style</div></div></div>
-                    <div class="day-item"><div class="day-checkbox" onclick="toggle(this)"></div><div class="day-content"><div class="day-title">Semaine 2 : Étude d'œuvre (1)</div><div class="day-desc">Roman africain ou francophone au programme</div></div></div>
-                    <div class="day-item"><div class="day-checkbox" onclick="toggle(this)"></div><div class="day-content"><div class="day-title">Semaine 3 : Étude d'œuvre (2)</div><div class="day-desc">Thèmes, personnages, structure narrative</div></div></div>
-                    <div class="day-item"><div class="day-checkbox" onclick="toggle(this)"></div><div class="day-content"><div class="day-title">Semaine 4 : Commentaire littéraire</div><div class="day-desc">Méthode du commentaire composé, analyse de texte</div></div></div>
-                    <div class="day-item"><div class="day-checkbox" onclick="toggle(this)"></div><div class="day-content"><div class="day-title">Semaine 5 : Dissertation littéraire</div><div class="day-desc">Méthode, argumentation, exemples</div></div></div>
-                    <div class="day-item"><div class="day-checkbox" onclick="toggle(this)"></div><div class="day-content"><div class="day-title">Semaine 6 : Révision et exercices</div><div class="day-desc">Exercices de synthèse, annales, préparation devoir</div></div></div>
+                <div class="tab-content" id="s1-lit"><h3 style="color:var(--accent);margin-bottom:.75rem;font-size:.9rem">📚 Littérature — Séquence 1</h3>
+                    <div class="day-item"><div class="day-cb" onclick="toggleDay(this)"></div><div><div class="day-title">Semaine 1 : Genres littéraires</div><div class="day-desc">Procédés stylistiques, figures de style</div></div></div>
+                    <div class="day-item"><div class="day-cb" onclick="toggleDay(this)"></div><div><div class="day-title">Semaine 2 : Œuvre au programme (1)</div><div class="day-desc">Roman africain, contexte</div></div></div>
+                    <div class="day-item"><div class="day-cb" onclick="toggleDay(this)"></div><div><div class="day-title">Semaine 3 : Œuvre au programme (2)</div><div class="day-desc">Thèmes, personnages</div></div></div>
+                    <div class="day-item"><div class="day-cb" onclick="toggleDay(this)"></div><div><div class="day-title">Semaine 4 : Contraction de texte</div><div class="day-desc">Résumé, décompte de mots</div></div></div>
+                    <div class="day-item"><div class="day-cb" onclick="toggleDay(this)"></div><div><div class="day-title">Semaine 5 : Dissertation</div><div class="day-desc">Méthode, argumentation</div></div></div>
+                    <div class="day-item"><div class="day-cb" onclick="toggleDay(this)"></div><div><div class="day-title">Semaine 6 : Révision</div><div class="day-desc">Exercices de synthèse</div></div></div>
                 </div>
-
-                <!-- ECM -->
-                <div class="tab-content" id="seq1-ecm">
-                    <h3 style="color:var(--primary);margin-bottom:1rem;">📚 ECM — Séquence 1</h3>
-                    <div class="day-item"><div class="day-checkbox" onclick="toggle(this)"></div><div class="day-content"><div class="day-title">Semaine 1 : La citoyenneté</div><div class="day-desc">Droits et devoirs du citoyen, institutions démocratiques</div></div></div>
-                    <div class="day-item"><div class="day-checkbox" onclick="toggle(this)"></div><div class="day-content"><div class="day-title">Semaine 2 : Les droits de l'homme</div><div class="day-desc">Déclaration universelle, droits des femmes et des enfants</div></div></div>
-                    <div class="day-item"><div class="day-checkbox" onclick="toggle(this)"></div><div class="day-content"><div class="day-title">Semaine 3 : La mondialisation</div><div class="day-desc">Impact sur le développement du Cameroun</div></div></div>
-                    <div class="day-item"><div class="day-checkbox" onclick="toggle(this)"></div><div class="day-content"><div class="day-title">Semaine 4 : La coopération régionale</div><div class="day-desc">CEMAC, CEEAC, UA, rôle du Cameroun</div></div></div>
-                    <div class="day-item"><div class="day-checkbox" onclick="toggle(this)"></div><div class="day-content"><div class="day-title">Semaine 5 : Développement durable</div><div class="day-desc">Enjeux environnementaux, ODD, actions locales</div></div></div>
-                    <div class="day-item"><div class="day-checkbox" onclick="toggle(this)"></div><div class="day-content"><div class="day-title">Semaine 6 : Révision et exercices</div><div class="day-desc">Exercices de synthèse, annales, préparation devoir</div></div></div>
+                <div class="tab-content" id="s1-ecm"><h3 style="color:var(--accent);margin-bottom:.75rem;font-size:.9rem">📚 ECM — Séquence 1</h3>
+                    <div class="day-item"><div class="day-cb" onclick="toggleDay(this)"></div><div><div class="day-title">Semaine 1 : Relations internationales</div><div class="day-desc">Diplomatie, ONG, CICR</div></div></div>
+                    <div class="day-item"><div class="day-cb" onclick="toggleDay(this)"></div><div><div class="day-title">Semaine 2 : Coopération</div><div class="day-desc">Bilatérale, multilatérale, CEMAC</div></div></div>
+                    <div class="day-item"><div class="day-cb" onclick="toggleDay(this)"></div><div><div class="day-title">Semaine 3 : Aide humanitaire</div><div class="day-desc">vs Aide au développement</div></div></div>
+                    <div class="day-item"><div class="day-cb" onclick="toggleDay(this)"></div><div><div class="day-title">Semaine 4 : Diplomatie camerounaise</div><div class="day-desc">Politique extérieure</div></div></div>
+                    <div class="day-item"><div class="day-cb" onclick="toggleDay(this)"></div><div><div class="day-title">Semaine 5 : Mondialisation</div><div class="day-desc">Enjeux, intégration régionale</div></div></div>
+                    <div class="day-item"><div class="day-cb" onclick="toggleDay(this)"></div><div><div class="day-title">Semaine 6 : Révision</div><div class="day-desc">Exercices de synthèse</div></div></div>
                 </div>
-
-                <!-- EPS -->
-                <div class="tab-content" id="seq1-eps">
-                    <h3 style="color:var(--primary);margin-bottom:1rem;">🏃 EPS — Séquence 1</h3>
-                    <div class="day-item"><div class="day-checkbox" onclick="toggle(this)"></div><div class="day-content"><div class="day-title">Semaine 1 : Courses (sprint)</div><div class="day-desc">Technique de course, départs, relais</div></div></div>
-                    <div class="day-item"><div class="day-checkbox" onclick="toggle(this)"></div><div class="day-content"><div class="day-title">Semaine 2 : Courses (demi-fond)</div><div class="day-desc">Endurance, respiration, allure</div></div></div>
-                    <div class="day-item"><div class="day-checkbox" onclick="toggle(this)"></div><div class="day-content"><div class="day-title">Semaine 3 : Sauts</div><div class="day-desc">Saut en hauteur, saut en longueur, technique</div></div></div>
-                    <div class="day-item"><div class="day-checkbox" onclick="toggle(this)"></div><div class="day-content"><div class="day-title">Semaine 4 : Sports collectifs</div><div class="day-desc">Football, basketball, handball (règles et techniques)</div></div></div>
-                    <div class="day-item"><div class="day-checkbox" onclick="toggle(this)"></div><div class="day-content"><div class="day-title">Semaine 5 : Théorie</div><div class="day-desc">Anatomie de base, physiologie de l'effort, hygiène sportive</div></div></div>
-                    <div class="day-item"><div class="day-checkbox" onclick="toggle(this)"></div><div class="day-content"><div class="day-title">Semaine 6 : Révision et évaluation</div><div class="day-desc">Préparation épreuve pratique et théorique</div></div></div>
+                <div class="tab-content" id="s1-eps"><h3 style="color:var(--accent);margin-bottom:.75rem;font-size:.9rem">🏃 EPS — Séquence 1</h3>
+                    <div class="day-item"><div class="day-cb" onclick="toggleDay(this)"></div><div><div class="day-title">Semaine 1 : Athlétisme</div><div class="day-desc">Courses de vitesse, relais</div></div></div>
+                    <div class="day-item"><div class="day-cb" onclick="toggleDay(this)"></div><div><div class="day-title">Semaine 2 : Sauts</div><div class="day-desc">Hauteur, longueur</div></div></div>
+                    <div class="day-item"><div class="day-cb" onclick="toggleDay(this)"></div><div><div class="day-title">Semaine 3 : Sports collectifs</div><div class="day-desc">Football, basket, handball</div></div></div>
+                    <div class="day-item"><div class="day-cb" onclick="toggleDay(this)"></div><div><div class="day-title">Semaine 4 : Physiologie</div><div class="day-desc">Filières énergétiques, récupération</div></div></div>
+                    <div class="day-item"><div class="day-cb" onclick="toggleDay(this)"></div><div><div class="day-title">Semaine 5 : Hygiène</div><div class="day-desc">Prévention, dopage, éthique</div></div></div>
+                    <div class="day-item"><div class="day-cb" onclick="toggleDay(this)"></div><div><div class="day-title">Semaine 6 : Révision</div><div class="day-desc">Pratique et théorique</div></div></div>
                 </div>
-
-                <!-- Info -->
-                <div class="tab-content" id="seq1-info">
-                    <h3 style="color:var(--primary);margin-bottom:1rem;">💻 Informatique — Séquence 1</h3>
-                    <div class="day-item"><div class="day-checkbox" onclick="toggle(this)"></div><div class="day-content"><div class="day-title">Semaine 1 : Architecture des ordinateurs</div><div class="day-desc">Composants, mémoire, processeur, périphériques</div></div></div>
-                    <div class="day-item"><div class="day-checkbox" onclick="toggle(this)"></div><div class="day-content"><div class="day-title">Semaine 2 : Systèmes d'exploitation</div><div class="day-desc">Windows, Linux, gestion des fichiers</div></div></div>
-                    <div class="day-item"><div class="day-checkbox" onclick="toggle(this)"></div><div class="day-content"><div class="day-title">Semaine 3 : Algorithmique</div><div class="day-desc">Variables, opérateurs, structures de contrôle</div></div></div>
-                    <div class="day-item"><div class="day-checkbox" onclick="toggle(this)"></div><div class="day-content"><div class="day-title">Semaine 4 : Programmation</div><div class="day-desc">Fonctions, procédures, tableaux</div></div></div>
-                    <div class="day-item"><div class="day-checkbox" onclick="toggle(this)"></div><div class="day-content"><div class="day-title">Semaine 5 : Bases de données</div><div class="day-desc">Modèle relationnel, SQL, requêtes</div></div></div>
-                    <div class="day-item"><div class="day-checkbox" onclick="toggle(this)"></div><div class="day-content"><div class="day-title">Semaine 6 : Révision et exercices</div><div class="day-desc">Exercices de synthèse, annales, préparation devoir</div></div></div>
+                <div class="tab-content" id="s1-info"><h3 style="color:var(--accent);margin-bottom:.75rem;font-size:.9rem">💻 Informatique — Séquence 1</h3>
+                    <div class="day-item"><div class="day-cb" onclick="toggleDay(this)"></div><div><div class="day-title">Semaine 1 : Systèmes d'information</div><div class="day-desc">Architecture, composants</div></div></div>
+                    <div class="day-item"><div class="day-cb" onclick="toggleDay(this)"></div><div><div class="day-title">Semaine 2 : Réseaux</div><div class="day-desc">TCP/IP, topologies, sécurité</div></div></div>
+                    <div class="day-item"><div class="day-cb" onclick="toggleDay(this)"></div><div><div class="day-title">Semaine 3 : Algorithmique</div><div class="day-desc">Variables, boucles, fonctions</div></div></div>
+                    <div class="day-item"><div class="day-cb" onclick="toggleDay(this)"></div><div><div class="day-title">Semaine 4 : Structures de données</div><div class="day-desc">Tableaux, listes, piles</div></div></div>
+                    <div class="day-item"><div class="day-cb" onclick="toggleDay(this)"></div><div><div class="day-title">Semaine 5 : BDD</div><div class="day-desc">Modèle relationnel, SQL</div></div></div>
+                    <div class="day-item"><div class="day-cb" onclick="toggleDay(this)"></div><div><div class="day-title">Semaine 6 : Révision</div><div class="day-desc">Exercices de synthèse</div></div></div>
                 </div>
             </div>
         </section>
 
-        <!-- Quiz -->
+        <!-- ===== QUIZ ===== -->
         <section class="section" id="quiz">
-            <div class="header">
-                <div class="header-content">
-                    <h1>🧠 Quiz Interactifs</h1>
-                    <p>Testez vos connaissances avec des QCM corrigés</p>
-                </div>
-            </div>
-
+            <div class="hero"><div style="position:relative;z-1"><h1>🧠 Quiz Interactifs</h1><p>Testez vos connaissances avec des QCM corrigés</p></div></div>
             <div class="card">
-                <div class="tabs">
-                    <button class="tab-btn active" data-tab="quiz-maths">📐 Maths</button>
-                    <button class="tab-btn" data-tab="quiz-physique">⚡ Physique</button>
-                    <button class="tab-btn" data-tab="quiz-chimie">🧪 Chimie</button>
-                    <button class="tab-btn" data-tab="quiz-svt">🧬 SVT</button>
+                <div class="tabs" id="quizTabs">
+                    <button class="tab-btn active" data-tab="qz-maths">📐 Maths</button>
+                    <button class="tab-btn" data-tab="qz-phys">⚡ Physique</button>
+                    <button class="tab-btn" data-tab="qz-chi">🧪 Chimie</button>
+                    <button class="tab-btn" data-tab="qz-svt">🧬 SVT</button>
                 </div>
-
-                <div class="tab-content active" id="quiz-maths"><div class="quiz-container" id="quiz-maths-container"></div></div>
-                <div class="tab-content" id="quiz-physique"><div class="quiz-container" id="quiz-physique-container"></div></div>
-                <div class="tab-content" id="quiz-chimie"><div class="quiz-container" id="quiz-chimie-container"></div></div>
-                <div class="tab-content" id="quiz-svt"><div class="quiz-container" id="quiz-svt-container"></div></div>
+                <div class="tab-content active" id="qz-maths"><div id="quiz-maths"></div></div>
+                <div class="tab-content" id="qz-phys"><div id="quiz-physique"></div></div>
+                <div class="tab-content" id="qz-chi"><div id="quiz-chimie"></div></div>
+                <div class="tab-content" id="qz-svt"><div id="quiz-svt"></div></div>
             </div>
         </section>
 
-        <!-- Flashcards -->
+        <!-- ===== FLASHCARDS ===== -->
         <section class="section" id="flashcards">
-            <div class="header">
-                <div class="header-content">
-                    <h1>🃏 Flashcards</h1>
-                    <p>Mémorisez les formules et concepts clés</p>
-                </div>
-            </div>
-
+            <div class="hero"><div style="position:relative;z-1"><h1>🃏 Flashcards</h1><p>Mémorisez les formules et concepts clés</p></div></div>
             <div class="card">
-                <div class="tabs">
+                <div class="tabs" id="fcTabs">
                     <button class="tab-btn active" data-tab="fc-maths">📐 Maths</button>
-                    <button class="tab-btn" data-tab="fc-physique">⚡ Physique</button>
-                    <button class="tab-btn" data-tab="fc-chimie">🧪 Chimie</button>
+                    <button class="tab-btn" data-tab="fc-phys">⚡ Physique</button>
+                    <button class="tab-btn" data-tab="fc-chi">🧪 Chimie</button>
                     <button class="tab-btn" data-tab="fc-svt">🧬 SVT</button>
                 </div>
-                <div class="tab-content active" id="fc-maths"><div class="flashcard-container" id="fc-maths-container"></div></div>
-                <div class="tab-content" id="fc-physique"><div class="flashcard-container" id="fc-physique-container"></div></div>
-                <div class="tab-content" id="fc-chimie"><div class="flashcard-container" id="fc-chimie-container"></div></div>
-                <div class="tab-content" id="fc-svt"><div class="flashcard-container" id="fc-svt-container"></div></div>
+                <div class="tab-content active" id="fc-maths"><div class="fc-grid" id="fc-maths-grid"></div></div>
+                <div class="tab-content" id="fc-phys"><div class="fc-grid" id="fc-phys-grid"></div></div>
+                <div class="tab-content" id="fc-chi"><div class="fc-grid" id="fc-chi-grid"></div></div>
+                <div class="tab-content" id="fc-svt"><div class="fc-grid" id="fc-svt-grid"></div></div>
             </div>
         </section>
 
-        <!-- Sujets Séquence 1 -->
-        <section class="section" id="sujets-seq1">
-            <div class="header">
-                <div class="header-content">
-                    <h1>📝 Sujets 1ère Séquence — Terminale C</h1>
-                    <p>Anciens sujets de la première séquence (2023-2025) pour réviser</p>
-                </div>
-            </div>
-
+        <!-- ===== BANQUE 120 SUJETS ===== -->
+        <section class="section" id="bank">
+            <div class="hero"><div style="position:relative;z-1"><h1>📥 Banque Nationale d'Épreuves — 120 Sujets</h1><p>10 sujets par discipline, filtres par matière/groupe/établissement</p></div></div>
             <div class="card">
-                <div class="tabs">
-                    <button class="tab-btn active" data-tab="seq1-sujets-maths">📐 Maths</button>
-                    <button class="tab-btn" data-tab="seq1-sujets-physique">⚡ Physique</button>
-                    <button class="tab-btn" data-tab="seq1-sujets-chimie">🧪 Chimie</button>
-                    <button class="tab-btn" data-tab="seq1-sujets-svt">🧬 SVT</button>
-                    <button class="tab-btn" data-tab="seq1-sujets-francais">📖 Français</button>
-                    <button class="tab-btn" data-tab="seq1-sujets-anglais">🇬🇧 Anglais</button>
-                    <button class="tab-btn" data-tab="seq1-sujets-philo">🤔 Philo</button>
+                <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(180px,1fr));gap:.5rem;margin-bottom:.75rem">
+                    <input type="text" id="bankSearch" placeholder="Recherche..." style="padding:.5rem;border:1px solid var(--border);border-radius:8px;font-size:.8rem;background:var(--bg);color:var(--text)">
+                    <select id="bankSubject" style="padding:.5rem;border:1px solid var(--border);border-radius:8px;font-size:.8rem;background:var(--bg);color:var(--text)"><option value="ALL">Toutes matières</option></select>
+                    <select id="bankGroup" style="padding:.5rem;border:1px solid var(--border);border-radius:8px;font-size:.8rem;background:var(--bg);color:var(--text)"><option value="ALL">Tous groupes</option><option value="1er Groupe">1er Groupe</option><option value="2e Groupe">2e Groupe</option><option value="3e Groupe">3e Groupe</option></select>
+                    <select id="bankSchool" style="padding:.5rem;border:1px solid var(--border);border-radius:8px;font-size:.8rem;background:var(--bg);color:var(--text)"><option value="ALL">Tous établissements</option></select>
                 </div>
-
-                <div class="tab-content active" id="seq1-sujets-maths">
-                    <h3 style="color:var(--primary);margin-bottom:1rem;">📐 Mathématiques — Sujets Séquence 1</h3>
-                    <div class="resource-list">
-                        <div class="resource-item"><span class="resource-icon">📄</span><div class="resource-info"><div class="resource-name">Maths Séquence 1 — CETIG Sacré-Cœur Mokolo (Oct 2025)</div><div class="resource-desc">Nombres complexes, puissances, congruences, polynômes, géométrie</div></div><a href="https://epreuvesetcorriges.com/categories/cameroun/colleges/terminale/40368-mathematiques-sequence-1-pour-terminale-c-cetig-sacre-coeur-de-mokolo-octobre-2025" target="_blank" class="resource-btn">Télécharger</a></div>
-                        <div class="resource-item"><span class="resource-icon">📄</span><div class="resource-info"><div class="resource-name">Maths Séquence 1 — Institut Bilingue Tsimi Evouna (Oct 2025)</div><div class="resource-desc">Systèmes de numération, fonctions, nombres complexes, équations diophantiennes</div></div><a href="https://epreuvesetcorriges.com/categories/cameroun/colleges/terminale/40366-mathematiques-sequence-1-pour-terminale-c-institut-bilingue-tsimi-evouna-octobre-2025" target="_blank" class="resource-btn">Télécharger</a></div>
-                        <div class="resource-item"><span class="resource-icon">📄</span><div class="resource-info"><div class="resource-name">Maths 1ère Évaluation — Cours La Réussite Plus (2023-2024)</div><div class="resource-desc">Algèbre, analyse, géométrie</div></div><a href="https://epreuvesetcorriges.com/categories/cameroun/colleges/terminale/33443-sujet-1ere-evaluation-mathematiques-terminale-c-e-cours-de-repetition-la-reussite-plus-2023-2024-cameroun" target="_blank" class="resource-btn">Télécharger</a></div>
-                        <div class="resource-item"><span class="resource-icon">📄</span><div class="resource-info"><div class="resource-name">Maths 1er Contrôle — Centre La Conquête (2023-2024)</div><div class="resource-desc">Calcul, raisonnement, résolution de problèmes</div></div><a href="https://epreuvesetcorriges.com/categories/cameroun/colleges/terminale/33445-sujet-mathematiques-terminale-c-d-1er-controle-continu-2023-2024-centre-de-repetition-la-conquete-cameroun" target="_blank" class="resource-btn">Télécharger</a></div>
-                    </div>
+                <div style="display:flex;justify-content:space-between;font-size:.75rem;color:var(--text3);padding-top:.5rem;border-top:1px solid var(--border);margin-bottom:.75rem">
+                    <span>Affichage de <strong id="bankCount" style="color:var(--text)">120</strong> épreuve(s)</span>
+                    <button onclick="resetBank()" style="color:var(--accent);cursor:pointer;font-weight:600">Réinitialiser</button>
                 </div>
-
-                <div class="tab-content" id="seq1-sujets-physique">
-                    <h3 style="color:var(--primary);margin-bottom:1rem;">⚡ Physique — Sujets Séquence 1</h3>
-                    <div class="resource-list">
-                        <div class="resource-item"><span class="resource-icon">📄</span><div class="resource-info"><div class="resource-name">Physique Séquence 1 — Collège Mongo Beti (Oct 2025)</div><div class="resource-desc">Lois de Coulomb, gravitation, champs, incertitudes, pendule simple</div></div><a href="https://epreuvesetcorriges.com/categories/cameroun/colleges/terminale/40096-physique-sequence-1-pour-terminale-c-college-mongo-beti-cameroun-octobre-2025" target="_blank" class="resource-btn">Télécharger</a></div>
-                        <div class="resource-item"><span class="resource-icon">📄</span><div class="resource-info"><div class="resource-name">Physique — Collège de la Retraite (Oct 2022)</div><div class="resource-desc">Mécanique, électricité, optique</div></div><a href="https://epreuvesetcorriges.com/categories/cameroun/colleges/terminale/13602-minesec-maths-tlec-bacc-2023/file" target="_blank" class="resource-btn">Télécharger</a></div>
-                    </div>
-                </div>
-
-                <div class="tab-content" id="seq1-sujets-chimie">
-                    <h3 style="color:var(--primary);margin-bottom:1rem;">🧪 Chimie — Sujets Séquence 1</h3>
-                    <div class="resource-list">
-                        <div class="resource-item"><span class="resource-icon">📄</span><div class="resource-info"><div class="resource-name">Chimie Séquence 1 — Collège Montesquieu (2024-2025)</div><div class="resource-desc">Cinétique, équilibres, réactions chimiques</div></div><a href="https://epreuvesetcorriges.com/categories/cameroun/colleges/terminale/36737-epreuve-de-chimie-college-montesquieu-sequence-1-classe-de-tlecd-annee-scolaire-2024-2025" target="_blank" class="resource-btn">Télécharger</a></div>
-                        <div class="resource-item"><span class="resource-icon">📄</span><div class="resource-info"><div class="resource-name">Chimie Séquence 1 — Tle C-D (2023-2024)</div><div class="resource-desc">Notions de base, réactions, stoichiométrie</div></div><a href="https://epreuvesetcorriges.com/categories/cameroun/colleges/terminale/33482-epreuve-chimie-terminale-c-d-sequence-n-1-2023-2024-cameroun" target="_blank" class="resource-btn">Télécharger</a></div>
-                    </div>
-                </div>
-
-                <div class="tab-content" id="seq1-sujets-svt">
-                    <h3 style="color:var(--primary);margin-bottom:1rem;">🧬 SVT — Sujets Séquence 1</h3>
-                    <div class="resource-list">
-                        <div class="resource-item"><span class="resource-icon">📄</span><div class="resource-info"><div class="resource-name">SVT — Collège La Prévoyance (Fév 2026)</div><div class="resource-desc">Génétique, géologie, physiologie</div></div><a href="https://epreuvesetcorriges.com/categories/cameroun/colleges/terminale/39801-epreuve-de-svteehb-corrige-baccalaureat-2025-serie-c-ti-cameroun" target="_blank" class="resource-btn">Télécharger</a></div>
-                    </div>
-                </div>
-
-                <div class="tab-content" id="seq1-sujets-francais">
-                    <h3 style="color:var(--primary);margin-bottom:1rem;">📖 Français — Sujets Séquence 1</h3>
-                    <div class="resource-list">
-                        <div class="resource-item"><span class="resource-icon">📄</span><div class="resource-info"><div class="resource-name">Culture Générale — Bac 2025 Série C</div><div class="resource-desc">Questions de culture générale, actualités</div></div><a href="https://epreuvesetcorriges.com/categories/cameroun/examens/bac/39659-epreuve-de-litterature-ou-culture-generale-baccalaureat-serie-aabi-sh-session-2025" target="_blank" class="resource-btn">Télécharger</a></div>
-                    </div>
-                </div>
-
-                <div class="tab-content" id="seq1-sujets-anglais">
-                    <h3 style="color:var(--primary);margin-bottom:1rem;">🇬🇧 Anglais — Sujets Séquence 1</h3>
-                    <div class="resource-list">
-                        <div class="resource-item"><span class="resource-icon">📄</span><div class="resource-info"><div class="resource-name">Anglais — Bac 2025 Série C-D-E-TI</div><div class="resource-desc">Compréhension écrite, expression écrite</div></div><a href="https://epreuvesetcorriges.com/categories/cameroun/examens/bac/39792-epreuve-d-anglais-corrige-baccalaureat-2025-serie-c-d-e-ti-cameroun" target="_blank" class="resource-btn">Télécharger</a></div>
-                    </div>
-                </div>
-
-                <div class="tab-content" id="seq1-sujets-philo">
-                    <h3 style="color:var(--primary);margin-bottom:1rem;">🤔 Philosophie — Sujets Séquence 1</h3>
-                    <div class="resource-list">
-                        <div class="resource-item"><span class="resource-icon">📄</span><div class="resource-info"><div class="resource-name">Philosophie — Bac 2024 Série C-D-E-TI</div><div class="resource-desc">Dissertation, analyse de texte</div></div><a href="https://epreuvesetcorriges.com/categories/cameroun/examens/bac/36051-epreuve-bac-2024-philosophie-serie-c-d-e-ti" target="_blank" class="resource-btn">Télécharger</a></div>
-                    </div>
-                </div>
+                <div id="bankGrid" style="display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:.75rem"></div>
             </div>
         </section>
 
-        <!-- Resources -->
+        <!-- ===== RESSOURCES ===== -->
         <section class="section" id="resources">
-            <div class="header">
-                <div class="header-content">
-                    <h1>📥 Ressources & Sujets Bac</h1>
-                    <p>Sujets officiels 2024-2025 avec corrigés</p>
-                </div>
+            <div class="hero"><div style="position:relative;z-1"><h1>📄 Sujets Bac & Ressources</h1><p>Sujets officiels 2024-2025 avec corrigés</p></div></div>
+            <div class="card"><div class="card-title">Sujets Bac 2024-2025</div>
+                <div class="res-item"><span>📄</span><div style="flex:1"><div style="font-weight:600;font-size:.85rem">Maths Bac 2024 Série C-E</div><div style="font-size:.75rem;color:var(--text3)">Sujet + corrigé</div></div><a href="https://epreuvesetcorriges.com/categories/cameroun/examens/bac/35897-corrige-bac-2024-mathematiques-serie-c-e" target="_blank" class="res-btn">Télécharger</a></div>
+                <div class="res-item"><span>📄</span><div style="flex:1"><div style="font-weight:600;font-size:.85rem">Français Bac 2025</div><div style="font-size:.75rem;color:var(--text3)">Sujet officiel</div></div><a href="https://epreuvesetcorriges.com/categories/cameroun/examens/bac/39805-epreuve-de-langue-francaise-baccalaureat-2025-serie-c-d-e-ti-cameroun" target="_blank" class="res-btn">Télécharger</a></div>
+                <div class="res-item"><span>📄</span><div style="flex:1"><div style="font-weight:600;font-size:.85rem">Philosophie Bac 2024</div><div style="font-size:.75rem;color:var(--text3)">Sujet + corrigé</div></div><a href="https://epreuvesetcorriges.com/categories/cameroun/examens/bac/36051-epreuve-bac-2024-philosophie-serie-c-d-e-ti" target="_blank" class="res-btn">Télécharger</a></div>
+                <div class="res-item"><span>📄</span><div style="flex:1"><div style="font-weight:600;font-size:.85rem">Anglais Bac 2025</div><div style="font-size:.75rem;color:var(--text3)">Sujet + corrigé</div></div><a href="https://epreuvesetcorriges.com/categories/cameroun/examens/bac/39792-epreuve-d-anglais-corrige-baccalaureat-2025-serie-c-d-e-ti-cameroun" target="_blank" class="res-btn">Télécharger</a></div>
+                <div class="res-item"><span>📄</span><div style="flex:1"><div style="font-weight:600;font-size:.85rem">SVT Bac 2025</div><div style="font-size:.75rem;color:var(--text3)">Sujet + corrigé</div></div><a href="https://epreuvesetcorriges.com/categories/cameroun/examens/bac/39801-epreuve-de-svteehb-corrige-baccalaureat-2025-serie-c-ti-cameroun" target="_blank" class="res-btn">Télécharger</a></div>
+                <div class="res-item"><span>📄</span><div style="flex:1"><div style="font-weight:600;font-size:.85rem">Physique Bac 2025</div><div style="font-size:.75rem;color:var(--text3)">Épreuve pratique</div></div><a href="https://epreuvesetcorriges.com/categories/cameroun/examens/bac/39806-epreuve-pratique-de-physique-baccalaureat-2025-serie-c-cameroun" target="_blank" class="res-btn">Télécharger</a></div>
+                <div class="res-item"><span>📄</span><div style="flex:1"><div style="font-weight:600;font-size:.85rem">Informatique Bac 2025</div><div style="font-size:.75rem;color:var(--text3)">Épreuve théorique</div></div><a href="https://epreuvesetcorriges.com/categories/cameroun/examens/bac/39807-epreuve-theorique-d-informatique-baccalaureat-2025-serie-c-d-e-cameroun" target="_blank" class="res-btn">Télécharger</a></div>
             </div>
-
-            <div class="card">
-                <div class="card-header">
-                    <h2 class="card-title">Sujets Bac 2024-2025 (PDF)</h2>
-                </div>
-                <div class="resource-list">
-                    <div class="resource-item"><span class="resource-icon">📄</span><div class="resource-info"><div class="resource-name">Maths Bac 2024 Série C-E</div><div class="resource-desc">Sujet + corrigé</div></div><a href="https://epreuvesetcorriges.com/categories/cameroun/examens/bac/35897-corrige-bac-2024-mathematiques-serie-c-e" target="_blank" class="resource-btn">Télécharger</a></div>
-                    <div class="resource-item"><span class="resource-icon">📄</span><div class="resource-info"><div class="resource-name">Français Bac 2025 Série C-D-E-TI</div><div class="resource-desc">Sujet officiel</div></div><a href="https://epreuvesetcorriges.com/categories/cameroun/examens/bac/39805-epreuve-de-langue-francaise-baccalaureat-2025-serie-c-d-e-ti-cameroun" target="_blank" class="resource-btn">Télécharger</a></div>
-                    <div class="resource-item"><span class="resource-icon">📄</span><div class="resource-info"><div class="resource-name">Philosophie Bac 2024 Série C-D-E-TI</div><div class="resource-desc">Sujet + corrigé</div></div><a href="https://epreuvesetcorriges.com/categories/cameroun/examens/bac/36051-epreuve-bac-2024-philosophie-serie-c-d-e-ti" target="_blank" class="resource-btn">Télécharger</a></div>
-                    <div class="resource-item"><span class="resource-icon">📄</span><div class="resource-info"><div class="resource-name">Anglais Bac 2025 Série C-D-E-TI</div><div class="resource-desc">Sujet + corrigé</div></div><a href="https://epreuvesetcorriges.com/categories/cameroun/examens/bac/39792-epreuve-d-anglais-corrige-baccalaureat-2025-serie-c-d-e-ti-cameroun" target="_blank" class="resource-btn">Télécharger</a></div>
-                    <div class="resource-item"><span class="resource-icon">📄</span><div class="resource-info"><div class="resource-name">SVT Bac 2025 Série C</div><div class="resource-desc">Sujet + corrigé</div></div><a href="https://epreuvesetcorriges.com/categories/cameroun/examens/bac/39801-epreuve-de-svteehb-corrige-baccalaureat-2025-serie-c-ti-cameroun" target="_blank" class="resource-btn">Télécharger</a></div>
-                    <div class="resource-item"><span class="resource-icon">📄</span><div class="resource-info"><div class="resource-name">Physique Pratique Bac 2025 Série C</div><div class="resource-desc">Épreuve pratique</div></div><a href="https://epreuvesetcorriges.com/categories/cameroun/examens/bac/39806-epreuve-pratique-de-physique-baccalaureat-2025-serie-c-cameroun" target="_blank" class="resource-btn">Télécharger</a></div>
-                    <div class="resource-item"><span class="resource-icon">📄</span><div class="resource-info"><div class="resource-name">Informatique Bac 2025 Série C-D-E</div><div class="resource-desc">Épreuve théorique</div></div><a href="https://epreuvesetcorriges.com/categories/cameroun/examens/bac/39807-epreuve-theorique-d-informatique-baccalaureat-2025-serie-c-d-e-cameroun" target="_blank" class="resource-btn">Télécharger</a></div>
-                </div>
-            </div>
-
-            <div class="card">
-                <div class="card-header">
-                    <h2 class="card-title">Ressources Officielles</h2>
-                </div>
-                <div class="resource-list">
-                    <div class="resource-item"><span class="resource-icon">🌐</span><div class="resource-info"><div class="resource-name">OBC — Office du Baccalauréat</div><div class="resource-desc">Site officiel</div></div><a href="https://obc.cm" target="_blank" class="resource-btn">Accéder</a></div>
-                    <div class="resource-item"><span class="resource-icon">🌐</span><div class="resource-info"><div class="resource-name">MINESEC — Programmes</div><div class="resource-desc">Programmes officiels</div></div><a href="https://www.minesec.gov.cm/web/index.php/fr/systeme-educatif/progammes-officiels" target="_blank" class="resource-btn">Accéder</a></div>
-                    <div class="resource-item"><span class="resource-icon">🎥</span><div class="resource-info"><div class="resource-name">Yvan Monka</div><div class="resource-desc">Vidéos Maths</div></div><a href="https://www.youtube.com/@YvanMonka" target="_blank" class="resource-btn">Accéder</a></div>
-                    <div class="resource-item"><span class="resource-icon">🔗</span><div class="resource-info"><div class="resource-name">Exo7</div><div class="resource-desc">Exercices Maths</div></div><a href="http://exo7.emath.fr" target="_blank" class="resource-btn">Accéder</a></div>
-                </div>
+            <div class="card"><div class="card-title">Ressources Officielles</div>
+                <div class="res-item"><span>🌐</span><div style="flex:1"><div style="font-weight:600;font-size:.85rem">OBC — Office du Baccalauréat</div></div><a href="https://obc.cm" target="_blank" class="res-btn">Accéder</a></div>
+                <div class="res-item"><span>🌐</span><div style="flex:1"><div style="font-weight:600;font-size:.85rem">MINESEC — Programmes</div></div><a href="https://www.minesec.gov.cm" target="_blank" class="res-btn">Accéder</a></div>
+                <div class="res-item"><span>🎥</span><div style="flex:1"><div style="font-weight:600;font-size:.85rem">Yvan Monka — Vidéos Maths</div></div><a href="https://www.youtube.com/@YvanMonka" target="_blank" class="res-btn">Accéder</a></div>
+                <div class="res-item"><span>🔗</span><div style="flex:1"><div style="font-weight:600;font-size:.85rem">Exo7 — Exercices Maths</div></div><a href="http://exo7.emath.fr" target="_blank" class="res-btn">Accéder</a></div>
             </div>
         </section>
     </main>
 
-    <button class="dark-mode-toggle" onclick="toggleDarkMode()">🌙</button>
+    <button class="theme-toggle" onclick="toggleTheme()">🌓</button>
 
     <script>
-        // Quiz Data
-        const quizData = {
-            maths: [
-                { q: "Quel est le coefficient des Mathématiques au Bac C ?", options: ["5", "6", "7", "8"], answer: 2 },
-                { q: "Quelle est la forme exponentielle de z = 1 + i ?", options: ["√2 e^(iπ/4)", "2 e^(iπ/4)", "√2 e^(iπ/2)", "e^(iπ/4)"], answer: 0 },
-                { q: "La suite (1/n) converge vers :", options: ["1", "0", "+∞", "n'existe pas"], answer: 1 },
-                { q: "Quel est le domaine de définition de ln(x² - 4) ?", options: ["]-∞;-2[ ∪ ]2;+∞[", "]-∞;-2] ∪ [2;+∞[", "ℝ", "]0;+∞["], answer: 0 },
-                { q: "Si f(x) = e^(3x), alors f'(x) = ?", options: ["3e^(3x)", "e^(3x)", "3e^x", "e^(3x)/3"], answer: 0 }
-            ],
-            physique: [
-                { q: "Quelle est la 3ème loi de Newton ?", options: ["F = ma", "Action = Réaction", "E = mc²", "F = kx"], answer: 1 },
-                { q: "L'intensité du champ gravitationnel terrestre au sol est d'environ :", options: ["9,8 m/s²", "10 m/s²", "9,8 N/kg", "Toutes ces réponses"], answer: 3 },
-                { q: "La loi d'Ohm s'écrit :", options: ["U = RI", "P = UI", "F = ma", "E = mc²"], answer: 0 },
-                { q: "Quelle est la vitesse de la lumière dans le vide ?", options: ["3×10⁶ m/s", "3×10⁸ m/s", "3×10¹⁰ m/s", "3×10⁵ m/s"], answer: 1 },
-                { q: "Un satellite géostationnaire a une période de :", options: ["12h", "24h", "48h", "6h"], answer: 1 }
-            ],
-            chimie: [
-                { q: "Le pH d'une solution neutre à 25°C est :", options: ["0", "7", "14", "1"], answer: 1 },
-                { q: "La réaction de saponification produit :", options: ["Du savon et de l'eau", "Du savon et du glycérol", "Du savon et de l'alcool", "Du savon et du CO₂"], answer: 1 },
-                { q: "Quel est le nombre d'oxydation du soufre dans H₂SO₄ ?", options: ["+4", "+6", "-2", "+2"], answer: 1 },
-                { q: "La constante d'acidité Ka de l'eau est :", options: ["10⁻⁷", "10⁻¹⁴", "7", "1"], answer: 1 },
-                { q: "Une réaction d'oxydoréduction implique :", options: ["Un transfert de protons", "Un transfert d'électrons", "Un transfert de neutrons", "Aucun transfert"], answer: 1 }
-            ],
-            svt: [
-                { q: "L'ADN est composé de :", options: ["Acides aminés", "Nucléotides", "Lipides", "Glucides"], answer: 1 },
-                { q: "Le gène est un segment de :", options: ["Protéine", "ADN", "ARN", "Chromosome"], answer: 1 },
-                { q: "La mitose produit :", options: ["2 cellules filles identiques", "4 cellules filles", "Des gamètes", "Des spores"], answer: 0 },
-                { q: "Le système nerveux central comprend :", options: ["Cerveau et moelle épinière", "Nerfs crâniens", "Nerfs rachidiens", "Ganglions"], answer: 0 },
-                { q: "La photosynthèse produit :", options: ["CO₂ et H₂O", "Glucide et O₂", "O₂ et CO₂", "H₂O et CO₂"], answer: 1 }
-            ]
-        };
+    // ===== DATA =====
+    const DISCIPLINES = [
+        {id:'maths',name:'Mathématiques',group:'1er Groupe',code:'G1',coeff:7,color:'blue'},
+        {id:'phys',name:'Physiques',group:'1er Groupe',code:'G1',coeff:4,color:'blue'},
+        {id:'anglais',name:'Anglais',group:'1er Groupe',code:'G1',coeff:3,color:'blue'},
+        {id:'info',name:'Informatique',group:'1er Groupe',code:'G1',coeff:2,color:'blue'},
+        {id:'chimie',name:'Chimie',group:'2e Groupe',code:'G2',coeff:2,color:'emerald'},
+        {id:'svteehb',name:'SVTEEHB',group:'2e Groupe',code:'G2',coeff:2,color:'emerald'},
+        {id:'ecm',name:'ECM',group:'2e Groupe',code:'G2',coeff:2,color:'emerald'},
+        {id:'philo',name:'Philosophie',group:'3e Groupe',code:'G3',coeff:2,color:'rose'},
+        {id:'geo',name:'Géographie',group:'3e Groupe',code:'G3',coeff:2,color:'rose'},
+        {id:'langue',name:'Langue Française',group:'3e Groupe',code:'G3',coeff:1,color:'rose'},
+        {id:'lit',name:'Littérature',group:'3e Groupe',code:'G3',coeff:2,color:'rose'},
+        {id:'eps',name:'EPS',group:'3e Groupe',code:'G3',coeff:2,color:'rose'}
+    ];
 
-        // Flashcard Data
-        const flashcardData = {
-            maths: [
-                { front: "Nombre complexe", back: "z = a + ib où i² = -1. Module: |z| = √(a²+b²)" },
-                { front: "Exponentielle", back: "exp(x) = e^x. Propriété: exp(a+b) = exp(a)×exp(b)" },
-                { front: "Logarithme népérien", back: "ln(x) est l'inverse de exp(x). ln(ab) = ln(a) + ln(b)" },
-                { front: "Suite géométrique", back: "uₙ₊₁ = q × uₙ. Somme: Sₙ = u₀(1-qⁿ⁺¹)/(1-q)" },
-                { front: "Probabilité conditionnelle", back: "P(A|B) = P(A∩B) / P(B)" },
-                { front: "Loi binomiale", back: "P(X=k) = C(n,k) × p^k × (1-p)^(n-k)" },
-                { front: "Équation différentielle", back: "y' + ay = b → y = Ce^(-ax) + b/a" },
-                { front: "Géométrie dans l'espace", back: "Équation cartésienne d'un plan: ax + by + cz + d = 0" }
-            ],
-            physique: [
-                { front: "3ème loi de Newton", back: "Action = Réaction: F₁₂ = -F₂₁" },
-                { front: "Loi de la gravitation", back: "F = G×m₁m₂/d². G = 6,67×10⁻¹¹ Nm²/kg²" },
-                { front: "Énergie cinétique", back: "Ec = ½mv²" },
-                { front: "Loi d'Ohm", back: "U = RI (tension = résistance × intensité)" },
-                { front: "Champ électrique", back: "E = F/q = U/d (entre deux plaques)" },
-                { front: "Loi de Lenz", back: "Le courant induit s'oppose à la variation de flux" },
-                { front: "Effet photoélectrique", back: "E = hν - Φ (Einstein)" },
-                { front: "Radioactivité", back: "N(t) = N₀ × e^(-λt). Demi-vie: t₁/₂ = ln(2)/λ" }
-            ],
-            chimie: [
-                { front: "pH", back: "pH = -log[H₃O⁺]. Acide: pH < 7, Basique: pH > 7" },
-                { front: "Constante d'acidité", back: "Ka = [H₃O⁺][A⁻]/[HA]. pKa = -log(Ka)" },
-                { front: "Saponification", back: "Ester + NaOH → Savon + Glycérol" },
-                { front: "Oxydoréduction", back: "Oxydant + e⁻ → Réduit. Réducteur → Oxydant + e⁻" },
-                { front: "Cinétique chimique", back: "v = -d[A]/dt. Vitesse proportionnelle à [A]^n" },
-                { front: "Équilibre chimique", back: "K = [Produits]/[Réactifs] à l'équilibre" },
-                { front: "Nombre d'oxydation", back: "O: -2, H: +1, métal: charge ionique" },
-                { front: "Électrolyse", back: "Cathode: réduction. Anode: oxydation" }
-            ],
-            svt: [
-                { front: "ADN", back: "Acide désoxyribonucléique. Double hélice, bases A-T-G-C" },
-                { front: "Gène", back: "Segment d'ADN codant pour une protéine" },
-                { front: "Mitose", back: "Division cellulaire → 2 cellules filles identiques (2n)" },
-                { front: "Méiose", back: "Division → 4 gamètes haploïdes (n)" },
-                { front: "Lois de Mendel", back: "Ségrégation indépendante des allèles" },
-                { front: "Neurone", back: "Cellule nerveuse: corps dendrites + axone" },
-                { front: "Synapse", back: "Zone de transmission entre deux neurones" },
-                { front: "Photosynthèse", back: "6CO₂ + 6H₂O → C₆H₁₂O₆ + 6O₂" }
-            ]
-        };
+    const PAPERS = [
+        {s:'Mathématiques',g:'1er Groupe',sc:'Collège François-Xavier Vogt',t:'Séquence 1 Maths Tle C',th:'Arithmétique, congruences, nombres complexes',l:'https://fr.scribd.com/document/730365070/Maths-T'},
+        {s:'Mathématiques',g:'1er Groupe',sc:'Groupe 100% Bonne Base',t:'Épreuve Maths N°1 Tle C',th:'Somme des diviseurs, équations polynomiales',l:'https://fr.scribd.com/document/924444771/Maths-Terminale-C-1'},
+        {s:'Mathématiques',g:'1er Groupe',sc:'Archidiocèse de Yaoundé',t:'Évaluation Harmonisée Maths N°1',th:'Divisions euclidiennes, bijections',l:'https://fr.scribd.com/document/958052055/Tle-C-harmonise-1-073650'},
+        {s:'Mathématiques',g:'1er Groupe',sc:'Alfred Saker / Lycée Joss',t:'Interrogation Seq 1 Maths Tle C',th:'Arithmétique, propriété des entiers',l:'https://fr.scribd.com/document/782767758/Compil-Tle-c'},
+        {s:'Mathématiques',g:'1er Groupe',sc:'Collège Jean Tabi',t:'Épreuve Maths 1ère Séquence',th:'Analyse fonctionnelle, similitudes',l:'https://fr.scribd.com/document/730365070/Maths-T'},
+        {s:'Mathématiques',g:'1er Groupe',sc:'Groupe 100% Succès',t:'Tle C1 Épreuve Maths N°1',th:'Applications complexes, codes-barres',l:'https://it.scribd.com/document/932832718/Terminale-C1-Epreuve-de-Maths-N-1'},
+        {s:'Mathématiques',g:'1er Groupe',sc:'Soc. Math. du Cameroun',t:'Épreuve Zéro / Seq 1 Tle C',th:'Écritures complexes, coniques',l:'https://fr.scribd.com/document/1031310334/Epreuve-Zero-2026-Bacc-c-Ste-Math-Du-Cameroun'},
+        {s:'Mathématiques',g:'1er Groupe',sc:'Réseau Lycées de Douala',t:'Banque Nationale Seq 1 Maths',th:'Calcul vectoriel, géométrie espace',l:'https://fr.scribd.com/document/789526632/Pc-Sequence-1'},
+        {s:'Mathématiques',g:'1er Groupe',sc:'Lycée Classique d\'Édéa',t:'DS Séquence 1 Maths',th:'Arithmétique, calcul intégral',l:'https://fr.scribd.com/document/589977409/Lcc'},
+        {s:'Mathématiques',g:'1er Groupe',sc:'Collège de la Retraite',t:'Évaluation Seq 1 Maths Tle C',th:'Fonctions numériques, barycentres',l:'https://fr.scribd.com/document/730365070/Maths-T'},
 
-        // Initialize
-        function init() {
-            setupNavigation();
-            setupTabs();
-            renderQuizzes();
-            renderFlashcards();
-        }
+        {s:'Physiques',g:'1er Groupe',sc:'Collège François-Xavier Vogt',t:'Épreuve Physique Seq 1',th:'Cinématique, lois de Newton',l:'https://fr.scribd.com/document/839781009/Bac-c-2022-Maths'},
+        {s:'Physiques',g:'1er Groupe',sc:'Lycée de Mballa II',t:'Évaluation Physique Seq 1',th:'Champ de pesanteur, vecteur accélération',l:'https://www.scribd.com/document/795905687/Epreuve-Circuit-Numerique-1ere-Sequence'},
+        {s:'Physiques',g:'1er Groupe',sc:'Lycée Joss de Douala',t:'Épreuve Physique-Chimie Seq 1',th:'Cinématique, travail, énergie',l:'https://fr.scribd.com/document/782767758/Compil-Tle-c'},
+        {s:'Physiques',g:'1er Groupe',sc:'Collège Jean Tabi',t:'Évaluation Physique 1ère Seq',th:'Repère de Frenet, projectiles',l:'https://fr.scribd.com/document/730365070/Maths-T'},
+        {s:'Physiques',g:'1er Groupe',sc:'GSB Le Laboureur',t:'Épreuve Physique Seq 1 Tle C',th:'Mouvements rectilignes/circulaires',l:'https://it.scribd.com/document/932832718/Terminale-C1-Epreuve-de-Maths-N-1'},
+        {s:'Physiques',g:'1er Groupe',sc:'Lycée Bilingue de Yaoundé',t:'Devoir Physique Seq 1',th:'Dynamique newtonienne',l:'https://fr.scribd.com/document/730365070/Maths-T'},
+        {s:'Physiques',g:'1er Groupe',sc:'Collège Libermann',t:'Évaluation Pédagogique Physique S1',th:'Champ de pesanteur, cinématique',l:'https://fr.scribd.com/document/789526632/Pc-Sequence-1'},
+        {s:'Physiques',g:'1er Groupe',sc:'Lycée Classique Bafoussam',t:'Épreuve Physique Seq 1',th:'Énergie cinétique, mouvement curviligne',l:'https://fr.scribd.com/document/782767758/Compil-Tle-c'},
+        {s:'Physiques',g:'1er Groupe',sc:'Complexe Scolaire Conquête',t:'Évaluation Séquentielle N°1 Physique',th:'Accélération tangentielle/normale',l:'https://fr.scribd.com/document/924444771/Maths-Terminale-C-1'},
+        {s:'Physiques',g:'1er Groupe',sc:'Lycée Général Leclerc',t:'Épreuve Physique Tle C S1',th:'Cinématique avancée, situations-problèmes',l:'https://fr.scribd.com/document/903624875/1ere-Sequence-3eme'},
 
-        // Navigation
-        function setupNavigation() {
-            document.querySelectorAll('.nav-item').forEach(btn => {
-                btn.addEventListener('click', () => {
-                    document.querySelectorAll('.nav-item').forEach(b => b.classList.remove('active'));
-                    document.querySelectorAll('.section').forEach(s => s.classList.remove('active'));
-                    btn.classList.add('active');
-                    document.getElementById(btn.dataset.section).classList.add('active');
-                    // Close sidebar on mobile
-                    document.querySelector('.sidebar').classList.remove('open');
-                });
+        {s:'Informatique',g:'1er Groupe',sc:'Dép. Info / Collège Tankeu',t:'Épreuve Théorique Info S1',th:'Systèmes d\'information, réseaux',l:'https://www.scribd.com/document/790460802/1ere-Sequence-5e-tankeu-maxi'},
+        {s:'Informatique',g:'1er Groupe',sc:'Lycée de Mballa II',t:'Évaluation Informatique Seq 1',th:'Circuits numériques, logique',l:'https://www.scribd.com/document/795905687/Epreuve-Circuit-Numerique-1ere-Sequence'},
+        {s:'Informatique',g:'1er Groupe',sc:'Collège François-Xavier Vogt',t:'Épreuve Informatique Seq 1',th:'Algorithmique, structures de données',l:'https://fr.scribd.com/document/737076526/EVALUATION-SVTEEHB-TLE-C-SITUATION-1-COLLEGE-VOGT-2023-2024-SUJETGRATUIT-1'},
+        {s:'Informatique',g:'1er Groupe',sc:'Collège Jean Tabi',t:'Contrôle Informatique Seq 1',th:'Sécurité, architectures SI',l:'https://fr.scribd.com/document/730365070/Maths-T'},
+        {s:'Informatique',g:'1er Groupe',sc:'Lycée Joss de Douala',t:'Seq 1 Informatique Tle C',th:'Algorithmes de tri, topologie',l:'https://fr.scribd.com/document/782767758/Compil-Tle-c'},
+        {s:'Informatique',g:'1er Groupe',sc:'Collège Libermann',t:'Info Systèmes & Réseaux',th:'Analyse conceptuelle, protocoles',l:'https://fr.scribd.com/document/924451614/Lyce-eBFokoue-Maths-2ndeC-ES1-2022'},
+        {s:'Informatique',g:'1er Groupe',sc:'Lycée Classique d\'Édéa',t:'Devoir Informatique Seq 1',th:'Structures de données, fonctions',l:'https://fr.scribd.com/document/589977409/Lcc'},
+        {s:'Informatique',g:'1er Groupe',sc:'Groupe 100% Bonne Base',t:'Épreuve Info Tle C N°1',th:'BDD, requêtes SQL',l:'https://fr.scribd.com/document/924444771/Maths-Terminale-C-1'},
+        {s:'Informatique',g:'1er Groupe',sc:'Lycée Bilingue de Yaoundé',t:'Épreuve Théorique Info S1',th:'Architecture matérielle/logicielle',l:'https://fr.scribd.com/document/730365070/Maths-T'},
+        {s:'Informatique',g:'1er Groupe',sc:'Archidiocèse de Yaoundé',t:'Évaluation Harmonisée Info',th:'Algorithmique appliquée, modélisation',l:'https://fr.scribd.com/document/958052055/Tle-C-harmonise-1-073650'},
+
+        {s:'Anglais',g:'1er Groupe',sc:'Collège François-Xavier Vogt',t:'English Evaluation Seq 1 Tle C',th:'Science & Technology, Grammar',l:'https://fr.scribd.com/document/737076526/EVALUATION-SVTEEHB-TLE-C-SITUATION-1-COLLEGE-VOGT-2023-2024-SUJETGRATUIT-1'},
+        {s:'Anglais',g:'1er Groupe',sc:'Collège Jean Tabi',t:'English Test Seq 1 Tle C',th:'Reading comprehension, tenses',l:'https://fr.scribd.com/document/730365070/Maths-T'},
+        {s:'Anglais',g:'1er Groupe',sc:'Lycée Bilingue de Yaoundé',t:'First Sequence English Exam',th:'Vocabulary, reported speech',l:'https://fr.scribd.com/document/730365070/Maths-T'},
+        {s:'Anglais',g:'1er Groupe',sc:'Lycée Joss de Douala',t:'English Evaluation Seq 1 Upper 6th',th:'Environmental issues, writing',l:'https://fr.scribd.com/document/782767758/Compil-Tle-c'},
+        {s:'Anglais',g:'1er Groupe',sc:'Collège Libermann',t:'Seq 1 English Assessment',th:'Grammar transformation, composition',l:'https://fr.scribd.com/document/789526632/Pc-Sequence-1'},
+        {s:'Anglais',g:'1er Groupe',sc:'Collège Alfred Saker',t:'English First Seq Exam Tle C',th:'Reading skills, cause/effect',l:'https://fr.scribd.com/document/782767758/Compil-Tle-c'},
+        {s:'Anglais',g:'1er Groupe',sc:'Lycée Classique d\'Édéa',t:'English Evaluation Seq 1',th:'Science and society, argumentation',l:'https://fr.scribd.com/document/589977409/Lcc'},
+        {s:'Anglais',g:'1er Groupe',sc:'Archidiocèse de Yaoundé',t:'Harmonized English Test Seq 1',th:'Grammar review, comprehension',l:'https://fr.scribd.com/document/958052055/Tle-C-harmonise-1-073650'},
+        {s:'Anglais',g:'1er Groupe',sc:'Lycée de Mballa II',t:'English Evaluation Seq 1',th:'Communication, digital technologies',l:'https://www.scribd.com/document/795905687/Epreuve-Circuit-Numerique-1ere-Sequence'},
+        {s:'Anglais',g:'1er Groupe',sc:'GSB Le Laboureur',t:'First Seq English Test Tle C',th:'Essay writing, technological ethics',l:'https://it.scribd.com/document/932832718/Terminale-C1-Epreuve-de-Maths-N-1'},
+
+        {s:'Chimie',g:'2e Groupe',sc:'Lycée d\'Oyack',t:'Épreuve Chimie Seq 1/2 Tle C',th:'Oxydation ménagée, alcools, amines',l:'https://fr.scribd.com/document/789183392/Chimie-Lycee-Seq-2'},
+        {s:'Chimie',g:'2e Groupe',sc:'Collège François-Xavier Vogt',t:'Évaluation Chimie Seq 1',th:'Cinétique chimique, alcools',l:'https://fr.scribd.com/document/737076526/EVALUATION-SVTEEHB-TLE-C-SITUATION-1-COLLEGE-VOGT-2023-2024-SUJETGRATUIT-1'},
+        {s:'Chimie',g:'2e Groupe',sc:'Lycée Joss de Douala',t:'Épreuve Chimie 1ère Séquence',th:'Chimie organique saturée',l:'https://fr.scribd.com/document/782767758/Compil-Tle-c'},
+        {s:'Chimie',g:'2e Groupe',sc:'Collège Jean Tabi',t:'Devoir Chimie Seq 1 Tle C',th:'Vitesse de réaction, suivi temporel',l:'https://fr.scribd.com/document/730365070/Maths-T'},
+        {s:'Chimie',g:'2e Groupe',sc:'Collège de la Paix',t:'Épreuve Chimie Seq 1 Tle C',th:'Nomenclature dérivés d\'acides',l:'https://fr.scribd.com/document/903624875/1ere-Sequence-3eme'},
+        {s:'Chimie',g:'2e Groupe',sc:'Groupe 100% Bonne Base',t:'Seq 1 Chimie Terminale C',th:'Facteurs cinétiques, décarboxylation',l:'https://fr.scribd.com/document/924444771/Maths-Terminale-C-1'},
+        {s:'Chimie',g:'2e Groupe',sc:'Collège Libermann',t:'Évaluation Chimie Seq 1',th:'Oxydation ménagée alcools',l:'https://fr.scribd.com/document/789526632/Pc-Sequence-1'},
+        {s:'Chimie',g:'2e Groupe',sc:'Archidiocèse de Yaoundé',t:'Évaluation Harmonisée Chimie',th:'Bilan de matière, cinétique organique',l:'https://fr.scribd.com/document/958052055/Tle-C-harmonise-1-073650'},
+        {s:'Chimie',g:'2e Groupe',sc:'Lycée Classique d\'Édéa',t:'DS Chimie Tle C',th:'Isomérie, fonctions oxygénées',l:'https://fr.scribd.com/document/589977409/Lcc'},
+        {s:'Chimie',g:'2e Groupe',sc:'Lycée Bilingue de Yaoundé',t:'Épreuve Chimie Seq 1',th:'Synthèse et propriétés alcools',l:'https://fr.scribd.com/document/730365070/Maths-T'},
+
+        {s:'SVTEEHB',g:'2e Groupe',sc:'Collège François-Xavier Vogt',t:'Évaluation SVTEEHB Sit. 1',th:'Échanges cellulaires, osmose',l:'https://fr.scribd.com/document/737076526/EVALUATION-SVTEEHB-TLE-C-SITUATION-1-COLLEGE-VOGT-2023-2024-SUJETGRATUIT-1'},
+        {s:'SVTEEHB',g:'2e Groupe',sc:'Collège Jean Tabi',t:'Épreuve SVTEEHB 1ère Seq',th:'Ultrastructure membranaire',l:'https://fr.scribd.com/document/730365070/Maths-T'},
+        {s:'SVTEEHB',g:'2e Groupe',sc:'Lycée Joss de Douala',t:'Seq 1 SVTEEHB Tle C',th:'Perméabilité, plasmolyse',l:'https://fr.scribd.com/document/782767758/Compil-Tle-c'},
+        {s:'SVTEEHB',g:'2e Groupe',sc:'Lycée Bilingue de Yaoundé',t:'Devoir SVTEEHB Seq 1',th:'Hématies, milieux hypertoniques',l:'https://fr.scribd.com/document/730365070/Maths-T'},
+        {s:'SVTEEHB',g:'2e Groupe',sc:'Collège Libermann',t:'Évaluation SVTEEHB Seq 1',th:'Pompes ioniques Na+/K+',l:'https://fr.scribd.com/document/789526632/Pc-Sequence-1'},
+        {s:'SVTEEHB',g:'2e Groupe',sc:'Groupe 100% Bonne Base',t:'Épreuve SVTEEHB N°1',th:'Osmose chez végétaux',l:'https://fr.scribd.com/document/924444771/Maths-Terminale-C-1'},
+        {s:'SVTEEHB',g:'2e Groupe',sc:'Archidiocèse de Yaoundé',t:'SVTEEHB Harmonisée Seq 1',th:'Structure mosaïque fluide',l:'https://fr.scribd.com/document/958052055/Tle-C-harmonise-1-073650'},
+        {s:'SVTEEHB',g:'2e Groupe',sc:'Lycée Classique d\'Édéa',t:'Devoir SVTEEHB Seq 1',th:'Mesure pression osmotique',l:'https://fr.scribd.com/document/589977409/Lcc'},
+        {s:'SVTEEHB',g:'2e Groupe',sc:'Lycée de Mballa II',t:'Évaluation SVTEEHB Seq 1',th:'Échanges eau/solutés membranaires',l:'https://www.scribd.com/document/795905687/Epreuve-Circuit-Numerique-1ere-Sequence'},
+        {s:'SVTEEHB',g:'2e Groupe',sc:'Collège Alfred Saker',t:'Épreuve SVTEEHB 1ère Seq',th:'Situations-problèmes osmotiques',l:'https://fr.scribd.com/document/782767758/Compil-Tle-c'},
+
+        {s:'ECM',g:'2e Groupe',sc:'Lycée Technique de Batcham',t:'Évaluation ECM 1ère Seq',th:'Relations internationales, CICR',l:'https://fr.scribd.com/document/837686408/terminale-ZECM'},
+        {s:'ECM',g:'2e Groupe',sc:'Banque de Sujets Pédagogiques',t:'Évaluation Relations Internationales',th:'Diplomatie camerounaise',l:'https://www.scribd.com/document/833359317/terminale-ZECM-1'},
+        {s:'ECM',g:'2e Groupe',sc:'Collège François-Xavier Vogt',t:'Épreuve ECM 1ère Séquence',th:'Coopération bilatérale',l:'https://fr.scribd.com/document/737076526/EVALUATION-SVTEEHB-TLE-C-SITUATION-1-COLLEGE-VOGT-2023-2024-SUJETGRATUIT-1'},
+        {s:'ECM',g:'2e Groupe',sc:'Collège Jean Tabi',t:'Évaluation ECM Seq 1',th:'ONG, droit humanitaire',l:'https://fr.scribd.com/document/730365070/Maths-T'},
+        {s:'ECM',g:'2e Groupe',sc:'Lycée Joss de Douala',t:'Devoir ECM Seq 1',th:'Diplomatie camerounaise',l:'https://fr.scribd.com/document/782767758/Compil-Tle-c'},
+        {s:'ECM',g:'2e Groupe',sc:'Collège Libermann',t:'Évaluation ECM 1ère Seq',th:'Aide humanitaire vs développement',l:'https://fr.scribd.com/document/681477565/CORRIGE-SEQ-1-1ere-CD-ECM'},
+        {s:'ECM',g:'2e Groupe',sc:'Lycée Classique d\'Édéa',t:'DS ECM Seq 1',th:'ONU, règlement pacifique conflits',l:'https://fr.scribd.com/document/589977409/Lcc'},
+        {s:'ECM',g:'2e Groupe',sc:'Archidiocèse de Yaoundé',t:'Évaluation Harmonisée ECM',th:'Mondialisation, coopération sud-sud',l:'https://fr.scribd.com/document/958052055/Tle-C-harmonise-1-073650'},
+        {s:'ECM',g:'2e Groupe',sc:'Lycée Bilingue de Yaoundé',t:'Épreuve ECM Seq 1',th:'Intégration régionale CEMAC',l:'https://fr.scribd.com/document/730365070/Maths-T'},
+        {s:'ECM',g:'2e Groupe',sc:'Inspection Pédagogie ECM',t:'Guide National ECM Tle',th:'Agir compétent en citoyenneté',l:'https://fr.scribd.com/document/612317635/Comment-Reussir-Mon-Baccalaureat-en-60-Jours-Copie'},
+
+        {s:'Philosophie',g:'3e Groupe',sc:'Collège François-Xavier Vogt',t:'Épreuve Philo Seq 1',th:'Introduction, méthodologie dissertation',l:'https://fr.scribd.com/document/737076526/EVALUATION-SVTEEHB-TLE-C-SITUATION-1-COLLEGE-VOGT-2023-2024-SUJETGRATUIT-1'},
+        {s:'Philosophie',g:'3e Groupe',sc:'Collège Jean Tabi',t:'Évaluation Philo Seq 1',th:'Origine philosophie, rupture mythe',l:'https://fr.scribd.com/document/730365070/Maths-T'},
+        {s:'Philosophie',g:'3e Groupe',sc:'Lycée Joss de Douala',t:'Épreuve Philo Seq 1 Tle C',th:'Spécificité discours philosophique',l:'https://fr.scribd.com/document/782767758/Compil-Tle-c'},
+        {s:'Philosophie',g:'3e Groupe',sc:'Collège Libermann',t:'Évaluation Philo 1ère Seq',th:'Explication texte ordonnée',l:'https://fr.scribd.com/document/789526632/Pc-Sequence-1'},
+        {s:'Philosophie',g:'3e Groupe',sc:'Lycée Bilingue de Yaoundé',t:'Devoir Philo Seq 1 Tle C',th:'Philosophie et science',l:'https://fr.scribd.com/document/730365070/Maths-T'},
+        {s:'Philosophie',g:'3e Groupe',sc:'Archidiocèse de Yaoundé',t:'Philo Évaluation Harmonisée',th:'Problématisation, plan dialectique',l:'https://fr.scribd.com/document/958052055/Tle-C-harmonise-1-073650'},
+        {s:'Philosophie',g:'3e Groupe',sc:'Lycée Classique d\'Édéa',t:'DS Philo Seq 1',th:'Utilité philosophie société technique',l:'https://fr.scribd.com/document/589977409/Lcc'},
+        {s:'Philosophie',g:'3e Groupe',sc:'Inspection Pédagogie Philo',t:'Recueil National Philo S1',th:'Sujets types dissertation',l:'https://fr.scribd.com/document/612317635/Comment-Reussir-Mon-Baccalaureat-en-60-Jours-Copie'},
+        {s:'Philosophie',g:'3e Groupe',sc:'Lycée de Mballa II',t:'Épreuve Philo Seq 1 Tle C',th:'Analyse conceptuelle: Raison et Foi',l:'https://www.scribd.com/document/795905687/Epreuve-Circuit-Numerique-1ere-Sequence'},
+        {s:'Philosophie',g:'3e Groupe',sc:'Collège Alfred Saker',t:'Évaluation Philo 1ère Seq',th:'Doute méthodologique',l:'https://fr.scribd.com/document/782767758/Compil-Tle-c'},
+
+        {s:'Géographie',g:'3e Groupe',sc:'Collège François-Xavier Vogt',t:'Épreuve Géographie Seq 1',th:'Cartographie, représentations spatiales',l:'https://fr.scribd.com/document/737076526/EVALUATION-SVTEEHB-TLE-C-SITUATION-1-COLLEGE-VOGT-2023-2024-SUJETGRATUIT-1'},
+        {s:'Géographie',g:'3e Groupe',sc:'Collège Jean Tabi',t:'Évaluation Géographie Seq 1',th:'Climatologie, circulation atmosphérique',l:'https://fr.scribd.com/document/730365070/Maths-T'},
+        {s:'Géographie',g:'3e Groupe',sc:'Lycée Joss de Douala',t:'Seq 1 Géographie Tle C',th:'Géomorphologie, tectonique plaques',l:'https://fr.scribd.com/document/782767758/Compil-Tle-c'},
+        {s:'Géographie',g:'3e Groupe',sc:'Collège Libermann',t:'Épreuve Géographie 1ère Seq',th:'Document cartographique, échelle',l:'https://fr.scribd.com/document/681477565/CORRIGE-SEQ-1-1ere-CD-ECM'},
+        {s:'Géographie',g:'3e Groupe',sc:'Lycée Bilingue de Yaoundé',t:'Épreuve Géographie Seq 1',th:'Biomes et zones climatiques',l:'https://fr.scribd.com/document/730365070/Maths-T'},
+        {s:'Géographie',g:'3e Groupe',sc:'Archidiocèse de Yaoundé',t:'Géographie Harmonisée Seq 1',th:'Cartes topographiques, courbes niveau',l:'https://fr.scribd.com/document/958052055/Tle-C-harmonise-1-073650'},
+        {s:'Géographie',g:'3e Groupe',sc:'Lycée Classique d\'Édéa',t:'Devoir Géographie Seq 1',th:'Reliefs continentaux/océaniques',l:'https://fr.scribd.com/document/589977409/Lcc'},
+        {s:'Géographie',g:'3e Groupe',sc:'Collège Alfred Saker',t:'Épreuve Géographie Seq 1',th:'Risques naturels, vulnérabilité',l:'https://fr.scribd.com/document/782767758/Compil-Tle-c'},
+        {s:'Géographie',g:'3e Groupe',sc:'Lycée de Mballa II',t:'Évaluation Géographie Seq 1',th:'Diagrammes ombrothermiques',l:'https://www.scribd.com/document/795905687/Epreuve-Circuit-Numerique-1ere-Sequence'},
+        {s:'Géographie',g:'3e Groupe',sc:'Groupe 100% Bonne Base',t:'Épreuve Géographie Tle C',th:'Géomorphologie structurelle',l:'https://fr.scribd.com/document/924444771/Maths-Terminale-C-1'},
+
+        {s:'Langue Française',g:'3e Groupe',sc:'Collège François-Xavier Vogt',t:'Épreuve LF Seq 1',th:'Grammaire, stylistique, figures style',l:'https://fr.scribd.com/document/737076526/EVALUATION-SVTEEHB-TLE-C-SITUATION-1-COLLEGE-VOGT-2023-2024-SUJETGRATUIT-1'},
+        {s:'Langue Française',g:'3e Groupe',sc:'Collège Jean Tabi',t:'Évaluation LF Seq 1',th:'Analyse textuelle, communication',l:'https://fr.scribd.com/document/730365070/Maths-T'},
+        {s:'Langue Française',g:'3e Groupe',sc:'Lycée Joss de Douala',t:'Seq 1 Langue Française Tle C',th:'Morphosyntaxe, concordance temps',l:'https://fr.scribd.com/document/782767758/Compil-Tle-c'},
+        {s:'Langue Française',g:'3e Groupe',sc:'Collège Libermann',t:'Épreuve LF 1ère Seq',th:'Énonciation, tonalités littéraires',l:'https://fr.scribd.com/document/789526632/Pc-Sequence-1'},
+        {s:'Langue Française',g:'3e Groupe',sc:'Lycée Bilingue de Yaoundé',t:'Devoir LF Seq 1',th:'Cohésion textuelle, connecteurs',l:'https://fr.scribd.com/document/730365070/Maths-T'},
+        {s:'Langue Française',g:'3e Groupe',sc:'Archidiocèse de Yaoundé',t:'LF Évaluation Harmonisée',th:'Révision textes, correction syntaxique',l:'https://fr.scribd.com/document/958052055/Tle-C-harmonise-1-073650'},
+        {s:'Langue Française',g:'3e Groupe',sc:'Lycée Classique d\'Édéa',t:'Devoir LF Seq 1',th:'Champs lexicaux, modes',l:'https://fr.scribd.com/document/589977409/Lcc'},
+        {s:'Langue Française',g:'3e Groupe',sc:'Collège Alfred Saker',t:'Épreuve LF Seq 1',th:'Pragmatisme, niveau de langue',l:'https://fr.scribd.com/document/782767758/Compil-Tle-c'},
+        {s:'Langue Française',g:'3e Groupe',sc:'Lycée de Mballa II',t:'Évaluation LF Seq 1',th:'Implicite, figures analogie',l:'https://www.scribd.com/document/795905687/Epreuve-Circuit-Numerique-1ere-Sequence'},
+        {s:'Langue Française',g:'3e Groupe',sc:'Groupe 100% Bonne Base',t:'Épreuve LF Tle C',th:'Syntaxe phrase complexe',l:'https://fr.scribd.com/document/924444771/Maths-Terminale-C-1'},
+
+        {s:'Littérature',g:'3e Groupe',sc:'Collège François-Xavier Vogt',t:'Épreuve Littérature Seq 1',th:'Contraction, discussion, dissertation',l:'https://fr.scribd.com/document/737076526/EVALUATION-SVTEEHB-TLE-C-SITUATION-1-COLLEGE-VOGT-2023-2024-SUJETGRATUIT-1'},
+        {s:'Littérature',g:'3e Groupe',sc:'Collège Jean Tabi',t:'Évaluation Littérature Seq 1',th:'Œuvres programme officiel',l:'https://fr.scribd.com/document/730365070/Maths-T'},
+        {s:'Littérature',g:'3e Groupe',sc:'Lycée Joss de Douala',t:'Seq 1 Littérature Tle C',th:'Résumé de texte, décompte',l:'https://fr.scribd.com/document/782767758/Compil-Tle-c'},
+        {s:'Littérature',g:'3e Groupe',sc:'Collège Libermann',t:'Épreuve Littérature 1ère Seq',th:'Dissertation littéraire, poésie',l:'https://fr.scribd.com/document/789526632/Pc-Sequence-1'},
+        {s:'Littérature',g:'3e Groupe',sc:'Lycée Bilingue de Yaoundé',t:'Devoir Littérature Seq 1',th:'Roman, engagement écrivain',l:'https://fr.scribd.com/document/730365070/Maths-T'},
+        {s:'Littérature',g:'3e Groupe',sc:'Archidiocèse de Yaoundé',t:'Littérature Harmonisée Seq 1',th:'Discussion, citation',l:'https://fr.scribd.com/document/958052055/Tle-C-harmonise-1-073650'},
+        {s:'Littérature',g:'3e Groupe',sc:'Lycée Classique d\'Édéa',t:'Devoir Littérature Seq 1',th:'Dramaturgie africaine',l:'https://fr.scribd.com/document/589977409/Lcc'},
+        {s:'Littérature',g:'3e Groupe',sc:'Collège Alfred Saker',t:'Épreuve Littérature Seq 1',th:'Méthodologie contraction',l:'https://fr.scribd.com/document/782767758/Compil-Tle-c'},
+        {s:'Littérature',g:'3e Groupe',sc:'Lycée de Mballa II',t:'Évaluation Littérature Seq 1',th:'Réalisme dans le roman',l:'https://www.scribd.com/document/795905687/Epreuve-Circuit-Numerique-1ere-Sequence'},
+        {s:'Littérature',g:'3e Groupe',sc:'Inspection Régionale Lettres',t:'Recueil Pédagogique Bac C Litt.',th:'Compilations régionales',l:'https://fr.scribd.com/document/612317635/Comment-Reussir-Mon-Baccalaureat-en-60-Jours-Copie'},
+
+        {s:'EPS',g:'3e Groupe',sc:'Collège François-Xavier Vogt',t:'Épreuve Théorique EPS Seq 1',th:'Physiologie, règles athlétisme',l:'https://fr.scribd.com/document/737076526/EVALUATION-SVTEEHB-TLE-C-SITUATION-1-COLLEGE-VOGT-2023-2024-SUJETGRATUIT-1'},
+        {s:'EPS',g:'3e Groupe',sc:'Collège Jean Tabi',t:'Évaluation EPS Seq 1',th:'Sports collectifs, hygiène',l:'https://fr.scribd.com/document/730365070/Maths-T'},
+        {s:'EPS',g:'3e Groupe',sc:'Lycée Joss de Douala',t:'Épreuve Théorique EPS Seq 1',th:'Filières énergétiques, blessures',l:'https://fr.scribd.com/document/782767758/Compil-Tle-c'},
+        {s:'EPS',g:'3e Groupe',sc:'Collège Libermann',t:'Contrôle EPS Théorique Seq 1',th:'Réglementation courses relais',l:'https://fr.scribd.com/document/789526632/Pc-Sequence-1'},
+        {s:'EPS',g:'3e Groupe',sc:'Lycée Bilingue de Yaoundé',t:'Devoir EPS Théorique Seq 1',th:'Analyse tactique sport collectif',l:'https://fr.scribd.com/document/730365070/Maths-T'},
+        {s:'EPS',g:'3e Groupe',sc:'Archidiocèse de Yaoundé',t:'Évaluation Harmonisée EPS',th:'Fréquence cardiaque, récupération',l:'https://fr.scribd.com/document/958052055/Tle-C-harmonise-1-073650'},
+        {s:'EPS',g:'3e Groupe',sc:'Lycée Classique d\'Édéa',t:'Devoir EPS Théorique Seq 1',th:'Règles saut hauteur, lancer poids',l:'https://fr.scribd.com/document/589977409/Lcc'},
+        {s:'EPS',g:'3e Groupe',sc:'Collège Alfred Saker',t:'Épreuve Théorique EPS Seq 1',th:'Échauffement, physiologie',l:'https://fr.scribd.com/document/782767758/Compil-Tle-c'},
+        {s:'EPS',g:'3e Groupe',sc:'Lycée de Mballa II',t:'Évaluation EPS Seq 1',th:'Dopage, éthique sportive',l:'https://www.scribd.com/document/795905687/Epreuve-Circuit-Numerique-1ere-Sequence'},
+        {s:'EPS',g:'3e Groupe',sc:'Groupe 100% Bonne Base',t:'Épreuve Théorique EPS Tle C',th:'Biomécanique gestes sportifs',l:'https://fr.scribd.com/document/924444771/Maths-Terminale-C-1'}
+    ];
+
+    const QUIZ = {
+        maths:[{q:"Coefficient des Maths au Bac C ?",o:["5","6","7","8"],a:2},{q:"Forme exponentielle de z = 1+i ?",o:["√2 e^(iπ/4)","2 e^(iπ/4)","√2 e^(iπ/2)","e^(iπ/4)"],a:0},{q:"La suite (1/n) converge vers :",o:["1","0","+∞","n'existe pas"],a:1},{q:"Domaine de ln(x²-4) ?",o:["]-∞;-2[ ∪ ]2;+∞[","]-∞;-2] ∪ [2;+∞[","ℝ","]0;+∞["],a:0},{q:"Si f(x)=e^(3x), f'(x)=?",o:["3e^(3x)","e^(3x)","3e^x","e^(3x)/3"],a:0}],
+        physique:[{q:"3ème loi de Newton ?",o:["F = ma","Action = Réaction","E = mc²","F = kx"],a:1},{q:"Intensité champ gravitationnel sol ?",o:["9,8 m/s²","10 m/s²","9,8 N/kg","Toutes"],a:3},{q:"Loi d'Ohm :",o:["U = RI","P = UI","F = ma","E = mc²"],a:0},{q:"Vitesse lumière vide ?",o:["3×10⁶ m/s","3×10⁸ m/s","3×10¹⁰ m/s","3×10⁵ m/s"],a:1},{q:"Satellite géostationnaire période ?",o:["12h","24h","48h","6h"],a:1}],
+        chimie:[{q:"pH solution neutre 25°C ?",o:["0","7","14","1"],a:1},{q:"Saponification produit ?",o:["Savon + eau","Savon + glycérol","Savon + alcool","Savon + CO₂"],a:1},{q:"N° oxydation S dans H₂SO₄ ?",o:["+4","+6","-2","+2"],a:1},{q:"Ka de l'eau ?",o:["10⁻⁷","10⁻¹⁴","7","1"],a:1},{q:"Oxydoréduction implique ?",o:["Transfert protons","Transfert électrons","Transfert neutrons","Aucun"],a:1}],
+        svt:[{q:"ADN composé de ?",o:["Acides aminés","Nucléotides","Lipides","Glucides"],a:1},{q:"Gène = segment de ?",o:["Protéine","ADN","ARN","Chromosome"],a:1},{q:"Mitose produit ?",o:["2 cellules identiques","4 cellules","Des gamètes","Des spores"],a:0},{q:"SNC comprend ?",o:["Cerveau + moelle","Nerfs crâniens","Nerfs rachidiens","Ganglions"],a:0},{q:"Photosynthèse produit ?",o:["CO₂ + H₂O","Glucide + O₂","O₂ + CO₂","H₂O + CO₂"],a:1}]
+    };
+
+    const FLASHCARDS = {
+        maths:[{f:"Nombre complexe",b:"z = a + ib, i² = -1. Module: |z| = √(a²+b²)"},{f:"Exponentielle",b:"exp(x) = eˣ. exp(a+b) = exp(a)×exp(b)"},{f:"Logarithme",b:"ln(x) inverse de exp(x). ln(ab) = ln(a)+ln(b)"},{f:"Suite géométrique",b:"uₙ₊₁ = q×uₙ. Sₙ = u₀(1-qⁿ⁺¹)/(1-q)"},{f:"Probabilité cond.",b:"P(A|B) = P(A∩B)/P(B)"},{f:"Loi binomiale",b:"P(X=k) = C(n,k) × pᵏ × (1-p)ⁿ⁻ᵏ"}],
+        physique:[{q:"3ème loi Newton",b:"Action = Réaction: F₁₂ = -F₂₁"},{f:"Gravitation",b:"F = G×m₁m₂/d². G = 6,67×10⁻¹¹"},{f:"Énergie cinétique",b:"Ec = ½mv²"},{f:"Loi d'Ohm",b:"U = RI"},{f:"Champ électrique",b:"E = F/q = U/d"},{f:"Loi de Lenz",b:"Courant induit s'oppose variation flux"}],
+        chimie:[{f:"pH",b:"pH = -log[H₃O⁺]. Acide < 7, Basique > 7"},{f:"Ka",b:"Ka = [H₃O⁺][A⁻]/[HA]. pKa = -log(Ka)"},{f:"Saponification",b:"Ester + NaOH → Savon + Glycérol"},{f:"Oxydoréduction",b:"Oxydant + e⁻ → Réduit"}],
+        svt:[{f:"ADN",b:"Double hélice, bases A-T-G-C"},{f:"Gène",b:"Segment d'ADN codant protéine"},{f:"Mitose",b:"2 cellules filles identiques (2n)"},{f:"Méiose",b:"4 gamètes haploïdes (n)"},{f:"Lois de Mendel",b:"Ségrégation allèles"}]
+    };
+
+    // ===== INIT =====
+    document.addEventListener('DOMContentLoaded', () => {
+        setupNav();
+        setupTabs();
+        initCharts();
+        renderBank();
+        populateBankFilters();
+        renderQuizzes();
+        renderFlashcards();
+    });
+
+    // ===== NAVIGATION =====
+    function setupNav() {
+        document.querySelectorAll('.nav-item').forEach(btn => {
+            btn.addEventListener('click', () => {
+                document.querySelectorAll('.nav-item').forEach(b => b.classList.remove('active'));
+                document.querySelectorAll('.section').forEach(s => s.classList.remove('active'));
+                btn.classList.add('active');
+                document.getElementById(btn.dataset.section).classList.add('active');
+                document.querySelector('.sidebar').classList.remove('open');
             });
-        }
+        });
+    }
 
-        function showSection(sectionId) {
-            document.querySelectorAll('.nav-item').forEach(b => b.classList.remove('active'));
-            document.querySelectorAll('.section').forEach(s => s.classList.remove('active'));
-            document.querySelector(`[data-section="${sectionId}"]`).classList.add('active');
-            document.getElementById(sectionId).classList.add('active');
-        }
-
-        // Tabs
-        function setupTabs() {
-            document.querySelectorAll('.tab-btn').forEach(btn => {
-                btn.addEventListener('click', () => {
-                    const parent = btn.closest('.tabs');
-                    parent.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
-                    btn.classList.add('active');
-                    const tabId = btn.dataset.tab;
-                    if (tabId) {
-                        const container = btn.closest('.section') || btn.closest('.card');
-                        container.querySelectorAll('.tab-content').forEach(c => c.classList.remove('active'));
-                        container.querySelector('#' + tabId).classList.add('active');
-                    }
-                });
+    // ===== TABS =====
+    function setupTabs() {
+        document.querySelectorAll('.tab-btn').forEach(btn => {
+            btn.addEventListener('click', () => {
+                const tabs = btn.closest('.tabs') || btn.closest('.card');
+                tabs.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
+                btn.classList.add('active');
+                const id = btn.dataset.tab;
+                if (id) {
+                    const section = btn.closest('.section') || btn.closest('.card');
+                    section.querySelectorAll('.tab-content').forEach(c => c.classList.remove('active'));
+                    const target = document.getElementById(id);
+                    if (target) target.classList.add('active');
+                }
             });
-        }
+        });
+    }
 
-        // Render Quizzes
-        function renderQuizzes() {
-            Object.keys(quizData).forEach(subject => {
-                const container = document.getElementById(`quiz-${subject}-container`);
-                if (!container) return;
-                container.innerHTML = quizData[subject].map((q, qi) => `
-                    <div class="quiz-question" id="${subject}-q${qi}">
-                        <h3>Q${qi+1}: ${q.q}</h3>
-                        <div class="quiz-options">
-                            ${q.options.map((opt, oi) => `<div class="quiz-option" onclick="checkAnswer('${subject}', ${qi}, ${oi}, this)">${opt}</div>`).join('')}
-                        </div>
-                    </div>
-                `).join('');
-            });
-        }
+    // ===== CHARTS =====
+    function initCharts() {
+        new Chart(document.getElementById('chartGroup'), {
+            type: 'doughnut',
+            data: { labels: ['1er Groupe', '2e Groupe', '3e Groupe'], datasets: [{ data: [16,6,9], backgroundColor: ['#1e3a8a','#065f46','#991b1b'], borderWidth: 2, borderColor: '#fff' }] },
+            options: { responsive: true, maintainAspectRatio: false, plugins: { legend: { position: 'bottom', labels: { boxWidth: 10, font: { size: 11 } } } } }
+        });
+        new Chart(document.getElementById('chartSubjects'), {
+            type: 'bar',
+            data: { labels: DISCIPLINES.map(d => d.name), datasets: [{ label: 'Coeff', data: DISCIPLINES.map(d => d.coeff), backgroundColor: DISCIPLINES.map(d => d.code==='G1'?'#1e3a8a':d.code==='G2'?'#065f46':'#991b1b'), borderRadius: 4 }] },
+            options: { responsive: true, maintainAspectRatio: false, indexAxis: 'y', plugins: { legend: { display: false } }, scales: { x: { beginAtZero: true, max: 8 } } }
+        });
+    }
 
-        function checkAnswer(subject, qi, oi, element) {
-            const q = quizData[subject][qi];
-            const container = document.getElementById(`${subject}-q${qi}`);
-            const options = container.querySelectorAll('.quiz-option');
-            options.forEach(opt => opt.classList.add('disabled'));
-            if (oi === q.answer) { element.classList.add('correct'); }
-            else { element.classList.add('incorrect'); options[q.answer].classList.add('correct'); }
-        }
+    // ===== BANK =====
+    function populateBankFilters() {
+        const ss = document.getElementById('bankSubject');
+        DISCIPLINES.forEach(d => { const o = document.createElement('option'); o.value = d.name; o.textContent = `${d.name} (Coef ${d.coeff})`; ss.appendChild(o); });
+        const schools = [...new Set(PAPERS.map(p => p.sc))].sort();
+        const sb = document.getElementById('bankSchool');
+        schools.forEach(s => { const o = document.createElement('option'); o.value = s; o.textContent = s; sb.appendChild(o); });
+        document.getElementById('bankSearch').addEventListener('input', filterBank);
+        document.getElementById('bankSubject').addEventListener('change', filterBank);
+        document.getElementById('bankGroup').addEventListener('change', filterBank);
+        document.getElementById('bankSchool').addEventListener('change', filterBank);
+    }
 
-        // Render Flashcards
-        function renderFlashcards() {
-            Object.keys(flashcardData).forEach(subject => {
-                const container = document.getElementById(`fc-${subject}-container`);
-                if (!container) return;
-                container.innerHTML = flashcardData[subject].map((fc) => `
-                    <div class="flashcard" onclick="this.classList.toggle('flipped')">
-                        <div class="flashcard-front">${fc.front}</div>
-                        <div class="flashcard-back">${fc.back}</div>
-                    </div>
-                `).join('');
-            });
-        }
+    function filterBank() {
+        const q = document.getElementById('bankSearch').value.toLowerCase();
+        const sub = document.getElementById('bankSubject').value;
+        const grp = document.getElementById('bankGroup').value;
+        const sch = document.getElementById('bankSchool').value;
+        const f = PAPERS.filter(p => {
+            const matchQ = p.t.toLowerCase().includes(q) || p.th.toLowerCase().includes(q) || p.sc.toLowerCase().includes(q);
+            const matchS = sub === 'ALL' || p.s === sub;
+            const matchG = grp === 'ALL' || p.g === grp;
+            const matchSc = sch === 'ALL' || p.sc === sch;
+            return matchQ && matchS && matchG && matchSc;
+        });
+        document.getElementById('bankCount').textContent = f.length;
+        renderBank(f);
+    }
 
-        // Toggle task
-        function toggle(element) {
-            if (element.classList.contains('checked')) {
-                element.classList.remove('checked');
-                element.parentElement.querySelector('.day-title').classList.remove('completed');
-            } else {
-                element.classList.add('checked');
-                element.parentElement.querySelector('.day-title').classList.add('completed');
-            }
-        }
+    function resetBank() {
+        document.getElementById('bankSearch').value = '';
+        document.getElementById('bankSubject').value = 'ALL';
+        document.getElementById('bankGroup').value = 'ALL';
+        document.getElementById('bankSchool').value = 'ALL';
+        filterBank();
+    }
 
-        // Calculateur de moyenne
-        function calculerMoyenne() {
-            const notes = {
-                maths: { coef: 7, val: parseFloat(document.getElementById('note-maths').value) || 0 },
-                physique: { coef: 4, val: parseFloat(document.getElementById('note-physique').value) || 0 },
-                anglais: { coef: 3, val: parseFloat(document.getElementById('note-anglais').value) || 0 },
-                info: { coef: 2, val: parseFloat(document.getElementById('note-info').value) || 0 },
-                chimie: { coef: 2, val: parseFloat(document.getElementById('note-chimie').value) || 0 },
-                ecm: { coef: 2, val: parseFloat(document.getElementById('note-ecm').value) || 0 },
-                svt: { coef: 2, val: parseFloat(document.getElementById('note-svt').value) || 0 },
-                geo: { coef: 2, val: parseFloat(document.getElementById('note-geo').value) || 0 },
-                litterature: { coef: 2, val: parseFloat(document.getElementById('note-litterature').value) || 0 },
-                philo: { coef: 2, val: parseFloat(document.getElementById('note-philo').value) || 0 },
-                eps: { coef: 2, val: parseFloat(document.getElementById('note-eps').value) || 0 },
-                francais: { coef: 1, val: parseFloat(document.getElementById('note-francais').value) || 0 }
-            };
+    function renderBank(papers = PAPERS) {
+        const g = document.getElementById('bankGrid');
+        if (!papers.length) { g.innerHTML = '<div style="text-align:center;padding:2rem;color:var(--text3)">Aucune épreuve trouvée</div>'; return; }
+        g.innerHTML = papers.map(p => {
+            const bc = p.g==='1er Groupe'?'badge-g1':p.g==='2e Groupe'?'badge-g2':'badge-g3';
+            return `<div class="paper-card"><div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:.5rem"><span class="badge ${bc}">${p.s}</span><span style="font-size:.6rem;color:var(--text3)">${p.g}</span></div><div style="font-weight:700;font-size:.85rem;margin-bottom:.25rem">${p.t}</div><div style="font-size:.7rem;color:var(--accent);margin-bottom:.35rem">${p.sc}</div><div style="font-size:.7rem;color:var(--text3);margin-bottom:.5rem">Thèmes: ${p.th}</div><div style="display:flex;justify-content:space-between;align-items:center;padding-top:.5rem;border-top:1px solid var(--border)"><span style="font-size:.6rem;color:var(--text3)">PDF • Scribd</span><a href="${p.l}" target="_blank" style="background:var(--accent);color:#fff;padding:.3rem .6rem;border-radius:6px;font-size:.7rem;text-decoration:none;font-weight:600">Télécharger ⬇</a></div></div>`;
+        }).join('');
+    }
 
-            let totalPoints = 0;
-            let totalCoef = 0;
+    // ===== QUIZ =====
+    function renderQuizzes() {
+        Object.keys(QUIZ).forEach(sub => {
+            const c = document.getElementById('quiz-' + sub);
+            if (!c) return;
+            c.innerHTML = QUIZ[sub].map((q,i) => `<div class="quiz-q" id="qz-${sub}-${i}"><h3>Q${i+1}: ${q.q}</h3><div class="quiz-options">${q.o.map((o,j) => `<div class="quiz-opt" onclick="checkQ('${sub}',${i},${j},this)">${o}</div>`).join('')}</div></div>`).join('');
+        });
+    }
 
-            for (const matiere in notes) {
-                const n = notes[matiere];
-                totalPoints += n.val * n.coef;
-                totalCoef += n.coef;
-            }
+    function checkQ(sub,qi,oi,el) {
+        const q = QUIZ[sub][qi];
+        const c = document.getElementById(`qz-${sub}-${qi}`);
+        c.querySelectorAll('.quiz-opt').forEach(o => o.classList.add('disabled'));
+        el.classList.add(oi === q.a ? 'correct' : 'incorrect');
+        if (oi !== q.a) c.querySelectorAll('.quiz-opt')[q.a].classList.add('correct');
+    }
 
-            const moyenne = totalPoints / totalCoef;
-            const pourcentage = (moyenne / 20) * 100;
+    // ===== FLASHCARDS =====
+    function renderFlashcards() {
+        Object.keys(FLASHCARDS).forEach(sub => {
+            const c = document.getElementById('fc-' + sub + '-grid');
+            if (!c) return;
+            c.innerHTML = FLASHCARDS[sub].map(fc => `<div class="fc" onclick="this.classList.toggle('flipped')"><div class="fc-front">${fc.f||fc.q}</div><div class="fc-back">${fc.b}</div></div>`).join('');
+        });
+    }
 
-            let mention = '';
-            let mentionClass = '';
-            if (moyenne >= 16) { mention = 'Très Bien 🎉'; mentionClass = 'tres-bien'; }
-            else if (moyenne >= 14) { mention = 'Bien 👏'; mentionClass = 'bien'; }
-            else if (moyenne >= 12) { mention = 'Assez Bien 👍'; mentionClass = 'assez-bien'; }
-            else if (moyenne >= 10) { mention = 'Passable ✓'; mentionClass = 'passable'; }
-            else { mention = 'Insuffisant ✗'; mentionClass = ''; }
+    // ===== CALCULATOR =====
+    function calcMoyenne() {
+        const notes = {maths:7,phys:4,ang:3,info:2,chi:2,ecm:2,svt:2,geo:2,lit:2,philo:2,eps:2,fr:1};
+        const ids = {maths:'c-maths',phys:'c-phys',ang:'c-ang',info:'c-info',chi:'c-chi',ecm:'c-ecm',svt:'c-svt',geo:'c-geo',lit:'c-lit',philo:'c-philo',eps:'c-eps',fr:'c-fr'};
+        let tw=0,tc=0;
+        Object.keys(notes).forEach(k => { const v=parseFloat(document.getElementById(ids[k]).value); if(!isNaN(v)){tw+=v*notes[k];tc+=notes[k];} });
+        const box=document.getElementById('resultBox'), val=document.getElementById('resultVal'), det=document.getElementById('resultDetail'), ment=document.getElementById('resultMention');
+        if(!tc){val.textContent='-- / 20';det.textContent='Remplissez au moins une note';ment.textContent='';box.style.display='block';return;}
+        const avg=tw/tc;
+        val.textContent=avg.toFixed(2)+' / 20';
+        det.textContent=`Points: ${Math.round(tw)} / 620`;
+        if(avg>=16){ment.textContent='🏆 Très Bien';ment.style.color='var(--g2)';}
+        else if(avg>=14){ment.textContent='⭐ Bien';ment.style.color='var(--accent)';}
+        else if(avg>=12){ment.textContent='👍 Assez Bien';ment.style.color='var(--accent2)';}
+        else if(avg>=10){ment.textContent='✅ Passable';ment.style.color='var(--text2)';}
+        else{ment.textContent='❌ Insuffisant';ment.style.color='var(--g3)';}
+        box.style.display='block';
+    }
 
-            document.getElementById('result-moyenne').textContent = moyenne.toFixed(2);
-            document.getElementById('result-detail').textContent = `Points: ${totalPoints} / 620 (${pourcentage.toFixed(1)}%)`;
-            document.getElementById('result-mention').textContent = mention;
-            document.getElementById('result-mention').className = 'mention ' + mentionClass;
-            document.getElementById('result-box').style.display = 'block';
-        }
-
-        // Dark mode
-        function toggleDarkMode() {
-            const current = document.documentElement.getAttribute('data-theme');
-            const next = current === 'dark' ? 'light' : 'dark';
-            document.documentElement.setAttribute('data-theme', next);
-            document.querySelector('.dark-mode-toggle').textContent = next === 'dark' ? '🌙' : '☀️';
-        }
-
-        init();
+    // ===== HELPERS =====
+    function toggleDay(el) { el.classList.toggle('checked'); el.parentElement.querySelector('.day-title').classList.toggle('done'); }
+    function toggleTheme() { const t=document.documentElement; t.dataset.theme = t.dataset.theme==='dark'?'light':'dark'; }
     </script>
 </body>
 </html>

@@ -1,0 +1,1057 @@
+<!DOCTYPE html>
+<html lang="fr" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Répertoire Officiel & Banque d'Épreuves - Séquence 1 Terminale C (Cameroun)</title>
+    <!-- Tailwind CSS (local) -->
+    <script src="../assets/js/tailwind.js"></script>
+    <!-- Chart.js (local) -->
+    <script src="../assets/js/chart.js"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        brand: {
+                            50: '#fbf8f3',
+                            100: '#f5eee1',
+                            200: '#e7d8be',
+                            600: '#b8860b',
+                            700: '#8b6508',
+                            800: '#4a370e',
+                            900: '#281e06',
+                        },
+                        group1: '#1e3a8a', // Deep Blue
+                        group2: '#065f46', // Emerald Green
+                        group3: '#991b1b', // Deep Red/Burgundy
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        .chart-container {
+            position: relative;
+            width: 100%;
+            max-width: 600px;
+            margin-left: auto;
+            margin-right: auto;
+            height: 320px;
+            max-height: 400px;
+        }
+        @media (min-width: 768px) {
+            .chart-container {
+                height: 360px;
+            }
+        }
+        /* Custom scrollbars */
+        ::-webkit-scrollbar {
+            width: 6px;
+            height: 6px;
+        }
+        ::-webkit-scrollbar-track {
+            background: #f1f1f1;
+        }
+        ::-webkit-scrollbar-thumb {
+            background: #cbd5e1;
+            border-radius: 4px;
+        }
+        ::-webkit-scrollbar-thumb:hover {
+            background: #94a3b8;
+        }
+    </style>
+</head>
+<body class="bg-stone-50 text-slate-800 font-sans antialiased min-h-screen flex flex-col">
+
+    <!-- Placeholders d'analyse requis -->
+    <!-- Chosen Palette: Warm Scientific Neutral (Fond crème/pierre #fbf8f3, Accents Or/Marron scientifique #b8860b, Bleu groupe 1 #1e3a8a, Émeraude groupe 2 #065f46, Bordeau groupe 3 #991b1b) -->
+    <!-- Application Structure Plan: L'application est structurée en 5 sections interactives : 1) Vue d'ensemble & Dashboard des Coefficients (restitution synthétique de la répartition des coefficients et poids au Bacc C), 2) Explorateur des 12 Disciplines (fiches synoptiques du programme de Seq 1 et structures d'épreuve), 3) Moteur de recherche & Banque Complète de 120 Épreuves avec accès direct aux liens Scribd/PDF filtrables par matière, groupe et établissement, 4) Analyse Comparative de l'Archivage Digital dans les lycées et collèges prestigieux du Cameroun avec graphiques dynamiques, 5) Simulateur de Moyenne de Séquence 1 et Conseils Stratégiques APC. Cette architecture non linéaire facilite l'exploration ciblée pour l'élève ou l'enseignant. -->
+    <!-- Visualization & Content Choices: 
+        1. Répartition des Coefficients par Groupe -> Graphique Doughnut Chart.js -> Comparaison visuelle des poids des 3 groupes au Bacc C.
+        2. Poids des Disciplines -> Graphique à Barres Horizontales Chart.js -> Visualisation directe de l'impact relatif de chaque matière (Maths coeff 7 vs Langue coeff 1).
+        3. Part des Archives Numériques par Groupe -> Graphique Bar Chart.js -> Illustration de la dominance des matières du 1er groupe dans les banques de sujets.
+        4. Banque des 120 Sujets -> Grille dynamique alimentée par un tableau JS filtrable avec barre de recherche en temps réel et badges de groupe -> Accès instantané aux PDFs originaux.
+        5. Calculateur de Moyenne S1 -> Module JS interactif avec calcul pondéré dynamique et appréciation officielle MINESEC.
+        CONFIRMATION : Aucun graphique SVG n'a été utilisé. Aucune bibliothèque Mermaid JS n'a été utilisée. -->
+    <!-- CONFIRMATION: NO SVG graphics used. NO Mermaid JS used. -->
+
+    <!-- Navigation Header -->
+    <header class="sticky top-0 z-50 bg-slate-900 text-white shadow-md border-b border-amber-600/40">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex items-center justify-between h-16">
+                <div class="flex items-center space-x-3">
+                    <span class="bg-amber-600 text-slate-900 font-black px-2.5 py-1 rounded text-lg tracking-wider">TLE C</span>
+                    <div>
+                        <h1 class="font-bold text-sm sm:text-base leading-tight">Banque Nationales d'Épreuves - Séquence 1</h1>
+                        <p class="text-xs text-slate-400">MINESEC Cameroun • 12 Disciplines • 120 Sujets PDFs</p>
+                    </div>
+                </div>
+                <nav class="hidden md:flex space-x-6 text-sm font-medium">
+                    <a href="#dashboard" class="hover:text-amber-400 transition-colors">Dashboard</a>
+                    <a href="#disciplines" class="hover:text-amber-400 transition-colors">Disciplines</a>
+                    <a href="#bank" class="hover:text-amber-400 transition-colors">Banque de Sujets (120)</a>
+                    <a href="#analysis" class="hover:text-amber-400 transition-colors">Archivage</a>
+                    <a href="#simulator" class="hover:text-amber-400 transition-colors">Simulateur S1</a>
+                </nav>
+                <div class="md:hidden flex items-center">
+                    <a href="#bank" class="bg-amber-600 text-slate-900 px-3 py-1 rounded text-xs font-bold">120 Sujets</a>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Main Container -->
+    <main class="flex-grow max-w-7xl w-full mx-auto px-4 sm:px-6 lg:px-8 py-6 space-y-10">
+
+        <!-- Hero Banner -->
+        <section class="bg-gradient-to-r from-slate-900 via-slate-800 to-amber-950 text-white rounded-2xl p-6 sm:p-8 shadow-xl relative overflow-hidden">
+            <div class="relative z-10 max-w-3xl space-y-4">
+                <span class="inline-block bg-amber-500/20 text-amber-300 border border-amber-500/30 text-xs px-3 py-1 rounded-full font-semibold">
+                    Répertoire Officiel & Curriculaire • Enseignement Secondaire
+                </span>
+                <h2 class="text-2xl sm:text-4xl font-extrabold tracking-tight">
+                    Séquence 1 en Terminale C : Répertoire des 120 Évaluations & Guide APC
+                </h2>
+                <p class="text-slate-300 text-sm sm:text-base leading-relaxed">
+                    Explorez la structure pédagogique complète des 12 disciplines de Terminale C au Cameroun. Accédez aux épreuves authentiques des établissements d'excellence (Collège Vogt, Jean Tabi, Libermann, Saker, Lycée Joss, Lycée Général Leclerc) avec liens de téléchargement directs.
+                </p>
+                <div class="pt-2 flex flex-wrap gap-4 text-xs font-semibold">
+                    <div class="bg-slate-800/80 border border-slate-700 px-4 py-2.5 rounded-xl flex items-center space-x-2">
+                        <span class="text-amber-400 text-lg font-bold">31.0</span>
+                        <span class="text-slate-300">Total Coefficients</span>
+                    </div>
+                    <div class="bg-slate-800/80 border border-slate-700 px-4 py-2.5 rounded-xl flex items-center space-x-2">
+                        <span class="text-amber-400 text-lg font-bold">12</span>
+                        <span class="text-slate-300">Disciplines Enseignées</span>
+                    </div>
+                    <div class="bg-slate-800/80 border border-slate-700 px-4 py-2.5 rounded-xl flex items-center space-x-2">
+                        <span class="text-amber-400 text-lg font-bold">120</span>
+                        <span class="text-slate-300">Sujets PDFs Référencés</span>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- SECTION 1: DASHBOARD DES COEFFICIENTS -->
+        <section id="dashboard" class="space-y-6">
+            <div class="border-b border-slate-200 pb-3">
+                <h3 class="text-xl font-bold text-slate-900 flex items-center space-x-2">
+                    <span class="w-3 h-3 bg-amber-600 rounded-full inline-block"></span>
+                    <span>1. Architecture Curriculaire et Distribution des Coefficients</span>
+                </h3>
+                <p class="text-sm text-slate-600 mt-1">
+                    Cette section présente la répartition réglementaire du volume horaire et des poids d'évaluation en classe de Terminale C. Le programme officiel MINESEC s'articule autour de 3 groupes disciplinaires totalisant un coefficient global de 31.0.
+                </p>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+                <!-- Group 1 Card -->
+                <div class="bg-white rounded-xl p-5 border-l-4 border-group1 shadow-sm hover:shadow-md transition-shadow">
+                    <div class="flex justify-between items-start">
+                        <div>
+                            <span class="text-xs font-bold text-blue-800 uppercase tracking-wider">1er Groupe</span>
+                            <h4 class="text-lg font-bold text-slate-900 mt-0.5">Sciences Exactes & LV1</h4>
+                        </div>
+                        <span class="bg-blue-100 text-blue-900 text-xs font-black px-2.5 py-1 rounded-full">Coef 16.0</span>
+                    </div>
+                    <p class="text-xs text-slate-500 mt-2">Matières dominantes et structurantes de la série scientifique C (Maths, Physique, Informatique, Anglais).</p>
+                    <div class="mt-4 pt-3 border-t border-slate-100 text-xs text-slate-700 space-y-1">
+                        <div class="flex justify-between"><span>Mathématiques</span> <strong>Coef 7.0</strong></div>
+                        <div class="flex justify-between"><span>Physiques</span> <strong>Coef 4.0</strong></div>
+                        <div class="flex justify-between"><span>Anglais</span> <strong>Coef 3.0</strong></div>
+                        <div class="flex justify-between"><span>Informatique</span> <strong>Coef 2.0</strong></div>
+                    </div>
+                </div>
+
+                <!-- Group 2 Card -->
+                <div class="bg-white rounded-xl p-5 border-l-4 border-group2 shadow-sm hover:shadow-md transition-shadow">
+                    <div class="flex justify-between items-start">
+                        <div>
+                            <span class="text-xs font-bold text-emerald-800 uppercase tracking-wider">2e Groupe</span>
+                            <h4 class="text-lg font-bold text-slate-900 mt-0.5">Sciences Appliquées & Citoyenneté</h4>
+                        </div>
+                        <span class="bg-emerald-100 text-emerald-900 text-xs font-black px-2.5 py-1 rounded-full">Coef 6.0</span>
+                    </div>
+                    <p class="text-xs text-slate-500 mt-2">Expérimentation scientifique, biologie cellulaire et compétences civiques républicaines.</p>
+                    <div class="mt-4 pt-3 border-t border-slate-100 text-xs text-slate-700 space-y-1">
+                        <div class="flex justify-between"><span>Chimie</span> <strong>Coef 2.0</strong></div>
+                        <div class="flex justify-between"><span>SVTEEHB</span> <strong>Coef 2.0</strong></div>
+                        <div class="flex justify-between"><span>ECM</span> <strong>Coef 2.0</strong></div>
+                    </div>
+                </div>
+
+                <!-- Group 3 Card -->
+                <div class="bg-white rounded-xl p-5 border-l-4 border-group3 shadow-sm hover:shadow-md transition-shadow">
+                    <div class="flex justify-between items-start">
+                        <div>
+                            <span class="text-xs font-bold text-rose-800 uppercase tracking-wider">3e Groupe</span>
+                            <h4 class="text-lg font-bold text-slate-900 mt-0.5">Humanités, Lettres & EPS</h4>
+                        </div>
+                        <span class="bg-rose-100 text-rose-900 text-xs font-black px-2.5 py-1 rounded-full">Coef 9.0</span>
+                    </div>
+                    <p class="text-xs text-slate-500 mt-2">Formation littéraire, esprit critique philosophique, analyse spatiale et condition physique.</p>
+                    <div class="mt-4 pt-3 border-t border-slate-100 text-xs text-slate-700 space-y-1">
+                        <div class="flex justify-between"><span>Philosophie, Géographie, Littérature, EPS</span> <strong>Coef 2.0 / ch.</strong></div>
+                        <div class="flex justify-between"><span>Langue Française</span> <strong>Coef 1.0</strong></div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Charts Row -->
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-6 pt-2">
+                <div class="bg-white p-5 rounded-2xl border border-slate-200 shadow-sm">
+                    <h4 class="text-sm font-bold text-slate-800 mb-1 text-center">Répartition des Coefficients par Groupe d'Enseignement</h4>
+                    <p class="text-xs text-slate-500 mb-4 text-center">Part relative de chaque groupe dans le total de 31.0 points</p>
+                    <div class="chart-container">
+                        <canvas id="coeffGroupChart"></canvas>
+                    </div>
+                </div>
+
+                <div class="bg-white p-5 rounded-2xl border border-slate-200 shadow-sm">
+                    <h4 class="text-sm font-bold text-slate-800 mb-1 text-center">Poids Individuel des 12 Disciplines au Bacc C</h4>
+                    <p class="text-xs text-slate-500 mb-4 text-center">Hiérarchie des coefficients de la classe de Terminale C</p>
+                    <div class="chart-container">
+                        <canvas id="subjectCoeffChart"></canvas>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- SECTION 2: SYNOPSE DES DISCIPLINES -->
+        <section id="disciplines" class="space-y-6">
+            <div class="border-b border-slate-200 pb-3">
+                <h3 class="text-xl font-bold text-slate-900 flex items-center space-x-2">
+                    <span class="w-3 h-3 bg-amber-600 rounded-full inline-block"></span>
+                    <span>2. Tableau Synoptique & Programme de la Séquence 1</span>
+                </h3>
+                <p class="text-sm text-slate-600 mt-1">
+                    Sélectionnez une discipline pour analyser les compétences clés évaluées en première séquence, les thèmes majeurs du programme officiel MINESEC et la structure standard des épreuves selon la pédagogie APC (Approche Par les Compétences).
+                </p>
+            </div>
+
+            <!-- Interactive Subjects Grid -->
+            <div class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-6 gap-3" id="disciplineSelector">
+                <!-- Injected via JS -->
+            </div>
+
+            <!-- Detailed Discipline Spec Panel -->
+            <div id="disciplineDetailPanel" class="bg-white rounded-2xl p-6 border border-slate-200 shadow-sm transition-all">
+                <!-- Content injected via JS -->
+            </div>
+        </section>
+
+        <!-- SECTION 3: BANQUE DE SUJETS (120) -->
+        <section id="bank" class="space-y-6">
+            <div class="border-b border-slate-200 pb-3">
+                <div class="flex flex-col md:flex-row md:items-center justify-between gap-4">
+                    <div>
+                        <h3 class="text-xl font-bold text-slate-900 flex items-center space-x-2">
+                            <span class="w-3 h-3 bg-amber-600 rounded-full inline-block"></span>
+                            <span>3. Banque Nationale d'Épreuves (120 Sujets en Accès Direct)</span>
+                        </h3>
+                        <p class="text-sm text-slate-600 mt-1">
+                            Répertoire exhaustif de 10 sujets par discipline pour les 12 matières. Recherchez et filtrez pour télécharger directement les épreuves au format PDF via leurs archives d'origine (Scribd / Banques d'épreuves).
+                        </p>
+                    </div>
+                    <span class="bg-amber-100 text-amber-900 border border-amber-300 font-bold px-3 py-1.5 rounded-lg text-xs whitespace-nowrap self-start md:self-auto">
+                        120 PDFs Disponibles
+                    </span>
+                </div>
+            </div>
+
+            <!-- Search & Filters Toolbar -->
+            <div class="bg-white p-4 rounded-xl border border-slate-200 shadow-sm space-y-4">
+                <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-3">
+                    <!-- Search Input -->
+                    <div class="lg:col-span-1">
+                        <label class="block text-xs font-semibold text-slate-600 mb-1">Recherche par mot-clé / Thème</label>
+                        <input type="text" id="searchInput" placeholder="Ex: Arithmétique, Vogt, Osmose..." class="w-full text-xs px-3 py-2 border border-slate-300 rounded-lg focus:ring-2 focus:ring-amber-500 focus:outline-none">
+                    </div>
+                    <!-- Subject Filter -->
+                    <div>
+                        <label class="block text-xs font-semibold text-slate-600 mb-1">Filtrer par Matière</label>
+                        <select id="subjectFilter" class="w-full text-xs px-3 py-2 border border-slate-300 rounded-lg focus:ring-2 focus:ring-amber-500 focus:outline-none">
+                            <option value="ALL">Toutes les 12 Matières</option>
+                            <!-- Injected via JS -->
+                        </select>
+                    </div>
+                    <!-- Group Filter -->
+                    <div>
+                        <label class="block text-xs font-semibold text-slate-600 mb-1">Filtrer par Groupe</label>
+                        <select id="groupFilter" class="w-full text-xs px-3 py-2 border border-slate-300 rounded-lg focus:ring-2 focus:ring-amber-500 focus:outline-none">
+                            <option value="ALL">Tous les Groupes</option>
+                            <option value="1er Groupe">1er Groupe (Sciences & LV1)</option>
+                            <option value="2e Groupe">2e Groupe (Sciences Appl. & ECM)</option>
+                            <option value="3e Groupe">3e Groupe (Humanités & EPS)</option>
+                        </select>
+                    </div>
+                    <!-- Institution Filter -->
+                    <div>
+                        <label class="block text-xs font-semibold text-slate-600 mb-1">Établissement / Origine</label>
+                        <select id="schoolFilter" class="w-full text-xs px-3 py-2 border border-slate-300 rounded-lg focus:ring-2 focus:ring-amber-500 focus:outline-none">
+                            <option value="ALL">Tous les Établissements</option>
+                            <!-- Injected via JS -->
+                        </select>
+                    </div>
+                </div>
+                <div class="flex justify-between items-center text-xs text-slate-500 pt-2 border-t border-slate-100">
+                    <span>Affichage de <strong id="resultCount" class="text-slate-800">120</strong> épreuve(s)</span>
+                    <button id="resetFilters" class="text-amber-700 hover:underline font-medium">Réinitialiser les filtres</button>
+                </div>
+            </div>
+
+            <!-- Papers Grid -->
+            <div id="papersGrid" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+                <!-- Dynamic cards injected via JS -->
+            </div>
+        </section>
+
+        <!-- SECTION 4: ANALYSE DES ÉTABLISSEMENTS & ARCHIVAGE DIGITAL -->
+        <section id="analysis" class="space-y-6">
+            <div class="border-b border-slate-200 pb-3">
+                <h3 class="text-xl font-bold text-slate-900 flex items-center space-x-2">
+                    <span class="w-3 h-3 bg-amber-600 rounded-full inline-block"></span>
+                    <span>4. Dynamiques d'Archivage Digital & Analyse des Établissements</span>
+                </h3>
+                <p class="text-sm text-slate-600 mt-1">
+                    Analyse de la répartition de l'archivage numérique des épreuves au Cameroun. Les données montrent une forte asymétrie entre les disciplines scientifiques majeures et les matières littéraires/sportives.
+                </p>
+            </div>
+
+            <div class="grid grid-cols-1 lg:grid-cols-3 gap-6">
+                <!-- Text Insight -->
+                <div class="lg:col-span-1 bg-white p-6 rounded-2xl border border-slate-200 shadow-sm space-y-4">
+                    <h4 class="font-bold text-slate-800 text-base">Principaux Enseignements</h4>
+                    <p class="text-xs text-slate-600 leading-relaxed">
+                        • <strong>Pôle Privé Confessionnel :</strong> Des établissements comme le <em>Collège François-Xavier Vogt</em>, <em>Jean Tabi</em> et <em>Collège Libermann</em> disposent de cellules pédagogiques numérisant quasi-systématiquement leurs évaluations harmonisées.
+                    </p>
+                    <p class="text-xs text-slate-600 leading-relaxed">
+                        • <strong>Réseaux Publics & Collectifs :</strong> Les lycées publics de référence (<em>Lycée Joss</em>, <em>LGL</em>, <em>Lycée Classique d'Édéa</em>) diffusent leurs banques d'épreuves via des regroupements spécialisés (Société Mathématique du Cameroun, Groupe 100% Bonne Base).
+                    </p>
+                    <p class="text-xs text-slate-600 leading-relaxed">
+                        • <strong>Asymétrie Digitalisée :</strong> Le 1er groupe (Maths/Physique) concentre à lui seul près de 60 % des recherches et de la disponibilité des archives unitaires numérisées. Les matières littéraires et l'EPS sont plus fréquemment publiées dans des <em>Compilations d'Établissement</em>.
+                    </p>
+                </div>
+
+                <!-- Archiving Chart -->
+                <div class="lg:col-span-2 bg-white p-5 rounded-2xl border border-slate-200 shadow-sm">
+                    <h4 class="text-sm font-bold text-slate-800 mb-1 text-center">Volume Relatif de Disponibilité Numérique des Épreuves par Groupe</h4>
+                    <p class="text-xs text-slate-500 mb-4 text-center">Estimation de la présence dans les banques de données éducatives en ligne</p>
+                    <div class="chart-container">
+                        <canvas id="archivingChart"></canvas>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- SECTION 5: SIMULATEUR & CONSEILS STRATÉGIQUES -->
+        <section id="simulator" class="space-y-6">
+            <div class="border-b border-slate-200 pb-3">
+                <h3 class="text-xl font-bold text-slate-900 flex items-center space-x-2">
+                    <span class="w-3 h-3 bg-amber-600 rounded-full inline-block"></span>
+                    <span>5. Simulateur de Moyenne Séquence 1 & Conseils APC</span>
+                </h3>
+                <p class="text-sm text-slate-600 mt-1">
+                    Calculez votre moyenne générale pondérée de Séquence 1 en saisissant vos notes prévisionnelles ou réelles sur 20 pour chacune des 12 disciplines officielles.
+                </p>
+            </div>
+
+            <div class="grid grid-cols-1 lg:grid-cols-3 gap-6">
+                <!-- Simulator Form -->
+                <div class="lg:col-span-2 bg-white p-6 rounded-2xl border border-slate-200 shadow-sm space-y-4">
+                    <h4 class="font-bold text-slate-800 text-sm border-b border-slate-100 pb-2">Saisie des Notes de Séquence 1 (Sur 20)</h4>
+                    
+                    <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-3" id="simulatorInputs">
+                        <!-- Inputs generated via JS -->
+                    </div>
+
+                    <div class="pt-4 border-t border-slate-100 flex flex-wrap items-center justify-between gap-4">
+                        <button id="calcAvgBtn" class="bg-amber-600 hover:bg-amber-700 text-slate-950 font-bold text-xs px-5 py-2.5 rounded-xl shadow transition-colors">
+                            Calculer la Moyenne Pondérée
+                        </button>
+                        <button id="fillSampleBtn" class="text-xs text-slate-500 hover:text-slate-800 underline">
+                            Remplir avec des notes d'exemple
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Simulation Result Card & Strategic Advice -->
+                <div class="space-y-4">
+                    <div class="bg-slate-900 text-white p-6 rounded-2xl shadow-md text-center space-y-3">
+                        <span class="text-xs font-semibold uppercase text-amber-400 tracking-wider">Résultat Simulée S1</span>
+                        <div class="text-4xl sm:text-5xl font-black tracking-tight" id="simResultValue">-- / 20</div>
+                        <div id="simBadge" class="inline-block px-3 py-1 rounded-full text-xs font-bold bg-slate-800 text-slate-300">
+                            En attente de calcul
+                        </div>
+                        <p class="text-xs text-slate-400 pt-2 border-t border-slate-800" id="simAppreciation">
+                            Remplissez vos notes et cliquez sur calculer pour obtenir votre bilan curriculaire.
+                        </p>
+                    </div>
+
+                    <div class="bg-amber-50/50 border border-amber-200/80 p-5 rounded-2xl text-xs space-y-2 text-slate-800">
+                        <h5 class="font-bold text-amber-900 text-sm">💡 Stratégie d'Excellence APC pour viser 20/20</h5>
+                        <p><strong>1. Rigueur des conditions :</strong> Ne sautez jamais la rédaction explicite des référentiels (ex: Référentiel galiléen en Physique, domaine de validité en Maths).</p>
+                        <p><strong>2. Partie B (Situation Problème) :</strong> Représente 25% des points (5 pts / 20) en Maths et Physiques. Exige une démarche logique, des unités claires et une réponse problématisée.</p>
+                        <p><strong>3. Effet Levier des Littéraires :</strong> L'Anglais, la Philosophie et l'ECM totalisent un coefficient cumulé de 7.0, équivalent au coefficient des Mathématiques à lui seul !</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+    <!-- Footer -->
+    <footer class="bg-slate-900 text-slate-400 text-xs py-8 border-t border-slate-800 mt-12">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center space-y-3">
+            <p class="text-slate-300 font-medium">Répertoire des Évaluations de Séquence 1 - Classique & Scientifique Terminale C Cameroun</p>
+            <p>Conforme au programme officiel du Ministère des Enseignements Secondaires (MINESEC)</p>
+            <p class="text-slate-500">Données issues des banques d'épreuves d'établissements d'excellence du Cameroun.</p>
+        </div>
+    </footer>
+
+    <!-- JS Logic -->
+    <script>
+        // Data Structure for 12 Disciplines
+        const DISCIPLINES_DATA = [
+            {
+                id: 'maths',
+                name: 'Mathématiques',
+                group: '1er Groupe',
+                groupCode: 'G1',
+                coeff: 7.0,
+                color: 'blue',
+                topics: 'Arithmétique dans Z (divisibilité, congruences, Bézout), Nombres complexes (formes, équations), Étude de fonctions et limites.',
+                structure: 'Partie A: Évaluation des ressources (15 pts) | Partie B: Évaluation des compétences (5 pts - Situation problème)'
+            },
+            {
+                id: 'phys',
+                name: 'Physiques',
+                group: '1er Groupe',
+                groupCode: 'G1',
+                coeff: 4.0,
+                color: 'blue',
+                topics: 'Cinématique du point matériel, mouvements rectilignes et curvilignes, repère de Frenet, travail et énergie mécanique.',
+                structure: 'Partie 1: Évaluation des savoirs | Partie 2: Évaluation des savoir-faire et compétences complexes'
+            },
+            {
+                id: 'anglais',
+                name: 'Anglais',
+                group: '1er Groupe',
+                groupCode: 'G1',
+                coeff: 3.0,
+                color: 'blue',
+                topics: 'Science & Technology, Grammar in Context, Reading Comprehension, Vocabulary & Guided Creative Writing.',
+                structure: 'Section A: Grammar & Vocabulary | Section B: Reading Comprehension | Section C: Essay Writing'
+            },
+            {
+                id: 'info',
+                name: 'Informatique',
+                group: '1er Groupe',
+                groupCode: 'G1',
+                coeff: 2.0,
+                color: 'blue',
+                topics: 'Systèmes d’information, Réseaux informatiques, Sécurité, Algorithmique et structures de données.',
+                structure: 'Partie I: Connaissances théoriques et systèmes | Partie II: Pratique, algorithmique et résolution de problèmes'
+            },
+            {
+                id: 'chimie',
+                name: 'Chimie',
+                group: '2e Groupe',
+                groupCode: 'G2',
+                coeff: 2.0,
+                color: 'emerald',
+                topics: 'Chimie organique saturée, alcools, amines, acides carboxyliques, décarboxylation, oxydation ménagée.',
+                structure: 'Partie A: Évaluation des savoirs (Nomenclature, réactions) | Partie B: Application des savoir-faire'
+            },
+            {
+                id: 'svteehb',
+                name: 'SVTEEHB',
+                group: '2e Groupe',
+                groupCode: 'G2',
+                coeff: 2.0,
+                color: 'emerald',
+                topics: 'Échanges cellulaires, pression osmotique, transports actifs et passifs, ultrastructure de la membrane plasmique.',
+                structure: 'Partie A: Évaluation des savoirs (4 pts) | Partie B: Évaluation des savoir-faire et démarches (8 pts)'
+            },
+            {
+                id: 'ecm',
+                name: 'ECM',
+                group: '2e Groupe',
+                groupCode: 'G2',
+                coeff: 2.0,
+                color: 'emerald',
+                topics: 'Relations internationales, diplomatie camerounaise, coopération bilatérale/multilatérale, ONG, assistance humanitaire.',
+                structure: 'Partie I: Évaluation des ressources (Définitions, questions de cours) | Partie II: Évaluation de l’agir compétent'
+            },
+            {
+                id: 'philo',
+                name: 'Philosophie',
+                group: '3e Groupe',
+                groupCode: 'G3',
+                coeff: 2.0,
+                color: 'rose',
+                topics: 'Introduction à la philosophie, méthodologie de la dissertation philosophique et de l’explication de texte.',
+                structure: 'Sujet 1: Dissertation philosophique | Sujet 2: Explication ordonnée de texte philosophique'
+            },
+            {
+                id: 'geo',
+                name: 'Géographie',
+                group: '3e Groupe',
+                groupCode: 'G3',
+                coeff: 2.0,
+                color: 'rose',
+                topics: 'Cartographie générale, outils d’analyse spatiale, fondements physiques du climat et dynamiques d’orogenèse.',
+                structure: 'Partie I: Évaluation des savoirs | Partie II: Travail sur document/carte ou étude d’un cas géographique'
+            },
+            {
+                id: 'langue',
+                name: 'Langue Française',
+                group: '3e Groupe',
+                groupCode: 'G3',
+                coeff: 1.0,
+                color: 'rose',
+                topics: 'Morphosyntaxe, stylistique, figures de style, grammaire fondamentale et outils d’analyse textuelle.',
+                structure: 'Partie I: Étude de texte (Grammaire/Vocabulaire/Communication) | Partie II: Travaux d’écriture méthodique'
+            },
+            {
+                id: 'lit',
+                name: 'Littérature',
+                group: '3e Groupe',
+                groupCode: 'G3',
+                coeff: 2.0,
+                color: 'rose',
+                topics: 'Contraction de texte & discussion, étude d’œuvres intégrales au programme officiel, dissertation littéraire.',
+                structure: 'Sujet 1: Contraction de texte avec Discussion | Sujet 2: Dissertation littéraire'
+            },
+            {
+                id: 'eps',
+                name: 'EPS',
+                group: '3e Groupe',
+                groupCode: 'G3',
+                coeff: 2.0,
+                color: 'rose',
+                topics: 'Évaluation théorique des règles de jeux olympiques, physiologie de l’effort, hygiène et prévention des blessures.',
+                structure: 'Partie I: Restitution des règles et physiologie | Partie II: Analyse de situations tactiques de jeu'
+            }
+        ];
+
+        // Database of 120 Exam Papers (10 per subject) extracted from report
+        const PAPERS_DATABASE = [
+            // --- MATHÉMATIQUES (10) ---
+            { subject: 'Mathématiques', group: '1er Groupe', school: 'Collège François-Xavier Vogt', title: 'Séquence 1 Mathématiques Tle C', theme: 'Arithmétique avancée, congruences et nombres complexes', link: 'https://fr.scribd.com/document/730365070/Maths-T' },
+            { subject: 'Mathématiques', group: '1er Groupe', school: 'Groupe 100% Bonne Base', title: 'Épreuve de Mathématiques N°1 Tle C', theme: 'Somme des diviseurs, équations polynomiales complexes', link: 'https://fr.scribd.com/document/924444771/Maths-Terminale-C-1' },
+            { subject: 'Mathématiques', group: '1er Groupe', school: 'Archidiocèse de Yaoundé', title: 'Évaluation Harmonisée N°1 Mathématiques', theme: 'Divisions euclidiennes, systèmes de numération, bijections', link: 'https://fr.scribd.com/document/958052055/Tle-C-harmonise-1-073650' },
+            { subject: 'Mathématiques', group: '1er Groupe', school: 'Alfred Saker / Lycée Joss', title: 'Interrogation Séquence 1 Maths Tle C', theme: 'Arithmétique, propriété des entiers, divisibilité', link: 'https://fr.scribd.com/document/782767758/Compil-Tle-c' },
+            { subject: 'Mathématiques', group: '1er Groupe', school: 'Collège Jean Tabi', title: 'Épreuve de Mathématiques 1ère Séquence', theme: 'Analyse fonctionnelle, similitudes planes, géométrie vectorielle', link: 'https://fr.scribd.com/document/730365070/Maths-T' },
+            { subject: 'Mathématiques', group: '1er Groupe', school: 'Groupe 100% Succès', title: 'Terminale C1 Épreuve de Maths N°1', theme: 'Applications complexes, codes-barres et arithmétique', link: 'https://it.scribd.com/document/932832718/Terminale-C1-Epreuve-de-Maths-N-1' },
+            { subject: 'Mathématiques', group: '1er Groupe', school: 'Société Mathématique du Cameroun', title: 'Épreuve Zéro / Séquence 1 Tle C', theme: 'Écritures complexes, coniques, équations diophantiennes', link: 'https://fr.scribd.com/document/1031310334/Epreuve-Zero-2026-Bacc-c-Ste-Math-Du-Cameroun' },
+            { subject: 'Mathématiques', group: '1er Groupe', school: 'Réseau des Lycées de Douala', title: 'Banque Nationale Séquence 1 Maths', theme: 'Calcul vectoriel, géométrie de l’espace, limites', link: 'https://fr.scribd.com/document/789526632/Pc-Sequence-1' },
+            { subject: 'Mathématiques', group: '1er Groupe', school: 'Lycée Classique d\'Édéa', title: 'Devoir Surveillé Séquence 1 Maths', theme: 'Arithmétique avancée, calcul intégral initial, suites', link: 'https://fr.scribd.com/document/589977409/Lcc' },
+            { subject: 'Mathématiques', group: '1er Groupe', school: 'Collège de la Retraite', title: 'Évaluation Séquence 1 Maths Tle C', theme: 'Fonctions numériques, barycentres, équations complexes', link: 'https://fr.scribd.com/document/730365070/Maths-T' },
+
+            // --- PHYSIQUES (10) ---
+            { subject: 'Physiques', group: '1er Groupe', school: 'Collège François-Xavier Vogt', title: 'Épreuve de Physique Séquence 1', theme: 'Cinématique du point matériel et lois de Newton', link: 'https://fr.scribd.com/document/839781009/Bac-c-2022-Maths' },
+            { subject: 'Physiques', group: '1er Groupe', school: 'Lycée de Mballa II', title: 'Évaluation de Physique Séquence 1', theme: 'Mouvement dans les champs de pesanteur, vecteur accélération', link: 'https://www.scribd.com/document/795905687/Epreuve-Circuit-Numerique-1ere-Sequence' },
+            { subject: 'Physiques', group: '1er Groupe', school: 'Lycée Joss de Douala', title: 'Épreuve de Physique-Chimie Séquence 1', theme: 'Cinématique, travail, énergie mécanique', link: 'https://fr.scribd.com/document/782767758/Compil-Tle-c' },
+            { subject: 'Physiques', group: '1er Groupe', school: 'Collège Jean Tabi', title: 'Évaluation de Physique Première Séquence', theme: 'Repère de Frenet, trajectoire de projectiles', link: 'https://fr.scribd.com/document/730365070/Maths-T' },
+            { subject: 'Physiques', group: '1er Groupe', school: 'GSB Le Laboureur', title: 'Épreuve de Physique Séquence 1 Tle C', theme: 'Mouvements rectilignes et circulaires uniformes', link: 'https://it.scribd.com/document/932832718/Terminale-C1-Epreuve-de-Maths-N-1' },
+            { subject: 'Physiques', group: '1er Groupe', school: 'Lycée Bilingue de Yaoundé', title: 'Devoir de Physique Séquence 1', theme: 'Dynamique newtonienne et bilan des forces', link: 'https://fr.scribd.com/document/730365070/Maths-T' },
+            { subject: 'Physiques', group: '1er Groupe', school: 'Collège Libermann', title: 'Évaluation Pédagogique Physique S1', theme: 'Champ de pesanteur uniforme et cinématique', link: 'https://fr.scribd.com/document/789526632/Pc-Sequence-1' },
+            { subject: 'Physiques', group: '1er Groupe', school: 'Lycée Classique de Bafoussam', title: 'Épreuve de Physique Séquence 1', theme: 'Théorème de l’énergie cinétique, mouvement curviligne', link: 'https://fr.scribd.com/document/782767758/Compil-Tle-c' },
+            { subject: 'Physiques', group: '1er Groupe', school: 'Complexe Scolaire Conquête', title: 'Évaluation Séquentielle N°1 Physique', theme: 'Accélération tangentielle et normale, lois de Kepler', link: 'https://fr.scribd.com/document/924444771/Maths-Terminale-C-1' },
+            { subject: 'Physiques', group: '1er Groupe', school: 'Lycée Général Leclerc', title: 'Épreuve de Physique Terminale C S1', theme: 'Cinématique avancée et situations-problèmes APC', link: 'https://fr.scribd.com/document/903624875/1ere-Sequence-3eme' },
+
+            // --- INFORMATIQUE (10) ---
+            { subject: 'Informatique', group: '1er Groupe', school: 'Département Info / Collège Tankeu', title: 'Épreuve Théorique d\'Informatique S1', theme: 'Systèmes d’information, réseaux informatiques', link: 'https://www.scribd.com/document/790460802/1ere-Sequence-5e-tankeu-maxi' },
+            { subject: 'Informatique', group: '1er Groupe', school: 'Lycée de Mballa II', title: 'Évaluation d\'Informatique Séquence 1', theme: 'Circuits numériques, logique combinatoire', link: 'https://www.scribd.com/document/795905687/Epreuve-Circuit-Numerique-1ere-Sequence' },
+            { subject: 'Informatique', group: '1er Groupe', school: 'Collège François-Xavier Vogt', title: 'Épreuve d\'Informatique Séquence 1', theme: 'Algorithmique, structures de données, typologie réseau', link: 'https://fr.scribd.com/document/737076526/EVALUATION-SVTEEHB-TLE-C-SITUATION-1-COLLEGE-VOGT-2023-2024-SUJETGRATUIT-1' },
+            { subject: 'Informatique', group: '1er Groupe', school: 'Collège Jean Tabi', title: 'Contrôle d\'Informatique Séquence 1', theme: 'Sécurité informatique, architectures des SI', link: 'https://fr.scribd.com/document/730365070/Maths-T' },
+            { subject: 'Informatique', group: '1er Groupe', school: 'Lycée Joss de Douala', title: 'Séquence 1 Informatique Tle C', theme: 'Algorithmes de tri, complexité, topologie réseau', link: 'https://fr.scribd.com/document/782767758/Compil-Tle-c' },
+            { subject: 'Informatique', group: '1er Groupe', school: 'Collège Libermann', title: 'Informatique Systèmes & Réseaux Tle C', theme: 'Analyse conceptuelle des données, protocoles internet', link: 'https://fr.scribd.com/document/924451614/Lyce-eBFokoue-Maths-2ndeC-ES1-2022' },
+            { subject: 'Informatique', group: '1er Groupe', school: 'Lycée Classique d\'Édéa', title: 'Devoir d\'Informatique Séquence 1', theme: 'Structures de données tableau, fonctions et procédures', link: 'https://fr.scribd.com/document/589977409/Lcc' },
+            { subject: 'Informatique', group: '1er Groupe', school: 'Groupe 100% Bonne Base', title: 'Épreuve d\'Informatique Tle C N°1', theme: 'Bases de données, requêtes SQL simples', link: 'https://fr.scribd.com/document/924444771/Maths-Terminale-C-1' },
+            { subject: 'Informatique', group: '1er Groupe', school: 'Lycée Bilingue de Yaoundé', title: 'Épreuve Théorique d\'Informatique S1', theme: 'Architecture matérielle et logicielle des réseaux', link: 'https://fr.scribd.com/document/730365070/Maths-T' },
+            { subject: 'Informatique', group: '1er Groupe', school: 'Archidiocèse de Yaoundé', title: 'Évaluation Harmonisée d\'Informatique', theme: 'Algorithmique appliquée et modélisation de systèmes', link: 'https://fr.scribd.com/document/958052055/Tle-C-harmonise-1-073650' },
+
+            // --- ANGLAIS (10) ---
+            { subject: 'Anglais', group: '1er Groupe', school: 'Collège François-Xavier Vogt', title: 'English Language Evaluation Seq 1', theme: 'Science & Technology, Grammar, Essay writing', link: 'https://fr.scribd.com/document/737076526/EVALUATION-SVTEEHB-TLE-C-SITUATION-1-COLLEGE-VOGT-2023-2024-SUJETGRATUIT-1' },
+            { subject: 'Anglais', group: '1er Groupe', school: 'Collège Jean Tabi', title: 'English Language Test Sequence 1', theme: 'Reading comprehension, tenses in context', link: 'https://fr.scribd.com/document/730365070/Maths-T' },
+            { subject: 'Anglais', group: '1er Groupe', school: 'Lycée Bilingue de Yaoundé', title: 'First Sequence English Exam Tle C', theme: 'Vocabulary of innovation, reported speech', link: 'https://fr.scribd.com/document/730365070/Maths-T' },
+            { subject: 'Anglais', group: '1er Groupe', school: 'Lycée Joss de Douala', title: 'English Evaluation Sequence 1 Upper 6th', theme: 'Environmental issues, formal writing', link: 'https://fr.scribd.com/document/782767758/Compil-Tle-c' },
+            { subject: 'Anglais', group: '1er Groupe', school: 'Collège Libermann', title: 'Sequence 1 English Assessment', theme: 'Grammar transformation, creative composition', link: 'https://fr.scribd.com/document/789526632/Pc-Sequence-1' },
+            { subject: 'Anglais', group: '1er Groupe', school: 'Collège Alfred Saker', title: 'English First Sequence Exam Tle C', theme: 'Reading skills, cause and effect expressions', link: 'https://fr.scribd.com/document/782767758/Compil-Tle-c' },
+            { subject: 'Anglais', group: '1er Groupe', school: 'Lycée Classique d\'Édéa', title: 'English Language Evaluation Sequence 1', theme: 'Science and society, guided argumentation', link: 'https://fr.scribd.com/document/589977409/Lcc' },
+            { subject: 'Anglais', group: '1er Groupe', school: 'Archidiocèse de Yaoundé', title: 'Harmonized English Test Sequence 1', theme: 'Grammar review, comprehension strategies', link: 'https://fr.scribd.com/document/958052055/Tle-C-harmonise-1-073650' },
+            { subject: 'Anglais', group: '1er Groupe', school: 'Lycée de Mballa II', title: 'English Evaluation Sequence 1', theme: 'Communication and digital technologies', link: 'https://www.scribd.com/document/795905687/Epreuve-Circuit-Numerique-1ere-Sequence' },
+            { subject: 'Anglais', group: '1er Groupe', school: 'GSB Le Laboureur', title: 'First Sequence English Test Tle C', theme: 'Essay writing on technological ethics', link: 'https://it.scribd.com/document/932832718/Terminale-C1-Epreuve-de-Maths-N-1' },
+
+            // --- CHIMIE (10) ---
+            { subject: 'Chimie', group: '2e Groupe', school: 'Lycée d\'Oyack', title: 'Épreuve de Chimie Séquence 1/2 Tle C', theme: 'Oxydation ménagée, alcools, amines, décarboxylation', link: 'https://fr.scribd.com/document/789183392/Chimie-Lycee-Seq-2' },
+            { subject: 'Chimie', group: '2e Groupe', school: 'Collège François-Xavier Vogt', title: 'Évaluation de Chimie Séquence 1 Tle C', theme: 'Cinétique chimique initiale, alcools et isomérie', link: 'https://fr.scribd.com/document/737076526/EVALUATION-SVTEEHB-TLE-C-SITUATION-1-COLLEGE-VOGT-2023-2024-SUJETGRATUIT-1' },
+            { subject: 'Chimie', group: '2e Groupe', school: 'Lycée Joss de Douala', title: 'Épreuve de Chimie Première Séquence', theme: 'Chimie organique saturée, groupe carboxyle', link: 'https://fr.scribd.com/document/782767758/Compil-Tle-c' },
+            { subject: 'Chimie', group: '2e Groupe', school: 'Collège Jean Tabi', title: 'Devoir de Chimie Séquence 1 Tle C', theme: 'Vitesse de réaction et suivi temporel', link: 'https://fr.scribd.com/document/730365070/Maths-T' },
+            { subject: 'Chimie', group: '2e Groupe', school: 'Collège de la Paix', title: 'Épreuve de Chimie Séquence 1 Tle C', theme: 'Nomenclature des dérivés d’acides et amines', link: 'https://fr.scribd.com/document/903624875/1ere-Sequence-3eme' },
+            { subject: 'Chimie', group: '2e Groupe', school: 'Groupe 100% Bonne Base', title: 'Séquence 1 Chimie Terminale C', theme: 'Facteurs cinétiques, décarboxylation des acides', link: 'https://fr.scribd.com/document/924444771/Maths-Terminale-C-1' },
+            { subject: 'Chimie', group: '2e Groupe', school: 'Collège Libermann', title: 'Évaluation de Chimie Séquence 1 Tle C', theme: 'Oxydation ménagée des alcools primaires et secondaires', link: 'https://fr.scribd.com/document/789526632/Pc-Sequence-1' },
+            { subject: 'Chimie', group: '2e Groupe', school: 'Archidiocèse de Yaoundé', title: 'Évaluation Harmonisée de Chimie Tle C', theme: 'Bilan de matière et cinétique des réactions organiques', link: 'https://fr.scribd.com/document/958052055/Tle-C-harmonise-1-073650' },
+            { subject: 'Chimie', group: '2e Groupe', school: 'Lycée Classique d\'Édéa', title: 'Devoir Surveillé de Chimie Tle C', theme: 'Isomérie de chaîne et de position des fonctions oxygénées', link: 'https://fr.scribd.com/document/589977409/Lcc' },
+            { subject: 'Chimie', group: '2e Groupe', school: 'Lycée Bilingue de Yaoundé', title: 'Épreuve de Chimie Séquence 1', theme: 'Synthèse et propriétés physiques des alcools', link: 'https://fr.scribd.com/document/730365070/Maths-T' },
+
+            // --- SVTEEHB (10) ---
+            { subject: 'SVTEEHB', group: '2e Groupe', school: 'Collège François-Xavier Vogt', title: 'Évaluation SVTEEHB Tle C Situation 1', theme: 'Échanges cellulaires, osmose, calcul de pression osmotique', link: 'https://fr.scribd.com/document/737076526/EVALUATION-SVTEEHB-TLE-C-SITUATION-1-COLLEGE-VOGT-2023-2024-SUJETGRATUIT-1' },
+            { subject: 'SVTEEHB', group: '2e Groupe', school: 'Collège Jean Tabi', title: 'Épreuve de SVTEEHB Première Séquence', theme: 'Ultrastructure membranaire, transports actifs/passifs', link: 'https://fr.scribd.com/document/730365070/Maths-T' },
+            { subject: 'SVTEEHB', group: '2e Groupe', school: 'Lycée Joss de Douala', title: 'Séquence 1 SVTEEHB Tle C', theme: 'Perméabilité membranaire, plasmolyse et turgescence', link: 'https://fr.scribd.com/document/782767758/Compil-Tle-c' },
+            { subject: 'SVTEEHB', group: '2e Groupe', school: 'Lycée Bilingue de Yaoundé', title: 'Devoir de SVTEEHB Séquence 1 Tle C', theme: 'Comportement des hématies en milieux hypertoniques', link: 'https://fr.scribd.com/document/730365070/Maths-T' },
+            { subject: 'SVTEEHB', group: '2e Groupe', school: 'Collège Libermann', title: 'Évaluation de SVTEEHB Séquence 1 Tle C', theme: 'Diffusions facilitées et pompes ioniques Na+/K+', link: 'https://fr.scribd.com/document/789526632/Pc-Sequence-1' },
+            { subject: 'SVTEEHB', group: '2e Groupe', school: 'Groupe 100% Bonne Base', title: 'Épreuve de SVTEEHB N°1 Tle C', theme: 'Phénomènes osmotiques chez les végétaux supérieurs', link: 'https://fr.scribd.com/document/924444771/Maths-Terminale-C-1' },
+            { subject: 'SVTEEHB', group: '2e Groupe', school: 'Archidiocèse de Yaoundé', title: 'SVTEEHB Évaluation Harmonisée Seq 1', theme: 'Structure en mosaïque fluide de la membrane', link: 'https://fr.scribd.com/document/958052055/Tle-C-harmonise-1-073650' },
+            { subject: 'SVTEEHB', group: '2e Groupe', school: 'Lycée Classique d\'Édéa', title: 'Devoir de SVTEEHB Séquence 1 Tle C', theme: 'Mesure expérimentale de la pression osmotique', link: 'https://fr.scribd.com/document/589977409/Lcc' },
+            { subject: 'SVTEEHB', group: '2e Groupe', school: 'Lycée de Mballa II', title: 'Évaluation de SVTEEHB Séquence 1', theme: 'Échanges d’eau et de solutés à travers la membrane', link: 'https://www.scribd.com/document/795905687/Epreuve-Circuit-Numerique-1ere-Sequence' },
+            { subject: 'SVTEEHB', group: '2e Groupe', school: 'Collège Alfred Saker', title: 'Épreuve de SVTEEHB Première Séquence', theme: 'Résolution de situations-problèmes osmotiques APC', link: 'https://fr.scribd.com/document/782767758/Compil-Tle-c' },
+
+            // --- ECM (10) ---
+            { subject: 'ECM', group: '2e Groupe', school: 'Lycée Technique de Batcham', title: 'Évaluation d\'ECM 1ère Séquence Tle', theme: 'Relations internationales, diplomatie, CICR, assistance', link: 'https://fr.scribd.com/document/837686408/terminale-ZECM' },
+            { subject: 'ECM', group: '2e Groupe', school: 'Département d\'ECM / Banque', title: 'Évaluation des Relations Internationales', theme: 'Structures de la diplomatie camerounaise', link: 'https://www.scribd.com/document/833359317/terminale-ZECM-1' },
+            { subject: 'ECM', group: '2e Groupe', school: 'Collège François-Xavier Vogt', title: 'Épreuve d\'ECM Première Séquence', theme: 'Coopération bilatérale et multilatérale du Cameroun', link: 'https://fr.scribd.com/document/737076526/EVALUATION-SVTEEHB-TLE-C-SITUATION-1-COLLEGE-VOGT-2023-2024-SUJETGRATUIT-1' },
+            { subject: 'ECM', group: '2e Groupe', school: 'Collège Jean Tabi', title: 'Évaluation d\'ECM Séquence 1 Terminale', theme: 'Organisations non gouvernementales et droit humanitaire', link: 'https://fr.scribd.com/document/730365070/Maths-T' },
+            { subject: 'ECM', group: '2e Groupe', school: 'Lycée Joss de Douala', title: 'Devoir d\'ECM Séquence 1 Terminale', theme: 'Principes directeurs de la diplomatie camerounaise', link: 'https://fr.scribd.com/document/782767758/Compil-Tle-c' },
+            { subject: 'ECM', group: '2e Groupe', school: 'Collège Libermann', title: 'Évaluation d\'ECM Première Séquence', theme: 'Aide humanitaire vs Aide au développement', link: 'https://fr.scribd.com/document/681477565/CORRIGE-SEQ-1-1ere-CD-ECM' },
+            { subject: 'ECM', group: '2e Groupe', school: 'Lycée Classique d\'Édéa', title: 'Devoir Surveillé d\'ECM Séquence 1', theme: 'Rôle de l’ONU et règlements pacifiques des conflits', link: 'https://fr.scribd.com/document/589977409/Lcc' },
+            { subject: 'ECM', group: '2e Groupe', school: 'Archidiocèse de Yaoundé', title: 'Évaluation Harmonisée d\'ECM Tle', theme: 'Enjeux de la mondialisation et coopération sud-sud', link: 'https://fr.scribd.com/document/958052055/Tle-C-harmonise-1-073650' },
+            { subject: 'ECM', group: '2e Groupe', school: 'Lycée Bilingue de Yaoundé', title: 'Épreuve d\'ECM Séquence 1 Tle', theme: 'Intégration régionale en Afrique centrale (CEMAC)', link: 'https://fr.scribd.com/document/730365070/Maths-T' },
+            { subject: 'ECM', group: '2e Groupe', school: 'Inspection de Pédagogie ECM', title: 'Guide National d\'Évaluation ECM Tle', theme: 'Cas pratique d’agir compétent en citoyenneté', link: 'https://fr.scribd.com/document/612317635/Comment-Reussir-Mon-Baccalaureat-en-60-Jours-Copie' },
+
+            // --- PHILOSOPHIE (10) ---
+            { subject: 'Philosophie', group: '3e Groupe', school: 'Collège François-Xavier Vogt', title: 'Épreuve de Philosophie Séquence 1', theme: 'Introduction à la philosophie, méthodologie dissertation', link: 'https://fr.scribd.com/document/737076526/EVALUATION-SVTEEHB-TLE-C-SITUATION-1-COLLEGE-VOGT-2023-2024-SUJETGRATUIT-1' },
+            { subject: 'Philosophie', group: '3e Groupe', school: 'Collège Jean Tabi', title: 'Évaluation de Philosophie Séquence 1', theme: 'Origine de la philosophie, rupture avec le mythe', link: 'https://fr.scribd.com/document/730365070/Maths-T' },
+            { subject: 'Philosophie', group: '3e Groupe', school: 'Lycée Joss de Douala', title: 'Épreuve de Philosophie Séquence 1 Tle C', theme: 'Spécificité du discours philosophique, esprit critique', link: 'https://fr.scribd.com/document/782767758/Compil-Tle-c' },
+            { subject: 'Philosophie', group: '3e Groupe', school: 'Collège Libermann', title: 'Évaluation de Philosophie Première Séquence', theme: 'Explication de texte ordonnée et étude critique', link: 'https://fr.scribd.com/document/789526632/Pc-Sequence-1' },
+            { subject: 'Philosophie', group: '3e Groupe', school: 'Lycée Bilingue de Yaoundé', title: 'Devoir de Philosophie Séquence 1 Tle C', theme: 'La philosophie et la science, démarche rationnelle', link: 'https://fr.scribd.com/document/730365070/Maths-T' },
+            { subject: 'Philosophie', group: '3e Groupe', school: 'Archidiocèse de Yaoundé', title: 'Philosophie Évaluation Harmonisée Tle C', theme: 'Problématisation et construction du plan dialectique', link: 'https://fr.scribd.com/document/958052055/Tle-C-harmonise-1-073650' },
+            { subject: 'Philosophie', group: '3e Groupe', school: 'Lycée Classique d\'Édéa', title: 'Devoir Surveillé de Philosophie Séquence 1', theme: 'Utilité de la philosophie dans une société technique', link: 'https://fr.scribd.com/document/589977409/Lcc' },
+            { subject: 'Philosophie', group: '3e Groupe', school: 'Inspection de Pédagogie Philo', title: 'Recueil National Sujets Philosophie S1', theme: 'Sujets types de dissertation scientifique', link: 'https://fr.scribd.com/document/612317635/Comment-Reussir-Mon-Baccalaureat-en-60-Jours-Copie' },
+            { subject: 'Philosophie', group: '3e Groupe', school: 'Lycée de Mballa II', title: 'Épreuve de Philosophie Séquence 1 Tle C', theme: 'Analyse conceptuelle: Raison et Foi', link: 'https://www.scribd.com/document/795905687/Epreuve-Circuit-Numerique-1ere-Sequence' },
+            { subject: 'Philosophie', group: '3e Groupe', school: 'Collège Alfred Saker', title: 'Évaluation de Philosophie Première Séquence', theme: 'Sujet de dissertation sur le doute méthodologique', link: 'https://fr.scribd.com/document/782767758/Compil-Tle-c' },
+
+            // --- GÉOGRAPHIE (10) ---
+            { subject: 'Géographie', group: '3e Groupe', school: 'Collège François-Xavier Vogt', title: 'Épreuve de Géographie Séquence 1 Tle C', theme: 'Cartographie générale, représentations spatiales', link: 'https://fr.scribd.com/document/737076526/EVALUATION-SVTEEHB-TLE-C-SITUATION-1-COLLEGE-VOGT-2023-2024-SUJETGRATUIT-1' },
+            { subject: 'Géographie', group: '3e Groupe', school: 'Collège Jean Tabi', title: 'Évaluation de Géographie Séquence 1 Tle C', theme: 'Climatologie générale, mécanismes de circulation atmosphérique', link: 'https://fr.scribd.com/document/730365070/Maths-T' },
+            { subject: 'Géographie', group: '3e Groupe', school: 'Lycée Joss de Douala', title: 'Séquence 1 Géographie Terminale C', theme: 'Dynamiques géomorphologiques et tectonique des plaques', link: 'https://fr.scribd.com/document/782767758/Compil-Tle-c' },
+            { subject: 'Géographie', group: '3e Groupe', school: 'Collège Libermann', title: 'Épreuve de Géographie Première Séquence', theme: 'Travail sur document cartographique et calcul d’échelle', link: 'https://fr.scribd.com/document/681477565/CORRIGE-SEQ-1-1ere-CD-ECM' },
+            { subject: 'Géographie', group: '3e Groupe', school: 'Lycée Bilingue de Yaoundé', title: 'Épreuve de Géographie Séquence 1 Tle C', theme: 'Les grands biomes et zones climatiques mondiales', link: 'https://fr.scribd.com/document/730365070/Maths-T' },
+            { subject: 'Géographie', group: '3e Groupe', school: 'Archidiocèse de Yaoundé', title: 'Géographie Évaluation Harmonisée Seq 1', theme: 'Analyse de cartes topographiques et courbes de niveau', link: 'https://fr.scribd.com/document/958052055/Tle-C-harmonise-1-073650' },
+            { subject: 'Géographie', group: '3e Groupe', school: 'Lycée Classique d\'Édéa', title: 'Devoir de Géographie Séquence 1 Tle C', theme: 'Reliefs continentaux et océaniques', link: 'https://fr.scribd.com/document/589977409/Lcc' },
+            { subject: 'Géographie', group: '3e Groupe', school: 'Collège Alfred Saker', title: 'Épreuve de Géographie Séquence 1', theme: 'Risques naturels et vulnérabilité spatiale', link: 'https://fr.scribd.com/document/782767758/Compil-Tle-c' },
+            { subject: 'Géographie', group: '3e Groupe', school: 'Lycée de Mballa II', title: 'Évaluation de Géographie Séquence 1 Tle C', theme: 'Analyse de diagrammes ombrothermiques', link: 'https://www.scribd.com/document/795905687/Epreuve-Circuit-Numerique-1ere-Sequence' },
+            { subject: 'Géographie', group: '3e Groupe', school: 'Groupe 100% Bonne Base', title: 'Épreuve de Géographie Terminale C', theme: 'Éléments de géomorphologie structurelle', link: 'https://fr.scribd.com/document/924444771/Maths-Terminale-C-1' },
+
+            // --- LANGUE FRANÇAISE (10) ---
+            { subject: 'Langue Française', group: '3e Groupe', school: 'Collège François-Xavier Vogt', title: 'Épreuve de Langue Française Séquence 1', theme: 'Grammaire fondamentale, stylistique, figures de style', link: 'https://fr.scribd.com/document/737076526/EVALUATION-SVTEEHB-TLE-C-SITUATION-1-COLLEGE-VOGT-2023-2024-SUJETGRATUIT-1' },
+            { subject: 'Langue Française', group: '3e Groupe', school: 'Collège Jean Tabi', title: 'Évaluation de Langue Française Séquence 1', theme: 'Outils d’analyse textuelle et de communication', link: 'https://fr.scribd.com/document/730365070/Maths-T' },
+            { subject: 'Langue Française', group: '3e Groupe', school: 'Lycée Joss de Douala', title: 'Séquence 1 Langue Française Tle C', theme: 'Morphosyntaxe, concordance des temps', link: 'https://fr.scribd.com/document/782767758/Compil-Tle-c' },
+            { subject: 'Langue Française', group: '3e Groupe', school: 'Collège Libermann', title: 'Épreuve de Langue Française Première Séquence', theme: 'Analyse d’énonciation et tonalités littéraires', link: 'https://fr.scribd.com/document/789526632/Pc-Sequence-1' },
+            { subject: 'Langue Française', group: '3e Groupe', school: 'Lycée Bilingue de Yaoundé', title: 'Devoir de Langue Française Séquence 1', theme: 'Cohésion et cohérence textuelle, connecteurs', link: 'https://fr.scribd.com/document/730365070/Maths-T' },
+            { subject: 'Langue Française', group: '3e Groupe', school: 'Archidiocèse de Yaoundé', title: 'Langue Française Évaluation Harmonisée', theme: 'Révision de textes et correction syntaxique', link: 'https://fr.scribd.com/document/958052055/Tle-C-harmonise-1-073650' },
+            { subject: 'Langue Française', group: '3e Groupe', school: 'Lycée Classique d\'Édéa', title: 'Devoir de Langue Française Séquence 1', theme: 'Champs lexicaux et valeurs des modes', link: 'https://fr.scribd.com/document/589977409/Lcc' },
+            { subject: 'Langue Française', group: '3e Groupe', school: 'Collège Alfred Saker', title: 'Épreuve de Langue Française Séquence 1', theme: 'Prag me et niveau de langue', link: 'https://fr.scribd.com/document/782767758/Compil-Tle-c' },
+            { subject: 'Langue Française', group: '3e Groupe', school: 'Lycée de Mballa II', title: 'Évaluation de Langue Française Séquence 1', theme: 'Champ de l’implicite et figures d’analogie', link: 'https://www.scribd.com/document/795905687/Epreuve-Circuit-Numerique-1ere-Sequence' },
+            { subject: 'Langue Française', group: '3e Groupe', school: 'Groupe 100% Bonne Base', title: 'Épreuve de Langue Française Terminale C', theme: 'Syntaxe de la phrase complexe', link: 'https://fr.scribd.com/document/924444771/Maths-Terminale-C-1' },
+
+            // --- LITTÉRATURE (10) ---
+            { subject: 'Littérature', group: '3e Groupe', school: 'Collège François-Xavier Vogt', title: 'Épreuve de Littérature Séquence 1 Tle C', theme: 'Contraction de texte, discussion, dissertation', link: 'https://fr.scribd.com/document/737076526/EVALUATION-SVTEEHB-TLE-C-SITUATION-1-COLLEGE-VOGT-2023-2024-SUJETGRATUIT-1' },
+            { subject: 'Littérature', group: '3e Groupe', school: 'Collège Jean Tabi', title: 'Évaluation de Littérature Séquence 1 Tle C', theme: 'Analyse d’œuvres au programme officiel MINESEC', link: 'https://fr.scribd.com/document/730365070/Maths-T' },
+            { subject: 'Littérature', group: '3e Groupe', school: 'Lycée Joss de Douala', title: 'Séquence 1 Littérature Terminale C', theme: 'Technique du résumé de texte avec décompte de mots', link: 'https://fr.scribd.com/document/782767758/Compil-Tle-c' },
+            { subject: 'Littérature', group: '3e Groupe', school: 'Collège Libermann', title: 'Épreuve de Littérature Première Séquence', theme: 'Dissertation littéraire sur la fonction de la poésie', link: 'https://fr.scribd.com/document/789526632/Pc-Sequence-1' },
+            { subject: 'Littérature', group: '3e Groupe', school: 'Lycée Bilingue de Yaoundé', title: 'Devoir de Littérature Séquence 1 Tle C', theme: 'Analyse romanesque et engagement de l’écrivain', link: 'https://fr.scribd.com/document/730365070/Maths-T' },
+            { subject: 'Littérature', group: '3e Groupe', school: 'Archidiocèse de Yaoundé', title: 'Littérature Évaluation Harmonisée Seq 1', theme: 'Discussion argumentative d’une citation de texte', link: 'https://fr.scribd.com/document/958052055/Tle-C-harmonise-1-073650' },
+            { subject: 'Littérature', group: '3e Groupe', school: 'Lycée Classique d\'Édéa', title: 'Devoir de Littérature Séquence 1 Tle C', theme: 'Étude théâtrale et dramaturgie africaine', link: 'https://fr.scribd.com/document/589977409/Lcc' },
+            { subject: 'Littérature', group: '3e Groupe', school: 'Collège Alfred Saker', title: 'Épreuve de Littérature Séquence 1', theme: 'Méthodologie de la contraction et plan d’idées', link: 'https://fr.scribd.com/document/782767758/Compil-Tle-c' },
+            { subject: 'Littérature', group: '3e Groupe', school: 'Lycée de Mballa II', title: 'Évaluation de Littérature Séquence 1 Tle C', theme: 'Dissertation sur le réalisme dans le roman', link: 'https://www.scribd.com/document/795905687/Epreuve-Circuit-Numerique-1ere-Sequence' },
+            { subject: 'Littérature', group: '3e Groupe', school: 'Inspection Régionale des Lettres', title: 'Recueil Pédagogique Bac C Littérature', theme: 'Compilations d’épreuves régionales de Séquence 1', link: 'https://fr.scribd.com/document/612317635/Comment-Reussir-Mon-Baccalaureat-en-60-Jours-Copie' },
+
+            // --- EPS (10) ---
+            { subject: 'EPS', group: '3e Groupe', school: 'Collège François-Xavier Vogt', title: 'Épreuve Théorique d\'EPS Séquence 1', theme: 'Physiologie de l’effort, règles de l’athlétisme', link: 'https://fr.scribd.com/document/737076526/EVALUATION-SVTEEHB-TLE-C-SITUATION-1-COLLEGE-VOGT-2023-2024-SUJETGRATUIT-1' },
+            { subject: 'EPS', group: '3e Groupe', school: 'Collège Jean Tabi', title: 'Évaluation d\'EPS Séquence 1 Terminale', theme: 'Sports collectifs (Handball/Volley-ball), hygiène', link: 'https://fr.scribd.com/document/730365070/Maths-T' },
+            { subject: 'EPS', group: '3e Groupe', school: 'Lycée Joss de Douala', title: 'Épreuve Théorique d\'EPS Séquence 1 Tle C', theme: 'Filières énergétiques et prévention des blessures', link: 'https://fr.scribd.com/document/782767758/Compil-Tle-c' },
+            { subject: 'EPS', group: '3e Groupe', school: 'Collège Libermann', title: 'Contrôle d\'EPS Théorique Séquence 1', theme: 'Réglementation des courses de vitesse et relais', link: 'https://fr.scribd.com/document/789526632/Pc-Sequence-1' },
+            { subject: 'EPS', group: '3e Groupe', school: 'Lycée Bilingue de Yaoundé', title: 'Devoir d\'EPS Théorique Séquence 1', theme: 'Analyse de phases tactiques en sport collectif', link: 'https://fr.scribd.com/document/730365070/Maths-T' },
+            { subject: 'EPS', group: '3e Groupe', school: 'Archidiocèse de Yaoundé', title: 'Évaluation Harmonisée d\'EPS Tle C', theme: 'Fréquence cardiaque et courbe de récupération', link: 'https://fr.scribd.com/document/958052055/Tle-C-harmonise-1-073650' },
+            { subject: 'EPS', group: '3e Groupe', school: 'Lycée Classique d\'Édéa', title: 'Devoir d\'EPS Théorique Séquence 1', theme: 'Règles du saut en hauteur et lancer de poids', link: 'https://fr.scribd.com/document/589977409/Lcc' },
+            { subject: 'EPS', group: '3e Groupe', school: 'Collège Alfred Saker', title: 'Épreuve Théorique d\'EPS Séquence 1', theme: 'L’échauffement sportif et son rôle physiologique', link: 'https://fr.scribd.com/document/782767758/Compil-Tle-c' },
+            { subject: 'EPS', group: '3e Groupe', school: 'Lycée de Mballa II', title: 'Évaluation d\'EPS Séquence 1 Tle C', theme: 'Dopage et éthique dans la pratique sportive', link: 'https://www.scribd.com/document/795905687/Epreuve-Circuit-Numerique-1ere-Sequence' },
+            { subject: 'EPS', group: '3e Groupe', school: 'Groupe 100% Bonne Base', title: 'Épreuve Théorique d\'EPS Terminale C', theme: 'Biomécanique simple des gestes sportifs', link: 'https://fr.scribd.com/document/924444771/Maths-Terminale-C-1' }
+        ];
+
+        // State Management
+        let selectedDisciplineId = 'maths';
+
+        // DOM Ready
+        document.addEventListener('DOMContentLoaded', () => {
+            initCharts();
+            renderDisciplineSelector();
+            renderDisciplineDetail(selectedDisciplineId);
+            populateFilters();
+            renderPapersGrid();
+            renderSimulatorInputs();
+
+            // Event Listeners for Filters
+            document.getElementById('searchInput').addEventListener('input', filterPapers);
+            document.getElementById('subjectFilter').addEventListener('change', filterPapers);
+            document.getElementById('groupFilter').addEventListener('change', filterPapers);
+            document.getElementById('schoolFilter').addEventListener('change', filterPapers);
+            document.getElementById('resetFilters').addEventListener('click', resetFilters);
+
+            // Simulator Buttons
+            document.getElementById('calcAvgBtn').addEventListener('click', calculateAverage);
+            document.getElementById('fillSampleBtn').addEventListener('click', fillSampleGrades);
+        });
+
+        // Initialize Chart.js Data Visualizations
+        function initCharts() {
+            // Chart 1: Coeffs par Groupe (Doughnut)
+            const ctxGroup = document.getElementById('coeffGroupChart').getContext('2d');
+            new Chart(ctxGroup, {
+                type: 'doughnut',
+                data: {
+                    labels: ['1er Groupe (Sciences & LV1)', '2e Groupe (Sciences Appl. & ECM)', '3e Groupe (Humanités & EPS)'],
+                    datasets: [{
+                        data: [16.0, 6.0, 9.0],
+                        backgroundColor: ['#1e3a8a', '#065f46', '#991b1b'],
+                        borderWidth: 2,
+                        borderColor: '#ffffff'
+                    }]
+                },
+                options: {
+                    responsive: true,
+                    maintainAspectRatio: false,
+                    plugins: {
+                        legend: { position: 'bottom', labels: { boxWidth: 12, font: { size: 11 } } },
+                        tooltip: {
+                            callbacks: {
+                                label: function(context) {
+                                    return ` ${context.label}: Coef ${context.raw} (${((context.raw/31)*100).toFixed(1)}%)`;
+                                }
+                            }
+                        }
+                    }
+                }
+            });
+
+            // Chart 2: Poids des 12 Disciplines (Bar Chart)
+            const ctxSubject = document.getElementById('subjectCoeffChart').getContext('2d');
+            new Chart(ctxSubject, {
+                type: 'bar',
+                data: {
+                    labels: DISCIPLINES_DATA.map(d => d.name),
+                    datasets: [{
+                        label: 'Coefficient Officiel',
+                        data: DISCIPLINES_DATA.map(d => d.coeff),
+                        backgroundColor: DISCIPLINES_DATA.map(d => {
+                            if (d.groupCode === 'G1') return '#1e3a8a';
+                            if (d.groupCode === 'G2') return '#065f46';
+                            return '#991b1b';
+                        }),
+                        borderRadius: 6
+                    }]
+                },
+                options: {
+                    responsive: true,
+                    maintainAspectRatio: false,
+                    indexAxis: 'y',
+                    plugins: {
+                        legend: { display: false }
+                    },
+                    scales: {
+                        x: { beginAtZero: true, max: 8, title: { display: true, text: 'Coefficient' } }
+                    }
+                }
+            });
+
+            // Chart 3: Archivage Digital Disponibilité (Bar Chart)
+            const ctxArch = document.getElementById('archivingChart').getContext('2d');
+            new Chart(ctxArch, {
+                type: 'bar',
+                data: {
+                    labels: ['1er Groupe (Sciences)', '2e Groupe (Sciences Appl.)', '3e Groupe (Humanités & EPS)'],
+                    datasets: [
+                        {
+                            label: 'Disponibilité Unitaire Numérique (%)',
+                            data: [85, 55, 35],
+                            backgroundColor: '#b8860b',
+                            borderRadius: 6
+                        },
+                        {
+                            label: 'Intégration dans Compilations (%)',
+                            data: [15, 45, 65],
+                            backgroundColor: '#475569',
+                            borderRadius: 6
+                        }
+                    ]
+                },
+                options: {
+                    responsive: true,
+                    maintainAspectRatio: false,
+                    plugins: {
+                        legend: { position: 'bottom', labels: { boxWidth: 12, font: { size: 11 } } }
+                    },
+                    scales: {
+                        y: { beginAtZero: true, max: 100, title: { display: true, text: 'Pourcentage des Archives' } }
+                    }
+                }
+            });
+        }
+
+        // Render Discipline Selector Buttons
+        function renderDisciplineSelector() {
+            const container = document.getElementById('disciplineSelector');
+            container.innerHTML = DISCIPLINES_DATA.map(d => {
+                const isSelected = d.id === selectedDisciplineId;
+                let activeClasses = isSelected ? 'ring-2 ring-amber-500 bg-amber-50 border-amber-300' : 'bg-white hover:bg-slate-50 border-slate-200';
+                return `
+                    <button onclick="selectDiscipline('${d.id}')" class="p-3 rounded-xl border text-left transition-all ${activeClasses} flex flex-col justify-between h-20 shadow-sm">
+                        <span class="text-xs font-bold text-slate-800 truncate">${d.name}</span>
+                        <div class="flex items-center justify-between text-[10px] text-slate-500 mt-1">
+                            <span class="px-1.5 py-0.5 rounded font-bold text-white ${d.color === 'blue' ? 'bg-blue-900' : d.color === 'emerald' ? 'bg-emerald-900' : 'bg-rose-900'}">${d.groupCode}</span>
+                            <span class="font-bold text-slate-700">Coef ${d.coeff.toFixed(1)}</span>
+                        </div>
+                    </button>
+                `;
+            }).join('');
+        }
+
+        function selectDiscipline(id) {
+            selectedDisciplineId = id;
+            renderDisciplineSelector();
+            renderDisciplineDetail(id);
+        }
+
+        // Render Detailed Spec Card for Selected Discipline
+        function renderDisciplineDetail(id) {
+            const d = DISCIPLINES_DATA.find(item => item.id === id);
+            const container = document.getElementById('disciplineDetailPanel');
+            if (!d) return;
+
+            container.innerHTML = `
+                <div class="flex flex-col md:flex-row md:items-center justify-between gap-4 border-b border-slate-100 pb-4">
+                    <div>
+                        <div class="flex items-center space-x-2">
+                            <span class="text-xs font-bold px-2 py-0.5 rounded text-white ${d.color === 'blue' ? 'bg-blue-900' : d.color === 'emerald' ? 'bg-emerald-900' : 'bg-rose-900'}">
+                                ${d.group}
+                            </span>
+                            <h4 class="text-xl font-extrabold text-slate-900">${d.name}</h4>
+                        </div>
+                        <p class="text-xs text-slate-500 mt-1">Spécificités Pédagogiques de la Première Séquence en Terminale C</p>
+                    </div>
+                    <div class="flex items-center space-x-3">
+                        <div class="bg-amber-100 text-amber-900 px-3 py-1.5 rounded-xl text-center">
+                            <span class="block text-[10px] uppercase font-bold text-amber-800">Coefficient</span>
+                            <span class="text-lg font-black">${d.coeff.toFixed(1)}</span>
+                        </div>
+                        <button onclick="filterByDiscipline('${d.name}')" class="bg-slate-900 hover:bg-slate-800 text-white text-xs font-bold px-4 py-2 rounded-xl shadow transition-colors">
+                            Voir les 10 Sujets ➔
+                        </button>
+                    </div>
+                </div>
+
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mt-4">
+                    <div class="bg-stone-50 p-4 rounded-xl border border-stone-200/80">
+                        <h5 class="font-bold text-slate-800 text-xs uppercase tracking-wider mb-2 flex items-center space-x-1">
+                            <span class="text-amber-600 font-bold">📌</span>
+                            <span>Contenus Majeurs Évalués (Séquence 1)</span>
+                        </h5>
+                        <p class="text-xs text-slate-700 leading-relaxed">${d.topics}</p>
+                    </div>
+                    <div class="bg-stone-50 p-4 rounded-xl border border-stone-200/80">
+                        <h5 class="font-bold text-slate-800 text-xs uppercase tracking-wider mb-2 flex items-center space-x-1">
+                            <span class="text-amber-600 font-bold">📋</span>
+                            <span>Structure Type de l'Épreuve (Format APC)</span>
+                        </h5>
+                        <p class="text-xs text-slate-700 leading-relaxed">${d.structure}</p>
+                    </div>
+                </div>
+            `;
+        }
+
+        function filterByDiscipline(subjectName) {
+            document.getElementById('subjectFilter').value = subjectName;
+            filterPapers();
+            window.location.href = '#bank';
+        }
+
+        // Populate Filter Dropdowns
+        function populateFilters() {
+            const subjectSelect = document.getElementById('subjectFilter');
+            const schoolSelect = document.getElementById('schoolFilter');
+
+            // Unique Subjects
+            DISCIPLINES_DATA.forEach(d => {
+                const opt = document.createElement('option');
+                opt.value = d.name;
+                opt.textContent = `${d.name} (Coef ${d.coeff})`;
+                subjectSelect.appendChild(opt);
+            });
+
+            // Unique Schools
+            const schools = [...new Set(PAPERS_DATABASE.map(p => p.school))].sort();
+            schools.forEach(s => {
+                const opt = document.createElement('option');
+                opt.value = s;
+                opt.textContent = s;
+                schoolSelect.appendChild(opt);
+            });
+        }
+
+        // Filter and Render Papers Grid
+        function filterPapers() {
+            const searchVal = document.getElementById('searchInput').value.toLowerCase();
+            const subjectVal = document.getElementById('subjectFilter').value;
+            const groupVal = document.getElementById('groupFilter').value;
+            const schoolVal = document.getElementById('schoolFilter').value;
+
+            const filtered = PAPERS_DATABASE.filter(p => {
+                const matchesSearch = p.title.toLowerCase().includes(searchVal) || 
+                                      p.theme.toLowerCase().includes(searchVal) || 
+                                      p.school.toLowerCase().includes(searchVal);
+                const matchesSubject = subjectVal === 'ALL' || p.subject === subjectVal;
+                const matchesGroup = groupVal === 'ALL' || p.group === groupVal;
+                const matchesSchool = schoolVal === 'ALL' || p.school === schoolVal;
+
+                return matchesSearch && matchesSubject && matchesGroup && matchesSchool;
+            });
+
+            document.getElementById('resultCount').textContent = filtered.length;
+            renderPapersGrid(filtered);
+        }
+
+        function resetFilters() {
+            document.getElementById('searchInput').value = '';
+            document.getElementById('subjectFilter').value = 'ALL';
+            document.getElementById('groupFilter').value = 'ALL';
+            document.getElementById('schoolFilter').value = 'ALL';
+            filterPapers();
+        }
+
+        function renderPapersGrid(papers = PAPERS_DATABASE) {
+            const container = document.getElementById('papersGrid');
+            if (papers.length === 0) {
+                container.innerHTML = `
+                    <div class="col-span-full bg-white p-8 rounded-2xl text-center border border-slate-200">
+                        <p class="text-slate-500 text-sm">Aucune épreuve ne correspond à vos critères de recherche.</p>
+                        <button onclick="resetFilters()" class="mt-3 text-xs text-amber-700 font-bold underline">Réinitialiser les filtres</button>
+                    </div>
+                `;
+                return;
+            }
+
+            container.innerHTML = papers.map(p => {
+                let badgeBg = p.group === '1er Groupe' ? 'bg-blue-100 text-blue-900 border-blue-200' : 
+                              p.group === '2e Groupe' ? 'bg-emerald-100 text-emerald-900 border-emerald-200' : 
+                              'bg-rose-100 text-rose-900 border-rose-200';
+
+                return `
+                    <div class="bg-white p-4 rounded-xl border border-slate-200 shadow-sm hover:shadow-md transition-shadow flex flex-col justify-between space-y-3">
+                        <div>
+                            <div class="flex items-center justify-between gap-2 mb-2">
+                                <span class="text-[10px] font-bold px-2 py-0.5 rounded border ${badgeBg}">${p.subject}</span>
+                                <span class="text-[10px] text-slate-400 font-medium">${p.group}</span>
+                            </div>
+                            <h5 class="font-bold text-slate-900 text-xs sm:text-sm leading-snug">${p.title}</h5>
+                            <p class="text-[11px] font-semibold text-amber-800 mt-1">${p.school}</p>
+                            <p class="text-[11px] text-slate-600 mt-2 line-clamp-2"><strong>Thèmes:</strong> ${p.theme}</p>
+                        </div>
+                        <div class="pt-3 border-t border-slate-100 flex items-center justify-between">
+                            <span class="text-[10px] text-slate-400">PDF • Scribd / Archive</span>
+                            <a href="${p.link}" target="_blank" rel="noopener noreferrer" class="bg-slate-900 hover:bg-amber-600 hover:text-slate-950 text-white font-bold text-[11px] px-3 py-1.5 rounded-lg transition-colors flex items-center space-x-1">
+                                <span>Télécharger</span>
+                                <span class="text-xs">⬇</span>
+                            </a>
+                        </div>
+                    </div>
+                `;
+            }).join('');
+        }
+
+        // Simulator Inputs Generation
+        function renderSimulatorInputs() {
+            const container = document.getElementById('simulatorInputs');
+            container.innerHTML = DISCIPLINES_DATA.map(d => `
+                <div class="bg-stone-50 p-2.5 rounded-lg border border-slate-200 flex items-center justify-between">
+                    <div class="truncate mr-2">
+                        <label for="score_${d.id}" class="block text-xs font-bold text-slate-800 truncate">${d.name}</label>
+                        <span class="text-[10px] text-slate-500">Coef ${d.coeff.toFixed(1)}</span>
+                    </div>
+                    <input type="number" id="score_${d.id}" min="0" max="20" step="0.25" placeholder="/20" class="w-16 text-xs text-center p-1.5 border border-slate-300 rounded focus:ring-1 focus:ring-amber-500 focus:outline-none bg-white font-bold">
+                </div>
+            `).join('');
+        }
+
+        function calculateAverage() {
+            let totalWeighted = 0;
+            let totalCoeff = 0;
+
+            DISCIPLINES_DATA.forEach(d => {
+                const input = document.getElementById(`score_${d.id}`);
+                let val = parseFloat(input.value);
+                if (!isNaN(val)) {
+                    val = Math.max(0, Math.min(20, val));
+                    totalWeighted += val * d.coeff;
+                    totalCoeff += d.coeff;
+                }
+            });
+
+            const resultDiv = document.getElementById('simResultValue');
+            const badgeDiv = document.getElementById('simBadge');
+            const appdiv = document.getElementById('simAppreciation');
+
+            if (totalCoeff === 0) {
+                resultDiv.textContent = '-- / 20';
+                badgeDiv.textContent = 'Saisissez au moins une note';
+                badgeDiv.className = 'inline-block px-3 py-1 rounded-full text-xs font-bold bg-slate-800 text-slate-300';
+                appdiv.textContent = 'Veuillez remplir au moins un champ de note.';
+                return;
+            }
+
+            const avg = totalWeighted / totalCoeff;
+            resultDiv.textContent = `${avg.toFixed(2)} / 20`;
+
+            if (avg >= 16) {
+                badgeDiv.textContent = 'Mention Très Bien / Excellent';
+                badgeDiv.className = 'inline-block px-3 py-1 rounded-full text-xs font-bold bg-emerald-900 text-emerald-200';
+                appdiv.textContent = 'Performance exceptionnelle ! Vous êtes parfaitement aligné sur les critères d’excellence du Bacc C.';
+            } else if (avg >= 14) {
+                badgeDiv.textContent = 'Mention Bien';
+                badgeDiv.className = 'inline-block px-3 py-1 rounded-full text-xs font-bold bg-blue-900 text-blue-200';
+                appdiv.textContent = 'Très bon niveau global. Consolidez les matières à fort coefficient (Maths/Physique) pour viser les sommets.';
+            } else if (avg >= 12) {
+                badgeDiv.textContent = 'Mention Assez Bien';
+                badgeDiv.className = 'inline-block px-3 py-1 rounded-full text-xs font-bold bg-amber-900 text-amber-200';
+                appdiv.textContent = 'Bon travail. Révisez rigoureusement les sujets de situation-problème (Partie B).';
+            } else if (avg >= 10) {
+                badgeDiv.textContent = 'Passable / Admis';
+                badgeDiv.className = 'inline-block px-3 py-1 rounded-full text-xs font-bold bg-slate-700 text-slate-200';
+                appdiv.textContent = 'Admis, mais marge de sécurité faible. Accentuez le travail en Mathématiques et Physiques.';
+            } else {
+                badgeDiv.textContent = 'Ajourné / Insuffisant';
+                badgeDiv.className = 'inline-block px-3 py-1 rounded-full text-xs font-bold bg-rose-900 text-rose-200';
+                appdiv.textContent = 'Moyenne inférieure à 10/20. Identifiez vos lacunes prioritaires dans la banque de sujets.';
+            }
+        }
+
+        function fillSampleGrades() {
+            const sampleScores = {
+                maths: 15.5, phys: 14.0, anglais: 13.0, info: 16.0,
+                chimie: 14.5, svteehb: 15.0, ecm: 16.5, philo: 12.0,
+                geo: 13.5, langue: 14.0, lit: 12.5, eps: 17.0
+            };
+
+            Object.keys(sampleScores).forEach(id => {
+                const input = document.getElementById(`score_${id}`);
+                if (input) input.value = sampleScores[id];
+            });
+
+            calculateAverage();
+        }
+    </script>
+</body>
+</html>

@@ -32,13 +32,16 @@
 
 | Fonctionnalité | Description |
 |----------------|-------------|
-| **📊 Dashboard** | Vue d'ensemble avec coefficients officiels et objectifs |
+| **📊 Dashboard** | Vue d'ensemble avec graphiques coefficients et analyse archivage |
 | **📋 Coefficients** | Tableaux officiels par groupe (1er, 2ème, 3ème) |
 | **🧮 Calculateur** | Calcul de moyenne avec mentions (Passable → Très Bien) |
-| **🧠 Quiz** | Quiz interactifs avec correction instantanée |
-| **🃏 Flashcards** | Cartes mémoire pour formules et concepts |
-| **📥 Ressources** | Sujets PDF Bac 2024-2025 + liens officiels |
-| **🌙 Thème sombre** | Interface moderne sombre/clair |
+| **📝 Préparation Seq 1** | Planning 6 semaines × 12 matières avec checkboxes |
+| **🧠 Quiz** | 20 QCM interactifs avec correction instantanée |
+| **🃏 Flashcards** | 24 cartes mémoire pour formules et concepts |
+| **📥 Banque 120 Sujets** | 10 épreuves par matière, filtres par groupe/établissement |
+| **📄 Ressources** | Sujets Bac 2024-2025 + liens officiels MINESEC/OBC |
+| **🌙 Thème clair/sombre** | Warm Scientific Neutral, mode sombre activable |
+| **📡 100% Hors-ligne** | Aucune dépendance CDN, fonctionne sans Internet |
 
 ---
 
