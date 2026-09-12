@@ -1,0 +1,284 @@
+<!DOCTYPE html>
+<html lang="fr" data-theme="light">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Méthode 18/20 — Terminale C | Emploi du temps, Règles & Révision</title>
+<style>
+:root{--bg:#f8f5f0;--bg2:#fff;--bg3:#f1ede6;--text:#2d2a26;--text2:#5c574f;--text3:#8a847a;--border:#e5e0d8;--accent:#b8860b;--accent2:#8b6508;--g1:#1e3a8a;--g2:#065f46;--g3:#991b1b;--radius:12px}
+*{margin:0;padding:0;box-sizing:border-box}
+body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',system-ui,sans-serif;background:var(--bg);color:var(--text);line-height:1.6}
+a{color:var(--accent);text-decoration:none}
+a:hover{text-decoration:underline}
+.container{max-width:1000px;margin:0 auto;padding:1.5rem}
+.hero{background:linear-gradient(135deg,#2d2a26 0%,#3d3226 50%,#4a370e 100%);color:#fff;border-radius:16px;padding:2rem 1.8rem;margin-bottom:1.5rem;position:relative;overflow:hidden}
+.hero::before{content:'';position:absolute;top:-50%;right:-10%;width:380px;height:380px;background:radial-gradient(circle,rgba(184,134,11,.18) 0%,transparent 70%)}
+.hero h1{font-size:1.85rem;font-weight:800;position:relative}
+.hero p{color:rgba(255,255,255,.78);margin-top:.4rem;position:relative;font-size:.92rem}
+.hero .badges{margin-top:1rem;display:flex;gap:.6rem;flex-wrap:wrap;position:relative}
+.badge-hero{background:rgba(255,255,255,.12);border:1px solid rgba(255,255,255,.18);padding:.45rem .85rem;border-radius:10px;font-size:.78rem}
+.badge-hero strong{color:#e7d8be}
+.card{background:var(--bg2);border:1px solid var(--border);border-radius:var(--radius);padding:1.3rem;margin-bottom:1rem}
+.card-title{font-size:1.05rem;font-weight:800;display:flex;align-items:center;gap:.5rem;margin-bottom:.9rem;padding-bottom:.6rem;border-bottom:1px solid var(--border)}
+.card-title .icon{width:32px;height:32px;border-radius:8px;display:flex;align-items:center;justify-content:center;color:#fff;font-size:1rem}
+table{width:100%;border-collapse:collapse;font-size:.84rem}
+th,td{padding:.65rem .6rem;border-bottom:1px solid var(--border);text-align:left}
+th{background:var(--bg3);font-size:.68rem;letter-spacing:.04em;text-transform:uppercase;color:var(--text2);font-weight:700}
+.badge-coef{background:linear-gradient(135deg,var(--accent),var(--accent2));color:#fff;padding:.18rem .5rem;border-radius:10px;font-weight:700;font-size:.78rem}
+.badge-g1{background:#dbeafe;color:var(--g1);padding:.15rem .4rem;border-radius:6px;font-size:.68rem;font-weight:700}
+.badge-g2{background:#d1fae5;color:var(--g2);padding:.15rem .4rem;border-radius:6px;font-size:.68rem;font-weight:700}
+.badge-g3{background:#fee2e2;color:var(--g3);padding:.15rem .4rem;border-radius:6px;font-size:.68rem;font-weight:700}
+.grid2{display:grid;grid-template-columns:1fr 1fr;gap:1rem}
+@media(max-width:800px){.grid2{grid-template-columns:1fr}}
+.rule{display:flex;gap:.8rem;padding:.85rem;background:var(--bg3);border-radius:10px;margin-bottom:.5rem;border-left:4px solid var(--accent)}
+.rule-num{min-width:36px;height:36px;background:linear-gradient(135deg,var(--accent),var(--accent2));color:#fff;border-radius:50%;display:flex;align-items:center;justify-content:center;font-weight:800;flex-shrink:0}
+.rule h4{font-size:.88rem;font-weight:700}
+.rule p{font-size:.8rem;color:var(--text2);margin-top:2px}
+.timetable{overflow:auto}
+.time-pill{display:inline-block;font-size:.7rem;font-weight:700;padding:.12rem .4rem;border-radius:6px;margin:1px 0}
+.pill-maths{background:#dbeafe;color:#1e3a8a}
+.pill-phys{background:#e0e7ff;color:#3730a3}
+.pill-chim{background:#fce7f3;color:#9d174d}
+.pill-ang{background:#fef3c7;color:#92400e}
+.pill-fr{background:#e0f2fe;color:#075985}
+.pill-hg{background:#fee2e2;color:#7f1d1d}
+.pill-info{background:#d1fae5;color:#065f46}
+.pill-svt{background:#dcfce7;color:#14532d}
+.pill-philo{background:#ede9fe;color:#5b21b6}
+.pill-eps{background:#ffedd5;color:#7c2d12}
+.pill-tm{background:#f3f4f6;color:#374151}
+.check{display:flex;gap:.6rem;align-items:flex-start;padding:.6rem;background:var(--bg3);border-radius:8px;margin-bottom:.35rem;cursor:pointer}
+.check input{margin-top:3px}
+.check label{font-size:.84rem;cursor:pointer}
+.check small{color:var(--text3);font-size:.74rem}
+.alert{background:#fffbeb;border:1px solid #fde68a;border-left:4px solid #f59e0b;padding:.8rem 1rem;border-radius:8px;font-size:.82rem;margin-bottom:1rem}
+.alert strong{color:#92400e}
+.steps{counter-reset:step}
+.step{display:flex;gap:.8rem;margin-bottom:.7rem}
+.step::before{counter-increment:step;content:counter(step);min-width:28px;height:28px;background:var(--bg3);border:1px solid var(--border);border-radius:50%;display:flex;align-items:center;justify-content:center;font-weight:700;font-size:.8rem;color:var(--accent);flex-shrink:0}
+@media print{.hero{break-after:avoid} .card{break-inside:avoid} .no-print{display:none}}
+.nav-back{display:inline-flex;align-items:center;gap:.4rem;font-size:.82rem;font-weight:600;margin-bottom:.8rem;color:var(--accent)}
+</style>
+</head>
+<body>
+<div class="container">
+
+<a class="nav-back" href="../index.html">← Retour HSC Dashboard</a>
+
+<div class="hero">
+  <div style="display:inline-block;background:rgba(184,134,11,.22);border:1px solid rgba(184,134,11,.35);color:#e7d8be;font-size:.68rem;font-weight:700;padding:.2rem .6rem;border-radius:20px;letter-spacing:.04em;text-transform:uppercase">Objectif Bac C Cameroun • 18/20 • 558/620 pts</div>
+  <h1 style="margin-top:.6rem">📘 Méthode Complète 18/20 — Terminale C</h1>
+  <p>Emploi du temps détaillé + 10 règles d'or + comportement en classe + méthode de révision à la maison.<br>Basé sur ton emploi réel et sur les <strong style="color:#e7d8be">31 coefficients officiels MINESEC</strong> (<code>README.md:48</code>).</p>
+  <div class="badges">
+    <div class="badge-hero"><strong>31</strong> coefs = 620 pts</div>
+    <div class="badge-hero"><strong>12</strong> matières • 3 groupes</div>
+    <div class="badge-hero"><strong>558 pts</strong> requis pour 18,00</div>
+    <div class="badge-hero"><strong>100% hors-ligne</strong> via HSC</div>
+  </div>
+</div>
+
+<!-- 1. EMPLOI DU TEMPS -->
+<div class="card">
+  <div class="card-title"><span class="icon" style="background:linear-gradient(135deg,#b8860b,#8b6508)">🗓️</span> 1 — Ton emploi du temps décortiqué</div>
+  <p style="font-size:.84rem;color:var(--text2);margin-bottom:.8rem">Relevé de ta photo. <strong>Lundi 3 matières lourdes</strong> → dimanche soir = préparation critique. Mercredi léger = rattrapage Maths/Physique.</p>
+  <div class="timetable">
+  <table>
+    <thead><tr><th>Jour</th><th>Cours en classe</th><th>Charge</th><th>Stratégie</th></tr></thead>
+    <tbody>
+      <tr><td><strong>Lundi</strong></td><td><span class="time-pill pill-phys">Physique</span> <span class="time-pill pill-maths">Maths</span> <span class="time-pill pill-chim">Chimie</span></td><td><span class="badge-coef">13 coefs</span></td><td style="font-size:.78rem">Jour le plus lourd (coef 13/31). Tout doit être <strong>préparé dimanche</strong>. Pas de découverte en classe.</td></tr>
+      <tr><td><strong>Mardi</strong></td><td><span class="time-pill pill-ang">Anglais</span> <span class="time-pill pill-fr">Français</span> <span class="time-pill pill-hg">HG</span> <span class="time-pill pill-info">Info</span></td><td><span class="badge-g1">3</span> <span class="badge-g3">3</span> <span class="badge-g1">2</span></td><td style="font-size:.78rem">Journée langues + Info. Profite pour faire <strong>1 essay Anglais</strong> le soir.</td></tr>
+      <tr><td><strong>Mercredi</strong></td><td><span class="time-pill pill-maths">Maths</span> <span class="time-pill pill-phys">Physique</span></td><td><span class="badge-coef">11</span></td><td style="font-size:.78rem">Créneau or. Après-midi libre → <strong>2h d'exos Banque 120 Sujets</strong> (`index.html:414`).</td></tr>
+      <tr><td><strong>Jeudi</strong></td><td><span class="time-pill pill-hg">HG</span> <span class="time-pill pill-ang">Anglais</span> <span class="time-pill pill-eps">EPS</span> <span class="time-pill pill-tm">TM</span> <span class="time-pill pill-chim">Chimie</span></td><td>Mixte</td><td style="font-size:.78rem">5 matières → soirée légère. Révision flash uniquement (20 min).</td></tr>
+      <tr><td><strong>Vendredi</strong></td><td><span class="time-pill pill-fr">Français</span> <span class="time-pill pill-svt">SVT</span> <span class="time-pill pill-philo">Philo</span></td><td><span class="badge-g2">2</span> <span class="badge-g3">3</span></td><td style="font-size:.78rem">SVT 2h seule de la semaine → <strong>doit être revue jeudi soir</strong> sinon oubli 7 jours.</td></tr>
+    </tbody>
+  </table>
+  </div>
+  <div class="alert" style="margin-top:.9rem">
+    <strong>⚠️ Point critique :</strong> Tu n'as SVT qu'une fois (vendredi) et Philo qu'une fois. Sans révision <strong>jeudi soir + dimanche matin</strong>, tu perds 4 coefs faciles (80 pts). C'est 13% de l'objectif 558.
+  </div>
+</div>
+
+<!-- 2. OBJECTIF 18 DETAILLE -->
+<div class="card">
+  <div class="card-title"><span class="icon" style="background:var(--g1)">🎯</span> 2 — Que signifie 18/20 avec tes coefs ?</div>
+  <p style="font-size:.82rem;color:var(--text2);margin-bottom:.7rem">Total 620 pts. Il faut <strong>558 pts</strong>. Voici une répartition réaliste (calculateur <code>index.html:234</code>) qui donne <strong>18,13/20</strong>. Tu peux copier ces notes dans le calculateur HSC pour simuler.</p>
+  <div style="overflow:auto">
+  <table>
+    <thead><tr><th>Matière</th><th>Coef</th><th>Note cible</th><th>Points</th><th>Groupe</th></tr></thead>
+    <tbody>
+      <tr><td>📐 Maths</td><td>7</td><td><strong>19</strong></td><td>133</td><td><span class="badge-g1">1er</span></td></tr>
+      <tr><td>⚡ Physique</td><td>4</td><td><strong>19</strong></td><td>76</td><td><span class="badge-g1">1er</span></td></tr>
+      <tr><td>🇬🇧 Anglais</td><td>3</td><td><strong>18</strong></td><td>54</td><td><span class="badge-g1">1er</span></td></tr>
+      <tr><td>💻 Info</td><td>2</td><td><strong>18</strong></td><td>36</td><td><span class="badge-g1">1er</span></td></tr>
+      <tr><td>🧪 Chimie</td><td>2</td><td><strong>18</strong></td><td>36</td><td><span class="badge-g2">2e</span></td></tr>
+      <tr><td>🧬 SVT</td><td>2</td><td><strong>18</strong></td><td>36</td><td><span class="badge-g2">2e</span></td></tr>
+      <tr><td>📚 ECM</td><td>2</td><td><strong>18</strong></td><td>36</td><td><span class="badge-g2">2e</span></td></tr>
+      <tr><td>🌍 Géo (HG)</td><td>2</td><td><strong>18</strong></td><td>36</td><td><span class="badge-g3">3e</span></td></tr>
+      <tr><td>📚 Littérature</td><td>2</td><td><strong>17</strong></td><td>34</td><td><span class="badge-g3">3e</span></td></tr>
+      <tr><td>🤔 Philo</td><td>2</td><td><strong>17</strong></td><td>34</td><td><span class="badge-g3">3e</span></td></tr>
+      <tr><td>🏃 EPS</td><td>2</td><td><strong>17</strong></td><td>34</td><td><span class="badge-g3">3e</span></td></tr>
+      <tr><td>📖 Français</td><td>1</td><td><strong>17</strong></td><td>17</td><td><span class="badge-g3">3e</span></td></tr>
+      <tr style="background:var(--bg3);font-weight:800"><td>TOTAL</td><td>31</td><td></td><td>562</td><td>18,13/20</td></tr>
+    </tbody>
+  </table>
+  </div>
+  <p style="font-size:.76rem;color:var(--text3);margin-top:.6rem">Leçon : tu ne peux pas compenser Maths 10 par EPS 19. Maths pèse 7x Français. <strong>60% de ton temps doit aller au 1er Groupe (Maths/Physique/Anglais/Info).</strong> Voir <code>docs/PLAN_HUB.md:121</code> pour les priorités par chapitre.</p>
+</div>
+
+<!-- 3. LES 10 REGLES -->
+<div class="card">
+  <div class="card-title"><span class="icon" style="background:linear-gradient(135deg,#065f46,#047857)">📏</span> 3 — Les 10 règles d'or (non négociables)</div>
+  <div class="rule"><div class="rule-num">1</div><div><h4>Avance de 24h toujours</h4><p>Tu n'arrives jamais en classe sans avoir lu le chapitre. 20 min la veille = 80% de compréhension en plus. C'est la règle qui fait gagner 2 points de moyenne à elle seule.</p></div></div>
+  <div class="rule"><div class="rule-num">2</div><div><h4>Le soir même, pas le lendemain</h4><p>Cerveau oublie 50% en 24h. Révision active (quiz/flashcard) <strong>le jour J</strong> le soir, sinon effort perdu.</p></div></div>
+  <div class="rule"><div class="rule-num">3</div><div><h4>1 matière = 1 fiche A4</h4><p>Pas de cahier de 200 pages à relire. Chaque chapitre = 1 fiche recto-verso avec formules, exemples, erreurs pièges. Range dans <code>matieres/*/README.md</code>.</p></div></div>
+  <div class="rule"><div class="rule-num">4</div><div><h4>Maths/Physique tous les jours, même 15 min</h4><p>Coef 11 à eux deux. Même jeudi (jour sans Maths), fais 2 exos Maths. La régularité bat l'intensité.</p></div></div>
+  <div class="rule"><div class="rule-num">5</div><div><h4>Pas de recopiage passif</h4><p>Ne recopie pas le cours. Cache, écris de mémoire, vérifie. C'est l'Active Recall des flashcards <code>index.html:397</code>.</p></div></div>
+  <div class="rule"><div class="rule-num">6</div><div><h4>1 sujet Bac / semaine minimum</h4><p>Banque 120 Sujets <code>index.html:414</code> → samedi matin en conditions réelles (chrono, sans cours). Corrige sévèrement.</p></div></div>
+  <div class="rule"><div class="rule-num">7</div><div><h4>Téléphone hors de la table de révision</h4><p>Pomodoro 45-10. 45 min focus total, 10 min pause. 3 Pomodoros le soir = 2h15 efficaces > 4h distrait.</p></div></div>
+  <div class="rule"><div class="rule-num">8</div><div><h4>Sommeil = matière</h4><p>22h30 extinction. Le sommeil consolide. Réviser à 1h du matin fait perdre 1 point le lendemain en classe.</p></div></div>
+  <div class="rule"><div class="rule-num">9</div><div><h4>Chaque erreur = fiche erreur</h4><p>Carnet "Erreurs pièges" : note l'erreur, pourquoi, correction. Relis le dimanche. 80% des points perdus au Bac sont les mêmes pièges.</p></div></div>
+  <div class="rule"><div class="rule-num">10</div><div><h4>Calculateur chaque dimanche</h4><p>Entre tes notes de la semaine dans <code>index.html:234</code> Calculateur. Vois ton 18 se rapprocher. Motivation chiffrée.</p></div></div>
+</div>
+
+<!-- 4. COMPORTEMENT EN CLASSE -->
+<div class="grid2">
+  <div class="card">
+    <div class="card-title"><span class="icon" style="background:var(--g2)">👁️</span> 4A — En classe : comment te comporter</div>
+    <div class="steps">
+      <div class="step"><div><strong>Avant (2 min)</strong> : relis ta fiche d'avance. Note 2 questions à poser. Assieds-toi aux 2 premiers rangs.</div></div>
+      <div class="step"><div><strong>Pendant — Écoute active</strong> : ne copie pas mot-à-mot. Écoute, comprends, note en mots-clés + schémas. Si prof dit "retenez bien", encadre en rouge.</div></div>
+      <div class="step"><div><strong>Participe 1x / heure</strong> : pose/ta question d'avance ou réponds. Le cerveau retient 70% de ce qu'il dit vs 20% de ce qu'il entend.</div></div>
+      <div class="step"><div><strong>Ne bavarde jamais sur les coefs 7/4</strong> : 1h de Maths perdue = 7h de Français à rattraper ailleurs.</div></div>
+      <div class="step"><div><strong>Dernières 5 min</strong> : note en haut de page : "À faire ce soir : exo 3 p.45 + flashcard 12". Tu sors avec la tâche claire.</div></div>
+      <div class="step"><div><strong>Après (3 min)</strong> : reste, pose ta question restante au prof. Ça te fait repérer comme élève sérieux (bonus interrogations orales).</div></div>
+    </div>
+  </div>
+  <div class="card">
+    <div class="card-title"><span class="icon" style="background:var(--g1)">⚡</span> 4B — Astuces par matière en classe</div>
+    <table>
+      <thead><tr><th>Matière</th><th>À faire en classe</th></tr></thead>
+      <tbody>
+        <tr><td>📐 Maths</td><td>Refais le calcul au brouillon en même temps que le prof. Tu détectes tes lacunes instantanément.</td></tr>
+        <tr><td>⚡ Physique</td><td>Dessine le schéma (forces, circuit) toi-même. Ne regarde pas celui du prof.</td></tr>
+        <tr><td>🧪 Chimie</td><td>Écris l'équation-bilan avant le prof, même fausse.</td></tr>
+        <tr><td>🧬 SVT</td><td>Schémas annotés > texte. Couleurs obligatoires.</td></tr>
+        <tr><td>🇬🇧 Anglais</td><td>Parle à voix haute, même avec accent. 1 phrase par cours minimum.</td></tr>
+        <tr><td>🤔 Philo</td><td>Note 1 exemple concret par notion (ex: liberté = Sartre + ton exemple).</td></tr>
+        <tr><td>🌍 HG/Géo</td><td>Carte muette : replace les éléments de mémoire pendant le cours.</td></tr>
+      </tbody>
+    </table>
+  </div>
+</div>
+
+<!-- 5. REVISION MAISON -->
+<div class="card">
+  <div class="card-title"><span class="icon" style="background:#991b1b">🏠</span> 5 — Révision à la maison : la méthode exacte</div>
+  <div class="grid2">
+    <div>
+      <h4 style="font-size:.88rem;font-weight:700;color:var(--accent);margin-bottom:.5rem">Soir de semaine (1h30 - 19h30 à 21h00)</h4>
+      <div style="background:var(--bg3);border-radius:10px;padding:.9rem;font-size:.82rem">
+        <div style="display:flex;justify-content:space-between;margin-bottom:.3rem"><span><strong>19h30-20h00</strong> — Devoirs du jour</span><span style="color:var(--text3)">30 min</span></div>
+        <div style="font-size:.75rem;color:var(--text2);margin-bottom:.6rem;border-left:2px solid var(--border);padding-left:.6rem">Fais les exos donnés sans cours d'abord, puis corrige avec cours. Si bloqué >10 min, note et passe.</div>
+        <div style="display:flex;justify-content:space-between;margin-bottom:.3rem"><span><strong>20h00-20h30</strong> — Révision J (Active Recall)</span><span style="color:var(--text3)">30 min</span></div>
+        <div style="font-size:.75rem;color:var(--text2);margin-bottom:.6rem;border-left:2px solid var(--border);padding-left:.6rem">Cache ton cours → écris 5 points clés de mémoire → Quiz HSC 5 questions → Flashcards 8 cartes. Pas de relecture passive.</div>
+        <div style="display:flex;justify-content:space-between;margin-bottom:.3rem"><span><strong>20h30-21h00</strong> — Prépa avance J+1</span><span style="color:var(--text3)">30 min</span></div>
+        <div style="font-size:.75rem;color:var(--text2);border-left:2px solid var(--border);padding-left:.6rem">Lis le prochain chapitre (ex: si demain Maths, lis "Complexes forme trigo" `docs/PLAN_HUB.md:123`). Fais 2 exos faciles. Note tes 2 questions pour le prof.</div>
+      </div>
+      <p style="font-size:.74rem;color:var(--text3);margin-top:.5rem">Mercredi et samedi : ajoute 1h supplémentaire Maths/Physique (Banque 120 Sujets).</p>
+    </div>
+    <div>
+      <h4 style="font-size:.88rem;font-weight:700;color:var(--accent);margin-bottom:.5rem">Week-end (le vrai accélérateur)</h4>
+      <div style="background:var(--bg3);border-radius:10px;padding:.9rem;font-size:.82rem">
+        <div><strong>Samedi 9h-12h — Deep Work</strong></div>
+        <ul style="margin:.4rem 0 .7rem 1.1rem;font-size:.78rem;color:var(--text2)">
+          <li>9h00-10h30 : Maths (1 sujet Bac 2024 `README.md:575` en 1h30 chrono)</li>
+          <li>10h40-11h30 : Physique (exos + correction détaillée)</li>
+          <li>11h30-12h00 : Chimie flash (1 chapitre)</li>
+        </ul>
+        <div><strong>Dimanche 10h-12h — Synthèse</strong></div>
+        <ul style="margin:.4rem 0 .7rem 1.1rem;font-size:.78rem;color:var(--text2)">
+          <li>10h00-11h00 : Anglais (1 essay + vocab) + HG (1 dissertation plan)</li>
+          <li>11h00-11h30 : SVT + Philo (fiches + 1 explication de texte)</li>
+          <li>11h30-12h00 : Calculateur + fiche erreurs + prépa lundi (dimanche soir)</li>
+        </ul>
+        <div><strong>Dimanche 19h-20h30 — Prépa Lundi critique</strong></div>
+        <p style="font-size:.76rem;color:var(--text2)">Physique + Maths + Chimie (les 3 de lundi) : 30 min chacun. Tu arrives en avance, le prof a l'impression que tu as déjà fait la Terminale.</p>
+      </div>
+    </div>
+  </div>
+  <div class="alert" style="margin-top:1rem;background:#f0fdf4;border-color:#86efac">
+    <strong>✅ Technique qui marche pour 18 :</strong> Après chaque chapitre, fais le <strong>Quiz → 80% minimum</strong> sinon tu refais le chapitre. Les Flashcards sont en <strong>spaced repetition</strong> : revois J+1, J+3, J+7. C'est dans <code>index.html:399</code>. Sans ça, tu oublies 70% en 1 semaine.
+  </div>
+</div>
+
+<!-- 6. PLANNING HEBDO VISUEL -->
+<div class="card">
+  <div class="card-title"><span class="icon" style="background:var(--accent)">📅</span> 6 — Ton planning hebdo à imprimer (colle au mur)</div>
+  <div style="overflow:auto">
+  <table>
+    <thead><tr><th>Créneau</th><th>Lundi</th><th>Mardi</th><th>Mercredi</th><th>Jeudi</th><th>Vendredi</th><th>Samedi</th><th>Dimanche</th></tr></thead>
+    <tbody style="font-size:.78rem">
+      <tr><td style="background:var(--bg3);font-weight:700">Matin</td><td>Phys/Maths/Chimie</td><td>Ang/Fr/HG/Info</td><td>Maths/Phys</td><td>HG/Ang/EPS/TM/Chim</td><td>Fr/SVT/Philo</td><td style="background:#dbeafe"><strong>9h-12h DEEP</strong><br>Maths/Phys/Chimie</td><td style="background:#fef3c7"><strong>10h-12h SYNTH</strong><br>Anglais/HG/SVT</td></tr>
+      <tr><td style="background:var(--bg3);font-weight:700">18h-19h</td><td colspan="5" style="text-align:center;color:var(--text3)">Repos / trajet / détente — pas de téléphone révision</td><td rowspan="2" style="background:#f3f4f6;text-align:center">Repos<br><small>ou EPS terrain</small></td><td rowspan="2" style="background:#ede9fe;text-align:center"><strong>19h-20h30</strong><br>Prépa Lundi<br>(Phys+Maths+Chim)</td></tr>
+      <tr><td style="background:var(--bg3);font-weight:700">19h30-21h</td><td>Devoir + Rév Lundi<br>+ Prépa Mardi</td><td>Devoir + Rév Mardi<br>+ Prépa Merc</td><td style="background:#dbeafe"><strong>90 min Maths/Phys</strong><br>Banque sujets</td><td>Flash léger<br>+ Prépa Vend</td><td>Léger<br>(SVT/Philo)</td></tr>
+      <tr><td style="background:var(--bg3);font-weight:700">21h-21h15</td><td colspan="7" style="text-align:center;background:#f1ede6"><strong>Rituel 15 min :</strong> relis fiche erreurs + prépare sac + extinction 22h30 max</td></tr>
+    </tbody>
+  </table>
+  </div>
+  <p style="font-size:.74rem;color:var(--text3);margin-top:.5rem">Astuce : mets une alarme 19h30 tous les jours. 21 jours = habitude. Après, tu le fais sans effort.</p>
+</div>
+
+<!-- 7. CHECKLIST -->
+<div class="grid2">
+  <div class="card">
+    <div class="card-title"><span class="icon" style="background:var(--g2)">✅</span> 7 — Checklist quotidienne (coche chaque soir)</div>
+    <div class="check"><input type="checkbox"><label> J'ai préparé mes 2 questions pour demain<br><small>Avance 24h respectée ?</small></label></div>
+    <div class="check"><input type="checkbox"><label> J'ai fait Active Recall (quiz ou fiche de mémoire) pour chaque matière du jour<br><small>Pas de simple relecture</small></label></div>
+    <div class="check"><input type="checkbox"><label> J'ai participé 1 fois en classe aujourd'hui<br><small>Même petite question</small></label></div>
+    <div class="check"><input type="checkbox"><label> J'ai fait 15 min de Maths (même jeudi/dimanche)<br><small>Coef 7 oblige</small></label></div>
+    <div class="check"><input type="checkbox"><label> Téléphone hors table pendant 45 min focus<br><small>Pomodoro respecté</small></label></div>
+    <div class="check"><input type="checkbox"><label> J'ai noté mes erreurs dans le carnet pièges<br><small>1 erreur = 1 leçon</small></label></div>
+    <div style="margin-top:.7rem;font-size:.74rem;color:var(--text2);background:var(--bg3);padding:.5rem;border-radius:6px">Sauvegarde auto dans ce navigateur. Vise 6/6 chaque jour. 5/6 = bien, 4/6 = alerte.</div>
+  </div>
+  <div class="card">
+    <div class="card-title"><span class="icon" style="background:var(--g3)">🛠️</span> 8 — Où cliquer dans ton HSC</div>
+    <p style="font-size:.82rem;color:var(--text2);margin-bottom:.6rem">Tout est déjà dans ton repo cloné. Ouvre <code>index.html</code> en double-cliquant (100% hors-ligne).</p>
+    <div style="display:flex;flex-direction:column;gap:.4rem;font-size:.82rem">
+      <div style="display:flex;justify-content:space-between;background:var(--bg3);padding:.6rem;border-radius:8px"><span>📝 Préparation Seq 1 (6 semaines)</span><a href="../index.html#seq1" style="font-weight:700">Ouvrir →</a></div>
+      <div style="display:flex;justify-content:space-between;background:var(--bg3);padding:.6rem;border-radius:8px"><span>🧠 Quiz 20 QCM (Maths/Phys/Chimie/SVT)</span><a href="../index.html#quiz" style="font-weight:700">Faire →</a></div>
+      <div style="display:flex;justify-content:space-between;background:var(--bg3);padding:.6rem;border-radius:8px"><span>🃏 Flashcards 32 cartes</span><a href="../index.html#flashcards" style="font-weight:700">Réviser →</a></div>
+      <div style="display:flex;justify-content:space-between;background:var(--bg3);padding:.6rem;border-radius:8px"><span>📥 Banque 120 Sujets (10/matière)</span><a href="../index.html#bank" style="font-weight:700">Télécharger →</a></div>
+      <div style="display:flex;justify-content:space-between;background:var(--bg3);padding:.6rem;border-radius:8px"><span>🧮 Calculateur 18/20</span><a href="../index.html#calculateur" style="font-weight:700">Simuler →</a></div>
+      <div style="display:flex;justify-content:space-between;background:var(--bg3);padding:.6rem;border-radius:8px"><span>📄 Sujets Bac 2024-2025 PDF</span><a href="../index.html#resources" style="font-weight:700">Voir →</a></div>
+      <div style="display:flex;justify-content:space-between;background:var(--bg3);padding:.6rem;border-radius:8px"><span>📊 Dashboard coefficients</span><a href="../Dashboard/Dashboard-seq1.html" style="font-weight:700">Analyser →</a></div>
+    </div>
+    <p style="font-size:.74rem;color:var(--text3);margin-top:.6rem">Source officielle programmes : <code>README.md:92</code> et <code>docs/PLAN_HUB.md:119</code></p>
+  </div>
+</div>
+
+<div class="card" style="background:linear-gradient(135deg,#fbf8f3,#f5eee1);border:1px solid #e7d8be;text-align:center">
+  <div style="font-size:1.4rem">🎯</div>
+  <h3 style="font-size:1rem;font-weight:800;margin:.2rem 0">Rappel final</h3>
+  <p style="font-size:.84rem;color:var(--text2);max-width:680px;margin:0 auto">
+    18/20 n'est pas de l'intelligence, c'est de la <strong>méthode quotidienne</strong>. Ceux qui ont 18 ne révisent pas plus, ils <strong>n'oublient pas</strong>.<br>
+    Avance 24h + Active Recall le soir + 1 sujet/semaine = 558 pts automatiques.<br>
+    <strong style="color:var(--accent)">Commence dimanche 19h avec la prépa Lundi. Pas lundi.</strong>
+  </p>
+  <div style="margin-top:.8rem;display:flex;gap:.5rem;justify-content:center;flex-wrap:wrap">
+    <a href="../index.html" style="background:linear-gradient(135deg,var(--accent),var(--accent2));color:#fff;padding:.55rem 1.1rem;border-radius:8px;font-weight:700;font-size:.85rem;text-decoration:none">Ouvrir HSC →</a>
+    <a href="javascript:window.print()" class="no-print" style="background:var(--bg2);border:1px solid var(--border);padding:.55rem 1.1rem;border-radius:8px;font-weight:700;font-size:.85rem;text-decoration:none;color:var(--text)">🖨️ Imprimer ce guide</a>
+  </div>
+  <p style="font-size:.68rem;color:var(--text3);margin-top:.7rem">Généré pour madiba-elate • Terminale C • 2026-09-12 • Basé sur emploi réel + TerminaleC-Prep v1</p>
+</div>
+
+</div>
+<script>
+// Persistance checklist
+document.querySelectorAll('.check input').forEach((cb,i)=>{
+  const k='hsc-check-'+i;
+  cb.checked = localStorage.getItem(k)==='1';
+  cb.addEventListener('change',()=> localStorage.setItem(k, cb.checked?'1':'0'));
+});
+</script>
+</body>
+</html>
