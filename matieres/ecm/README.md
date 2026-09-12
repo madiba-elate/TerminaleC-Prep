@@ -25,7 +25,7 @@ ECM est une matière à **fort rendement** : petit volume, coef 2, mais 40 point
 ### Leçon 9 : Le Cameroun et les pays d'Amérique : États-Unis, Brésil
 ### Dossier 3 : L'aide au développement
 ### Leçon 10 : Le Cameroun et l'Union africaine
-### Leçon 11 : Le Cameroun dans sa sous-région : la CEMAC, la CEEAC, les autres organisations sous-régionales (CBLT, OCEAC)
+### Leçon 11 : Le Cameroun dans sa sous-région : la CEMAC, la CEEAC, les autres organisations sous-régionales (CBLT, OERN, OCEAC)
 ### Dossier 4 : Le COPAX
 ### TD 2 : La contribution du Cameroun dans la gestion des conflits en Afrique
 ### Dossier 5 : Les problèmes du Cameroun dans les relations internationales
