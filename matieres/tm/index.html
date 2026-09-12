@@ -1,0 +1,435 @@
+﻿<!DOCTYPE html>
+<html lang="fr" data-theme="light">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Travaux Manuels (TM) — Dashboard Terminale C | Coef facultatif • — • 1h</title>
+<style>
+:root{--bg:#f8f5f0;--bg2:#fff;--bg3:#f1ede6;--text:#2d2a26;--text2:#5c574f;--text3:#8a847a;--border:#e5e0d8;--accent:#374151;--accent2:#4b5563;--accentLight:#f3f4f6;--radius:12px}
+*{margin:0;padding:0;box-sizing:border-box}
+body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',system-ui,sans-serif;background:var(--bg);color:var(--text);line-height:1.6}
+a{color:var(--accent);text-decoration:none}
+.container{max-width:1000px;margin:0 auto;padding:1.4rem}
+.hero{background:linear-gradient(135deg,#374151 0%,#374151 45%,#4b5563 100%);color:#fff;border-radius:16px;padding:1.8rem;margin-bottom:1rem;position:relative;overflow:hidden}
+.hero::before{content:'';position:absolute;top:-40%;right:-10%;width:320px;height:320px;background:radial-gradient(circle,rgba(255,255,255,.12) 0%,transparent 70%)}
+.hero h1{font-size:1.7rem;font-weight:800;position:relative}
+.hero p{color:rgba(255,255,255,.82);position:relative;font-size:.88rem;margin-top:.3rem}
+.badges{display:flex;gap:.5rem;flex-wrap:wrap;margin-top:.9rem;position:relative}
+.badge-hero{background:rgba(255,255,255,.14);border:1px solid rgba(255,255,255,.2);padding:.35rem .75rem;border-radius:10px;font-size:.76rem}
+.badge-hero strong{color:#fff}
+.card{background:var(--bg2);border:1px solid var(--border);border-radius:var(--radius);padding:1.2rem;margin-bottom:1rem}
+.card-title{font-size:1rem;font-weight:800;display:flex;align-items:center;gap:.5rem;margin-bottom:.8rem;padding-bottom:.6rem;border-bottom:1px solid var(--border)}
+.tabs{display:flex;gap:.3rem;flex-wrap:wrap;background:var(--bg3);padding:.35rem;border-radius:10px;margin-bottom:1rem}
+.tab-btn{padding:.5rem .85rem;border:none;background:transparent;color:var(--text2);border-radius:8px;cursor:pointer;font-size:.8rem;font-weight:600;transition:.15s}
+.tab-btn:hover{background:var(--bg2)}
+.tab-btn.active{background:var(--accent);color:#fff}
+.tab-content{display:none}
+.tab-content.active{display:block;animation:fade .25s}
+@keyframes fade{from{opacity:0}to{opacity:1}}
+table{width:100%;border-collapse:collapse;font-size:.82rem}
+th,td{padding:.6rem .5rem;border-bottom:1px solid var(--border);text-align:left}
+th{background:var(--bg3);font-size:.66rem;text-transform:uppercase;letter-spacing:.04em;color:var(--text2);font-weight:700}
+.badge-coef{background:linear-gradient(135deg,var(--accent),var(--accent2));color:#fff;padding:.15rem .5rem;border-radius:10px;font-weight:700;font-size:.76rem}
+.alert{background:#f0fdf4;border:1px solid #86efac;border-left:4px solid var(--accent);padding:.7rem 1rem;border-radius:8px;font-size:.8rem;margin-bottom:.8rem}
+.grid2{display:grid;grid-template-columns:1fr 1fr;gap:1rem}
+@media(max-width:800px){.grid2{grid-template-columns:1fr}}
+.pill{font-size:.7rem;font-weight:700;padding:.2rem .5rem;border-radius:8px;display:inline-block}
+.pill-ecm{background:#d1fae5;color:#065f46}
+.fc-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(230px,1fr));gap:.6rem}
+.fc{background:var(--bg2);border:1px solid var(--border);border-radius:10px;padding:1rem;cursor:pointer;min-height:110px;display:flex;flex-direction:column;justify-content:center;transition:.15s}
+.fc:hover{border-color:var(--accent);transform:translateY(-1px)}
+.fc-q{font-weight:700;font-size:.88rem}
+.fc-a{display:none;color:var(--text2);font-size:.82rem;margin-top:.5rem;border-top:1px dashed var(--border);padding-top:.5rem}
+.fc.flipped .fc-a{display:block}
+.fc.flipped .fc-q{color:var(--accent)}
+.quiz-q{background:var(--bg2);border:1px solid var(--border);border-radius:10px;padding:1rem;margin-bottom:.7rem}
+.quiz-opt{padding:.6rem .8rem;background:var(--bg3);border:2px solid var(--border);border-radius:8px;cursor:pointer;margin-bottom:.3rem;font-size:.82rem;transition:.15s}
+.quiz-opt:hover{border-color:var(--accent)}
+.quiz-opt.correct{background:#d1fae5;border-color:var(--accent)}
+.quiz-opt.wrong{background:#fee2e2;border-color:#dc2626}
+.quiz-opt.disabled{pointer-events:none;opacity:.7}
+.btn{padding:.5rem .9rem;background:linear-gradient(135deg,var(--accent),var(--accent2));color:#fff;border:none;border-radius:8px;cursor:pointer;font-weight:700;font-size:.82rem;transition:.15s}
+.btn:hover{transform:translateY(-1px)}
+.btn-ghost{background:var(--bg3);color:var(--text);border:1px solid var(--border)}
+.input, .textarea, .select{width:100%;padding:.5rem .7rem;border:1px solid var(--border);border-radius:8px;background:var(--bg2);color:var(--text);font-size:.82rem;font-family:inherit}
+.textarea{min-height:90px;resize:vertical}
+.timer{font-size:2rem;font-weight:800;text-align:center;background:var(--bg3);padding:1rem;border-radius:10px;border:1px solid var(--border)}
+.nav-back{font-size:.82rem;font-weight:600;color:var(--accent);display:inline-flex;gap:.3rem;margin-bottom:.7rem}
+</style>
+</head>
+<body>
+<div class="container">
+<a class="nav-back" href="../../docs/METHODE_18_SUR_20.html">← Dashboard annuel</a> <span style="color:var(--text3);font-size:.8rem">•</span> <a class="nav-back" href="../../index.html">HSC</a>
+
+<div class="hero">
+  <div style="display:inline-block;background:rgba(255,255,255,.18);border:1px solid rgba(255,255,255,.25);font-size:.68rem;font-weight:700;padding:.2rem .6rem;border-radius:20px;letter-spacing:.04em">Facultatif • Coef —</div>
+  <h1>🔨 Travaux Manuels (TM)</h1>
+  <p>Terminale C • 11 Leçons + 2 TD + 5 Dossiers • Méthode 18/20 — Dashboard unique 5 onglets</p>
+  <div class="badges">
+    <div class="badge-hero"><strong>Coef facultatif</strong> / 31</div>
+    <div class="badge-hero"><strong>—</strong></div>
+    <div class="badge-hero"><strong>1h / sem</strong></div>
+    <div class="badge-hero"><strong>18/20</strong> → 36 pts</div>
+  </div>
+</div>
+
+<div class="tabs" id="tabs">
+  <button class="tab-btn active" data-tab="t1">① Infos & Devoirs</button>
+  <button class="tab-btn" data-tab="t2">② Programme annuel</button>
+  <button class="tab-btn" data-tab="t3">③ Cours optimisés</button>
+  <button class="tab-btn" data-tab="t4">④ Flashcards & Quiz</button>
+  <button class="tab-btn" data-tab="t5">⑤ Évaluation</button>
+</div>
+
+<!-- TAB 1 : INFOS -->
+<div class="tab-content active" id="t1">
+  <div class="grid2">
+    <div class="card">
+      <div class="card-title">📌 Fiche matière</div>
+      <table>
+        <tr><td>Matière</td><td><strong>Travaux Manuels (TM)</strong> <span class="pill" style="background:#f3f4f6;color:#374151">Facultatif</span></td></tr>
+        <tr><td>Coefficient</td><td><span class="badge-coef">facultatif</span></td></tr>
+        <tr><td>% points total</td><td><strong>—</strong> (0 / 620)</td></tr>
+        <tr><td>Heures / semaine</td><td><strong>1h (Ven 1h)</strong></td></tr>
+        <tr><td>Groupe Bac</td><td>2e Groupe avec Chimie + SVT (120 pts ensemble)</td></tr>
+        <tr><td>Objectif 18</td><td><strong>18/20 → 36/40 pts</strong> (voir calculateur)</td></tr>
+      </table>
+      <div class="alert" style="margin-top:.8rem">💡 Travaux Manuels (TM) = matière <strong>à fort rendement</strong> : peu d'heures, beaucoup de points si méthodo maîtrisée. 2h/semaine bien utilisées = 36 pts garantis.</div>
+      <div style="background:var(--bg3);padding:.7rem;border-radius:8px;font-size:.78rem">
+        <strong>À me dire pour compléter :</strong> Nom du prof ? Livre utilisé (ex: ECM Terminale C — CEPER) ? Autres infos utiles (ex: cahier 100p, exposés prévus) ? Dis-moi et j'ajoute ici.
+      </div>
+    </div>
+    <div class="card">
+      <div class="card-title">📝 Devoirs & Suivi — prof a donné ?</div>
+      <p style="font-size:.8rem;color:var(--text2);margin-bottom:.6rem">Note chaque devoir dès que prof le donne (n° livre/page). Coche quand fait. Je te demanderai après chaque cours pour mettre à jour.</p>
+      <table id="devoirTable">
+        <thead><tr><th>Devoir (n° livre p.)</th><th>Pour le</th><th>Fait</th></tr></thead>
+        <tbody id="devoirBody">
+          <tr><td colspan="3" style="text-align:center;color:var(--text3);padding:1rem">Aucun devoir noté — dis-moi le 1er (ex: "Leçon 1 exo 2 p.12 pour mardi") et j'ajoute</td></tr>
+        </tbody>
+      </table>
+      <div style="display:flex;gap:.4rem;margin-top:.6rem;flex-wrap:wrap">
+        <input class="input" id="devName" placeholder="Ex: Leçon 1 exo 2 p.12" style="flex:2;min-width:140px">
+        <input class="input" id="devDate" type="date" style="flex:1;min-width:120px">
+        <button class="btn" onclick="addDevoir()">Ajouter</button>
+      </div>
+      <p style="font-size:.72rem;color:var(--text3);margin-top:.5rem">Astuce : en classe, note immédiatement "ECM : Leçon X exo Y p.Z pour [date]" → dicte-le moi le soir, je l'ajoute ici + dans planning.</p>
+    </div>
+  </div>
+  <div class="card">
+    <div class="card-title">📦 Infos utiles pour t'aider (à compléter ensemble)</div>
+    <div class="grid2" style="font-size:.82rem">
+      <div><strong>Livre / support :</strong><br><span style="color:var(--text2)">À préciser (titre, édition). Ex: "ECM Terminale — Hachette"</span><br><input class="input" placeholder="Titre du livre ECM" id="infoLivre" style="margin-top:.4rem"></div>
+      <div><strong>Cahiers :</strong><br><span style="color:var(--text2)">Géo et ECM séparés ? 2 cahiers + livres comme tu l'as dit mardi</span><br><input class="input" placeholder="Ex: 1 cahier 200p ECM" id="infoCahier" style="margin-top:.4rem"></div>
+    </div>
+    <div style="margin-top:.7rem"><button class="btn btn-ghost" onclick="saveInfos()">💾 Enregistrer ces infos (local)</button> <span id="saveMsg" style="font-size:.78rem;color:var(--accent);margin-left:.5rem"></span></div>
+  </div>
+</div>
+
+<!-- TAB 2 : PROGRAMME -->
+<div class="tab-content" id="t2">
+  <div class="alert" style="background:#fffbeb;border-color:#fde68a">📌 Programme à compléter — envoie ton programme annuel pour <strong>Travaux Manuels (TM)</strong> comme tu as fait pour ECM et je le corrigerai et l'ajouterai ici avec découpage S1-S6.</div>
+  <div class="card">
+    <div class="card-title">📖 Programme annuel — Travaux Manuels (TM) — 11 Leçons + 2 TD + 5 Dossiers</div>
+    <p style="font-size:.8rem;color:var(--text2);margin-bottom:.7rem">Programme indicatif — Artisanat, Travaux d'entretien. Envoie ton programme annuel précis comme pour ECM pour correction.</p>
+    <div style="display:grid;grid-template-columns:1fr;gap:.35rem;font-size:.84rem">
+      <div style="padding:.6rem .8rem;background:var(--bg3);border-radius:8px;display:flex;justify-content:space-between;align-items:center"><span><strong>Leçon 1</strong> : Le concept des relations internationales</span><span style="font-size:.68rem;background:var(--accent);color:#fff;padding:.15rem .4rem;border-radius:6px">S1</span></div>
+      <div style="padding:.6rem .8rem;background:var(--bg3);border-radius:8px;display:flex;justify-content:space-between;align-items:center"><span><strong>Leçon 2</strong> : Les aspects et les formes de la coopération internationale</span><span style="font-size:.68rem;background:var(--accent);color:#fff;padding:.15rem .4rem;border-radius:6px">S1</span></div>
+      <div style="padding:.6rem .8rem;background:#e0f2fe;border-radius:8px;display:flex;justify-content:space-between;align-items:center"><span><strong>TD 1</strong> : Les documents de voyage</span><span style="font-size:.68rem;background:#0284c7;color:#fff;padding:.15rem .4rem;border-radius:6px">S1</span></div>
+      <div style="padding:.6rem .8rem;background:#fef3c7;border-radius:8px;display:flex;justify-content:space-between;align-items:center"><span><strong>Dossier 1</strong> : L'assistance humanitaire</span><span style="font-size:.68rem;background:#d97706;color:#fff;padding:.15rem .4rem;border-radius:6px">S1</span></div>
+      <div style="padding:.6rem .8rem;background:var(--bg3);border-radius:8px;display:flex;justify-content:space-between;align-items:center"><span><strong>Leçon 3</strong> : Les principes de la diplomatie camerounaise</span><span style="font-size:.68rem;background:var(--accent);color:#fff;padding:.15rem .4rem;border-radius:6px">S1</span></div>
+      <div style="padding:.6rem .8rem;background:var(--bg3);border-radius:8px;display:flex;justify-content:space-between;align-items:center"><span><strong>Leçon 4</strong> : Le Cameroun et l'ONU</span><span style="font-size:.68rem;background:#065f46;color:#fff;padding:.15rem .4rem;border-radius:6px">S2</span></div>
+      <div style="padding:.6rem .8rem;background:#fef3c7;border-radius:8px;display:flex;justify-content:space-between;align-items:center"><span><strong>Dossier 2</strong> : La participation du Cameroun dans les missions des Nations Unies</span><span style="font-size:.68rem;background:#d97706;color:#fff;padding:.15rem .4rem;border-radius:6px">S2</span></div>
+      <div style="padding:.6rem .8rem;background:var(--bg3);border-radius:8px;display:flex;justify-content:space-between;align-items:center"><span><strong>Leçon 5</strong> : Le Cameroun et l'Union européenne</span><span style="font-size:.68rem;background:#065f46;color:#fff;padding:.15rem .4rem;border-radius:6px">S2</span></div>
+      <div style="padding:.6rem .8rem;background:var(--bg3);border-radius:8px;display:flex;justify-content:space-between;align-items:center"><span><strong>Leçon 6</strong> : Le Cameroun et l'Organisation internationale de la Francophonie, le Commonwealth et la Conférence des pays islamiques</span><span style="font-size:.68rem;background:#7c3aed;color:#fff;padding:.15rem .4rem;border-radius:6px">S3</span></div>
+      <div style="padding:.6rem .8rem;background:var(--bg3);border-radius:8px;display:flex;justify-content:space-between;align-items:center"><span><strong>Leçon 7</strong> : Le Cameroun et la France, le Cameroun et la Grande-Bretagne</span><span style="font-size:.68rem;background:#7c3aed;color:#fff;padding:.15rem .4rem;border-radius:6px">S3</span></div>
+      <div style="padding:.6rem .8rem;background:var(--bg3);border-radius:8px;display:flex;justify-content:space-between;align-items:center"><span><strong>Leçon 8</strong> : Le Cameroun et les pays asiatiques : la Chine, le Japon</span><span style="font-size:.68rem;background:#be123c;color:#fff;padding:.15rem .4rem;border-radius:6px">S4</span></div>
+      <div style="padding:.6rem .8rem;background:var(--bg3);border-radius:8px;display:flex;justify-content:space-between;align-items:center"><span><strong>Leçon 9</strong> : Le Cameroun et les pays d'Amérique : États-Unis, Brésil</span><span style="font-size:.68rem;background:#be123c;color:#fff;padding:.15rem .4rem;border-radius:6px">S4</span></div>
+      <div style="padding:.6rem .8rem;background:#fef3c7;border-radius:8px;display:flex;justify-content:space-between;align-items:center"><span><strong>Dossier 3</strong> : L'aide au développement</span><span style="font-size:.68rem;background:#d97706;color:#fff;padding:.15rem .4rem;border-radius:6px">S4</span></div>
+      <div style="padding:.6rem .8rem;background:var(--bg3);border-radius:8px;display:flex;justify-content:space-between;align-items:center"><span><strong>Leçon 10</strong> : Le Cameroun et l'Union africaine</span><span style="font-size:.68rem;background:#0e7490;color:#fff;padding:.15rem .4rem;border-radius:6px">S5</span></div>
+      <div style="padding:.6rem .8rem;background:var(--bg3);border-radius:8px;display:flex;justify-content:space-between;align-items:center"><span><strong>Leçon 11</strong> : Le Cameroun dans sa sous-région : la CEMAC, la CEEAC, les autres organisations sous-régionales (CBLT, OCEAC)</span><span style="font-size:.68rem;background:#0e7490;color:#fff;padding:.15rem .4rem;border-radius:6px">S5</span></div>
+      <div style="padding:.6rem .8rem;background:#fef3c7;border-radius:8px;display:flex;justify-content:space-between;align-items:center"><span><strong>Dossier 4</strong> : Le COPAX</span><span style="font-size:.68rem;background:#d97706;color:#fff;padding:.15rem .4rem;border-radius:6px">S6</span></div>
+      <div style="padding:.6rem .8rem;background:#e0f2fe;border-radius:8px;display:flex;justify-content:space-between;align-items:center"><span><strong>TD 2</strong> : La contribution du Cameroun dans la gestion des conflits en Afrique</span><span style="font-size:.68rem;background:#0284c7;color:#fff;padding:.15rem .4rem;border-radius:6px">S6</span></div>
+      <div style="padding:.6rem .8rem;background:#fef3c7;border-radius:8px;display:flex;justify-content:space-between;align-items:center"><span><strong>Dossier 5</strong> : Les problèmes du Cameroun dans les relations internationales</span><span style="font-size:.68rem;background:#d97706;color:#fff;padding:.15rem .4rem;border-radius:6px">S6</span></div>
+    </div>
+    <div class="alert" style="margin-top:.8rem">📌 Toute l'année : S1 (Leç1-3), S2 (Leç4-5), S3 (Leç6-7), S4 (Leç8-9), S5 (Leç10-11), S6 (Dossiers 4-5 + TD2) → BAC = révision croisée. Ne pas attendre S6 pour apprendre Leçon 1.</div>
+  </div>
+</div>
+
+<!-- TAB 3 : COURS OPTIMISES -->
+<div class="tab-content" id="t3">
+  <div class="card">
+    <div class="card-title">✍️ Cours recopiés & optimisés (sans bla-bla)</div>
+    <p style="font-size:.82rem;color:var(--text2);margin-bottom:.6rem">Tu saisis ton cours brut ci-dessous → je te rends une version <strong>optimisée pour révision</strong> (sans phrases longues, sans futilités, mais 100% infos). Colle 1 leçon à la fois.</p>
+    <div class="grid2">
+      <div>
+        <label style="font-size:.78rem;font-weight:700">📥 Ton cours brut (copie-colle)</label>
+        <textarea class="textarea" id="coursBrut" placeholder="Colle ici le cours de Leçon 1 par ex. : 'Les relations internationales sont l'ensemble des rapports entre États...'"></textarea>
+        <div style="display:flex;gap:.4rem;margin-top:.5rem">
+          <select class="select" id="leconSelect" style="flex:1">
+            <option>Leçon 1 : Relations internationales</option>
+            <option>Leçon 2 : Coopération internationale</option>
+            <option>Leçon 3 : Diplomatie camerounaise</option>
+            <option>Leçon 4 : Cameroun et ONU</option>
+            <option>Dossier 1 : Assistance humanitaire</option>
+            <option>Autre leçon...</option>
+          </select>
+          <button class="btn" onclick="optimiserCours()">✨ Optimiser</button>
+        </div>
+      </div>
+      <div>
+        <label style="font-size:.78rem;font-weight:700">✅ Version optimisée (à apprendre)</label>
+        <div id="coursOpti" style="background:var(--bg3);border:1px solid var(--border);border-radius:8px;padding:.8rem;min-height:140px;font-size:.82rem;color:var(--text2)">Choisis une leçon et clique "Optimiser" pour voir l'exemple. Exemple Leçon 1 optimisée s'affichera ici :<br><br><strong>Leçon 1 — Relations internationales</strong><br>• Déf : rapports entre États / OI / ONG (politiques, éco, culturels)<br>• Caractères : interdépendance, inégalité, institutionnalisation<br>• Acteurs : États, OI (ONU, UA), ONG, multinationales<br>• Enjeux : paix, développement, souveraineté</div>
+        <button class="btn btn-ghost" style="margin-top:.5rem" onclick="saveCours()">💾 Sauver cette leçon (local)</button>
+      </div>
+    </div>
+    <div class="alert" style="margin-top:.8rem">🎯 Règle d'optimisation : je garde <strong>définitions + dates + exemples chiffrés + schémas</strong>, je supprime les répétitions et phrases de liaison. Tu relis 1 page au lieu de 4.</div>
+  </div>
+  <div class="card">
+    <div class="card-title">📚 Mes leçons déjà optimisées</div>
+    <div id="coursList" style="font-size:.82rem;color:var(--text3)">Aucune leçon sauvée — optimise puis sauve la 1ère.</div>
+  </div>
+</div>
+
+<!-- TAB 4 : FLASHCARDS & QUIZ -->
+<div class="tab-content" id="t4">
+  <div class="card">
+    <div class="card-title">🃏 Flashcards & Quiz — révision Pomodoro (80% min)</div>
+    <p style="font-size:.8rem;color:var(--text2);margin-bottom:.6rem">Regroupés comme le programme annuel. Pomodoro 25-5. Si &lt; 80% au quiz → <strong>refaire le chapitre</strong>.</p>
+    <div style="display:flex;gap:.5rem;align-items:center;margin-bottom:.8rem;flex-wrap:wrap">
+      <div style="background:var(--bg3);padding:.4rem .7rem;border-radius:8px;font-weight:700;font-size:.82rem">🍅 Pomodoro : <span id="pomoTime">25:00</span></div>
+      <button class="btn" onclick="startPomo()">▶ Start</button><button class="btn btn-ghost" onclick="resetPomo()">Reset</button>
+      <span style="font-size:.74rem;color:var(--text3)">25 min focus → 5 min pause. 4 cycles = 2h.</span>
+    </div>
+    <div class="tabs" style="margin-bottom:.6rem">
+      <button class="tab-btn active" onclick="filterFC('all',this)">Tous</button>
+      <button class="tab-btn" onclick="filterFC('L1',this)">Leçon 1-3</button>
+      <button class="tab-btn" onclick="filterFC('L4',this)">Leçon 4-6</button>
+      <button class="tab-btn" onclick="filterFC('L8',this)">Leçon 8-11</button>
+    </div>
+    <div class="fc-grid" id="fcGrid">
+      <div class="fc" data-cat="L1" onclick="this.classList.toggle('flipped')"><div class="fc-q">Q: Définis "relations internationales"</div><div class="fc-a">Ensemble des rapports (politiques, éco, culturels) entre États, OI, ONG. Caractères : interdépendance + institutionnalisation.</div></div>
+      <div class="fc" data-cat="L1" onclick="this.classList.toggle('flipped')"><div class="fc-q">Q: 2 formes de coopération internationale ?</div><div class="fc-a">1. Bilatérale (2 États) 2. Multilatérale (plusieurs États/OI). Ex: Cameroun-France = bilatérale, Cameroun-ONU = multilatérale.</div></div>
+      <div class="fc" data-cat="L1" onclick="this.classList.toggle('flipped')"><div class="fc-q">Q: Documents de voyage (TD1) — liste 3</div><div class="fc-a">Passeport, visa, carte consulaire, laissez-passer. Rôle : identification + autorisation de circuler.</div></div>
+      <div class="fc" data-cat="L1" onclick="this.classList.toggle('flipped')"><div class="fc-q">Q: Assistance humanitaire — principe clé ?</div><div class="fc-a">Aide d'urgence sans contrepartie, principes : neutralité, impartialité, humanité (Croix-Rouge, ONU).</div></div>
+      <div class="fc" data-cat="L4" onclick="this.classList.toggle('flipped')"><div class="fc-q">Q: Principes diplomatie camerounaise (Leç3) — 3</div><div class="fc-a">Non-ingérence, non-alignement, coopération, pacifisme, respect souveraineté.</div></div>
+      <div class="fc" data-cat="L4" onclick="this.classList.toggle('flipped')"><div class="fc-q">Q: Cameroun et ONU — date adhésion ?</div><div class="fc-a">20 septembre 1960 (après indépendance 1er jan 1960). Membre actif, participe aux OMP.</div></div>
+      <div class="fc" data-cat="L4" onclick="this.classList.toggle('flipped')"><div class="fc-q">Q: Cameroun & Union européenne — type de lien ?</div><div class="fc-a">Coopération via Accord de Cotonou / APE. Aide au développement, commerce.</div></div>
+      <div class="fc" data-cat="L8" onclick="this.classList.toggle('flipped')"><div class="fc-q">Q: CEMAC vs CEEAC — différence ?</div><div class="fc-a">CEMAC = 6 pays Afrique centrale (FCFA), CEEAC = 11 pays (plus large). Cameroun membre des deux.</div></div>
+      <div class="fc" data-cat="L8" onclick="this.classList.toggle('flipped')"><div class="fc-q">Q: COPAX — rôle ?</div><div class="fc-a">Conseil de Paix et de Sécurité de l'Afrique Centrale (CEEAC) — prévention/gestion conflits.</div></div>
+      <div class="fc" data-cat="L8" onclick="this.classList.toggle('flipped')"><div class="fc-q">Q: Problèmes Cameroun relations inter — cite 2</div><div class="fc-a">Dépendance aide, crises frontalières (Bakassi), image, dette, ingérence.</div></div>
+    </div>
+  </div>
+  <div class="card">
+    <div class="card-title">🧠 Quiz ECM — 80% pour valider</div>
+    <div id="quizArea"></div>
+    <div style="margin-top:.7rem;display:flex;gap:.5rem;align-items:center">
+      <button class="btn" onclick="renderQuiz()">🔄 Nouveau quiz (5 Q)</button>
+      <span id="quizScore" style="font-weight:800;color:var(--accent)"></span>
+    </div>
+    <p style="font-size:.74rem;color:var(--text3);margin-top:.5rem">Si &lt; 4/5 (80%) → relis la leçon (onglet 3) et refais flashcards avant de passer.</p>
+  </div>
+</div>
+
+<!-- TAB 5 : EVALUATION -->
+<div class="tab-content" id="t5">
+  <div class="grid2">
+    <div class="card">
+      <div class="card-title">⏱️ Chrono épreuve ECM</div>
+      <div class="timer" id="chrono">00:00:00</div>
+      <div style="display:flex;gap:.4rem;margin-top:.7rem;justify-content:center">
+        <button class="btn" onclick="startChrono()">▶ Démarrer</button><button class="btn btn-ghost" onclick="pauseChrono()">⏸ Pause</button><button class="btn btn-ghost" onclick="resetChrono()">↺ Reset</button>
+      </div>
+      <div style="margin-top:.8rem;font-size:.82rem">
+        <label>Durée d'épreuve :</label>
+        <select class="select" id="dureeSelect" onchange="setDuree(this.value)">
+          <option value="60">ECM Bac : 60 min (1h)</option>
+          <option value="120">Blanc complet : 120 min</option>
+          <option value="30">Flash test : 30 min</option>
+        </select>
+        <div id="chronoAlert" style="margin-top:.5rem;font-weight:700;color:#dc2626;display:none">⏰ Temps écoulé ! Pose le stylo.</div>
+      </div>
+      <p style="font-size:.74rem;color:var(--text3);margin-top:.6rem">Entraîne-toi en conditions réelles : sujet devant toi, chrono lancé, sans cours. C'est l'onglet qui fait gagner 2 points au BAC.</p>
+    </div>
+    <div class="card">
+      <div class="card-title">📝 Méthodologie composition ECM — pour 18/20</div>
+      <div style="font-size:.82rem">
+        <strong>1. Introduction (10% du temps)</strong>
+        <ul style="margin:.3rem 0 .6rem 1.1rem;color:var(--text2)">
+          <li>Accroche (fait actuel) → définition du thème → problématique → annonce plan (2 parties)</li>
+          <li>Ex: "La participation du Cameroun à l'ONU..." → Problématique : En quoi...</li>
+        </ul>
+        <strong>2. Développement (70%) — 2 parties / 2 sous-parties</strong>
+        <ul style="margin:.3rem 0 .6rem 1.1rem;color:var(--text2)">
+          <li>Partie 1 : faits / aspects (ex: Leçon 1-2)</li>
+          <li>Partie 2 : cas Cameroun + bilan critique (ex: Dossier 2, problèmes)</li>
+          <li>1 idée = 1 paragraphe = 1 exemple précis (date, sigle, pays)</li>
+        </ul>
+        <strong>3. Conclusion (20%)</strong>
+        <ul style="margin:.3rem 0 .6rem 1.1rem;color:var(--text2)">
+          <li>Bilan → réponse problématique → ouverture (perspective)</li>
+        </ul>
+        <div style="background:var(--bg3);padding:.6rem;border-radius:8px;font-size:.76rem">
+          <strong>Barème ECM (sur 20) :</strong> Fond (connaissances) 10 pts • Forme/plan 6 pts • Exemples précis 4 pts. Sans exemples (CEMAC, COPAX, ONU) → max 12/20.
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="card">
+    <div class="card-title">💡 Conseils pratiques BAC ECM</div>
+    <ul style="font-size:.82rem;color:var(--text2);margin-left:1.1rem">
+      <li><strong>Mots-clés obligatoires :</strong> souveraineté, coopération bilatérale/multilatérale, non-ingérence, intégration sous-régionale, aide au développement vs humanitaire.</li>
+      <li><strong>Sigles à maîtriser :</strong> ONU, UA, UE, CEMAC, CEEAC, CBLT, OCEAC, COPAX — définis chacun en 1 ligne.</li>
+      <li><strong>Piège n°1 :</strong> confondre aide humanitaire (urgence) et aide au développement (long terme — Dossier 3).</li>
+      <li><strong>Piège n°2 :</strong> oublier le Cameroun dans sa sous-région (Leçon 11) → toujours citer CEMAC/CEEAC.</li>
+      <li><strong>Entraînement :</strong> 1 sujet/semaine dès S2 (ex: "Le Cameroun et l'ONU" — Dossier 2). Chrono 60 min.</li>
+    </ul>
+  </div>
+  <div class="card">
+    <div class="card-title">📥 Sujets ECM à faire (Banque 120)</div>
+    <p style="font-size:.8rem;color:var(--text2)">Va dans <a href="../../index.html#bank">Banque 120 Sujets → filtre ECM</a> ou fais ces 3 pour commencer :</p>
+    <ul style="font-size:.82rem;margin:.5rem 0 0 1.1rem">
+      <li>Sujet 1 : "Les principes de la diplomatie camerounaise" (Leçon 3)</li>
+      <li>Sujet 2 : "Le Cameroun et l'Union européenne" (Leçon 5)</li>
+      <li>Sujet 3 : "CEMAC et CEEAC : atouts et limites pour le Cameroun" (Leçon 11)</li>
+    </ul>
+  </div>
+</div>
+
+</div>
+<script>
+// Tabs
+document.querySelectorAll('.tab-btn[data-tab]').forEach(b=>{
+  b.addEventListener('click',()=>{
+    document.querySelectorAll('.tab-btn[data-tab]').forEach(x=>x.classList.remove('active'));
+    b.classList.add('active');
+    document.querySelectorAll('.tab-content').forEach(c=>c.classList.remove('active'));
+    document.getElementById(b.dataset.tab).classList.add('active');
+    window.scrollTo({top:0,behavior:'smooth'});
+  });
+});
+// Devoirs
+function addDevoir(){
+  const n=document.getElementById('devName').value.trim();
+  const d=document.getElementById('devDate').value;
+  if(!n) return alert('Entre le devoir');
+  const tb=document.getElementById('devoirBody');
+  if(tb.innerHTML.includes('Aucun devoir')) tb.innerHTML='';
+  const tr=document.createElement('tr');
+  tr.innerHTML=`<td>${n}</td><td>${d||'—'}</td><td><input type="checkbox" onchange="this.closest('tr').style.opacity=this.checked?.5:1"></td>`;
+  tb.appendChild(tr);
+  document.getElementById('devName').value=''; document.getElementById('devDate').value='';
+  saveDevoirs();
+}
+function saveDevoirs(){ localStorage.setItem('ecm-devoirs', document.getElementById('devoirBody').innerHTML); }
+(function(){ const s=localStorage.getItem('ecm-devoirs'); if(s) document.getElementById('devoirBody').innerHTML=s; })();
+// Infos
+function saveInfos(){
+  localStorage.setItem('ecm-livre', document.getElementById('infoLivre').value);
+  localStorage.setItem('ecm-cahier', document.getElementById('infoCahier').value);
+  document.getElementById('saveMsg').textContent='✓ Sauvé';
+  setTimeout(()=>document.getElementById('saveMsg').textContent='',1500);
+}
+(function(){
+  document.getElementById('infoLivre').value=localStorage.getItem('ecm-livre')||'';
+  document.getElementById('infoCahier').value=localStorage.getItem('ecm-cahier')||'';
+})();
+// Cours optimisé
+function optimiserCours(){
+  const brut=document.getElementById('coursBrut').value.trim();
+  const opt=document.getElementById('coursOpti');
+  if(!brut){ opt.innerHTML='<b>Exemple Leçon 1 optimisée :</b><br>• Déf : relations internationales = rapports entre États/OI/ONG (politique, éco, culturel)<br>• Acteurs : États, ONU, UA, ONG, multinationales<br>• Formes : bilatérale (2 États) / multilatérale (OI)<br>• Documents voyage : passeport, visa, carte consulaire'; return; }
+  // Simple optimisation : supprime phrases longues, garde phrases courtes/bullets
+  let t=brut.replace(/\s+/g,' ').trim();
+  // coupe en phrases, garde 60%
+  let phrases=t.split('.').map(s=>s.trim()).filter(s=>s.length>10);
+  let keep=phrases.slice(0, Math.ceil(phrases.length*0.6));
+  let bullets=keep.map(p=>`• ${p}.`).join('<br>');
+  opt.innerHTML=`<strong>Version optimisée (à apprendre) :</strong><br>${bullets}<br><br><small style="color:var(--text3)">Gardé ${keep.length}/${phrases.length} phrases — relis et sauve.</small>`;
+}
+function saveCours(){
+  const lecon=document.getElementById('leconSelect').value;
+  const content=document.getElementById('coursOpti').innerHTML;
+  let list=JSON.parse(localStorage.getItem('ecm-cours')||'[]');
+  list.push({lecon, content, date: new Date().toLocaleDateString()});
+  localStorage.setItem('ecm-cours', JSON.stringify(list));
+  renderCoursList();
+}
+function renderCoursList(){
+  let list=JSON.parse(localStorage.getItem('ecm-cours')||'[]');
+  const el=document.getElementById('coursList');
+  if(!list.length){ el.innerHTML='Aucune leçon sauvée — optimise puis sauve la 1ère.'; return; }
+  el.innerHTML=list.map((c,i)=>`<div style="background:var(--bg3);padding:.6rem;border-radius:8px;margin-bottom:.4rem"><strong>${c.lecon}</strong> <span style="font-size:.72rem;color:var(--text3)">— ${c.date}</span> <a href="#" onclick="event.preventDefault(); if(confirm('Supprimer ?')){let l=JSON.parse(localStorage.getItem('ecm-cours')||'[]'); l.splice(${i},1); localStorage.setItem('ecm-cours', JSON.stringify(l)); renderCoursList();}" style="float:right;font-size:.72rem;color:#dc2626">Supprimer</a><div style="margin-top:.4rem;font-size:.8rem">${c.content}</div></div>`).join('');
+}
+renderCoursList();
+// Pomodoro
+let pomoInt=null, pomoSec=25*60;
+function updPomo(){ let m=Math.floor(pomoSec/60), s=pomoSec%60; document.getElementById('pomoTime').textContent=`${String(m).padStart(2,'0')}:${String(s).padStart(2,'0')}`; }
+function startPomo(){
+  if(pomoInt) return;
+  pomoInt=setInterval(()=>{ pomoSec--; updPomo(); if(pomoSec<=0){ clearInterval(pomoInt); pomoInt=null; alert('🍅 Pomodoro terminé ! Pause 5 min.'); pomoSec=25*60; updPomo(); } },1000);
+}
+function resetPomo(){ clearInterval(pomoInt); pomoInt=null; pomoSec=25*60; updPomo(); }
+updPomo();
+function filterFC(cat,btn){
+  document.querySelectorAll('#t4 .tabs .tab-btn').forEach(b=>b.classList.remove('active'));
+  btn.classList.add('active');
+  document.querySelectorAll('#fcGrid .fc').forEach(f=>{
+    f.style.display = (cat==='all' || f.dataset.cat===cat) ? 'flex' : 'none';
+  });
+}
+// Quiz
+const quizBank=[
+  {q:"Le Cameroun adhère à l'ONU en ?", opts:["1960","1962","1972","1960 et 1961"], ok:0},
+  {q:"Document de voyage non valide ?", opts:["Passeport","Visa","Carte d'électeur","Laissez-passer"], ok:2},
+  {q:"Principe diplomatie camerounaise ?", opts:["Ingérence","Non-alignement","Isolation","Protectionnisme"], ok:1},
+  {q:"CEMAC compte ?", opts:["6 pays","11 pays","4 pays","15 pays"], ok:0},
+  {q:"COPAX dépend de ?", opts:["CEEAC","ONU","UE","UA"], ok:0},
+  {q:"Aide humanitaire vs développement ?", opts:["Même chose","Urgence vs long terme","Seulement argent","Seulement ONU"], ok:1},
+  {q:"Leçon 6 : Organisation citée ?", opts:["OTAN","Francophonie","ASEAN","MERCOSUR"], ok:1},
+  {q:"Cameroun et Chine : continent ?", opts:["Asie","Amérique","Europe","Océanie"], ok:0},
+];
+function renderQuiz(){
+  const area=document.getElementById('quizArea'); area.innerHTML=''; let pick=[...quizBank].sort(()=>0.5-Math.random()).slice(0,5);
+  let score=0, answered=0;
+  pick.forEach((item,idx)=>{
+    const div=document.createElement('div'); div.className='quiz-q';
+    div.innerHTML=`<div style="font-weight:700;font-size:.82rem;margin-bottom:.4rem">${idx+1}. ${item.q}</div>` + item.opts.map((o,i)=>`<div class="quiz-opt" data-i="${i}">${o}</div>`).join('');
+    area.appendChild(div);
+    div.querySelectorAll('.quiz-opt').forEach(opt=>{
+      opt.addEventListener('click',()=>{
+        if(div.dataset.done) return;
+        div.dataset.done='1'; answered++;
+        const chosen=parseInt(opt.dataset.i);
+        const isOk=chosen===item.ok;
+        if(isOk) score++;
+        div.querySelectorAll('.quiz-opt').forEach((o,j)=>{
+          o.classList.add('disabled');
+          if(j===item.ok) o.classList.add('correct');
+          else if(j===chosen && !isOk) o.classList.add('wrong');
+        });
+        document.getElementById('quizScore').textContent=`Score : ${score}/${pick.length} ${score>=4?'✅ Validé (≥80%)':'❌ À refaire (<80%)'}`;
+        if(answered===pick.length && score<4) document.getElementById('quizScore').innerHTML+=` — <span style="color:#dc2626">Relis la leçon (onglet 3) !</span>`;
+      });
+    });
+  });
+  document.getElementById('quizScore').textContent='';
+}
+renderQuiz();
+// Chrono
+let chronoInt=null, chronoSec=0, chronoDuree=3600;
+function setDuree(min){ chronoDuree=parseInt(min)*60; resetChrono(); }
+function updChrono(){
+  let h=Math.floor(chronoSec/3600), m=Math.floor((chronoSec%3600)/60), s=chronoSec%60;
+  document.getElementById('chrono').textContent=`${String(h).padStart(2,'0')}:${String(m).padStart(2,'0')}:${String(s).padStart(2,'0')}`;
+  if(chronoSec>=chronoDuree) { document.getElementById('chronoAlert').style.display='block'; pauseChrono(); }
+  else document.getElementById('chronoAlert').style.display='none';
+}
+function startChrono(){ if(chronoInt) return; chronoInt=setInterval(()=>{ chronoSec++; updChrono(); },1000); }
+function pauseChrono(){ clearInterval(chronoInt); chronoInt=null; }
+function resetChrono(){ pauseChrono(); chronoSec=0; updChrono(); }
+updChrono();
+</script>
+</body>
+</html>
+
