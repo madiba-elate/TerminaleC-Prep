@@ -27,7 +27,8 @@ dans les dashboards des matières concernées.
 | `english_tenses.html` | Anglais | Temps anglais → `matieres/anglais/` |
 | `formal_letter.html` | Anglais | Lettre formelle (9 parties) → `matieres/anglais/` |
 | `demande_stage_societe_generale.html` | Français | Lettre de stage modèle → `matieres/francais/` |
-| `mes_exercices.html` | À classer | Compilation 1ère C — sujet à confirmer avant intégration |
+| `mes_exercices.html` | Physique | Compilation Exos 1-3 (vitesse, Bolt, amplificateur) → `matieres/physique/exercices/` ✅ |
 
+> ✅ **Statut : intégrés au Hub Exercices** (`hub-exercices.html`, 19 fiches).
+> Copies canoniques dans `matieres/<matiere>/exercices/`.
 > ⚠️ Ne pas modifier ces fichiers : ce sont les originaux.
-> L'intégration se fera par copie adaptée vers les dossiers matières.

@@ -44,6 +44,8 @@
         .nav-item.active { background:linear-gradient(135deg, var(--accent), var(--accent2)); color:#fff; }
         .nav-badge { margin-left:auto; background:var(--accent); color:#fff; font-size:.6rem; padding:.15rem .45rem; border-radius:8px; font-weight:600; }
         .nav-item.active .nav-badge { background:rgba(255,255,255,.25); }
+        .nav-link { display:flex; align-items:center; gap:.6rem; padding:.6rem .75rem; border-radius:8px; color:var(--text2); font-size:.85rem; font-weight:500; margin-bottom:2px; text-decoration:none; transition:all .2s; }
+        .nav-link:hover { background:var(--bg3); color:var(--text); }
 
         /* Main */
         .main { margin-left:var(--sidebar-w); padding:1.5rem; min-height:100vh; }
@@ -155,6 +157,7 @@
             <div class="nav-item" data-section="seq1"><span>📝</span><span>Préparation Seq 1</span></div>
             <div class="nav-item" data-section="quiz"><span>🧠</span><span>Quiz</span><span class="nav-badge">20</span></div>
             <div class="nav-item" data-section="flashcards"><span>🃏</span><span>Flashcards</span><span class="nav-badge">32</span></div>
+            <a class="nav-link" href="hub-exercices.html"><span>🎯</span><span>Hub Exercices</span><span class="nav-badge">19</span></a>
             <div class="nav-sec-title">Ressources</div>
             <div class="nav-item" data-section="bank"><span>📥</span><span>Banque 120 Sujets</span></div>
             <div class="nav-item" data-section="resources"><span>📄</span><span>Sujets Bac</span></div>

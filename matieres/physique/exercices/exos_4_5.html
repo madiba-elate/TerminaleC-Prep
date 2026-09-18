@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Exercices 4+5 — Physique</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Inter:wght@500;600;700;800&family=JetBrains+Mono:wght@600&display=swap');
+  *{margin:0;padding:0;box-sizing:border-box}
+  body{background:#f1f5f9;font-family:'Inter',sans-serif;color:#1e293b;padding:24px 16px}
+  .header{max-width:800px;margin:0 auto 20px auto;background:linear-gradient(135deg,#0f172a,#1e3a8a);border-radius:20px;padding:22px 24px;color:white;text-align:center}
+  .header h1{font-size:22px;font-weight:900}
+  .header h1 span{color:#7dd3fc}
+  .header p{font-size:12px;opacity:0.85;margin-top:4px}
+  .container{max-width:800px;margin:0 auto}
+  .exo{background:white;border:1px solid #e2e8f0;border-radius:16px;overflow:hidden;margin-bottom:18px}
+  .exo-head{padding:14px 18px;color:white;display:flex;justify-content:space-between;align-items:center}
+  .exo-head h2{font-size:14px;font-weight:800}
+  .exo-head .tag{font-size:10px;background:rgba(255,255,255,0.22);padding:4px 9px;border-radius:999px;font-weight:700}
+  .phy .exo-head{background:linear-gradient(135deg,#0284c7,#0ea5e9)}
+  .exo-body{padding:16px 18px}
+  .enonce{background:#fffbeb;border:1px solid #fde68a;border-radius:10px;padding:10px 14px;margin-bottom:12px;font-size:12.5px;line-height:1.6;color:#44403c}
+  .enonce b{color:#0f172a}
+  .step{background:#f8fafc;border-left:4px solid #0ea5e9;border-radius:8px;padding:8px 12px;margin:6px 0;font-size:12px;line-height:1.6;color:#334155}
+  .step b{color:#0f172a}
+  .formula{text-align:center;font-family:'JetBrains Mono',monospace;font-size:12px;font-weight:700;background:#eff6ff;border:1px solid #bfdbfe;border-radius:8px;padding:8px;margin:8px 0;color:#1e3a8a}
+  .calc{font-family:'JetBrains Mono',monospace;font-size:11.5px;background:white;border:1px solid #e2e8f0;border-radius:6px;padding:6px 10px;margin:4px 0;color:#334155}
+  .res{text-align:center;background:linear-gradient(135deg,#ecfdf5,#f0fdf4);border:1px solid #6ee7b7;border-radius:10px;padding:8px 12px;margin:8px 0}
+  .res b{font-family:'JetBrains Mono',monospace;font-size:14px;color:#065f46}
+  .res span{font-size:10px;color:#047857}
+  .rappel{background:#0f172a;color:white;border-radius:10px;padding:10px 14px;margin-top:10px;font-size:11.5px;line-height:1.6}
+  .rappel ul{margin-left:16px;color:#e2e8f0}
+  @media print{.no-print{display:none}.exo{break-inside:avoid;box-shadow:none}body{background:white;padding:0}}
+</style>
+</head>
+<body>
+<div class="header">
+  <h1>📚 Exercices <span>4 & 5</span> — Physique</h1>
+  <p>Chiffres significatifs • Poids • Dipôles en série • Puissance</p>
+</div>
+<div class="container">
+
+  <!-- EXO 4 -->
+  <div class="exo phy">
+    <div class="exo-head"><h2>Exo 4 — Poids d'un objet</h2><span class="tag">PHYSIQUE</span></div>
+    <div class="exo-body">
+      <div class="enonce"><b>Énoncé :</b> Un objet de masse m = 28,31 g est soumis à un champ de pesanteur g = 9,81 m.s⁻². Quel est son poids ?</div>
+      <div class="step"><b>Formule :</b> P = m × g</div>
+      <div class="calc">m = 28,31 g → 0,02831 kg (4 ch. sig.)<br>g = 9,81 m.s⁻² (3 ch. sig.)</div>
+      <div class="step"><b>Calcul :</b></div>
+      <div class="calc">P = 0,02831 × 9,81 = 0,2777211 N</div>
+      <div class="step"><b>Règle :</b> le résultat a autant de ch. sig. que la mesure la moins précise (g = 9,81 → 3 ch. sig.).</div>
+      <div class="res"><b>P = 0,278 N</b><span>(≈ 0,28 N ; arrondi à 3 ch. sig.)</span></div>
+      <div class="rappel"><b>⭐ Règle :</b> en multiplication, on garde autant de ch. sig. que le facteur le moins précis. P = 0,278 N.</div>
+    </div>
+  </div>
+
+  <!-- EXO 5 -->
+  <div class="exo phy">
+    <div class="exo-head"><h2>Exo 5 — Dipôles en série & puissance</h2><span class="tag">PHYSIQUE</span></div>
+    <div class="exo-body">
+      <div class="enonce"><b>Énoncé :</b> Un générateur délivre U aux bornes de 3 dipôles en série.<br>u₁ = 2,81 V ; u₂ = 3,0 V ; u₃ = 0,33 V. I = 630 mA.</div>
+      <div class="step"><b>2.1 — Tension du générateur (somme en série) :</b></div>
+      <div class="formula">U = u₁ + u₂ + u₃</div>
+      <div class="calc">U = 2,81 + 3,0 + 0,33 = 6,14 V<br>→ u₂ a 2 ch. sig. (3,0) → U = <b>6,1 V</b></div>
+      <div class="step"><b>2.2 — Puissance du générateur :</b></div>
+      <div class="formula">P = U × I</div>
+      <div class="calc">I = 630 mA = 0,630 A (2 ch. sig. ; le 630 → 2 ch.)<br>P = 6,1 × 0,630 = 3,843 W<br>→ <b>P = 3,8 W</b> (2 ch. sig.)</div>
+      <div class="res"><b>U = 6,1 V</b> &nbsp;|&nbsp; <b>P = 3,8 W</b></div>
+      <div class="rappel"><b>⭐ Règles :</b><br>• Somme : on arrondit au rang le moins précis (3,0 → dixième) → 6,1 V<br>• Produit : on garde le nb de ch. sig. du facteur le moins précis (I = 630 mA → 2 ch. sig.) → P = 3,8 W.</div>
+    </div>
+  </div>
+
+</div>
+</body>
+</html>

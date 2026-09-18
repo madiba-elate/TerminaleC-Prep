@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>Exercice 16 — Unités SI & Homogénéité</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Inter:wght@500;600;700;800&family=JetBrains+Mono:wght@600&display=swap');
+  *{margin:0;padding:0;box-sizing:border-box}
+  body{background:#f1f5f9;font-family:'Inter',sans-serif;color:#1e293b;padding:24px 16px}
+  .header{max-width:850px;margin:0 auto 18px auto;background:linear-gradient(135deg,#0f172a,#1e3a8a);border-radius:20px;padding:20px 22px;color:white;text-align:center}
+  .header h1{font-size:20px;font-weight:900}
+  .header h1 span{color:#7dd3fc}
+  .container{max-width:850px;margin:0 auto}
+  .exo{background:white;border:1px solid #e2e8f0;border-radius:16px;overflow:hidden;margin-bottom:16px}
+  .exo-head{padding:12px 16px;color:white;display:flex;justify-content:space-between;align-items:center}
+  .exo-head h2{font-size:13px;font-weight:800}
+  .phy .exo-head{background:linear-gradient(135deg,#0284c7,#0ea5e9)}
+  .exo-body{padding:14px 16px}
+  .enonce{background:#fffbeb;border:1px solid #fde68a;border-radius:10px;padding:10px 14px;margin-bottom:10px;font-size:12px;line-height:1.6;color:#44403c}
+  .enonce b{color:#0f172a}
+  .step{background:#f8fafc;border-left:4px solid #0ea5e9;border-radius:8px;padding:8px 12px;margin:6px 0;font-size:12px;line-height:1.6;color:#334155}
+  .step b{color:#0f172a}
+  .formula{text-align:center;font-family:'JetBrains Mono',monospace;font-size:11px;font-weight:700;background:#eff6ff;border:1px solid #bfdbfe;border-radius:8px;padding:8px;margin:8px 0;color:#1e3a8a}
+  .calc{font-family:'JetBrains Mono',monospace;font-size:11px;background:white;border:1px solid #e2e8f0;border-radius:6px;padding:6px 10px;margin:4px 0;color:#334155}
+  .res{text-align:center;background:linear-gradient(135deg,#ecfdf5,#f0fdf4);border:1px solid #6ee7b7;border-radius:10px;padding:8px 10px;margin:8px 0}
+  .res b{font-family:'JetBrains Mono',monospace;font-size:13px;color:#065f46}
+  .res span{font-size:10px;color:#047857}
+  .valid{text-align:center;background:#ecfdf5;border:1px solid #6ee7b7;border-radius:10px;padding:8px 10px;margin:8px 0}
+  .valid b{font-family:'JetBrains Mono',monospace;font-size:13px;color:#065f46}
+  .valid span{font-size:10px;color:#047857}
+  .rappel{background:#0f172a;color:white;border-radius:10px;padding:10px 14px;margin-top:8px;font-size:11px;line-height:1.6}
+  .rappel ul{margin-left:14px;color:#e2e8f0}
+  .two{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+  .two .box{background:#f8fafc;border:1px solid #e2e8f0;border-radius:8px;padding:10px}
+  @media print{.no-print{display:none}.exo{break-inside:avoid;box-shadow:none}body{background:white;padding:0}}
+</style>
+</head>
+<body>
+<div class="header">
+  <h1>📚 Exercice <span>16</span> — Unités SI & Homogénéité</h1>
+  <p>Newton • Constante G • Kepler • Poids • Réacteur</p>
+</div>
+<div class="container">
+
+  <!-- PARTIE 1 -->
+  <div class="exo phy">
+    <div class="exo-head"><h2>1 — Le Newton en SI</h2><span class="tag">PHYSIQUE</span></div>
+    <div class="exo-body">
+      <div class="enonce"><b>Énoncé :</b> F = ma, a en m·s⁻². Exprimer le Newton en SI.</div>
+      <div class="step"><b>Analyse dimensionnelle :</b></div>
+      <div class="formula">[F] = [m] · [a]</div>
+      <div class="calc">[F] = kg · m·s<sup>-2</sup><br>= <b>kg·m·s<sup>-2</sup></b></div>
+      <div class="valid"><b>1 N = 1 kg·m·s<sup>-2</sup></b><br><span>Le Newton est l'unité SI de force, dérivée des unités de base (kg, m, s)</span></div>
+    </div>
+  </div>
+
+  <!-- PARTIE 2 -->
+  <div class="exo phy">
+    <div class="exo-head"><h2>2 — Unité SI de la constante G</h2><span class="tag">PHYSIQUE</span></div>
+    <div class="exo-body">
+      <div class="enonce"><b>Énoncé :</b> F = G·m₁·m₂/d². Déduire l'unité SI de G.</div>
+      <div class="step"><b>Isoler G :</b></div>
+      <div class="formula">G = F·d² / (m₁·m₂)</div>
+      <div class="step"><b>Substitution des dimensions :</b></div>
+      <div class="calc">[G] = [F]·[d²] / ([m₁]·[m₂])<br>= (kg·m·s<sup>-2</sup>) · m² / (kg · kg)<br>= kg<sup>1</sup>·m³·s<sup>-2</sup> / kg<sup>2</sup><br>= <b>m³·kg<sup>-1</sup>·s<sup>-2</sup></b></div>
+      <div class="res"><b>[G] = m³·kg⁻¹·s⁻²</b><br><span>G = 6,674 × 10⁻¹¹ m³·kg⁻¹·s⁻²</span></div>
+    </div>
+  </div>
+
+  <!-- PARTIE 3 -->
+  <div class="exo phy">
+    <div class="exo-head"><h2>3 — Relation entre T, R, Mₛ et G</h2><span class="tag">PHYSIQUE</span></div>
+    <div class="exo-body">
+      <div class="enonce"><b>Énoncé :</b> Les planètes tournent autour du soleil en temps T à la distance R. Trouver la relation la plus simple entre T, R, Mₛ et G.</div>
+      <div class="step"><b>Hypothèse :</b> T = k·R^a·Mₛ^b·G^c</div>
+      <div class="formula">[T] = [R]<sup>a</sup>·[Mₛ]<sup>b</sup>·[G]<sup>c</sup></div>
+      <div class="calc">T = L<sup>a</sup> · M<sup>b</sup> · (M<sup>-1</sup>·L³·T<sup>-2</sup>)<sup>c</sup><br>= M<sup>b-c</sup> · L<sup>a+3c</sup> · T<sup>-2c</sup></div>
+      <div class="step"><b>Identification :</b></div>
+      <div class="two">
+        <div class="box"><b>T :</b> 1 = -2c → <b>c = -1/2</b></div>
+        <div class="box"><b>M :</b> 0 = b-c → <b>b = -1/2</b></div>
+        <div class="box"><b>L :</b> 0 = a+3c → <b>a = 3/2</b></div>
+      </div>
+      <div class="formula">T = k · R<sup>3/2</sup> · Mₛ<sup>-1/2</sup> · G<sup>-1/2</sup> = k · √(R³ / (G·Mₛ))</div>
+      <div class="res"><b>T = 2π · √(R³ / (G·Mₛ))</b><br><span>Loi de Kepler III (avec k = 2π)</span></div>
+      <div class="rappel">
+        <b>⭐ Remarque :</b><br>
+        • T² = 4π²R³/(G·Mₛ) → T² ∝ R³<br>
+        • Plus une planète est loin, plus sa période est longue<br>
+        • La masse du soleil Mₛ est dans le dénominateur → plus Mₛ est grand, plus T est court
+      </div>
+    </div>
+  </div>
+
+  <!-- PARTIE 4 -->
+  <div class="exo phy">
+    <div class="exo-head"><h2>4 — Unité SI de g (intensité du champ de pesanteur)</h2><span class="tag">PHYSIQUE</span></div>
+    <div class="exo-body">
+      <div class="enonce"><b>Énoncé :</b> Poids P = m·g. Trouver l'unité SI de g.</div>
+      <div class="step"><b>Expression de g :</b></div>
+      <div class="formula">g = P / m</div>
+      <div class="calc">[g] = [P] / [m]<br>= (kg·m·s<sup>-2</sup>) / kg<br>= <b>m·s<sup>-2</sup></b></div>
+      <div class="res"><b>[g] = m·s⁻²</b><br><span>Même dimension qu'une accélération ! c'est normal : le champ de pesanteur = accélération gravitationnelle</span></div>
+    </div>
+  </div>
+
+  <!-- PARTIE 6 -->
+  <div class="exo phy">
+    <div class="exo-head"><h2>6 — Le produit D·V est-il homogène à une force ?</h2><span class="tag">PHYSIQUE</span></div>
+    <div class="exo-body">
+      <div class="enonce"><b>Énoncé :</b> D = 29×10² kg·s⁻¹, V = 4,0×10³ m·s⁻¹. Montrer que D·V est homogène à une force.</div>
+      <div class="step"><b>Dimensions :</b></div>
+      <div class="two">
+        <div class="box"><b>[D] =</b><br>M¹·T<sup>-1</sup><br>(débit massique)</div>
+        <div class="box"><b>[V] =</b><br>L¹·T<sup>-1</sup><br>(vitesse)</div>
+      </div>
+      <div class="step"><b>Produit :</b></div>
+      <div class="formula">[D·V] = [D] · [V]</div>
+      <div class="calc">[D·V] = (kg·s<sup>-1</sup>) · (m·s<sup>-1</sup>)<br>= kg·m·s<sup>-2</sup><br>= <b>[F]</b> = M¹·L¹·T<sup>-2</sup></div>
+      <div class="valid"><b>✅ D·V est homogène à une FORCE !</b><br>
+      <span>[D·V] = kg·m·s⁻² = [F] = 1 N</span></div>
+      <div class="calc"><b>Valeur numérique :</b><br>D·V = 2900 × 4000 = <b>1,16 × 10⁷ N ≈ 11,6 MN</b><br>C'est la poussée du réacteur de l'avion !</div>
+      <div class="rappel">
+        <b>⭐ Physique :</b> La force de propulsion d'un réacteur = débit massique × vitesse d'éjection des gaz.<br>
+        C'est la conservation de la quantité de mouvement : F = Δp/Δt = (Δm/Δt)·v = D·V
+      </div>
+    </div>
+  </div>
+
+</div>
+<div style="text-align:center" class="no-print"><button onclick="window.print()" style="margin-top:10px;background:#0f172a;color:white;border:none;padding:8px 18px;border-radius:999px;font-weight:700;cursor:pointer;font-size:11px">🖨️ Imprimer</button></div>
+</body>
+</html>

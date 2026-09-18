@@ -1,0 +1,346 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Structure of a Formal Letter - Homework</title>
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body {
+    font-family: 'Georgia', serif;
+    background: #f0f2f5;
+    color: #2c3e50;
+    line-height: 1.6;
+    padding: 30px 20px;
+  }
+  .header {
+    text-align: center;
+    margin-bottom: 30px;
+  }
+  .header h1 {
+    font-size: 32px;
+    color: #1a2a4a;
+    letter-spacing: 1px;
+  }
+  .header p {
+    color: #6b7c8d;
+    font-size: 14px;
+    margin-top: 6px;
+    font-style: italic;
+  }
+  .container {
+    max-width: 1100px;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: 340px 1fr;
+    gap: 30px;
+    align-items: start;
+  }
+  /* LEGEND / SCHEMA */
+  .schema {
+    background: white;
+    border-radius: 12px;
+    padding: 22px;
+    box-shadow: 0 4px 20px rgba(0,0,0,0.08);
+    position: sticky;
+    top: 20px;
+  }
+  .schema h2 {
+    font-size: 16px;
+    text-transform: uppercase;
+    letter-spacing: 1.2px;
+    color: #1a2a4a;
+    border-bottom: 2px solid #e8ecf1;
+    padding-bottom: 10px;
+    margin-bottom: 16px;
+  }
+  .step {
+    display: flex;
+    gap: 12px;
+    margin-bottom: 14px;
+    padding: 10px;
+    border-radius: 8px;
+    border-left: 4px solid transparent;
+    transition: 0.2s;
+  }
+  .step:hover { background: #f8f9fb; }
+  .num {
+    min-width: 28px;
+    height: 28px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 13px;
+    font-weight: bold;
+    color: white;
+    flex-shrink: 0;
+  }
+  .step-content h3 { font-size: 13px; color: #1a2a4a; }
+  .step-content p { font-size: 11.5px; color: #6b7c8d; line-height: 1.4; margin-top: 2px; }
+
+  .c1 .num { background: #e67e22; } .c1 { border-left-color: #e67e22; }
+  .c2 .num { background: #e67e22; } .c2 { border-left-color: #e67e22; }
+  .c3 .num { background: #2980b9; } .c3 { border-left-color: #2980b9; }
+  .c4 .num { background: #8e44ad; } .c4 { border-left-color: #8e44ad; }
+  .c5 .num { background: #16a085; } .c5 { border-left-color: #16a085; }
+  .c6 .num { background: #2c3e50; } .c6 { border-left-color: #2c3e50; }
+  .c7 .num { background: #2c3e50; } .c7 { border-left-color: #2c3e50; }
+  .c8 .num { background: #27ae60; } .c8 { border-left-color: #27ae60; }
+  .c9 .num { background: #c0392b; } .c9 { border-left-color: #c0392b; }
+
+  /* LETTER PAPER */
+  .paper {
+    background: white;
+    border-radius: 12px;
+    box-shadow: 0 8px 30px rgba(0,0,0,0.10);
+    padding: 45px 50px;
+    position: relative;
+  }
+  .paper::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 0; right: 0;
+    height: 4px;
+    background: linear-gradient(90deg, #1a2a4a, #2980b9, #16a085);
+    border-radius: 12px 12px 0 0;
+  }
+  .block {
+    position: relative;
+    padding: 12px 14px 12px 18px;
+    margin-bottom: 8px;
+    border-radius: 6px;
+    border-left: 4px solid;
+  }
+  .label {
+    position: absolute;
+    left: -2px;
+    top: -9px;
+    font-size: 10px;
+    font-weight: 800;
+    letter-spacing: 0.7px;
+    text-transform: uppercase;
+    color: white;
+    padding: 2px 8px;
+    border-radius: 4px;
+  }
+  .block p { font-size: 13.5px; line-height: 1.6; }
+  .sender { border-color: #e67e22; background: #fef9f3; }
+  .sender .label { background: #e67e22; }
+  .sender p { text-align: right; color: #7a4a12; font-size: 12.5px; line-height: 1.4; }
+
+  .date { border-color: #e67e22; background: #fef9f3; }
+  .date .label { background: #e67e22; }
+  .date p { text-align: right; font-size: 12.5px; color: #7a4a12; }
+
+  .recipient { border-color: #2980b9; background: #f3f8fd; }
+  .recipient .label { background: #2980b9; }
+  .recipient p { font-size: 12.5px; color: #1f4a6b; line-height: 1.4; }
+
+  .subject { border-color: #8e44ad; background: #faf5fd; text-align: center; }
+  .subject .label { background: #8e44ad; left: 50%; transform: translateX(-50%); }
+  .subject p { font-weight: bold; color: #5a2870; font-size: 13px; }
+
+  .salutation { border-color: #16a085; background: #f2fbf9; }
+  .salutation .label { background: #16a085; }
+
+  .body-block { border-color: #2c3e50; background: #f8f9fb; }
+  .body-block .label { background: #2c3e50; }
+
+  .conclusion { border-color: #27ae60; background: #f3fbf6; }
+  .conclusion .label { background: #27ae60; }
+
+  .closing { border-color: #c0392b; background: #fdf3f2; }
+  .closing .label { background: #c0392b; }
+
+  .arrow {
+    text-align: center;
+    color: #b0bec5;
+    font-size: 10px;
+    margin: 2px 0;
+    letter-spacing: 2px;
+  }
+
+  @media (max-width: 900px) {
+    .container { grid-template-columns: 1fr; }
+    .schema { position: static; }
+    .paper { padding: 30px 22px; }
+  }
+  @media print {
+    body { background: white; padding: 0; }
+    .container { display: block; }
+    .schema { break-after: page; box-shadow: none; border: 1px solid #ddd; }
+    .paper { box-shadow: none; border: 1px solid #ddd; }
+  }
+</style>
+</head>
+<body>
+
+<div class="header">
+  <h1>Structure of a Formal Letter</h1>
+  <p>Visual Schema with Annotated Example — Homework English</p>
+</div>
+
+<div class="container">
+
+  <!-- LEFT: SCHEMA LEGEND -->
+  <div class="schema">
+    <h2>📋 9 Key Parts</h2>
+
+    <div class="step c1">
+      <div class="num">1</div>
+      <div class="step-content">
+        <h3>Sender's Address</h3>
+        <p>Your address, top right. No name.</p>
+      </div>
+    </div>
+
+    <div class="step c2">
+      <div class="num">2</div>
+      <div class="step-content">
+        <h3>Date</h3>
+        <p>Below sender's address. Ex: 12th September 2026</p>
+      </div>
+    </div>
+
+    <div class="step c3">
+      <div class="num">3</div>
+      <div class="step-content">
+        <h3>Recipient's Address</h3>
+        <p>Address of the person/company, on the left.</p>
+      </div>
+    </div>
+
+    <div class="step c4">
+      <div class="num">4</div>
+      <div class="step-content">
+        <h3>Subject Line</h3>
+        <p>Re: Purpose of the letter. Short and clear.</p>
+      </div>
+    </div>
+
+    <div class="step c5">
+      <div class="num">5</div>
+      <div class="step-content">
+        <h3>Salutation</h3>
+        <p>Dear Sir/Madam, or Dear Mr Smith,</p>
+      </div>
+    </div>
+
+    <div class="step c6">
+      <div class="num">6</div>
+      <div class="step-content">
+        <h3>Introduction</h3>
+        <p>First paragraph: reason for writing.</p>
+      </div>
+    </div>
+
+    <div class="step c7">
+      <div class="num">7</div>
+      <div class="step-content">
+        <h3>Body (2-3 paragraphs)</h3>
+        <p>Details, arguments, information.</p>
+      </div>
+    </div>
+
+    <div class="step c8">
+      <div class="num">8</div>
+      <div class="step-content">
+        <h3>Conclusion</h3>
+        <p>Last paragraph: what you expect / call to action.</p>
+      </div>
+    </div>
+
+    <div class="step c9">
+      <div class="num">9</div>
+      <div class="step-content">
+        <h3>Complimentary Close & Signature</h3>
+        <p>Yours faithfully / sincerely + signature + full name</p>
+      </div>
+    </div>
+
+    <div style="margin-top:14px; background:#1a2a4a; color:white; border-radius:8px; padding:12px; font-size:11.5px; line-height:1.5;">
+      <strong>💡 Rule:</strong><br>
+      <em>Yours faithfully</em> → when you wrote <em>Dear Sir/Madam</em><br>
+      <em>Yours sincerely</em> → when you wrote <em>Dear Mr/Ms + Name</em>
+    </div>
+  </div>
+
+  <!-- RIGHT: LETTER EXAMPLE -->
+  <div class="paper">
+
+    <div class="block sender">
+      <span class="label">1 — Sender's Address</span>
+      <p>
+        15 Rue de la Liberté<br>
+        75008 Paris, France<br>
+        marie.dupont@email.com | +33 6 12 34 56 78
+      </p>
+    </div>
+
+    <div class="block date">
+      <span class="label">2 — Date</span>
+      <p>12th September 2026</p>
+    </div>
+
+    <div class="block recipient">
+      <span class="label">3 — Recipient's Address</span>
+      <p>
+        The Hiring Manager<br>
+        British Council<br>
+        10 Spring Gardens<br>
+        London SW1A 2BN, United Kingdom
+      </p>
+    </div>
+
+    <div class="block subject">
+      <span class="label">4 — Subject</span>
+      <p>Re: Application for Summer Internship Programme</p>
+    </div>
+
+    <div class="block salutation">
+      <span class="label">5 — Salutation</span>
+      <p>Dear Sir/Madam,</p>
+    </div>
+
+    <div class="block body-block">
+      <span class="label">6 — Introduction — Purpose</span>
+      <p>
+        I am writing to apply for the Summer Internship Programme advertised on your website on 5th September 2026. I am currently a final-year student in English Studies at the Sorbonne University in Paris, and I am very interested in joining your prestigious institution.
+      </p>
+    </div>
+
+    <div class="block body-block">
+      <span class="label">7 — Body — Details & Arguments</span>
+      <p>
+        I have a strong academic background and excellent communication skills in both French and English (IELTS 8.0). Last summer, I completed a one-month internship at the French Embassy in London, where I developed my organisational and teamwork skills.<br><br>
+        Furthermore, I am highly motivated, well-organised and able to work under pressure. I am particularly interested in intercultural communication, which I believe is at the heart of your organisation's mission. I have enclosed my CV and a letter of recommendation from my professor for your consideration.
+      </p>
+    </div>
+
+    <div class="block conclusion">
+      <span class="label">8 — Conclusion — Call to Action</span>
+      <p>
+        I would be grateful for the opportunity to discuss my application further at an interview. I am available at your convenience and can be reached by email or phone. Thank you for considering my application. I look forward to hearing from you.
+      </p>
+    </div>
+
+    <div class="block closing">
+      <span class="label">9 — Complimentary Close & Signature</span>
+      <p>
+        Yours faithfully,<br><br>
+        <span style="font-family: 'Brush Script MT', cursive; font-size: 22px; color:#1a2a4a;">Marie Dupont</span><br>
+        <span style="font-size: 12px; letter-spacing:0.5px; color:#555;">MARIE DUPONT</span>
+      </p>
+    </div>
+
+    <p style="text-align:center; font-size:10px; color:#90a4ae; margin-top:20px; border-top:1px dashed #e0e0e0; padding-top:12px;">
+      Enclosures: CV, Letter of Recommendation &nbsp;|&nbsp; Formal, polite tone • No contractions (I am, not I'm) • Clear paragraphs
+    </p>
+
+  </div>
+
+</div>
+
+</body>
+</html>

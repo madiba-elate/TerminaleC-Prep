@@ -61,3 +61,17 @@ Les fichiers bruts que tu m'envoies (photos, PDF) sont archivés dans
 Voir `SUIVI.md` à la racine : tableau matière par matière
 (programme reçu ? cours reçus ? pages ? flashcards ? quiz ?).
 Je le mets à jour à chaque push.
+
+## 7. Ajouter un exercice au Hub Exercices (`hub-exercices.html`)
+
+1. Copier la fiche dans `matieres/<matiere>/exercices/` (nom : `exo-XX-titre-court.html`,
+   minuscules, sans accents ; l'original brut reste dans `matieres/<matiere>/sources/`).
+2. Ajouter **une ligne** au `REGISTRE` dans `hub-exercices.html` :
+   `{mat:"…", theme:"…", titre:"…", desc:"…", file:"matieres/<matiere>/exercices/<fichier>"}`
+   — le compteur, les vues matière/thème et la recherche se mettent à jour seuls.
+3. Thèmes existants à réutiliser en priorité : Physique (Mesures & Incertitudes,
+   Mécanique, Électricité, Optique, Physique moderne), Info (Programmation & Algo),
+   Anglais (Grammaire, Expression écrite), Français (Expression écrite).
+   Nouveau thème possible si le programme l'exige (le mettre aussi dans le README
+   de la matière).
+4. Mettre à jour `SUIVI.md` (colonne Exercices) et le badge du lien sidebar dans `index.html`.

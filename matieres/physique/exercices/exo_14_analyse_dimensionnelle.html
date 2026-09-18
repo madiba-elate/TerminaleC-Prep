@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>Exercice 14 — Analyse dimensionnelle</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Inter:wght@500;600;700;800&family=JetBrains+Mono:wght@600&display=swap');
+  *{margin:0;padding:0;box-sizing:border-box}
+  body{background:#f1f5f9;font-family:'Inter',sans-serif;color:#1e293b;padding:24px 16px}
+  .header{max-width:800px;margin:0 auto 18px auto;background:linear-gradient(135deg,#0f172a,#1e3a8a);border-radius:20px;padding:20px 22px;color:white;text-align:center}
+  .header h1{font-size:20px;font-weight:900}
+  .header h1 span{color:#7dd3fc}
+  .container{max-width:800px;margin:0 auto}
+  .exo{background:white;border:1px solid #e2e8f0;border-radius:16px;overflow:hidden;margin-bottom:16px}
+  .exo-head{padding:12px 16px;color:white;display:flex;justify-content:space-between;align-items:center}
+  .exo-head h2{font-size:13px;font-weight:800}
+  .phy .exo-head{background:linear-gradient(135deg,#0284c7,#0ea5e9)}
+  .exo-body{padding:14px 16px}
+  .enonce{background:#fffbeb;border:1px solid #fde68a;border-radius:10px;padding:10px 14px;margin-bottom:10px;font-size:12px;line-height:1.6;color:#44403c}
+  .enonce b{color:#0f172a}
+  .step{background:#f8fafc;border-left:4px solid #0ea5e9;border-radius:8px;padding:8px 12px;margin:6px 0;font-size:12px;line-height:1.6;color:#334155}
+  .step b{color:#0f172a}
+  .formula{text-align:center;font-family:'JetBrains Mono',monospace;font-size:11px;font-weight:700;background:#eff6ff;border:1px solid #bfdbfe;border-radius:8px;padding:8px;margin:8px 0;color:#1e3a8a}
+  .calc{font-family:'JetBrains Mono',monospace;font-size:11px;background:white;border:1px solid #e2e8f0;border-radius:6px;padding:6px 10px;margin:4px 0;color:#334155}
+  .res{text-align:center;background:linear-gradient(135deg,#ecfdf5,#f0fdf4);border:1px solid #6ee7b7;border-radius:10px;padding:8px 10px;margin:8px 0}
+  .res b{font-family:'JetBrains Mono',monospace;font-size:13px;color:#065f46}
+  .res span{font-size:10px;color:#047857}
+  .rappel{background:#0f172a;color:white;border-radius:10px;padding:10px 14px;margin-top:8px;font-size:11px;line-height:1.6}
+  .rappel ul{margin-left:14px;color:#e2e8f0}
+  .defs{display:grid;grid-template-columns:1fr 1fr;gap:8px}
+  .defs div{background:#f8fafc;border:1px solid #e2e8f0;border-radius:8px;padding:8px 10px}
+  .defs b{font-size:11px;color:#0ea5e9;display:block;margin-bottom:2px}
+  .defs p{font-size:11px;line-height:1.5;color:#334155}
+  .tf{display:flex;justify-content:space-between;align-items:center;background:#f8fafc;border:1px solid #e2e8f0;border-radius:8px;padding:8px 12px;margin:6px 0;font-size:12px}
+  .tf .label{font-weight:700;color:#0f172a;flex:1}
+  .tf .answer{font-weight:800;padding:3px 10px;border-radius:999px;font-size:11px}
+  .tf .answer.true{background:#dcfce7;color:#166534}
+  .tf .answer.false{background:#fee2e2;color:#991b1b}
+  @media print{.no-print{display:none}.exo{break-inside:avoid;box-shadow:none}body{background:white;padding:0}}
+</style>
+</head>
+<body>
+<div class="header">
+  <h1>📚 Exercice <span>14</span> — Analyse dimensionnelle</h1>
+  <p>Définitions • Utilités • Vrai ou Faux</p>
+</div>
+<div class="container">
+
+  <!-- PARTIE 1 -->
+  <div class="exo phy">
+    <div class="exo-head"><h2>Partie 1 — Définitions</h2><span class="tag">PHYSIQUE</span></div>
+    <div class="exo-body">
+      <div class="enonce"><b>1) Définir :</b> Dimension d'une grandeur physique, Équation aux dimensions, Exposant dimensionnel, Analyse dimensionnelle.</div>
+      <div class="defs">
+        <div><b>Dimension</b><p>Expression qui indique la composition d'une grandeur physique en termes de grandeurs de base. Ex : [v] = L·T⁻¹, [F] = M·L·T⁻²</p></div>
+        <div><b>Équation aux dimensions</b><p>Égalité reliant les dimensions des deux membres d'une relation physique. Ex : [F] = [m]·[a] → M·L·T⁻² = M·L·T⁻²</p></div>
+        <div><b>Exposant dimensionnel</b><p>Puissance (exposant) de chaque grandeur de base dans l'équation aux dimensions. Ex : dans [F] = M¹·L¹·T⁻² → exposants : 1, 1, -2</p></div>
+        <div><b>Analyse dimensionnelle</b><p>Méthode qui utilise les dimensions des grandeurs pour vérifier la cohérence d'une équation physique ou déduire une relation.</p></div>
+      </div>
+      <div class="step"><b>Grandeurs de base (Système International) :</b></div>
+      <div class="formula">[L] Longueur | [M] Masse | [T] Temps | [I] Courant | [Θ] Température | [N] Quantité de matière | [J] Intensité lumineuse</div>
+    </div>
+  </div>
+
+  <!-- PARTIE 2 -->
+  <div class="exo phy">
+    <div class="exo-head"><h2>Partie 2 — Utilités de l'analyse dimensionnelle</h2><span class="tag">PHYSIQUE</span></div>
+    <div class="exo-body">
+      <div class="enonce"><b>2) Donner 2 utilisations de l'analyse dimensionnelle.</b></div>
+      <div class="step"><b>Utilité 1 : Vérifier l'homogénéité d'une équation</b><br>Permet de vérifier qu'une formule est <b>dimensionnellement cohérente</b> (les deux membres ont les mêmes dimensions). Si les dimensions ne correspondent pas, la formule est <b>fausse</b>.</div>
+      <div class="step"><b>Utilité 2 : Déduire la forme d'une relation physique</b><br>Permet de retrouver la structure d'une équation inconnue en utilisant le <b>principe de cohérence dimensionnelle</b>. Ex : retrouver la période d'un pendule T = 2π√(l/g).</div>
+      <div class="rappel">
+        <b>⭐ Autres utilités possibles :</b><br>
+        • Conversion d'unités entre systèmes<br>
+        • Vérification de la cohérence d'un résultat calculé<br>
+        • Détection d'erreurs de calcul ou de formulation
+      </div>
+    </div>
+  </div>
+
+  <!-- PARTIE 3 -->
+  <div class="exo phy">
+    <div class="exo-head"><h2>Partie 3 — Vrai ou Faux</h2><span class="tag">PHYSIQUE</span></div>
+    <div class="exo-body">
+      <div class="enonce"><b>3) Répondre Vrai ou Faux :</b></div>
+
+      <div class="tf">
+        <span class="label">3-1 — Le symbole d'une dimension est toujours en lettre majuscule</span>
+        <span class="answer true">VRAI</span>
+      </div>
+      <div class="tf">
+        <span class="label">3-2 — Une grandeur physique peut avoir plusieurs dimensions</span>
+        <span class="answer true">VRAI</span>
+      </div>
+      <div class="tf">
+        <span class="label">3-3 — La dimension d'un temps est s</span>
+        <span class="answer false">FAUX</span>
+      </div>
+      <div class="tf">
+        <span class="label">3-4 — Les angles sont des grandeurs sans dimension</span>
+        <span class="answer true">VRAI</span>
+      </div>
+      <div class="tf">
+        <span class="label">3-5 — Une expression littérale homogène atteste toujours que la formule est juste</span>
+        <span class="answer false">FAUX</span>
+      </div>
+
+      <div class="rappel">
+        <b>⭐ Explications :</b><br>
+        • 3-1 VRAI : L, M, T, I, Θ, N, J (toujours majuscules)<br>
+        • 3-2 VRAI : ex : [v] = L·T⁻¹, [F] = M·L·T⁻² (2+ dimensions)<br>
+        • 3-3 FAUX : la <b>dimension</b> est <b>T</b> (T est la dimension), le <b>"s"</b> est l'<b>unité</b> (seconde)<br>
+        • 3-4 VRAI : angle = m/m (rapport de deux longueurs) → sans dimension<br>
+        • 3-5 FAUX : l'homogénéité est <b>nécessaire</b> mais <b>pas suffisante</b>. Ex : s = ½v·t et s = v·t sont toutes deux homogènes [L], mais seule une est correcte.
+      </div>
+    </div>
+  </div>
+
+</div>
+<div style="text-align:center" class="no-print"><button onclick="window.print()" style="margin-top:10px;background:#0f172a;color:white;border:none;padding:8px 18px;border-radius:999px;font-weight:700;cursor:pointer;font-size:11px">🖨️ Imprimer</button></div>
+</body>
+</html>

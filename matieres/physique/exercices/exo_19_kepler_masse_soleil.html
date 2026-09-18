@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>Exercice 19 — Kepler & Masse du Soleil</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Inter:wght@500;600;700;800&family=JetBrains+Mono:wght@600&display=swap');
+  *{margin:0;padding:0;box-sizing:border-box}
+  body{background:#f1f5f9;font-family:'Inter',sans-serif;color:#1e293b;padding:24px 16px}
+  .header{max-width:850px;margin:0 auto 18px auto;background:linear-gradient(135deg,#0f172a,#1e3a8a);border-radius:20px;padding:20px 22px;color:white;text-align:center}
+  .header h1{font-size:20px;font-weight:900}
+  .header h1 span{color:#7dd3fc}
+  .container{max-width:850px;margin:0 auto}
+  .exo{background:white;border:1px solid #e2e8f0;border-radius:16px;overflow:hidden;margin-bottom:16px}
+  .exo-head{padding:12px 16px;color:white;display:flex;justify-content:space-between;align-items:center}
+  .exo-head h2{font-size:13px;font-weight:800}
+  .phy .exo-head{background:linear-gradient(135deg,#0284c7,#0ea5e9)}
+  .exo-body{padding:14px 16px}
+  .enonce{background:#fffbeb;border:1px solid #fde68a;border-radius:10px;padding:10px 14px;margin-bottom:10px;font-size:12px;line-height:1.6;color:#44403c}
+  .enonce b{color:#0f172a}
+  .step{background:#f8fafc;border-left:4px solid #0ea5e9;border-radius:8px;padding:8px 12px;margin:6px 0;font-size:12px;line-height:1.6;color:#334155}
+  .step b{color:#0f172a}
+  .formula{text-align:center;font-family:'JetBrains Mono',monospace;font-size:11px;font-weight:700;background:#eff6ff;border:1px solid #bfdbfe;border-radius:8px;padding:8px;margin:8px 0;color:#1e3a8a}
+  .calc{font-family:'JetBrains Mono',monospace;font-size:11px;background:white;border:1px solid #e2e8f0;border-radius:6px;padding:6px 10px;margin:4px 0;color:#334155}
+  .res{text-align:center;background:linear-gradient(135deg,#ecfdf5,#f0fdf4);border:1px solid #6ee7b7;border-radius:10px;padding:8px 10px;margin:8px 0}
+  .res b{font-family:'JetBrains Mono',monospace;font-size:13px;color:#065f46}
+  .res span{font-size:10px;color:#047857}
+  .rappel{background:#0f172a;color:white;border-radius:10px;padding:10px 14px;margin-top:8px;font-size:11px;line-height:1.6}
+  .rappel ul{margin-left:14px;color:#e2e8f0}
+  .two{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+  .two .box{background:#f8fafc;border:1px solid #e2e8f0;border-radius:8px;padding:10px}
+  .const-box{background:#fef3c7;border:1px solid #f59e0b;border-radius:8px;padding:8px 12px;margin:6px 0;font-size:11px}
+  .const-box b{color:#92400e;font-size:12px}
+  @media print{.no-print{display:none}.exo{break-inside:avoid;box-shadow:none}body{background:white;padding:0}}
+</style>
+</head>
+<body>
+<div class="header">
+  <h1>📚 Exercice <span>19</span> — Kepler & Masse du Soleil</h1>
+  <p>3ème loi de Kepler • Propagation d'incertitudes</p>
+</div>
+<div class="container">
+
+  <!-- PARTIE 1 -->
+  <div class="exo phy">
+    <div class="exo-head"><h2>1) Dimensions et unités de G</h2><span class="tag">PHYSIQUE</span></div>
+    <div class="exo-body">
+
+      <div class="enonce"><b>Énoncé :</b> T²/a³ = 4π²/(G·Mₛ). Déduire les dimensions et l'unité SI de G.</div>
+
+      <div class="step"><b>Isoler G :</b></div>
+      <div class="formula">G = 4π² · a³ / (T² · Mₛ)</div>
+      <div class="step"><b>Dimensions :</b></div>
+      <div class="calc">[G] = [a³] / ([T²] · [Mₛ])<br>= L³ / (T² · M)<br>= M<sup>-1</sup> · L³ · T<sup>-2</sup></div>
+
+      <div class="res"><b>[G] = M⁻¹·L³·T⁻²</b><br>
+      <span><b>Unité SI : m³·kg⁻¹·s⁻²</b></span></div>
+
+      <div class="rappel">
+        <b>⭐ Valeur :</b> G = 6,674 × 10⁻¹¹ m³·kg⁻¹·s⁻²<br>
+        G est la <b>plus faible</b> des constantes fondamentales, ce qui explique pourquoi la gravité est faible à l'échelle quotidienne.
+      </div>
+
+    </div>
+  </div>
+
+  <!-- PARTIE 2 -->
+  <div class="exo phy">
+    <div class="exo-head"><h2>2) Masse du Soleil et son incertitude</h2><span class="tag">PHYSIQUE</span></div>
+    <div class="exo-body">
+
+      <div class="enonce"><b>Données :</b><br>
+      • G = (6,668 ± 0,005) × 10⁻¹¹ m³·kg⁻¹·s⁻²<br>
+      • T = (365,25636567 ± 0,00000001) jours<br>
+      • a = (1,4960 ± 0,0003) × 10¹¹ m</div>
+
+      <div class="step"><b>Formule :</b></div>
+      <div class="formula">Mₛ = 4π² · a³ / (G · T²)</div>
+
+      <div class="step"><b>Conversion de T en secondes :</b></div>
+      <div class="calc">T = 365,25636567 × 86400 = 3,1558 × 10⁷ s<br>T² = (3,1558 × 10⁷)² = 9,959 × 10¹⁴ s²</div>
+
+      <div class="step"><b>Calcul numérique :</b></div>
+      <div class="calc">a³ = (1,4960 × 10¹¹)³ = (1,4960)³ × 10³³<br>= 3,348 × 10³³ m³<br><br>
+      Numérateur : 4π² × 3,348 × 10³³ = 39,478 × 3,348 × 10³³ = 1,322 × 10³⁵<br>
+      Dénominateur : 6,668 × 10⁻¹¹ × 9,959 × 10¹⁴ = 6,641 × 10⁴<br><br>
+      Mₛ = 1,322 × 10³⁵ / 6,641 × 10⁴ = <b>1,99 × 10³⁰ kg</b></div>
+
+      <div class="step"><b>Incertitude relative (propagation) :</b></div>
+      <div class="formula">ΔMₛ/Mₛ = 3·Δa/a + ΔG/G + 2·ΔT/T</div>
+      <div class="two">
+        <div class="box"><b>3·Δa/a :</b><br>3 × 0,0003/1,4960 = <b>6,0 × 10⁻⁴</b></div>
+        <div class="box"><b>ΔG/G :</b><br>0,005/6,668 = <b>7,5 × 10⁻⁴</b></div>
+        <div class="box"><b>2·ΔT/T :</b><br>2 × (négligeable) ≈ <b>~0</b></div>
+      </div>
+      <div class="calc">ΔMₛ/Mₛ = 6,0×10⁻⁴ + 7,5×10⁻⁴ = <b>1,35 × 10⁻³</b> (0,135 %)</div>
+      <div class="calc">ΔMₛ = 1,35 × 10⁻³ × 1,99 × 10³⁰ = <b>2,7 × 10²⁷ kg</b> ≈ 0,003 × 10³⁰ kg</div>
+
+      <div class="res"><b>Mₛ = (1,99 ± 0,003) × 10³⁰ kg</b><br><span>Incertitude relative : 0,135 %<br>(T ≈ 150 millions de km, période ≈ 365,25 jours)</span></div>
+
+      <div class="rappel">
+        <b>⭐ Remarques :</b><br>
+        • Le ΔT est négligeable (précision de l'horloge atomique)<br>
+        • Les incertitudes dominantes sont Δa et ΔG<br>
+        • La précision sur Mₛ dépend principalement de la précision sur G<br>
+        • Résultat cohérent avec la masse réelle du Soleil (1,989 × 10³⁰ kg)
+      </div>
+
+    </div>
+  </div>
+
+</div>
+<div style="text-align:center" class="no-print"><button onclick="window.print()" style="margin-top:10px;background:#0f172a;color:white;border:none;padding:8px 18px;border-radius:999px;font-weight:700;cursor:pointer;font-size:11px">🖨️ Imprimer</button></div>
+</body>
+</html>

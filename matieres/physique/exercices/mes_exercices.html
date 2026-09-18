@@ -1,0 +1,352 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Mes Exercices Corrigés - 1ère C</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=JetBrains+Mono:wght@500;700&display=swap');
+  *{margin:0;padding:0;box-sizing:border-box}
+  body{background:#f1f5f9;font-family:'Inter',sans-serif;color:#1e293b;padding:24px 16px}
+  .header{max-width:900px;margin:0 auto 20px auto;background:linear-gradient(135deg,#0f172a,#1e3a8a 60%,#0ea5e9);border-radius:20px;padding:26px 28px;color:white}
+  .header h1{font-size:26px;font-weight:900;letter-spacing:-0.5px}
+  .header h1 span{color:#7dd3fc}
+  .header p{margin-top:6px;font-size:13px;opacity:0.9}
+  .badge{display:inline-block;background:rgba(255,255,255,0.15);border:1px solid rgba(255,255,255,0.3);padding:5px 12px;border-radius:999px;font-size:11px;letter-spacing:0.8px;text-transform:uppercase;font-weight:700;margin-bottom:10px}
+  .container{max-width:900px;margin:0 auto}
+  .sommaire{background:white;border:1px solid #e2e8f0;border-radius:16px;padding:18px 20px;margin-bottom:20px}
+  .sommaire h2{font-size:14px;font-weight:800;text-transform:uppercase;letter-spacing:0.8px;color:#0f172a;margin-bottom:12px}
+  .sommaire a{display:flex;align-items:center;gap:12px;text-decoration:none;background:#f8fafc;border:1px solid #e2e8f0;border-radius:10px;padding:10px 14px;margin-bottom:8px;transition:0.15s}
+  .sommaire a:hover{border-color:#3b82f6;background:#eff6ff}
+  .sommaire .n{min-width:32px;height:32px;border-radius:8px;background:#0f172a;color:white;display:flex;align-items:center;justify-content:center;font-weight:800;font-size:13px}
+  .sommaire .t b{font-size:13px;color:#0f172a;display:block}
+  .sommaire .t span{font-size:11.5px;color:#64748b}
+  .sommaire .todo{opacity:0.5;border-style:dashed}
+  .exo{background:white;border:1px solid #e2e8f0;border-radius:16px;overflow:hidden;margin-bottom:20px}
+  .exo-head{padding:16px 20px;color:white;display:flex;justify-content:space-between;align-items:center}
+  .exo-head h2{font-size:15px;font-weight:800}
+  .exo-head .tag-phy{font-size:11px;background:rgba(255,255,255,0.22);padding:4px 10px;border-radius:999px;font-weight:700}
+  .phy .exo-head{background:linear-gradient(135deg,#0284c7,#0ea5e9)}
+  .exo-body{padding:20px}
+  .enonce{background:#fffbeb;border:1px solid #fde68a;border-radius:12px;padding:14px 16px;margin-bottom:16px}
+  .enonce h3{font-size:12px;text-transform:uppercase;letter-spacing:0.7px;color:#92400e;margin-bottom:8px}
+  .enonce p{font-size:13px;line-height:1.7;color:#44403c}
+  .enonce .donnee{font-family:'JetBrains Mono',monospace;font-size:12px;background:white;border:1px solid #fde68a;border-radius:6px;padding:2px 6px;font-weight:700}
+  .question{background:#f8fafc;border:1px solid #e2e8f0;border-radius:12px;padding:14px 16px;margin-bottom:14px}
+  .question h4{font-size:13px;font-weight:800;color:#0f172a;margin-bottom:8px}
+  .question h4 .qnum{background:#0f172a;color:white;font-size:11px;padding:3px 8px;border-radius:999px;margin-right:8px}
+  .step{font-size:12.5px;line-height:1.7;color:#334155;margin-bottom:6px}
+  .step b{color:#0f172a}
+  .formula{text-align:center;font-family:'JetBrains Mono',monospace;font-size:13px;font-weight:700;background:#eff6ff;border:1px solid #bfdbfe;border-radius:8px;padding:10px;margin:10px 0;color:#1e3a8a}
+  .calc{background:white;border:1px solid #e2e8f0;border-radius:8px;padding:10px 12px;margin:8px 0;font-family:'JetBrains Mono',monospace;font-size:12px;line-height:1.8;color:#334155}
+  .resultat{background:linear-gradient(135deg,#ecfdf5,#f0fdf4);border:1px solid #6ee7b7;border-radius:10px;padding:12px 14px;margin-top:10px;text-align:center}
+  .resultat b{font-size:14px;color:#065f46;font-family:'JetBrains Mono',monospace}
+  .resultat span{font-size:11px;color:#047857;display:block;margin-top:4px}
+  .rappel{background:#0f172a;color:white;border-radius:12px;padding:14px 16px;margin-top:14px}
+  .rappel h4{font-size:12px;letter-spacing:0.6px;text-transform:uppercase;color:#7dd3fc;margin-bottom:8px}
+  .rappel ul{margin-left:16px;font-size:12.5px;line-height:1.7;color:#e2e8f0}
+  .cours-box{background:#f0f9ff;border:1px solid #7dd3fc;border-radius:12px;padding:14px 16px;margin-bottom:14px}
+  .cours-box h4{font-size:13px;font-weight:800;color:#0c4a6e;margin-bottom:8px}
+  .cours-box p,.cours-box li{font-size:12.5px;line-height:1.7;color:#334155}
+  .cours-box ul{margin-left:16px}
+  .etape{background:white;border:1px solid #e2e8f0;border-left:4px solid #0ea5e9;border-radius:8px;padding:10px 12px;margin:8px 0}
+  .etape h5{font-size:12.5px;font-weight:800;color:#0f172a;margin-bottom:4px}
+  .etape p{font-size:12.5px;line-height:1.7;color:#334155}
+  .pourquoi{background:#fefce8;border:1px dashed #eab308;border-radius:8px;padding:8px 10px;margin:8px 0;font-size:12px;line-height:1.6;color:#713f12}
+  .footer{text-align:center;font-size:11px;color:#94a3b8;margin-top:10px}
+  .print-btn{background:#0f172a;color:white;border:none;padding:10px 22px;border-radius:999px;font-weight:700;cursor:pointer;margin-top:14px}
+  @media print{body{background:white;padding:0}.no-print{display:none}.exo{break-inside:avoid;box-shadow:none}}
+</style>
+</head>
+<body>
+
+<div class="header">
+  <div class="badge">1ère C — Lycée Joss — Madiba Elate</div>
+  <h1>📚 Mes Exercices <span>Corrigés</span></h1>
+  <p>Un seul document pour tous tes exos. Chaque nouvel exo sera ajouté ici à la suite (Exo 1, Exo 2, Exo 3...).</p>
+</div>
+
+<div class="container">
+
+  <!-- SOMMAIRE -->
+  <div class="sommaire">
+    <h2>📋 Sommaire</h2>
+    <a href="#exo1">
+      <div class="n">1</div>
+      <div class="t"><b>Physique — Vitesse moyenne & incertitudes</b><span>Table à coussin d'air • V = D/T • p = m.v • Encadrement</span></div>
+    </a>
+    <a href="#exo2">
+      <div class="n">2</div>
+      <div class="t"><b>Physique — 100m Usain Bolt, moyenne & incertitude-type (k=2)</b><span>18 mesures • Moyenne • Écart-type • U = k.s/√n • Intervalle de confiance</span></div>
+    </a>
+    <a href="#exo3">
+      <div class="n">3</div>
+      <div class="t"><b>Physique — Tension amplificateur, moyenne, précision et effet du nombre de mesures</b><span>10 mesures en Volts • Écart-type • u = s/√n • 10 vs 1000 mesures</span></div>
+    </a>
+    <a class="todo">
+      <div class="n">4</div>
+      <div class="t"><b>Prochain exo — en attente</b><span>Envoie ton énoncé, je l'ajoute ici</span></div>
+    </a>
+  </div>
+
+  <!-- ============ EXO 1 ============ -->
+  <div class="exo phy" id="exo1">
+    <div class="exo-head">
+      <h2>Exo 1 — Physique : Vitesse moyenne et quantité de mouvement</h2>
+      <span class="tag-phy">PHYSIQUE</span>
+    </div>
+    <div class="exo-body">
+
+      <div class="enonce">
+        <h3>📝 Énoncé</h3>
+        <p>Afin de trouver la vitesse moyenne d'un mobile sur une table à coussin d'air, un étudiant mesure la distance <b>D</b> parcourue durant un intervalle de temps <b>T</b>.<br>
+        Il trouve <span class="donnee">D = (5,10 ± 0,01) m</span> et <span class="donnee">t = (6,02 ± 0,02) s</span>. Les incertitudes sont indépendantes.<br>
+        <b>1)</b> Que vaut la vitesse V ainsi que son incertitude absolue ΔV ?<br>
+        <b>2)</b> Quelle est la valeur réelle de la quantité de mouvement du mobile (p = m.v), sachant que sa masse <span class="donnee">m = (0,711 ± 0,002) kg</span> ?</p>
+      </div>
+
+      <div class="cours-box">
+        <h4>📖 Petit rappel de cours avant de commencer</h4>
+        <ul>
+          <li><b>Écriture (X ± ΔX) :</b> X est la valeur mesurée, ΔX est l'<b>incertitude absolue</b> (même unité que X). La vraie valeur est dans [X−ΔX ; X+ΔX].</li>
+          <li><b>Incertitude relative :</b> ΔX / X (sans unité, souvent en %). Elle dit si la mesure est précise.</li>
+          <li><b>Vitesse moyenne :</b> V = Distance / Temps.</li>
+          <li><b>Quantité de mouvement :</b> p = m × v (en kg.m/s).</li>
+          <li><b>Règle d'arrondi :</b> on arrondit ΔX à 1 chiffre significatif <b>par excès</b>, puis on arrondit X au même rang décimal.</li>
+        </ul>
+      </div>
+
+      <div class="question">
+        <h4><span class="qnum">Q1</span> Vitesse moyenne V = D / t — Détail étape par étape</h4>
+        <div class="formula">V = D / t</div>
+
+        <div class="etape"><h5>Étape 1 — Identifier les données et leurs intervalles</h5><p>On transforme chaque mesure (valeur ± incertitude) en intervalle :<br>D = (5,10 ± 0,01) m → D<sub>min</sub> = 5,10 − 0,01 = <b>5,09 m</b> ; D<sub>max</sub> = 5,10 + 0,01 = <b>5,11 m</b><br>t = (6,02 ± 0,02) s → t<sub>min</sub> = 6,02 − 0,02 = <b>6,00 s</b> ; t<sub>max</sub> = 6,02 + 0,02 = <b>6,04 s</b></p></div>
+
+        <div class="etape"><h5>Étape 2 — Calculer la valeur nominale V<sub>0</sub></h5><p>On utilise les valeurs centrales, sans les incertitudes :</p></div>
+        <div class="calc">V<sub>0</sub> = D<sub>0</sub> / t<sub>0</sub> = 5,10 / 6,02<br>= 0,847176...<br>≈ <b>0,847 m/s</b> (on garde 3 chiffres pour l'instant)</div>
+
+        <div class="etape"><h5>Étape 3 — Chercher V<sub>min</sub> et V<sub>max</sub> (encadrement)</h5><p>Pour une <b>division</b>, la plus petite vitesse = plus petite distance divisée par plus grand temps. Et inversement.</p></div>
+        <div class="pourquoi">💡 Pourquoi croisé ? Si tu marches peu de temps en beaucoup de temps → tu vas lentement (min). Si tu marches beaucoup en peu de temps → tu vas vite (max).</div>
+        <div class="calc">V<sub>min</sub> = D<sub>min</sub> / t<sub>max</sub> = 5,09 / 6,04 = 0,842715... ≈ <b>0,843 m/s</b><br>V<sub>max</sub> = D<sub>max</sub> / t<sub>min</sub> = 5,11 / 6,00 = 0,851666... ≈ <b>0,852 m/s</b></div>
+
+        <div class="etape"><h5>Étape 4 — Calculer l'incertitude absolue ΔV</h5><p>Formule : ΔV = (Max − Min) / 2. C'est la moitié de la largeur de l'intervalle.</p></div>
+        <div class="calc">ΔV = (0,851666 − 0,842715) / 2<br>= 0,008951 / 2<br>= 0,004475... ≈ <b>0,005 m/s</b> (arrondi à 1 chiffre par excès)</div>
+
+        <div class="etape"><h5>Étape 5 — Vérification par les incertitudes relatives (méthode théorique)</h5><p>Pour un produit ou quotient, on <b>additionne</b> les incertitudes relatives :</p></div>
+        <div class="calc">ΔD/D = 0,01 / 5,10 = 0,00196 (0,196 %)<br>Δt/t = 0,02 / 6,02 = 0,00332 (0,332 %)<br>ΔV/V = 0,00196 + 0,00332 = 0,00528<br>ΔV = 0,847 × 0,00528 = 0,00447 ≈ <b>0,005 m/s ✔ même résultat</b></div>
+
+        <div class="etape"><h5>Étape 6 — Écriture finale propre</h5><p>On aligne la valeur et l'incertitude au même rang (le millième) :</p></div>
+        <div class="resultat"><b>V = (0,847 ± 0,005) m/s</b><span>Vraie valeur comprise dans [0,847−0,005 ; 0,847+0,005] = [0,842 ; 0,852] m/s</span></div>
+      </div>
+
+      <div class="question">
+        <h4><span class="qnum">Q2</span> Quantité de mouvement p = m × v — Détail étape par étape</h4>
+        <div class="formula">p = m × v</div>
+
+        <div class="etape"><h5>Étape 1 — Intervalle de la masse</h5><p>m = (0,711 ± 0,002) kg → m<sub>min</sub> = 0,711 − 0,002 = <b>0,709 kg</b> ; m<sub>max</sub> = 0,711 + 0,002 = <b>0,713 kg</b><br>On réutilise V de la Q1 : V<sub>0</sub> = 0,847 ; V<sub>min</sub> = 0,843 ; V<sub>max</sub> = 0,852 m/s.</p></div>
+
+        <div class="etape"><h5>Étape 2 — Valeur nominale p<sub>0</sub></h5><p>On multiplie les valeurs centrales :</p></div>
+        <div class="calc">p<sub>0</sub> = m<sub>0</sub> × V<sub>0</sub> = 0,711 × 0,847176<br>= 0,602342... ≈ <b>0,602 kg.m/s</b></div>
+
+        <div class="etape"><h5>Étape 3 — Encadrement p<sub>min</sub> et p<sub>max</sub></h5><p>Pour un <b>produit</b> (nombres positifs) : min × min = min, max × max = max.</p></div>
+        <div class="pourquoi">💡 Logique : petite masse × petite vitesse = petite quantité de mouvement. Grande masse × grande vitesse = grande quantité de mouvement.</div>
+        <div class="calc">p<sub>min</sub> = m<sub>min</sub> × V<sub>min</sub> = 0,709 × 0,842715 = 0,597485 ≈ <b>0,597 kg.m/s</b><br>p<sub>max</sub> = m<sub>max</sub> × V<sub>max</sub> = 0,713 × 0,851666 = 0,607238 ≈ <b>0,607 kg.m/s</b></div>
+
+        <div class="etape"><h5>Étape 4 — Incertitude absolue Δp</h5></div>
+        <div class="calc">Δp = (p<sub>max</sub> − p<sub>min</sub>) / 2 = (0,607238 − 0,597485) / 2<br>= 0,009753 / 2 = 0,004876... ≈ <b>0,005 kg.m/s</b></div>
+
+        <div class="etape"><h5>Étape 5 — Vérification par les relatives</h5></div>
+        <div class="calc">Δm/m = 0,002 / 0,711 = 0,00281 (0,281 %)<br>ΔV/V = 0,00528 (calculé en Q1 : 0,528 %)<br>Δp/p = 0,00281 + 0,00528 = 0,00809<br>Δp = 0,602 × 0,00809 = 0,00487 ≈ <b>0,005 ✔</b></div>
+
+        <div class="etape"><h5>Étape 6 — Écriture finale</h5></div>
+        <div class="resultat"><b>p = (0,602 ± 0,005) kg.m/s</b><span>Vraie valeur dans [0,597 ; 0,607] kg.m/s (on peut aussi écrire N.s)</span></div>
+      </div>
+
+      <div class="rappel">
+        <h4>⭐ Méthode à retenir</h4>
+        <ul>
+          <li><b>Quotient (V = D/t) :</b> V<sub>min</sub> = D<sub>min</sub>/t<sub>max</sub> , V<sub>max</sub> = D<sub>max</sub>/t<sub>min</sub></li>
+          <li><b>Produit (p = m.v) :</b> p<sub>min</sub> = m<sub>min</sub>×V<sub>min</sub> , p<sub>max</sub> = m<sub>max</sub>×V<sub>max</sub></li>
+          <li><b>Incertitude :</b> Δ = (Max − Min) / 2, arrondie à 1 chiffre par excès</li>
+          <li><b>Relative :</b> ΔV/V = ΔD/D + Δt/t et Δp/p = Δm/m + ΔV/V</li>
+        </ul>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- ============ EXO 2 ============ -->
+  <div class="exo phy" id="exo2">
+    <div class="exo-head">
+      <h2>Exo 2 — Physique : 100m d'Usain Bolt, moyenne et incertitude (k=2)</h2>
+      <span class="tag-phy">PHYSIQUE</span>
+    </div>
+    <div class="exo-body">
+
+      <div class="enonce">
+        <h3>📝 Énoncé</h3>
+        <p>Pour mesurer la durée ΔT de la course du 100m d'Usain Bolt lors de son record (16 août 2009, Berlin), des élèves de Terminale utilisent un même chronomètre et effectuent chacun une mesure à partir d'un enregistrement TV.<br>
+        Valeurs mesurées (en s) :<br>
+        <span class="donnee">9,49 ; 9,50 ; 9,49 ; 9,87 ; 9,53 ; 9,56 ; 9,84 ; 9,52 ; 9,52 ; 9,55 ; 9,58 ; 9,74 ; 9,53 ; 9,55 ; 9,58 ; 9,59 ; 9,52 ; 9,49</span> (n = 18)<br>
+        <b>1)</b> Déterminer la valeur moyenne m et l'incertitude absolue dans le cas où k = 2. Écrire convenablement le résultat.<br>
+        <b>2)</b> Quel est le pourcentage de valeurs mesurées comprises dans l'intervalle de confiance ?</p>
+      </div>
+
+      <div class="cours-box">
+        <h4>📖 Rappel : mesures répétées (évaluation de type A - niveau Terminale)</h4>
+        <ul>
+          <li><b>Moyenne :</b> m = (x1 + x2 + ... + xn) / n</li>
+          <li><b>Écart-type expérimental :</b> s = √[ Σ(xi − m)² / (n−1) ] — dispersion des mesures.</li>
+          <li><b>Incertitude-type sur la moyenne :</b> u(m) = s / √n — plus on mesure, plus la moyenne est précise.</li>
+          <li><b>Incertitude élargie :</b> U = k × u(m). Ici k = 2 → niveau de confiance ≈ 95%.</li>
+          <li><b>Résultat :</b> (m ± U) et intervalle de confiance [m−U ; m+U].</li>
+        </ul>
+      </div>
+
+      <div class="question">
+        <h4><span class="qnum">Q1</span> Moyenne m et incertitude U (k=2) — étape par étape</h4>
+
+        <div class="etape"><h5>Étape 1 — Compter et additionner (n et somme)</h5><p>On compte : n = <b>18 mesures</b>.<br>On additionne tout :<br>9,49+9,50+9,49+9,87+9,53+9,56+9,84+9,52+9,52+9,55+9,58+9,74+9,53+9,55+9,58+9,59+9,52+9,49 = <b>172,45 s</b></p></div>
+
+        <div class="etape"><h5>Étape 2 — Calculer la moyenne m</h5></div>
+        <div class="formula">m = Somme / n</div>
+        <div class="calc">m = 172,45 / 18 = 9,580555... ≈ <b>9,5806 s</b></div>
+        <div class="pourquoi">💡 Remarque : 9,58 s, c'est exactement le vrai record du monde de Bolt (9,58 s à Berlin 2009) ! La moyenne est bonne malgré des mesures dispersées.</div>
+
+        <div class="etape"><h5>Étape 3 — Calculer l'écart-type expérimental s</h5><p>Pour chaque mesure, on calcule (xi − m)², on additionne, on divise par (n−1) = 17, puis racine carrée.<br>Exemples : (9,49−9,5806)² = 0,00820 ; (9,87−9,5806)² = 0,08377 ; (9,52−9,5806)² = 0,00367 ...<br>Somme totale Σ(xi−m)² = <b>0,22609</b></p></div>
+        <div class="calc">s = √[ 0,22609 / 17 ] = √[ 0,01330 ] = <b>0,1153 s</b><br>→ Les mesures sont dispersées d'environ ±0,12 s autour de la moyenne.</div>
+
+        <div class="etape"><h5>Étape 4 — Incertitude-type u(m) = s / √n</h5></div>
+        <div class="calc">√18 = 4,2426<br>u(m) = 0,1153 / 4,2426 = <b>0,0272 s</b></div>
+        <div class="pourquoi">💡 Sens : la moyenne (9,58) est bien plus précise qu'une seule mesure (±0,12). Diviser par √n traduit cela.</div>
+
+        <div class="etape"><h5>Étape 5 — Incertitude élargie U avec k = 2</h5></div>
+        <div class="formula">U = k × u(m) , avec k = 2 (≈95% de confiance)</div>
+        <div class="calc">U = 2 × 0,0272 = 0,05436... ≈ <b>0,05 s</b><br>(on arrondit l'incertitude à 1 chiffre significatif : 0,054 → 0,05 s pour garder le centième du chronomètre)</div>
+
+        <div class="etape"><h5>Étape 6 — Écriture convenable du résultat</h5><p>On arrondit la moyenne au même rang que U (le centième) :</p></div>
+        <div class="resultat"><b>ΔT = (9,58 ± 0,05) s (k=2, ≈95%)</b><span>Intervalle de confiance : [9,58−0,05 ; 9,58+0,05] = [9,53 ; 9,63] s<br>Avec le calcul non arrondi : [9,526 ; 9,635] s</span></div>
+      </div>
+
+      <div class="question">
+        <h4><span class="qnum">Q2</span> Pourcentage de valeurs dans l'intervalle — étape par étape</h4>
+
+        <div class="etape"><h5>Étape 1 — Lister les valeurs triées et comparer à [9,526 ; 9,635]</h5></div>
+        <div class="calc">Triées : 9,49 ; 9,49 ; 9,49 ; 9,50 ; <b>9,52 ; 9,52 ; 9,52</b> ; <b>9,53 ; 9,53 ; 9,55 ; 9,55 ; 9,56 ; 9,58 ; 9,58 ; 9,59</b> ; 9,74 ; 9,84 ; 9,87<br><br>❌ Hors intervalle (10) : 9,49×3, 9,50, 9,52×3, 9,74, 9,84, 9,87<br>✅ Dans l'intervalle (8) : 9,53×2, 9,55×2, 9,56, 9,58×2, 9,59</div>
+        <div class="pourquoi">⚠️ Avec l'intervalle arrondi [9,53 ; 9,63] : on compte 8 valeurs (les 9,53 inclus). Avec [9,52 ; 9,64] (si U=0,06) : 11 valeurs. On garde le cas strict : 8 valeurs.</div>
+
+        <div class="etape"><h5>Étape 2 — Calculer le pourcentage</h5></div>
+        <div class="formula">% = (nombre dedans / n) × 100</div>
+        <div class="calc">% = (8 / 18) × 100 = 44,444... ≈ <b>44 %</b></div>
+
+        <div class="resultat"><b>44 % des valeurs (8 sur 18) sont dans l'intervalle de confiance</b><span>Théorie : avec k=2 on attend ≈95%. Ici seulement 44% → distribution non gaussienne</span></div>
+
+        <div class="etape"><h5>Étape 3 — Interprétation (ce que le prof attend)</h5><p>On est très loin des 95% théoriques car il y a <b>3 valeurs aberrantes</b> : 9,74 / 9,84 / 9,87 s (erreurs de déclenchement du chronomètre : oubli d'arrêter, départ anticipé). Elles gonflent l'écart-type et décalent l'intervalle. Sans elles, la moyenne serait plus précise et le % plus proche de 95%. Le vrai record 9,58 s est bien dans l'intervalle, la mesure est donc <b>compatible</b> malgré les fautes.</p></div>
+      </div>
+
+      <div class="rappel">
+        <h4>⭐ Méthode à retenir (mesures répétées)</h4>
+        <ul>
+          <li>m = Somme/n → ici 172,45/18 = 9,58 s</li>
+          <li>s = √[Σ(xi−m)²/(n−1)] → ici 0,12 s</li>
+          <li>u = s/√n → ici 0,027 s ; U = 2×u → 0,05 s</li>
+          <li>Résultat : (9,58 ± 0,05) s ; % dedans = 8/18 = 44%</li>
+        </ul>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- ============ EXO 3 ============ -->
+  <div class="exo phy" id="exo3">
+    <div class="exo-head">
+      <h2>Exo 3 — Physique : Tension d'un amplificateur, précision de la moyenne</h2>
+      <span class="tag-phy">PHYSIQUE</span>
+    </div>
+    <div class="exo-body">
+
+      <div class="enonce">
+        <h3>📝 Énoncé</h3>
+        <p>Les mesures suivantes en Volts sont prises sur la tension de sortie d'un amplificateur à gain élevé qui est perturbé à cause d'une fluctuation du bruit :<br>
+        <span class="donnee">1,53 ; 1,57 ; 1,54 ; 1,54 ; 1,50 ; 1,51 ; 1,55 ; 1,54 ; 1,56 et 1,53</span> (n = 10)<br>
+        <b>1)</b> Déterminer la valeur moyenne et l'écart-type.<br>
+        <b>2)</b> Estimer la précision avec laquelle la valeur moyenne est déterminée à partir de ces dix mesures.<br>
+        <b>3)</b> Si 1000 mesures ont été prises, au lieu de dix, mais l'écart-type reste le même, de combien l'exactitude de la valeur moyenne calculée pourrait être améliorée ?</p>
+      </div>
+
+      <div class="cours-box">
+        <h4>📖 Rappel : moyenne, dispersion et précision</h4>
+        <ul>
+          <li><b>Moyenne :</b> m = Somme / n → meilleure estimation de la vraie valeur.</li>
+          <li><b>Écart-type expérimental s :</b> dispersion d'UNE mesure : s = √[ Σ(xi−m)² / (n−1) ].</li>
+          <li><b>Précision de la moyenne :</b> u(m) = s / √n. La moyenne est √n fois plus précise qu'une mesure seule.</li>
+          <li><b>Amélioration :</b> si on multiplie n par 100, u est divisée par √100 = 10.</li>
+        </ul>
+      </div>
+
+      <div class="question">
+        <h4><span class="qnum">Q1</span> Moyenne m et écart-type s — étape par étape</h4>
+
+        <div class="etape"><h5>Étape 1 — Additionner (somme et n)</h5><p>n = <b>10 mesures</b>.<br>1,53+1,57 = 3,10 ; +1,54 = 4,64 ; +1,54 = 6,18 ; +1,50 = 7,68 ; +1,51 = 9,19 ; +1,55 = 10,74 ; +1,54 = 12,28 ; +1,56 = 13,84 ; +1,53 = <b>15,37 V</b></p></div>
+
+        <div class="etape"><h5>Étape 2 — Moyenne</h5></div>
+        <div class="formula">m = Somme / n</div>
+        <div class="calc">m = 15,37 / 10 = <b>1,537 V ≈ 1,54 V</b></div>
+
+        <div class="etape"><h5>Étape 3 — Écarts à la moyenne (xi − m)²</h5><p>On fait mesure par mesure :<br>(1,53−1,537)² = (−0,007)² = 0,000049<br>(1,57−1,537)² = (0,033)² = 0,001089<br>(1,54−1,537)² = 0,000009 (×3 car 1,54 apparaît 3 fois)<br>(1,50−1,537)² = (−0,037)² = 0,001369<br>(1,51−1,537)² = (−0,027)² = 0,000729<br>(1,55−1,537)² = 0,000169<br>(1,56−1,537)² = 0,000529<br>(1,53−1,537)² = 0,000049<br><b>Somme Σ = 0,00401</b></p></div>
+
+        <div class="etape"><h5>Étape 4 — Écart-type expérimental</h5></div>
+        <div class="formula">s = √[ Σ(xi−m)² / (n−1) ]</div>
+        <div class="calc">s = √[ 0,00401 / 9 ] = √[ 0,0004456 ] = <b>0,0211 V ≈ 0,021 V</b><br><i>→ Une mesure seule fluctue d'environ ±0,02 V à cause du bruit.</i></div>
+
+        <div class="resultat"><b>m = 1,537 V ; s ≈ 0,021 V</b><span>Dispersion d'une mesure due au bruit de l'amplificateur</span></div>
+      </div>
+
+      <div class="question">
+        <h4><span class="qnum">Q2</span> Précision de la moyenne (10 mesures)</h4>
+
+        <div class="etape"><h5>Étape 1 — Formule : u(m) = s / √n</h5><p>La moyenne de 10 mesures est plus précise qu'une seule mesure.</p></div>
+        <div class="formula">u(m) = s / √n</div>
+        <div class="calc">√10 = 3,1623<br>u<sub>10</sub> = 0,0211 / 3,1623 = 0,006675 ≈ <b>0,007 V (0,0067 V)</b></div>
+
+        <div class="etape"><h5>Étape 2 — Écriture du résultat</h5><p>Incertitude-type : <b>(1,537 ± 0,007) V</b>.<br>Avec k=2 (≈95%) : U = 2×0,0067 = 0,0134 ≈ 0,01 V → <b>(1,54 ± 0,01) V</b>.<br>Précision relative : 0,0067/1,537 = 0,44% → très bonne précision malgré le bruit.</p></div>
+
+        <div class="resultat"><b>Précision sur la moyenne (n=10) : ±0,007 V</b><span>Soit U ≈ ±0,013 V avec k=2 → (1,537 ± 0,013) V à 95%</span></div>
+      </div>
+
+      <div class="question">
+        <h4><span class="qnum">Q3</span> Si on passe de 10 à 1000 mesures (même s) ?</h4>
+
+        <div class="etape"><h5>Étape 1 — Nouvelle incertitude u<sub>1000</sub> = s / √1000</h5></div>
+        <div class="calc">√1000 = 31,6228<br>u<sub>1000</sub> = 0,0211 / 31,6228 = 0,000667 ≈ <b>0,00067 V</b></div>
+
+        <div class="etape"><h5>Étape 2 — Facteur d'amélioration</h5><p>On compare les deux précisions :</p></div>
+        <div class="formula">Facteur = u<sub>10</sub> / u<sub>1000</sub> = √(1000/10) = √100 = 10</div>
+        <div class="calc">0,006675 / 0,000667 = <b>10</b><br>→ En faisant 100 fois plus de mesures, on gagne un facteur 10 en précision (car √100 = 10).</div>
+        <div class="pourquoi">💡 Règle d'or : pour diviser l'incertitude par 10, il faut multiplier le nombre de mesures par 100. C'est cher ! Ici on passerait de ±0,007 V à ±0,0007 V.</div>
+
+        <div class="resultat"><b>Exactitude améliorée d'un facteur 10</b><span>u passe de 0,0067 V (n=10) à 0,00067 V (n=1000)</span></div>
+      </div>
+
+      <div class="rappel">
+        <h4>⭐ Méthode à retenir</h4>
+        <ul>
+          <li>m = 15,37/10 = 1,537 V ; s = 0,021 V</li>
+          <li>u<sub>10</sub> = s/√10 = 0,0067 V → (1,537 ± 0,007) V</li>
+          <li>u<sub>1000</sub> = s/√1000 = 0,00067 V → gain = √100 = ×10</li>
+        </ul>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- PLACEHOLDER EXO SUIVANT -->
+  <!-- Les prochains exos seront ajoutés ici avec id="exo4"... -->
+
+  <p class="footer">Mes Exercices — 1ère C — Madiba Elate • Prêt à imprimer : Ctrl + P → Enregistrer en PDF</p>
+  <div style="text-align:center" class="no-print"><button class="print-btn" onclick="window.print()">🖨️ Imprimer / Enregistrer en PDF</button></div>
+
+</div>
+
+</body>
+</html>

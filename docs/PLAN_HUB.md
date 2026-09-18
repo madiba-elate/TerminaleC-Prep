@@ -8,8 +8,13 @@
 
 ```
 TerminaleC-Prep/
-├── index.html                  # Point d'entrée principal
+├── index.html                  # Point d'entrée principal (sidebar → Hub Exercices)
+├── hub-exercices.html          # 🎯 Hub Exercices : 19 fiches par matière + par thème (+ recherche)
 ├── README.md                   # Documentation avec programmes officiels
+├── CONTRIBUER.md               # Mode d'envoi des cours (§7 = ajouter un exo au hub)
+├── SUIVI.md                    # Tableau d'avancement par matière
+├── MODELE_COURS.md / MODELE_PROGRAMME.md  # Gabarits de numérisation
+├── archives/default-project/   # Originaux des 20 fichiers (ne pas modifier)
 ├── matieres/                   # Dossiers par matière (programmes complets)
 │   ├── maths/                  # 📐 Mathématiques (coef 7)
 │   ├── physique/               # ⚡ Physique (coef 4)
@@ -30,7 +35,30 @@ TerminaleC-Prep/
 │   ├── pdf/                    # Documents PDF
 │   └── images/                 # Images et schémas
 └── docs/                       # Documentation
-    └── PLAN_HUB.md             # Ce fichier
+    ├── PLAN_HUB.md             # Ce fichier
+    └── METHODE_18_SUR_20.html  # Méthode maître (coefs à jour — fait foi)
+```
+
+> ⚠️ Les coefficients affichés plus bas dans ce fichier sont indicatifs et
+> **antérieurs au découpage Français → Littérature + Langue Française**.
+> Référence à jour : `docs/METHODE_18_SUR_20.html` et `SUIVI.md`.
+
+---
+
+## 🎯 Hub Exercices (19 fiches)
+
+Page `hub-exercices.html` — registre inline (fonctionne en `file://`, imprimable),
+2 vues + recherche instantanée :
+
+| Matière | Thèmes | Fiches |
+|---|---|---|
+| ⚡ Physique (15) | Mesures & Incertitudes (6 : exos 4-5, 6, 7, 12, 14, 16 + compilation 1-3) · Mécanique (4 : exos 9, 15, 18, 19) · Électricité (2 : exos 10, 11) · Optique (exo 8) · Physique moderne (exo 17) | `matieres/physique/exercices/` |
+| 💻 Info (1) | Programmation & Algo (exo 13 : définitions + C + algo) | `matieres/info/exercices/` |
+| 🇬🇧 Anglais (2) | Grammaire (tenses) · Expression écrite (formal letter) | `matieres/anglais/exercices/` |
+| 📖 Français (1) | Expression écrite (lettre de stage modèle) | `matieres/francais/exercices/` |
+
+Fichiers canoniques dans `matieres/<matiere>/exercices/`, originaux intouchés
+dans `archives/default-project/`. Ajout d'un exo : `CONTRIBUER.md §7`.
 ```
 
 ---
