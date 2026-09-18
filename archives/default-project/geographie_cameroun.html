@@ -1,0 +1,292 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Géographie 1ère C - Relief et Diversité Physique du Cameroun</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=Merriweather:wght@700;900&display=swap');
+  *{margin:0;padding:0;box-sizing:border-box}
+  body{background:#f8fafc;font-family:'Inter',sans-serif;color:#1e293b;padding:24px 16px}
+  .header{max-width:1100px;margin:0 auto 22px auto;background:linear-gradient(135deg,#064e3b,#0f766e 45%,#ca8a04);border-radius:20px;padding:26px 28px;color:white;position:relative;overflow:hidden}
+  .header::after{content:'';position:absolute;right:-30px;top:-30px;width:180px;height:180px;background:radial-gradient(circle,rgba(255,255,255,0.18),transparent 70%);border-radius:50%}
+  .header h1{font-family:'Merriweather',serif;font-size:30px;font-weight:900;line-height:1.1}
+  .header h1 span{color:#fde68a}
+  .header p{margin-top:8px;font-size:13px;opacity:0.95;line-height:1.5;max-width:700px}
+  .badge{display:inline-block;background:rgba(255,255,255,0.18);border:1px solid rgba(255,255,255,0.3);padding:5px 12px;border-radius:999px;font-size:11px;letter-spacing:0.8px;text-transform:uppercase;font-weight:700;margin-bottom:10px;backdrop-filter:blur(6px)}
+  .container{max-width:1100px;margin:0 auto}
+  .intro{background:white;border:1px solid #e2e8f0;border-radius:16px;padding:18px 20px;display:flex;gap:16px;align-items:center;margin-bottom:20px}
+  .intro .flag{min-width:56px;height:56px;border-radius:14px;background:linear-gradient(90deg,#009A44 33%,#CE1126 33% 66%,#FCD116 66%);display:flex;align-items:center;justify-content:center;font-size:22px;box-shadow:0 6px 16px rgba(0,0,0,0.12)}
+  .intro h3{font-size:14px;color:#0f172a}
+  .intro p{font-size:12.5px;color:#475569;line-height:1.6;margin-top:4px}
+  /* PROFILE */
+  .profile{background:white;border:1px solid #e2e8f0;border-radius:16px;padding:20px;margin-bottom:20px}
+  .profile h2{font-size:15px;font-weight:800;color:#0f172a;text-align:center}
+  .profile small{display:block;text-align:center;color:#64748b;font-size:11px;margin-top:4px}
+  .transect{margin-top:16px;height:150px;display:flex;align-items:flex-end;gap:4px;padding:0 10px}
+  .transect .zone{flex:1;border-radius:10px 10px 0 0;display:flex;flex-direction:column;justify-content:flex-start;align-items:center;padding-top:10px;color:white;font-weight:800;font-size:11px;text-align:center;position:relative}
+  .transect .zone span{font-size:10px;font-weight:600;opacity:0.9}
+  .z1{background:linear-gradient(#38bdf8,#0ea5e9);height:35%} 
+  .z2{background:linear-gradient(#22c55e,#15803d);height:55%}
+  .z3{background:linear-gradient(#a3e635,#65a30d);height:85%}
+  .z4{background:linear-gradient(#f97316,#c2410c);height:95%}
+  .z5{background:linear-gradient(#facc15,#a16207);height:40%}
+  .labels{display:flex;gap:4px;padding:8px 10px 0 10px}
+  .labels div{flex:1;text-align:center;font-size:10px;font-weight:700;color:#334155;line-height:1.3}
+  .labels div i{font-weight:400;color:#64748b;display:block}
+  /* CARDS RELIEF */
+  .section-title{font-family:'Merriweather',serif;font-size:20px;font-weight:900;color:#0f172a;margin:22px 0 14px 0;display:flex;align-items:center;gap:10px}
+  .section-title .line{flex:1;height:1px;background:#e2e8f0}
+  .grid5{display:grid;grid-template-columns:1fr 1fr;gap:16px}
+  .relief-card{background:white;border:1px solid #e2e8f0;border-radius:16px;overflow:hidden;display:flex;flex-direction:column}
+  .relief-head{padding:14px 16px;color:white;display:flex;justify-content:space-between;align-items:center}
+  .relief-head h3{font-size:13px;font-weight:800}
+  .relief-head .alt{font-size:11px;background:rgba(255,255,255,0.22);padding:4px 8px;border-radius:999px;font-weight:700}
+  .relief-body{padding:14px 16px;flex:1}
+  .relief-body .loc{font-size:11px;color:#0f766e;background:#ecfdf5;border:1px solid #a7f3d0;display:inline-block;padding:3px 8px;border-radius:999px;font-weight:700;margin-bottom:8px}
+  .relief-body ul{margin-left:16px;font-size:12.5px;line-height:1.6;color:#334155}
+  .relief-body .alt-detail{margin-top:10px;background:#f8fafc;border:1px dashed #cbd5e1;border-radius:8px;padding:8px 10px;font-size:11.5px;color:#475569;text-align:center}
+  .relief-body .alt-detail b{color:#0f172a}
+  .c1 .relief-head{background:linear-gradient(135deg,#0ea5e9,#0284c7)} /* plaine cotiere */
+  .c2 .relief-head{background:linear-gradient(135deg,#16a34a,#15803d)}
+  .c3 .relief-head{background:linear-gradient(135deg,#65a30d,#4d7c0f)}
+  .c4 .relief-head{background:linear-gradient(135deg,#ea580c,#9a3412)}
+  .c5 .relief-head{background:linear-gradient(135deg,#ca8a04,#a16207)}
+  .full{grid-column:1 / -1}
+  /* Lecon 1 */
+  .lesson{background:white;border:1px solid #e2e8f0;border-radius:16px;overflow:hidden;margin-top:6px}
+  .lesson-head{background:#0f172a;color:white;padding:16px 20px;display:flex;justify-content:space-between;align-items:center}
+  .lesson-head h2{font-size:15px;font-weight:800}
+  .lesson-head span{font-size:11px;background:#1e293b;padding:5px 10px;border-radius:999px;letter-spacing:0.5px}
+  .lesson-body{padding:20px}
+  .sub{display:grid;grid-template-columns:56px 1fr;gap:14px;margin-bottom:18px;padding:14px;border:1px solid #f1f5f9;background:#f8fafc;border-radius:12px}
+  .sub:last-child{margin-bottom:0}
+  .ico{width:56px;height:56px;border-radius:12px;display:flex;align-items:center;justify-content:center;font-size:24px;color:white;flex-shrink:0}
+  .sub h4{font-size:13px;font-weight:800;color:#0f172a}
+  .sub p, .sub ul{font-size:12.5px;line-height:1.6;color:#334155;margin-top:4px}
+  .sub ul{margin-left:16px}
+  .tag{display:inline-block;font-size:10px;font-weight:800;letter-spacing:0.6px;text-transform:uppercase;padding:3px 8px;border-radius:999px;color:white;margin-top:6px}
+  .climat-table{width:100%;border-collapse:collapse;margin-top:8px;font-size:12px;background:white;border-radius:8px;overflow:hidden;border:1px solid #e2e8f0}
+  .climat-table th{background:#0f172a;color:white;padding:8px 10px;text-align:left;font-size:11px;letter-spacing:0.5px;text-transform:uppercase}
+  .climat-table td{padding:8px 10px;border-bottom:1px solid #f1f5f9}
+  .climat-table tr:last-child td{border:none}
+  .hydro{display:grid;grid-template-columns:1fr 1fr 1fr;gap:10px;margin-top:8px}
+  .hydro div{background:white;border:1px solid #e2e8f0;border-radius:10px;padding:10px;text-align:center}
+  .hydro b{font-size:12px;color:#0f172a;display:block}
+  .hydro span{font-size:11px;color:#64748b}
+  .conclusion{background:linear-gradient(135deg,#ecfdf5,#f0fdf4);border:1px solid #a7f3d0;border-radius:12px;padding:14px 16px;margin-top:16px}
+  .conclusion h4{font-size:13px;color:#065f46}
+  .conclusion p{font-size:12.5px;color:#334155;line-height:1.6;margin-top:4px}
+  .footer{text-align:center;margin-top:16px;font-size:11px;color:#94a3b8}
+  @media(max-width:860px){.grid5{grid-template-columns:1fr} .hydro{grid-template-columns:1fr} .transect{height:120px} .sub{grid-template-columns:1fr} .ico{width:44px;height:44px;font-size:20px}}
+  @media print{body{background:white;padding:0} .no-print{display:none} .header{break-after:avoid} .relief-card{break-inside:avoid}}
+</style>
+</head>
+<body>
+
+<div class="header">
+  <div class="badge">Géographie — 1ère C — Cameroun</div>
+  <h1>Géographie du Cameroun :<br><span>l'Afrique en Miniature</span></h1>
+  <p>TAF 1 : Les grandes unités de relief &nbsp;•&nbsp; TAF 2 : Leçon 1 - La diversité physique du Cameroun. Deux leçons complètes, illustrées et prêtes à recopier.</p>
+</div>
+
+<div class="container">
+
+  <div class="intro">
+    <div class="flag">🇨🇲</div>
+    <div>
+      <h3>Pourquoi "l'Afrique en miniature" ?</h3>
+      <p>Sur seulement <b>475 442 km²</b>, le Cameroun réunit tous les paysages d'Afrique : forêt équatoriale, savane, steppe, montagnes, volcan, plaine côtière et désert. Cette diversité vient de son relief et de son étendue du Lac Tchad (13°N) à l'Océan Atlantique (2°N).</p>
+    </div>
+  </div>
+
+  <!-- COUPE TOPOGRAPHIQUE -->
+  <div class="profile">
+    <h2>⛰️ Coupe Topographique du Sud au Nord</h2>
+    <small>De l'Océan Atlantique (0m) au Lac Tchad (280m) — Profil schématique</small>
+    <div class="transect">
+      <div class="zone z1">0-200m <span>Mer</span></div>
+      <div class="zone z2">700m <span>Plateau<br>Sud</span></div>
+      <div class="zone z3">1200m <span>Adamaoua</span></div>
+      <div class="zone z4">2700m <span>Hauts Plateaux<br>Ouest</span></div>
+      <div class="zone z5">400m <span>Plaines<br>Nord</span></div>
+    </div>
+    <div class="labels">
+      <div>1. Plaine Côtière <i>0-200m</i></div>
+      <div>2. Plateau Sud <i>600-900m</i></div>
+      <div>3. Adamaoua <i>900-1500m</i></div>
+      <div>4. Ouest <i>1500-3000m</i></div>
+      <div>5. Nord <i>300-500m</i></div>
+    </div>
+    <p style="text-align:center;font-size:11px;color:#0f766e;margin-top:10px;background:#ecfdf5;display:inline-block;padding:4px 10px;border-radius:999px;position:relative;left:50%;transform:translateX(-50%)">🔺 Ligne Volcanique : Mont Cameroun (4095m) → Bamboutos (2740m) → Oku (3011m) → Adamaoua → Mandara</p>
+  </div>
+
+  <div class="section-title">TAF 1 DÉVELOPPÉ — Les 5 Grandes Unités de Relief <div class="line"></div></div>
+
+  <div class="lesson" style="margin-bottom:24px">
+    <div class="lesson-head"><h2>⛰️ TAF 1 : Développement détaillé des 5 unités de relief</h2><span>Géographie physique</span></div>
+    <div class="lesson-body">
+
+      <div class="sub">
+        <div class="ico" style="background:#0ea5e9">1</div>
+        <div>
+          <h4>1. La Plaine Côtière (0 à 200 m d'altitude)</h4>
+          <ul>
+            <li><b>Localisation :</b> S'étend le long de l'Océan Atlantique sur environ 400 km, de Campo au Sud jusqu'à l'embouchure du Rio del Rey au Nord-Ouest (largeur de 50 à 150 km).</li>
+            <li><b>Caractéristiques :</b> Basse, plate, sablonneuse et marécageuse (mangroves). C'est la région la plus arrosée (jusqu'à 4 000 mm/an).</li>
+            <li><b>Élément majeur :</b> Dominée par le <b>Mont Cameroun (4 095 m)</b>, volcan actif et point culminant du pays.</li>
+            <li><b>Économie :</b> Ports (Douala, Kribi), hydrocarbures off-shore et agricultures industrielles (palmiers, hévéas).</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="sub">
+        <div class="ico" style="background:#16a34a">2</div>
+        <div>
+          <h4>2. Le Plateau Sud-Camerounais (600 à 900 m d'altitude)</h4>
+          <ul>
+            <li><b>Localisation :</b> Centre, Sud et Est du pays (Yaoundé, Ebolowa, Bertoua).</li>
+            <li><b>Caractéristiques :</b> Le plus vaste ensemble (52% du territoire). Vaste plateau monotone et vallonné reposant sur un socle ancien granitique.</li>
+            <li><b>Végétation :</b> Recouvert par la <b>forêt dense équatoriale</b> sous climat équatorial humide.</li>
+            <li><b>Économie :</b> Exploitation forestière (bois), cultures de rente (cacao) et vivrières (manioc).</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="sub">
+        <div class="ico" style="background:#65a30d">3</div>
+        <div>
+          <h4>3. Le Plateau de l'Adamaoua (900 à 1 500 m d'altitude)</h4>
+          <ul>
+            <li><b>Localisation :</b> Au centre du pays (Tchabal Mbabo 2 460 m).</li>
+            <li><b>Rôle majeur (Château d'eau) :</b> Sépare le Sud humide du Nord sec et donne naissance aux grands fleuves (Sanaga, Bénoué, Logone, Vina).</li>
+            <li><b>Caractéristiques :</b> Collines, dômes granitiques, climat plus frais, savane arborée et élevage bovin intensif.</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="sub">
+        <div class="ico" style="background:#ea580c">4</div>
+        <div>
+          <h4>4. Les Hauts Plateaux de l'Ouest (1 500 à 3 011 m d'altitude)</h4>
+          <ul>
+            <li><b>Localisation :</b> Ouest et Nord-Ouest (Bafoussam, Bamenda, Dschang).</li>
+            <li><b>Caractéristiques :</b> Relief le plus accidenté et volcanique du pays (Monts Bamboutos 2740m, Mont Oku 3011m, lacs de cratère Nyos/Barombi).</li>
+            <li><b>Peuplement :</b> Sols volcaniques noirs d'une <b>extrême fertilité</b> → région la plus densément peuplée (maraîchage, café arabica).</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="sub">
+        <div class="ico" style="background:#ca8a04">5</div>
+        <div>
+          <h4>5. Les Plaines et Cuvettes du Nord (280 à 500 m d'altitude)</h4>
+          <ul>
+            <li><b>Localisation :</b> Du Nord de l'Adamaoua jusqu'au Lac Tchad.</li>
+            <li><b>Subdivisions :</b>
+              <ul>
+                <li><b>a) Cuvette de la Bénoué :</b> Autour de Garoua (300-500m), sédiments, savane.</li>
+                <li><b>b) Plaine du Diamaré :</b> Autour de Maroua, plate, argileuse, inondable.</li>
+                <li><b>c) Plaine du Lac Tchad :</b> Autour de Kousseri (280m), steppe sahélienne, climat aride.</li>
+              </ul>
+            </li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="conclusion" style="margin-top:14px">
+        <h4>🔗 Axe transversal : La Ligne Volcanique du Cameroun (LVC)</h4>
+        <p>Les 5 unités sont traversées du Sud-Ouest au Nord-Est par la Ligne Volcanique (Mont Cameroun → Manengouba → Bamboutos → Adamaoua → Mandara).</p>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- LECON 1 -->
+  <div class="section-title">TAF 2 — Leçon 1 : La Diversité Physique du Cameroun <div class="line"></div></div>
+
+  <div class="lesson">
+    <div class="lesson-head"><h2>📘 Leçon 1 : La Diversité Physique du Cameroun</h2><span>Plan complet</span></div>
+    <div class="lesson-body">
+
+      <div class="sub">
+        <div class="ico" style="background:#0ea5e9">⛰️</div>
+        <div>
+          <h4>I. Un Relief Varié (Rappel TAF 1)</h4>
+          <p>Le relief commande tous les autres éléments physiques. Du Sud au Nord on passe de 0m (océan) à 4095m (Mont Cameroun) puis on redescend à 280m (Lac Tchad). Cette variété explique la diversité des climats et des végétations.</p>
+          <span class="tag" style="background:#0ea5e9">À retenir : 5 unités + ligne volcanique</span>
+        </div>
+      </div>
+
+      <div class="sub">
+        <div class="ico" style="background:#f59e0b">☀️</div>
+        <div>
+          <h4>II. Un Climat Diversifié</h4>
+          <p>Deux grands domaines climatiques séparés par l'Adamaoua :</p>
+          <table class="climat-table">
+            <tr><th>Domaine</th><th>Localisation</th><th>Caractéristiques</th><th>Pluie / an</th></tr>
+            <tr><td><b>Équatorial</b></td><td>Sud, Littoral, Est</td><td>Chaud & humide, 4 saisons (2 sèches, 2 pluies)</td><td>1500 - 4000 mm</td></tr>
+            <tr><td><b>Tropical humide</b></td><td>Adamaoua, Ouest</td><td>Frais en altitude, 2 saisons</td><td>900 - 1500 mm</td></tr>
+            <tr><td><b>Tropical sec / Sahélien</b></td><td>Nord, Extrême-Nord</td><td>Chaud & sec, 1 saison des pluies (3 mois)</td><td>400 - 900 mm</td></tr>
+          </table>
+          <p style="margin-top:6px"><b>Conséquence :</b> Plus on va vers le Nord, plus il fait sec et chaud.</p>
+        </div>
+      </div>
+
+      <div class="sub">
+        <div class="ico" style="background:#16a34a">🌳</div>
+        <div>
+          <h4>III. Une Végétation Étagée (liée au climat)</h4>
+          <ul>
+            <li><b>Au Sud :</b> Forêt dense équatoriale (arbres géants, toujours verte) + Mangrove sur la côte</li>
+            <li><b>Au Centre / Adamaoua :</b> Savane arborée (arbres + herbes hautes)</li>
+            <li><b>Au Nord :</b> Savane herbeuse puis Steppe à épineux (Extrême-Nord)</li>
+            <li><b>À l'Ouest :</b> Forêt d'altitude et prairies sur les hauts plateaux</li>
+          </ul>
+          <span class="tag" style="background:#16a34a">Forêt → Savane → Steppe du Sud au Nord</span>
+        </div>
+      </div>
+
+      <div class="sub">
+        <div class="ico" style="background:#2563eb">💧</div>
+        <div>
+          <h4>IV. Un Réseau Hydrographique Dense — Le Château d'Eau</h4>
+          <p>L'Adamaoua est le château d'eau : 3 grands bassins versants :</p>
+          <div class="hydro">
+            <div><b>🌊 Bassin Atlantique</b><span>Sanaga (918 km)<br>Wouri, Nyong, Ntem,<br>Lokoundjé, Kribi (chutes)</span></div>
+            <div><b>🌍 Bassin du Congo</b><span>Dja, Sangha,<br>Boumba, Ngoko<br>(vers le Congo)</span></div>
+            <div><b>🏜️ Bassin du Tchad/Niger</b><span>Bénoué, Logone,<br>Chari, Faro<br>→ Lac Tchad</span></div>
+          </div>
+          <p style="margin-top:8px"><b>Lacs :</b> Lac Tchad, lacs de cratère (Nyos, Monoun, Barombi Mbo, Oku) et lacs de retenue (Lagdo, Bamendjing).</p>
+        </div>
+      </div>
+
+      <div class="sub">
+        <div class="ico" style="background:#a16207">🟫</div>
+        <div>
+          <h4>V. Des Sols Variés</h4>
+          <ul>
+            <li><b>Sols ferrallitiques rouges</b> au Sud — épais, lessivés, sous forêt</li>
+            <li><b>Sols ferrugineux</b> au Centre/Nord — moins riches, savane</li>
+            <li><b>Sols volcaniques noirs</b> à l'Ouest et Mont Cameroun — <b>très fertiles</b> (café, maraîchage)</li>
+            <li><b>Sols hydromorphes et peu évolués</b> à l'Extrême-Nord — arides, fragiles</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="conclusion">
+        <h4>✅ Conclusion Générale</h4>
+        <p>La diversité physique fait la <b>richesse du Cameroun</b> : agriculture variée (cacao au Sud, coton au Nord, café à l'Ouest), ressources en eau et hydroélectricité, et atouts touristiques (plages, montagnes, parcs nationaux). Mais elle impose aussi des <b>contraintes</b> : inondations et sécheresse au Nord, érosion et glissements de terrain à l'Ouest, enclavement de l'Est.</p>
+        <p style="margin-top:6px;font-style:italic;color:#065f46">→ C'est cette combinaison unique qui justifie le surnom : <b>le Cameroun, l'Afrique en miniature.</b></p>
+      </div>
+
+    </div>
+  </div>
+
+  <p class="footer">Géographie — 1ère C — Lycée Joss — Année 2025-2026 • Prêt à imprimer : Ctrl + P → Enregistrer en PDF</p>
+  <div style="text-align:center" class="no-print"><button onclick="window.print()" style="margin-top:14px;background:#0f172a;color:white;border:none;padding:10px 22px;border-radius:999px;font-weight:700;cursor:pointer">🖨️ Imprimer / Enregistrer en PDF</button></div>
+
+</div>
+
+</body>
+</html>

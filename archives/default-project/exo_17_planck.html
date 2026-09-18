@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>Exercice 17 — Unités de Planck</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Inter:wght@500;600;700;800&family=JetBrains+Mono:wght@600&display=swap');
+  *{margin:0;padding:0;box-sizing:border-box}
+  body{background:#f1f5f9;font-family:'Inter',sans-serif;color:#1e293b;padding:24px 16px}
+  .header{max-width:850px;margin:0 auto 18px auto;background:linear-gradient(135deg,#0f172a,#1e3a8a);border-radius:20px;padding:20px 22px;color:white;text-align:center}
+  .header h1{font-size:20px;font-weight:900}
+  .header h1 span{color:#7dd3fc}
+  .container{max-width:850px;margin:0 auto}
+  .exo{background:white;border:1px solid #e2e8f0;border-radius:16px;overflow:hidden;margin-bottom:16px}
+  .exo-head{padding:12px 16px;color:white;display:flex;justify-content:space-between;align-items:center}
+  .exo-head h2{font-size:13px;font-weight:800}
+  .phy .exo-head{background:linear-gradient(135deg,#0284c7,#0ea5e9)}
+  .exo-body{padding:14px 16px}
+  .enonce{background:#fffbeb;border:1px solid #fde68a;border-radius:10px;padding:10px 14px;margin-bottom:10px;font-size:12px;line-height:1.6;color:#44403c}
+  .enonce b{color:#0f172a}
+  .step{background:#f8fafc;border-left:4px solid #0ea5e9;border-radius:8px;padding:8px 12px;margin:6px 0;font-size:12px;line-height:1.6;color:#334155}
+  .step b{color:#0f172a}
+  .formula{text-align:center;font-family:'JetBrains Mono',monospace;font-size:11px;font-weight:700;background:#eff6ff;border:1px solid #bfdbfe;border-radius:8px;padding:8px;margin:8px 0;color:#1e3a8a}
+  .calc{font-family:'JetBrains Mono',monospace;font-size:11px;background:white;border:1px solid #e2e8f0;border-radius:6px;padding:6px 10px;margin:4px 0;color:#334155}
+  .res{text-align:center;background:linear-gradient(135deg,#ecfdf5,#f0fdf4);border:1px solid #6ee7b7;border-radius:10px;padding:8px 10px;margin:8px 0}
+  .res b{font-family:'JetBrains Mono',monospace;font-size:13px;color:#065f46}
+  .res span{font-size:10px;color:#047857}
+  .rappel{background:#0f172a;color:white;border-radius:10px;padding:10px 14px;margin-top:8px;font-size:11px;line-height:1.6}
+  .rappel ul{margin-left:14px;color:#e2e8f0}
+  .two{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+  .two .box{background:#f8fafc;border:1px solid #e2e8f0;border-radius:8px;padding:10px}
+  .const-box{background:#fef3c7;border:1px solid #f59e0b;border-radius:8px;padding:8px 12px;margin:6px 0;font-size:11px}
+  .const-box b{color:#92400e;font-size:12px}
+  @media print{.no-print{display:none}.exo{break-inside:avoid;box-shadow:none}body{background:white;padding:0}}
+</style>
+</head>
+<body>
+<div class="header">
+  <h1>📚 Exercice <span>17</span> — Unités de Planck</h1>
+  <p>Constantes fondamentales • Longueur, masse, temps, température de Planck</p>
+</div>
+<div class="container">
+
+  <!-- CONSTANTES -->
+  <div class="exo phy">
+    <div class="exo-head"><h2>Constantes de base</h2><span class="tag">DONNÉES</span></div>
+    <div class="exo-body">
+      <div class="const-box"><b>k = ℏ = h/(2π)</b> = constante de Planck réduite — [ℏ] = M·L²·T⁻¹ (J·s)</div>
+      <div class="const-box"><b>c</b> = célérité de la lumière dans le vide — [c] = L·T⁻¹ (m·s⁻¹)</div>
+      <div class="const-box"><b>G</b> = constante de gravitation universelle — [G] = M⁻¹·L³·T⁻² (m³·kg⁻¹·s⁻²)</div>
+      <div class="const-box"><b>Kb</b> = constante de Boltzmann = 1,380 × 10⁻²³ J·K⁻¹ — [Kb] = M·L²·T⁻²·Θ⁻¹</div>
+    </div>
+  </div>
+
+  <!-- PARTIE 1 -->
+  <div class="exo phy">
+    <div class="exo-head"><h2>Partie 1 — Identifier les grandeurs de Planck</h2><span class="tag">PHYSIQUE</span></div>
+    <div class="exo-body">
+
+      <div class="enonce"><b>Énoncé :</b> Identifier quelle grandeur physique correspond à chacune des trois expressions : √(kG/c⁵), √(kG/c³), √(kc/G).</div>
+
+      <div class="step"><b>Méthode : analyse dimensionnelle de chaque expression</b></div>
+      <div class="formula">[ℏ] = M·L²·T⁻¹ &nbsp;|&nbsp; [G] = M⁻¹·L³·T⁻² &nbsp;|&nbsp; [c] = L·T⁻¹</div>
+
+      <div class="step"><b>1a) √(ℏG/c³) → Longueur de Planck (lₚ)</b></div>
+      <div class="calc">[ℏG/c³] = (M·L²·T⁻¹)(M⁻¹·L³·T⁻²)/(L·T⁻¹)³<br>= L⁵·T⁻³/(L³·T⁻³) = <b>L²</b><br>√(L²) = <b>L</b> → <b>LONGUEUR</b></div>
+      <div class="res"><b>lₚ = √(ℏG/c³) ≈ 1,616 × 10⁻³⁵ m</b><br><span>Plus petite longueur physique significative</span></div>
+
+      <div class="step"><b>1b) √(ℏc/G) → Masse de Planck (mₚ)</b></div>
+      <div class="calc">[ℏc/G] = (M·L²·T⁻¹)(L·T⁻¹)/(M⁻¹·L³·T⁻²)<br>= M·L³·T⁻²/(M⁻¹·L³·T⁻²) = <b>M²</b><br>√(M²) = <b>M</b> → <b>MASSE</b></div>
+      <div class="res"><b>mₚ = √(ℏc/G) ≈ 2,176 × 10⁻⁸ kg</b><br><span>Masse de Planck ≈ masse d'une petite particule</span></div>
+
+      <div class="step"><b>1c) √(ℏG/c⁵) → Durée de Planck (tₚ)</b></div>
+      <div class="calc">[ℏG/c⁵] = (M·L²·T⁻¹)(M⁻¹·L³·T⁻²)/(L·T⁻¹)⁵<br>= L⁵·T⁻³/(L⁵·T⁻⁵) = <b>T²</b><br>√(T²) = <b>T</b> → <b>TEMPS</b></div>
+      <div class="res"><b>tₚ = √(ℏG/c⁵) ≈ 5,391 × 10⁻⁴⁴ s</b><br><span>Plus court temps physique significatif</span></div>
+
+      <div class="rappel">
+        <b>⭐ Récapitulatif des unités de Planck :</b><br>
+        • <b>Longueur</b> lₚ = √(ℏG/c³) — plus petite longueur mesurable<br>
+        • <b>Masse</b> mₚ = √(ℏc/G) — masse la plus petite d'une particule élémentaire<br>
+        • <b>Temps</b> tₚ = √(ℏG/c⁵) — plus petit intervalle de temps significatif<br>
+        • Ces constantes définissent les <b>échelles quantico-gravitationnelles</b>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- PARTIE 2 -->
+  <div class="exo phy">
+    <div class="exo-head"><h2>Partie 2 — Température de Planck (Tₚ)</h2><span class="tag">PHYSIQUE</span></div>
+    <div class="exo-body">
+
+      <div class="enonce"><b>Énoncé :</b> Tₚ s'exprime avec Kb, c et mₚ. Trouver l'expression de Tₚ.</div>
+
+      <div class="step"><b>Approche énergétique :</b></div>
+      <div class="step">La température de Planck correspond à l'énergie thermique maximale :<br>E = Kb·Tₚ = mₚ·c² (énergie de repos)</div>
+      <div class="formula">Tₚ = mₚ·c² / Kb</div>
+
+      <div class="step"><b>Substitution de mₚ :</b></div>
+      <div class="calc">mₚ = √(ℏc/G)<br><br>Tₚ = √(ℏc/G) · c² / Kb<br>= c² · √(ℏc/G) / Kb<br>= (1/Kb) · √(ℏc⁵/G)</div>
+      <div class="formula"><b>Tₚ = (1/Kb) · √(ℏc⁵/G)</b></div>
+
+      <div class="step"><b>Vérification dimensionnelle :</b></div>
+      <div class="calc">[ℏc⁵/G] = (M·L²·T⁻¹)(L⁵·T⁻⁵)/(M⁻¹·L³·T⁻²) = M²·L⁴·T⁻⁴<br>√(ℏc⁵/G) = M·L²·T⁻² = énergie<br>[Tₚ] = (M·L²·T⁻²)/(M·L²·T⁻²·K⁻¹) = <b>K ✓</b></div>
+
+      <div class="res"><b>Tₚ ≈ 1,417 × 10³² K</b><br><span>Température la plus élevée ayant un sens dans les théories physiques actuelles</span></div>
+
+      <div class="rappel">
+        <b>⭐ Signification physique :</b><br>
+        • À T = Tₚ ≈ 10³² K, les effets quantiques et gravitationnels deviennent indissociables<br>
+        • Correspond à l'état de l'univers à <b>t ≈ 10⁻⁴³ s</b> après le Big Bang<br>
+        • Au-delà de cette température, nos théories actuelles (relativité + mécanique quantique) ne s'appliquent plus<br>
+        • Il faudrait une théorie de <b>gravité quantique</b> pour décrire cet état
+      </div>
+
+    </div>
+  </div>
+
+</div>
+<div style="text-align:center" class="no-print"><button onclick="window.print()" style="margin-top:10px;background:#0f172a;color:white;border:none;padding:8px 18px;border-radius:999px;font-weight:700;cursor:pointer;font-size:11px">🖨️ Imprimer</button></div>
+</body>
+</html>

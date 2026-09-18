@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Exercice 10 — Résistances & Énergie</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Inter:wght@500;600;700;800&family=JetBrains+Mono:wght@600&display=swap');
+  *{margin:0;padding:0;box-sizing:border-box}
+  body{background:#f1f5f9;font-family:'Inter',sans-serif;color:#1e293b;padding:24px 16px}
+  .header{max-width:750px;margin:0 auto 18px auto;background:linear-gradient(135deg,#0f172a,#1e3a8a);border-radius:20px;padding:20px 22px;color:white;text-align:center}
+  .header h1{font-size:20px;font-weight:900}
+  .header h1 span{color:#7dd3fc}
+  .container{max-width:750px;margin:0 auto}
+  .exo{background:white;border:1px solid #e2e8f0;border-radius:16px;overflow:hidden;margin-bottom:16px}
+  .exo-head{padding:12px 16px;color:white;display:flex;justify-content:space-between;align-items:center}
+  .exo-head h2{font-size:13px;font-weight:800}
+  .phy .exo-head{background:linear-gradient(135deg,#0284c7,#0ea5e9)}
+  .exo-body{padding:14px 16px}
+  .enonce{background:#fffbeb;border:1px solid #fde68a;border-radius:10px;padding:10px 14px;margin-bottom:10px;font-size:12px;line-height:1.6;color:#44403c}
+  .enonce b{color:#0f172a}
+  .step{background:#f8fafc;border-left:4px solid #0ea5e9;border-radius:8px;padding:8px 12px;margin:6px 0;font-size:12px;line-height:1.6;color:#334155}
+  .step b{color:#0f172a}
+  .formula{text-align:center;font-family:'JetBrains Mono',monospace;font-size:11px;font-weight:700;background:#eff6ff;border:1px solid #bfdbfe;border-radius:8px;padding:8px;margin:8px 0;color:#1e3a8a}
+  .calc{font-family:'JetBrains Mono',monospace;font-size:11px;background:white;border:1px solid #e2e8f0;border-radius:6px;padding:6px 10px;margin:4px 0;color:#334155}
+  .res{text-align:center;background:linear-gradient(135deg,#ecfdf5,#f0fdf4);border:1px solid #6ee7b7;border-radius:10px;padding:8px 10px;margin:8px 0}
+  .res b{font-family:'JetBrains Mono',monospace;font-size:13px;color:#065f46}
+  .res span{font-size:10px;color:#047857}
+  .rappel{background:#0f172a;color:white;border-radius:10px;padding:10px 14px;margin-top:8px;font-size:11px;line-height:1.6}
+  .rappel ul{margin-left:14px;color:#e2e8f0}
+  .two{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+  .two .box{background:#f8fafc;border:1px solid #e2e8f0;border-radius:10px;padding:10px}
+  @media print{.no-print{display:none}.exo{break-inside:avoid;box-shadow:none}body{background:white;padding:0}}
+</style>
+</head>
+<body>
+<div class="header">
+  <h1>📚 Exercice <span>10</span> — Résistances & Énergie</h1>
+  <p>Série / Parallèle • Énergie thermique • Propagation d'incertitudes</p>
+</div>
+<div class="container">
+
+  <!-- PARTIE 1 -->
+  <div class="exo phy">
+    <div class="exo-head"><h2>Partie 1 — Résistances en série et parallèle</h2><span class="tag">PHYSIQUE</span></div>
+    <div class="exo-body">
+
+      <div class="enonce"><b>Données :</b> R1 = (10,7 ± 2) Ω ; R2 = (26,5 ± 0,5) Ω</div>
+
+      <div class="step"><b>1a) En série :</b></div>
+      <div class="formula">R_s = R1 + R2</div>
+      <div class="calc">R_s = 10,7 + 26,5 = <b>37,2 Ω</b></div>
+      <div class="calc">ΔR_s = ΔR1 + ΔR2 = 2 + 0,5 = <b>2,5 Ω</b><br>(on additionne les incertitudes absolues)</div>
+
+      <div class="step"><b>1b) En parallèle :</b></div>
+      <div class="formula">R_p = R1 × R2 / (R1 + R2)</div>
+      <div class="calc">R_p = 10,7 × 26,5 / 37,2 = <b>7,6 Ω</b></div>
+      <div class="calc">IR_R1 = 2/10,7 = 18,7 %<br>IR_R2 = 0,5/26,5 = 1,9 %<br>IR_Rp = 18,7 + 1,9 = <b>20,6 %</b><br>ΔR_p = 0,206 × 7,6 ≈ <b>1,6 Ω</b></div>
+
+      <div class="two">
+        <div class="res"><b>Série : R = (37,2 ± 2,5) Ω</b><span>IR = 2,5/37,2 = 6,7 %</span></div>
+        <div class="res"><b>Parallèle : R = (7,6 ± 1,6) Ω</b><span>IR = 20,6 %</span></div>
+      </div>
+
+      <div class="rappel">
+        <b>⭐ Règles :</b><br>
+        • <b>Somme</b> → on additionne les Δ absolues<br>
+        • <b>Produit/Quotient</b> → on additionne les IR relatives<br>
+        • Le maillon faible R1 (2/10,7 = 19%) domine le parallèle
+      </div>
+
+    </div>
+  </div>
+
+  <!-- PARTIE 2 -->
+  <div class="exo phy">
+    <div class="exo-head"><h2>Partie 2 — Énergie thermique</h2><span class="tag">PHYSIQUE</span></div>
+    <div class="exo-body">
+
+      <div class="enonce"><b>Données :</b> R = 5,1 Ω ; t = 60 s ; I = 2,2 A<br>
+      <b>Formule :</b> E = I² R t<br>
+      <b>Règle :</b> incertitudes absolues au plus = 1 unité du dernier chiffre</div>
+
+      <div class="step"><b>1) Énergie thermique :</b></div>
+      <div class="formula">E = I² × R × t</div>
+      <div class="calc">E = 2,2² × 5,1 × 60 = 4,84 × 306<br>= <b>1 481 J ≈ 1,5 × 10³ J</b> (2 ch. sig.)</div>
+
+      <div class="step"><b>2) Incertitudes (1 unité du dernier chiffre) :</b></div>
+      <div class="calc">I = 2,2 A → ΔI = 0,1 A<br>R = 5,1 Ω → ΔR = 0,1 Ω<br>t = 60 s → Δt = 1 s</div>
+
+      <div class="step"><b>3) Incertitude relative :</b></div>
+      <div class="formula">IR_E = 2×IR_I + IR_R + IR_t</div>
+      <div class="calc">IR_I = 0,1/2,2 = 4,5 %<br>IR_R = 0,1/5,1 = 2,0 %<br>IR_t = 1/60 = 1,7 %<br>IR_E = 2×4,5 + 2,0 + 1,7 = <b>12,7 %</b></div>
+
+      <div class="step"><b>4) Incertitude absolue :</b></div>
+      <div class="calc">ΔE = 0,127 × 1481 ≈ <b>190 J ≈ 2 × 10² J</b></div>
+
+      <div class="res"><b>E = (1,5 ± 0,2) × 10³ J</b><span>IR ≈ 13 %</span></div>
+
+    </div>
+  </div>
+
+</div>
+<div style="text-align:center" class="no-print"><button onclick="window.print()" style="margin-top:10px;background:#0f172a;color:white;border:none;padding:8px 18px;border-radius:999px;font-weight:700;cursor:pointer;font-size:11px">🖨️ Imprimer</button></div>
+</body>
+</html>

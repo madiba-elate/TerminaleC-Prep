@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Exercice 8 — Interfrange d'Young</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Inter:wght@500;600;700;800&family=JetBrains+Mono:wght@600&display=swap');
+  *{margin:0;padding:0;box-sizing:border-box}
+  body{background:#f1f5f9;font-family:'Inter',sans-serif;color:#1e293b;padding:24px 16px}
+  .header{max-width:700px;margin:0 auto 18px auto;background:linear-gradient(135deg,#0f172a,#1e3a8a);border-radius:20px;padding:20px 22px;color:white;text-align:center}
+  .header h1{font-size:20px;font-weight:900}
+  .header h1 span{color:#7dd3fc}
+  .container{max-width:700px;margin:0 auto}
+  .exo{background:white;border:1px solid #e2e8f0;border-radius:16px;overflow:hidden;margin-bottom:16px}
+  .exo-head{padding:12px 16px;color:white;display:flex;justify-content:space-between;align-items:center}
+  .exo-head h2{font-size:13px;font-weight:800}
+  .phy .exo-head{background:linear-gradient(135deg,#0284c7,#0ea5e9)}
+  .exo-body{padding:14px 16px}
+  .enonce{background:#fffbeb;border:1px solid #fde68a;border-radius:10px;padding:10px 14px;margin-bottom:10px;font-size:12px;line-height:1.6;color:#44403c}
+  .enonce b{color:#0f172a}
+  .step{background:#f8fafc;border-left:4px solid #0ea5e9;border-radius:8px;padding:8px 12px;margin:6px 0;font-size:12px;line-height:1.6;color:#334155}
+  .step b{color:#0f172a}
+  .formula{text-align:center;font-family:'JetBrains Mono',monospace;font-size:11.5px;font-weight:700;background:#eff6ff;border:1px solid #bfdbfe;border-radius:8px;padding:8px;margin:8px 0;color:#1e3a8a}
+  .calc{font-family:'JetBrains Mono',monospace;font-size:11px;background:white;border:1px solid #e2e8f0;border-radius:6px;padding:6px 10px;margin:4px 0;color:#334155}
+  .res{text-align:center;background:linear-gradient(135deg,#ecfdf5,#f0fdf4);border:1px solid #6ee7b7;border-radius:10px;padding:8px 10px;margin:8px 0}
+  .res b{font-family:'JetBrains Mono',monospace;font-size:13px;color:#065f46}
+  .res span{font-size:10px;color:#047857}
+  .rappel{background:#0f172a;color:white;border-radius:10px;padding:10px 14px;margin-top:8px;font-size:11px;line-height:1.6}
+  .rappel ul{margin-left:14px;color:#e2e8f0}
+  @media print{.no-print{display:none}.exo{break-inside:avoid;box-shadow:none}body{background:white;padding:0}}
+</style>
+</head>
+<body>
+<div class="header">
+  <h1>📚 Exercice <span>8</span> — Interfrange d'Young</h1>
+  <p>λ = 532 nm • D = 2,150 m • a = 100 μm • k = 2</p>
+</div>
+<div class="container">
+
+  <div class="exo phy">
+    <div class="exo-head"><h2>Exo 8 — Interfrange de Young</h2><span class="tag">PHYSIQUE</span></div>
+    <div class="exo-body">
+
+      <div class="enonce"><b>Énoncé :</b> i = λD/a avec λ = (532 ± 1) nm, D = (2,150 ± 0,005) m, a = (100 ± 1) μm.<br>
+      Incertitudes à 95%. Déterminer i = (m ± Δm) mm.</div>
+
+      <div class="step"><b>1) Valeur nominale :</b></div>
+      <div class="formula">i = λD / a</div>
+      <div class="calc">i = (532×10⁻⁹ × 2,150) / (100×10⁻⁶)<br>= 1,1438×10⁻⁶ / 10⁻⁴<br>= 0,011438 m<br>= <b>11,44 mm</b></div>
+
+      <div class="step"><b>2) Incertitudes relatives (produit/quotient → on additionne) :</b></div>
+      <div class="calc">IR_λ = Δλ/λ = 1/532 = <b>0,19 %</b><br>IR_D = ΔD/D = 0,005/2150 = <b>0,23 %</b><br>IR_a = Δa/a = 1/100 = <b>1,00 %</b> ← maillon faible<br><br>IR_total = 0,19 + 0,23 + 1,00 = <b>1,42 %</b></div>
+
+      <div class="step"><b>3) Incertitude absolue :</b></div>
+      <div class="formula">Δi = IR_total × i</div>
+      <div class="calc">Δi = 0,0142 × 11,44 = 0,162 ≈ <b>0,16 mm</b></div>
+
+      <div class="res"><b>i = (11,44 ± 0,16) mm</b><span>ou (11,4 ± 0,2) mm</span></div>
+
+      <div class="rappel">
+        <b>⭐ Règle :</b> pour i = λD/a → IR = IR_λ + IR_D + IR_a<br>
+        Le maillon faible (a, 1%) domine l'incertitude finale.<br>
+        Résultat : <b>i = (11,44 ± 0,16) mm</b>
+      </div>
+
+    </div>
+  </div>
+
+</div>
+<div style="text-align:center" class="no-print"><button onclick="window.print()" style="margin-top:10px;background:#0f172a;color:white;border:none;padding:8px 18px;border-radius:999px;font-weight:700;cursor:pointer;font-size:11px">🖨️ Imprimer</button></div>
+</body>
+</html>

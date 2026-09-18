@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>Exercice 15 — Pendule & Analyse Dimensionnelle</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Inter:wght@500;600;700;800&family=JetBrains+Mono:wght@600&display=swap');
+  *{margin:0;padding:0;box-sizing:border-box}
+  body{background:#f1f5f9;font-family:'Inter',sans-serif;color:#1e293b;padding:24px 16px}
+  .header{max-width:850px;margin:0 auto 18px auto;background:linear-gradient(135deg,#0f172a,#1e3a8a);border-radius:20px;padding:20px 22px;color:white;text-align:center}
+  .header h1{font-size:20px;font-weight:900}
+  .header h1 span{color:#7dd3fc}
+  .container{max-width:850px;margin:0 auto}
+  .exo{background:white;border:1px solid #e2e8f0;border-radius:16px;overflow:hidden;margin-bottom:16px}
+  .exo-head{padding:12px 16px;color:white;display:flex;justify-content:space-between;align-items:center}
+  .exo-head h2{font-size:13px;font-weight:800}
+  .phy .exo-head{background:linear-gradient(135deg,#0284c7,#0ea5e9)}
+  .exo-body{padding:14px 16px}
+  .enonce{background:#fffbeb;border:1px solid #fde68a;border-radius:10px;padding:10px 14px;margin-bottom:10px;font-size:12px;line-height:1.6;color:#44403c}
+  .enonce b{color:#0f172a}
+  .step{background:#f8fafc;border-left:4px solid #0ea5e9;border-radius:8px;padding:8px 12px;margin:6px 0;font-size:12px;line-height:1.6;color:#334155}
+  .step b{color:#0f172a}
+  .formula{text-align:center;font-family:'JetBrains Mono',monospace;font-size:11px;font-weight:700;background:#eff6ff;border:1px solid #bfdbfe;border-radius:8px;padding:8px;margin:8px 0;color:#1e3a8a}
+  .calc{font-family:'JetBrains Mono',monospace;font-size:11px;background:white;border:1px solid #e2e8f0;border-radius:6px;padding:6px 10px;margin:4px 0;color:#334155}
+  .res{text-align:center;background:linear-gradient(135deg,#ecfdf5,#f0fdf4);border:1px solid #6ee7b7;border-radius:10px;padding:8px 10px;margin:8px 0}
+  .res b{font-family:'JetBrains Mono',monospace;font-size:13px;color:#065f46}
+  .res span{font-size:10px;color:#047857}
+  .invalid{text-align:center;background:#fef2f2;border:1px solid #fca5a5;border-radius:10px;padding:8px 10px;margin:8px 0}
+  .invalid b{font-family:'JetBrains Mono',monospace;font-size:13px;color:#991b1b}
+  .invalid span{font-size:10px;color:#b91c1c}
+  .rappel{background:#0f172a;color:white;border-radius:10px;padding:10px 14px;margin-top:8px;font-size:11px;line-height:1.6}
+  .rappel ul{margin-left:14px;color:#e2e8f0}
+  .two{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+  .two .box{background:#f8fafc;border:1px solid #e2e8f0;border-radius:10px;padding:10px}
+  @media print{.no-print{display:none}.exo{break-inside:avoid;box-shadow:none}body{background:white;padding:0}}
+</style>
+</head>
+<body>
+<div class="header">
+  <h1>📚 Exercice <span>15</span> — Pendule & Dimensions</h1>
+  <p>Analyse dimensionnelle • Pendule simple • Validité des formules</p>
+</div>
+<div class="container">
+
+  <!-- PARTIE 1 -->
+  <div class="exo phy">
+    <div class="exo-head"><h2>Partie 1 — Période du pendule simple</h2><span class="tag">PHYSIQUE</span></div>
+    <div class="exo-body">
+
+      <div class="enonce"><b>Énoncé :</b> Pendule simple : masse m, fil de longueur l, pesanteur g. Montrer par analyse dimensionnelle que T = K√(l/g).</div>
+
+      <div class="step"><b>1.1 — Analyse dimensionnelle :</b></div>
+      <div class="step">Hypothèse : T dépend de l et g (pas de m, car m ne doit pas intervenir).<br>On pose : <b>T = K · l<sup>a</sup> · g<sup>b</sup></b></div>
+      <div class="formula">[T] = [l]<sup>a</sup> · [g]<sup>b</sup></div>
+      <div class="calc">T = L<sup>a</sup> · (L·T<sup>-2</sup>)<sup>b</sup> = L<sup>a+b</sup> · T<sup>-2b</sup><br><br>
+      <b>Identification des exposants :</b><br>
+      • Pour T : 1 = -2b → <b>b = -1/2</b><br>
+      • Pour L : 0 = a + b → <b>a = 1/2</b></div>
+      <div class="formula">T = K · l<sup>1/2</sup> · g<sup>-1/2</sup> = K · √(l/g)</div>
+      <div class="res"><b>T = K · √(l/g)</b><span>K est une constante sans dimension (K = 2π pour un petit angle)</span></div>
+
+      <div class="step"><b>1.2 — Remarque sur T :</b></div>
+      <div class="res"><b>T ne dépend PAS de la masse m !</b><br><span>T ne dépend que de l (longueur) et g (pesanteur). Tous les objets oscillent avec la même période, quelle que soit leur masse.</span></div>
+
+    </div>
+  </div>
+
+  <!-- PARTIE 2.1 -->
+  <div class="exo phy">
+    <div class="exo-head"><h2>Partie 2.1 — F = Gm/r : Valide ?</h2><span class="tag">PHYSIQUE</span></div>
+    <div class="exo-body">
+
+      <div class="enonce"><b>Énoncé :</b> F = G·m/r avec [G] = m³·kg⁻¹·s⁻². Valider dimensionnellement.</div>
+
+      <div class="step"><b>Dimensions connues :</b></div>
+      <div class="two">
+        <div class="box"><b>[F] =</b><br>M¹·L¹·T<sup>-2</sup><br>(force)</div>
+        <div class="box"><b>[G] =</b><br>M<sup>-1</sup>·L³·T<sup>-2</sup><br>(donné)</div>
+      </div>
+      <div class="calc">[m] = M<br>[r] = L</div>
+
+      <div class="step"><b>Analyse du membre de droite :</b></div>
+      <div class="formula">[G·m/r] = [G] · [m] / [r]</div>
+      <div class="calc">[G·m/r] = (M<sup>-1</sup>·L³·T<sup>-2</sup>) · M · L<sup>-1</sup><br>= M<sup>-1+1</sup> · L<sup>3-1</sup> · T<sup>-2</sup><br>= M<sup>0</sup> · L² · T<sup>-2</sup><br>= <b>L²·T<sup>-2</sup></b></div>
+
+      <div class="step"><b>Comparaison :</b></div>
+      <div class="two">
+        <div class="box"><b>[F] attendu :</b> M¹·L¹·T<sup>-2</sup></div>
+        <div class="box" style="border-color:#fca5a5;background:#fef2f2"><b>[Gm/r] trouvé :</b> L²·T<sup>-2</sup><br><b style="color:#991b1b">DIFFÉRENT !</b></div>
+      </div>
+
+      <div class="invalid"><b>❌ F = Gm/r n'est PAS dimensionnellement valide !</b><br>
+      <span>La formule correcte est F = G·m₁·m₂/r² (loi de Newton). Vérification : [G·m₁·m₂/r²] = M·L·T⁻² = [F] ✓</span></div>
+
+    </div>
+  </div>
+
+  <!-- PARTIE 2.2 -->
+  <div class="exo phy">
+    <div class="exo-head"><h2>Partie 2.2 — P = r·g·h₁ + h₂·F : Valide ?</h2><span class="tag">PHYSIQUE</span></div>
+    <div class="exo-body">
+
+      <div class="enonce"><b>Énoncé :</b> P = r·g·h₁ + h₂·F<br>
+      P = pression, g = accélération, h₁, h₂ = hauteurs, r = longueur, F = force</div>
+
+      <div class="step"><b>Dimensions connues :</b></div>
+      <div class="two">
+        <div class="box"><b>[P] =</b><br>M¹·L<sup>-1</sup>·T<sup>-2</sup><br>(pression = F/S)</div>
+        <div class="box"><b>[F] =</b><br>M¹·L¹·T<sup>-2</sup><br>(force)</div>
+      </div>
+      <div class="two" style="grid-template-columns:1fr 1fr">
+        <div class="box"><b>[r] = L</b></div>
+        <div class="box"><b>[g] = L·T<sup>-2</sup></b></div>
+        <div class="box"><b>[h₁] = L</b></div>
+        <div class="box"><b>[h₂] = L</b></div>
+      </div>
+
+      <div class="step"><b>Analyse du terme 1 : r·g·h₁</b></div>
+      <div class="calc">[r·g·h₁] = L · (L·T<sup>-2</sup>) · L = <b>L³·T<sup>-2</sup></b><br><b>≠ [P] = M·L<sup>-1</sup>·T<sup>-2</sup> ❌</b></div>
+
+      <div class="step"><b>Analyse du terme 2 : h₂·F</b></div>
+      <div class="calc">[h₂·F] = L · (M·L·T<sup>-2</sup>) = <b>M·L²·T<sup>-2</sup></b><br><b>≠ [P] = M·L<sup>-1</sup>·T<sup>-2</sup> ❌</b></div>
+
+      <div class="step"><b>Vérification supplémentaire :</b></div>
+      <div class="calc">Les deux termes ont des dimensions DIFFÉRENTES entre eux :<br>• Terme 1 = L³·T<sup>-2</sup><br>• Terme 2 = M·L²·T<sup>-2</sup><br><br>→ On ne peut même pas les ADDER (incohérence interne !)</div>
+
+      <div class="invalid"><b>❌ P = r·g·h₁ + h₂·F n'est PAS dimensionnellement valide !</b><br>
+      <span>1) Aucun des 2 termes n'a la dimension d'une pression [P] = M·L<sup>-1</sup>·T<sup>-2</sup><br>
+      2) Les 2 termes n'ont pas la même dimension → ils ne peuvent pas être additionnés<br>
+      3) La formule correcte pour la pression hydrostatique est P = ρ·g·h (avec ρ = densité, pas une longueur)</span></div>
+
+      <div class="rappel">
+        <b>⭐ Méthode :</b><br>
+        • Développer chaque terme séparément<br>
+        • Vérifier que [chaque terme] = [le membre de gauche]<br>
+        • Vérifier que TOUS les termes ont la MÊME dimension (sinon on ne peut pas les additionner)<br>
+        • Si l'une de ces conditions échoue → formule INVALIDE
+      </div>
+
+    </div>
+  </div>
+
+</div>
+<div style="text-align:center" class="no-print"><button onclick="window.print()" style="margin-top:10px;background:#0f172a;color:white;border:none;padding:8px 18px;border-radius:999px;font-weight:700;cursor:pointer;font-size:11px">🖨️ Imprimer</button></div>
+</body>
+</html>

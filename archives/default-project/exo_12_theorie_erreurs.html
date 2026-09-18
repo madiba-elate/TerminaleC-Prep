@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>Exercice 12 — Théorie des erreurs</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Inter:wght@500;600;700;800&display=swap');
+  *{margin:0;padding:0;box-sizing:border-box}
+  body{background:#f1f5f9;font-family:'Inter',sans-serif;color:#1e293b;padding:24px 16px}
+  .header{max-width:600px;margin:0 auto 18px auto;background:linear-gradient(135deg,#0f172a,#1e3a8a);border-radius:20px;padding:20px 22px;color:white;text-align:center}
+  .header h1{font-size:20px;font-weight:900}
+  .header h1 span{color:#7dd3fc}
+  .container{max-width:600px;margin:0 auto}
+  .exo{background:white;border:1px solid #e2e8f0;border-radius:16px;overflow:hidden;margin-bottom:16px}
+  .exo-head{padding:12px 16px;color:white;display:flex;justify-content:space-between;align-items:center}
+  .exo-head h2{font-size:13px;font-weight:800}
+  .phy .exo-head{background:linear-gradient(135deg,#0284c7,#0ea5e9)}
+  .exo-body{padding:14px 16px}
+  .q{background:#f8fafc;border-left:4px solid #0ea5e9;border-radius:8px;padding:10px 14px;margin:8px 0;font-size:13px;line-height:1.7;color:#334155}
+  .q b{color:#0f172a}
+  .res{text-align:center;background:linear-gradient(135deg,#ecfdf5,#f0fdf4);border:1px solid #6ee7b7;border-radius:10px;padding:8px 10px;margin:8px 0}
+  .res b{font-family:'JetBrains Mono',monospace;font-size:14px;color:#065f46}
+  .rappel{background:#0f172a;color:white;border-radius:10px;padding:10px 14px;margin-top:8px;font-size:12px;line-height:1.7}
+  .rappel ul{margin-left:14px;color:#e2e8f0}
+  @media print{.no-print{display:none}.exo{break-inside:avoid;box-shadow:none}body{background:white;padding:0}}
+</style>
+</head>
+<body>
+<div class="header">
+  <h1>📚 Exercice <span>12</span> — Théorie des erreurs</h1>
+  <p>Définitions fondamentales</p>
+</div>
+<div class="container">
+
+  <div class="exo phy">
+    <div class="exo-head"><h2>Exo 12 — Erreurs et incertitudes</h2><span class="tag">THÉORIE</span></div>
+    <div class="exo-body">
+
+      <div class="q"><b>1) Quel est le but du calcul d'erreur ?</b><br>
+      <b>→</b> Évaluer la <b>confiance</b> qu'on peut accorder à un résultat de mesure.<br>
+      Exprimer la <b>fiabilité</b> de la mesure, permettre de <b>comparer</b> des résultats entre eux et d'estimer la <b>précisions</b> d'une expérience.</div>
+
+      <div class="q"><b>2) Différence entre erreur et incertitude ?</b><br>
+      <b>→</b><br>
+      • <b>Erreur</b> = écart entre la mesure et la <b>valeur vraie</b> (souvent <b>inconnue</b>).<br>
+      • <b>Incertitude</b> = <b>intervalle</b> estimé dans lequel se situe la vraie valeur (calculable à partir des données).</div>
+
+      <div class="q"><b>3) Autre appellation de l'incertitude relative ?</b><br>
+      <b>→</b> <b>Écart relatif</b> (ou <b>précision relative</b>), noté <b>IR</b> ou <b>ε</b>, souvent exprimé en pourcentage.</div>
+
+      <div class="rappel">
+        <b>⭐ Récapitulatif :</b><br>
+        1) But du calcul d'erreur → <b>évaluer la confiance dans le résultat</b><br>
+        2) Erreur = écart à la vraie valeur (inconnue) ; Incertitude = intervalle probable<br>
+        3) Incertitude relative = <b>écart relatif</b> = ΔX / X (en %)
+      </div>
+
+    </div>
+  </div>
+
+</div>
+<div style="text-align:center" class="no-print"><button onclick="window.print()" style="margin-top:10px;background:#0f172a;color:white;border:none;padding:8px 18px;border-radius:999px;font-weight:700;cursor:pointer;font-size:11px">🖨️ Imprimer</button></div>
+</body>
+</html>

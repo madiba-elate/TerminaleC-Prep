@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Exercice 11 — Angle de perte d'un condensateur</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Inter:wght@500;600;700;800&family=JetBrains+Mono:wght@600&display=swap');
+  *{margin:0;padding:0;box-sizing:border-box}
+  body{background:#f1f5f9;font-family:'Inter',sans-serif;color:#1e293b;padding:24px 16px}
+  .header{max-width:700px;margin:0 auto 18px auto;background:linear-gradient(135deg,#0f172a,#1e3a8a);border-radius:20px;padding:20px 22px;color:white;text-align:center}
+  .header h1{font-size:20px;font-weight:900}
+  .header h1 span{color:#7dd3fc}
+  .container{max-width:700px;margin:0 auto}
+  .exo{background:white;border:1px solid #e2e8f0;border-radius:16px;overflow:hidden;margin-bottom:16px}
+  .exo-head{padding:12px 16px;color:white;display:flex;justify-content:space-between;align-items:center}
+  .exo-head h2{font-size:13px;font-weight:800}
+  .phy .exo-head{background:linear-gradient(135deg,#0284c7,#0ea5e9)}
+  .exo-body{padding:14px 16px}
+  .enonce{background:#fffbeb;border:1px solid #fde68a;border-radius:10px;padding:10px 14px;margin-bottom:10px;font-size:12px;line-height:1.6;color:#44403c}
+  .enonce b{color:#0f172a}
+  .step{background:#f8fafc;border-left:4px solid #0ea5e9;border-radius:8px;padding:8px 12px;margin:6px 0;font-size:12px;line-height:1.6;color:#334155}
+  .step b{color:#0f172a}
+  .formula{text-align:center;font-family:'JetBrains Mono',monospace;font-size:11.5px;font-weight:700;background:#eff6ff;border:1px solid #bfdbfe;border-radius:8px;padding:8px;margin:8px 0;color:#1e3a8a}
+  .calc{font-family:'JetBrains Mono',monospace;font-size:11px;background:white;border:1px solid #e2e8f0;border-radius:6px;padding:6px 10px;margin:4px 0;color:#334155}
+  .res{text-align:center;background:linear-gradient(135deg,#ecfdf5,#f0fdf4);border:1px solid #6ee7b7;border-radius:10px;padding:8px 10px;margin:8px 0}
+  .res b{font-family:'JetBrains Mono',monospace;font-size:13px;color:#065f46}
+  .res span{font-size:10px;color:#047857}
+  .rappel{background:#0f172a;color:white;border-radius:10px;padding:10px 14px;margin-top:8px;font-size:11px;line-height:1.6}
+  .rappel ul{margin-left:14px;color:#e2e8f0}
+  @media print{.no-print{display:none}.exo{break-inside:avoid;box-shadow:none}body{background:white;padding:0}}
+</style>
+</head>
+<body>
+<div class="header">
+  <h1>📚 Exercice <span>11</span> — Angle de perte</h1>
+  <p>tg α = 2πRCf • Addition des IR</p>
+</div>
+<div class="container">
+
+  <div class="exo phy">
+    <div class="exo-head"><h2>Exo 11 — Angle de perte d'un condensateur</h2><span class="tag">PHYSIQUE</span></div>
+    <div class="exo-body">
+
+      <div class="enonce"><b>Données :</b> tg α = 2πRCf<br>
+      R = 4500 kΩ à 1% &nbsp;|&nbsp; C = 3300 pF à 0,5% &nbsp;|&nbsp; f = 1000 Hz à 2%</div>
+
+      <div class="step"><b>1) Calcul de tg α :</b></div>
+      <div class="formula">tg α = 2πRCf</div>
+      <div class="calc">R = 4,5×10⁶ Ω<br>C = 3,3×10⁻⁹ F<br>f = 10³ Hz<br><br>tg α = 2π × 4,5×10⁶ × 3,3×10⁻⁹ × 10³<br>= 6,28 × 14,85<br>= <b>93,3</b></div>
+
+      <div class="step"><b>2) Incertitude relative (produit → on additionne) :</b></div>
+      <div class="formula">IR = IR_R + IR_C + IR_f</div>
+      <div class="calc">IR_R = <b>1 %</b><br>IR_C = <b>0,5 %</b><br>IR_f = <b>2 %</b><br>IR_total = 1 + 0,5 + 2 = <b>3,5 %</b></div>
+
+      <div class="step"><b>3) Incertitude absolue :</b></div>
+      <div class="formula">Δ(tg α) = IR × tg α</div>
+      <div class="calc">Δ(tg α) = 0,035 × 93,3 = <b>3,3 ≈ 3</b></div>
+
+      <div class="res"><b>tg α = (93 ± 3)</b><span>IR = 3,5 %<br>La valeur absolue a 2 ch. sig. → (93 ± 3)</span></div>
+
+      <div class="rappel">
+        <b>⭐ Règle :</b> pour un produit A×B×C → IR_total = IR_A + IR_B + IR_C<br>
+        On ne convertit pas les pourcentages en absolues avant d'additionner.<br>
+        Le maillon faible est f (2%).<br>
+        Résultat final : <b>tg α = (93 ± 3)</b>
+      </div>
+
+    </div>
+  </div>
+
+</div>
+<div style="text-align:center" class="no-print"><button onclick="window.print()" style="margin-top:10px;background:#0f172a;color:white;border:none;padding:8px 18px;border-radius:999px;font-weight:700;cursor:pointer;font-size:11px">🖨️ Imprimer</button></div>
+</body>
+</html>

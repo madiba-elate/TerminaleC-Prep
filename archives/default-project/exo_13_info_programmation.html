@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Exercice 13 — Info : Programmation & Algorithmique</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Inter:wght@500;600;700;800&family=JetBrains+Mono:wght@600&display=swap');
+  *{margin:0;padding:0;box-sizing:border-box}
+  body{background:#f1f5f9;font-family:'Inter',sans-serif;color:#1e293b;padding:24px 16px}
+  .header{max-width:800px;margin:0 auto 18px auto;background:linear-gradient(135deg,#0f172a,#1e3a8a);border-radius:20px;padding:20px 22px;color:white;text-align:center}
+  .header h1{font-size:20px;font-weight:900}
+  .header h1 span{color:#7dd3fc}
+  .container{max-width:800px;margin:0 auto}
+  .exo{background:white;border:1px solid #e2e8f0;border-radius:16px;overflow:hidden;margin-bottom:16px}
+  .exo-head{padding:12px 16px;color:white;display:flex;justify-content:space-between;align-items:center}
+  .exo-head h2{font-size:13px;font-weight:800}
+  .info .exo-head{background:linear-gradient(135deg,#06b6d4,#8b5cf6)}
+  .exo-body{padding:14px 16px}
+  .enonce{background:#fffbeb;border:1px solid #fde68a;border-radius:10px;padding:10px 14px;margin-bottom:10px;font-size:12px;line-height:1.6;color:#44403c}
+  .enonce b{color:#0f172a}
+  .step{background:#f8fafc;border-left:4px solid #8b5cf6;border-radius:8px;padding:8px 12px;margin:6px 0;font-size:12px;line-height:1.6;color:#334155}
+  .step b{color:#0f172a}
+  .step pre{background:#1e293b;color:#e2e8f0;padding:10px 12px;border-radius:8px;font-family:'JetBrains Mono',monospace;font-size:11px;line-height:1.7;margin:6px 0;overflow-x:auto;white-space:pre-wrap}
+  .code-lang{font-size:10px;background:#8b5cf6;color:white;padding:2px 6px;border-radius:4px;font-weight:700;display:inline-block;margin-bottom:4px}
+  .formula{text-align:center;font-family:'JetBrains Mono',monospace;font-size:11px;font-weight:700;background:#eff6ff;border:1px solid #bfdbfe;border-radius:8px;padding:8px;margin:8px 0;color:#1e3a8a}
+  .calc{font-family:'JetBrains Mono',monospace;font-size:11px;background:white;border:1px solid #e2e8f0;border-radius:6px;padding:6px 10px;margin:4px 0;color:#334155}
+  .res{text-align:center;background:linear-gradient(135deg,#ecfdf5,#f0fdf4);border:1px solid #6ee7b7;border-radius:10px;padding:8px 10px;margin:8px 0}
+  .res b{font-family:'JetBrains Mono',monospace;font-size:13px;color:#065f46}
+  .res span{font-size:10px;color:#047857}
+  .rappel{background:#0f172a;color:white;border-radius:10px;padding:10px 14px;margin-top:8px;font-size:11px;line-height:1.6}
+  .rappel ul{margin-left:14px;color:#e2e8f0}
+  .defs{display:grid;grid-template-columns:1fr 1fr;gap:8px}
+  .defs div{background:#f8fafc;border:1px solid #e2e8f0;border-radius:8px;padding:8px 10px}
+  .defs b{font-size:11px;color:#8b5cf6;display:block;margin-bottom:2px}
+  .defs p{font-size:11px;line-height:1.5;color:#334155}
+  @media print{.no-print{display:none}.exo{break-inside:avoid;box-shadow:none}body{background:white;padding:0}}
+</style>
+</head>
+<body>
+<div class="header">
+  <h1>📚 Exercice <span>13</span> — Info : Programmation</h1>
+  <p>Définitions • Programme C • Algorithme et tableau</p>
+</div>
+<div class="container">
+
+  <!-- PARTIE 1 : DEFINITIONS -->
+  <div class="exo info">
+    <div class="exo-head"><h2>Partie 1 — Définitions</h2><span class="tag">INFORMATIQUE</span></div>
+    <div class="exo-body">
+      <div class="enonce"><b>1) Définir :</b> Programmation, Algorithmique, Structure de données, Système d'information, Langage de programmation, Base de données, Classeur.</div>
+      <div class="defs">
+        <div><b>Programmation</b><p>Ensemble des étapes pour créer un programme informatique qui résout un problème donné (écriture du code).</p></div>
+        <div><b>Algorithmique</b><p>Méthode étape par étape (pseudocode ou organigramme) pour résoudre un problème <b>avant</b> de coder.</p></div>
+        <div><b>Structure de données</b><p>Façon d'organiser les données en mémoire : <b>tableau</b>, liste, fichier. Ex : un tableau pour stocker les notes.</p></div>
+        <div><b>Système d'information</b><p>Ensemble (matériel + logiciel + données + procédures) qui collecte, stocke et traite l'information d'une organisation.</p></div>
+        <div><b>Langage de programmation</b><p>Langage formel pour écrire des instructions compréhensibles par la machine : <b>C, Python, Java</b>…</p></div>
+        <div><b>Base de données</b><p>Collection structurée de données stockée électroniquement (ex : MySQL, Access) pour un accès rapide et fiable.</p></div>
+        <div><b>Classeur</b><p>Fichier <b>tableur</b> (Excel, LibreOffice Calc) contenant des feuilles de calcul pour gérer des tableaux de données.</p></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- PARTIE 2 : PROGRAMME C -->
+  <div class="exo info">
+    <div class="exo-head"><h2>Partie 2 — Programme C : Volume d'une sphère</h2><span class="tag">C</span></div>
+    <div class="exo-body">
+      <div class="enonce"><b>Énoncé :</b> Écrire un programme en C qui calcule et affiche le volume d'une sphère. Le rayon R est lu au clavier.</div>
+      <div class="step"><b>Formule :</b></div>
+      <div class="formula">V = (4/3) × π × R³</div>
+      <div class="step"><b>Programme C :</b></div>
+      <pre><span class="code-lang">#include</span> &lt;stdio.h&gt;
+
+<span class="code-lang">int</span> <span class="code-lang">main</span>() {
+    <span class="code-lang">const float</span> PI = <b>3.14</b>;
+    <span class="code-lang">float</span> R, V;
+    <span class="code-lang">printf</span>(<span class="code-lang">"Rayon (m) : "</span>);
+    <span class="code-lang">scanf</span>(<span class="code-lang">"%f"</span>, &R);
+    V = (4.0/3.0) * PI * R * R * R;
+    <span class="code-lang">printf</span>(<span class="code-lang">"Volume = %.2f m³\n"</span>, V);
+    <span class="code-lang">return</span> 0;
+}</pre>
+      <div class="res"><b>V = (4/3) × 3.14 × R³</b><span>Lecture clavier : scanf("%f", &R)</span></div>
+      <div class="rappel">
+        <b>⭐ Modifications :</b><br>
+        • <b>const float PI = 3.14</b> → constante à <b>2 décimales</b> (pas #define)<br>
+        • <b>const</b> = la valeur ne peut pas être modifiée après déclaration<br>
+        • <b>#define</b> est remplacé par <b>const</b> → plus sûr et typé<br>
+        • Le rayon R est lu (valeur inconnue) → programme interactif
+      </div>
+    </div>
+  </div>
+
+  <!-- PARTIE 3 : ALGORITHME -->
+  <div class="exo info">
+    <div class="exo-head"><h2>Partie 3 — Algorithme : Moyenne des notes de la classe</h2><span class="tag">Algorithme</span></div>
+    <div class="exo-body">
+      <div class="enonce"><b>Énoncé :</b> Enregistrer les notes d'informatique d'une classe de 1ère C dans une <b>structure de données (tableau)</b>, puis calculer et afficher la moyenne générale.</div>
+      <div class="step"><b>Algorithme (pseudocode) :</b></div>
+      <pre><span class="code-lang">Algorithme MoyenneClasse</span>
+
+<span class="code-lang">Variables</span> :
+    N        : entier   (nombre d'élèves)
+    Notes[]  : tableau de réels (notes)
+    Somme    : réel
+    Moyenne  : réel
+    i        : entier
+
+<span class="code-lang">Début</span>
+    <span class="code-lang">Écrire</span>("Nombre d'élèves : ")
+    <span class="code-lang">Lire</span>(N)
+
+    <span class="code-lang">Tableau Notes[1..N]</span>  ← structure de données
+
+    <span class="code-lang">POUR</span> i <span class="code-lang">DE</span> 1 <span class="code-lang">À</span> N
+        <span class="code-lang">Écrire</span>("Note de l'élève ", i, " : ")
+        <span class="code-lang">Lire</span>(Notes[i])
+    <span class="code-lang">FIN POUR</span>
+
+    Somme ← 0
+    <span class="code-lang">POUR</span> i <span class="code-lang">DE</span> 1 <span class="code-lang">À</span> N
+        Somme ← Somme + Notes[i]
+    <span class="code-lang">FIN POUR</span>
+
+    Moyenne ← Somme / N
+
+    <span class="code-lang">Écrire</span>("Moyenne générale de la classe : ", Moyenne)
+<span class="code-lang">Fin</span></pre>
+
+      <div class="step"><b>Structure de données utilisée :</b></div>
+      <div class="formula">Tableau unidimensionnel : Notes[1..N]</div>
+      <div class="calc">• Notes[i] = note du i-ème élève (1 ≤ i ≤ N)<br>• Somme = Σ Notes[i] (de i=1 à N)<br>• Moyenne = Somme / N</div>
+
+      <div class="res"><b>Moyenne = Somme / N</b><br><span>Stockée dans un tableau Notes[] de taille N</span></div>
+
+      <div class="rappel">
+        <b>⭐ Différences clés :</b><br>
+        • <b>Algorithmique</b> = plan logique (pseudocode)<br>
+        • <b>Programmation C</b> = code exécutable<br>
+        • <b>Structure de données</b> = tableau pour organiser les notes<br>
+        • <b>Classeur</b> = alternative avec Excel (même calcul via SOMME()/NB())
+      </div>
+    </div>
+  </div>
+
+</div>
+<div style="text-align:center" class="no-print"><button onclick="window.print()" style="margin-top:10px;background:#0f172a;color:white;border:none;padding:8px 18px;border-radius:999px;font-weight:700;cursor:pointer;font-size:11px">🖨️ Imprimer</button></div>
+</body>
+</html>
