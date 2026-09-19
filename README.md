@@ -40,7 +40,7 @@
 | **🃏 Flashcards** | 24 cartes mémoire pour formules et concepts |
 | **📥 Banque 120 Sujets** | 10 épreuves par matière, filtres par groupe/établissement |
 | **🎯 Hub Exercices** | 19 fiches corrigées par matière + par thème, recherche instantanée (`hub-exercices.html`) |
-| **🏆 Objectifs 18/20** | Notes à viser par matière (562 pts), suivi interactif de tes notes + marge (`objectifs.html`) |
+| **🏆 Objectifs 18/20** | Notes à viser par matière (564 pts), suivi interactif de tes notes + marge (`objectifs.html`) |
 | **📄 Ressources** | Sujets Bac 2024-2025 + liens officiels MINESEC/OBC |
 | **🌙 Thème clair/sombre** | Warm Scientific Neutral, mode sombre activable |
 | **📡 100% Hors-ligne** | Aucune dépendance CDN, fonctionne sans Internet |

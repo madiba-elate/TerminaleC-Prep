@@ -64,8 +64,8 @@
   <a class="back" href="index.html">← Retour au hub principal</a>
 
   <div class="hero">
-    <h1>🏆 Objectifs 18/20 — <span>562 pts visés, 558 requis</span></h1>
-    <p>12 matières classées en 3 blocs (31 coefs = 620 pts). Marge de sécurité : <b>+4 pts</b>.
+    <h1>🏆 Objectifs 18/20 — <span>564 pts visés, 558 requis</span></h1>
+    <p>12 matières classées en 3 blocs (31 coefs = 620 pts). Marge de sécurité : <b>+6 pts</b>.
        Renseigne tes notes de séquences : le total se calcule seul et te dit où rattraper.
        TM (facultatif) = bonus hors total.</p>
     <div class="gauge"><div class="gauge-fill" id="gaugeFill"></div>
@@ -80,24 +80,24 @@
 
   <div id="blocs"></div>
 
-  <p class="note-bas">Cibles : voir <b>docs/ORDRE_REVISION.md §3</b> (133 + 279 + 150 = 562).
-     1 point en Maths = 7 pts · en Physique = 6 pts · le rattrapage le moins cher est
-     toujours dans le bloc sécurisé (Info, Anglais, Géo, ECM).</p>
+  <p class="note-bas">Cibles : voir <b>docs/ORDRE_REVISION.md §3</b> (171 + 243 + 150 = 564).
+     1 point en Maths = 7 pts · en Physique = 4 pts · en Anglais = 3 pts · le rattrapage
+     le moins cher est toujours dans le bloc sécurisé (Anglais, ECM, Info, Géo).</p>
   <p class="footer">Objectifs 18/20 — TerminaleC-Prep • Données sauvegardées dans ton navigateur</p>
 </div>
 
 <script>
 /* Cibles officielles du plan — total visé 562 (marge +4 sur 558 requis) */
 const BLOCS = [
-  {id:"sec", cls:"b-sec", nom:"🛡️ Bloc sécurisé — les points faciles", obj:"133 pts · moy 19,0",
-   mat:[["ECM",1,19],["Info",2,19],["Anglais",2,19],["Géographie",2,19]]},
-  {id:"sci", cls:"b-sci", nom:"🚀 Bloc science — le levier ×7 ×6", obj:"279 pts · moy 18,6",
-   mat:[["Maths",7,19],["Physique",6,18],["Chimie",2,19]]},
+  {id:"sec", cls:"b-sec", nom:"🛡️ Bloc sécurisé — les points faciles", obj:"171 pts · moy 19,0",
+   mat:[["ECM",2,19],["Info",2,19],["Anglais",3,19],["Géographie",2,19]]},
+  {id:"sci", cls:"b-sci", nom:"🚀 Bloc science — le levier ×7 ×4", obj:"243 pts · moy 18,7",
+   mat:[["Maths",7,19],["Physique",4,18],["Chimie",2,19]]},
   {id:"met", cls:"b-met", nom:"📝 Bloc méthode — verrouiller", obj:"150 pts · moy 16,7",
    mat:[["SVT",2,17],["EPS",2,17],["Littérature",2,16],["Philosophie",2,16],["Français",1,18]]}
 ];
 const BONUS = ["TM (bonus)",1,18];
-const REQUIS = 558, VISE = 562;
+const REQUIS = 558, VISE = 564;
 const KEY = "obj18notes";
 let notes = {};
 try { notes = JSON.parse(localStorage.getItem(KEY) || "{}"); } catch(e){ notes = {}; }

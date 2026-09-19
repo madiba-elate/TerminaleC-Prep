@@ -7,16 +7,16 @@
 | Matière | Programme | Cours reçus | Pages web | Flashcards | Quiz | Exercices |
 |---|---|---|---|---|---|---|
 | Maths (coef 7) | ⏳ | 0 | 0 | 0 | 0 | 0 |
-| Physique (coef 6) | ⏳ | 0 | 0 | 0 | 0 | 15 ✅² |
+| Physique (coef 4) | ⏳ | 0 | 0 | 0 | 0 | 15 ✅² |
 | Chimie (coef 2) | ⏳ | 0 | 0 | 0 | 0 | 0 |
 | SVT/EEHB (coef 2) | ⏳ | 0 | 0 | 0 | 0 | 0 |
 | Littérature (coef 2) | ⏳ | 0 | 0 | 0 | 0 | 0 |
 | Géographie (coef 2) | ✅ | 0 | 0 | 16 ✅ | 8 Q ✅ | 0 |
-| Anglais (coef 2) | ⏳ | 0 | 0 | 0 | 0 | 2 ✅² |
+| Anglais (coef 3) | ⏳ | 0 | 0 | 0 | 0 | 2 ✅² |
 | Philosophie (coef 2) | ⏳ | 0 | 0 | 0 | 0 | 0 |
 | Français (coef 1) | ⏳ | 0 | 0 | 0 | 0 | 1 ✅² |
 | Info (coef 2) | ⏳ | 0 | 0 | 0 | 0 | 1 ✅² |
-| ECM (coef 1) | ✅ | 0 | 0 | 0 | 0 | 0 |
+| ECM (coef 2) | ✅ | 0 | 0 | 0 | 0 | 0 |
 | EPS (coef 2) | ⏳ | 0 | 0 | 0 | 0 | 0 |
 | TM (coef 1) | ⏳ | 0 | 0 | 0 | 0 | 0 |
 

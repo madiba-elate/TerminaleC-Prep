@@ -39,9 +39,9 @@ TerminaleC-Prep/
     └── METHODE_18_SUR_20.html  # Méthode maître (coefs à jour — fait foi)
 ```
 
-> ⚠️ Les coefficients affichés plus bas dans ce fichier sont indicatifs et
-> **antérieurs au découpage Français → Littérature + Langue Française**.
-> Référence à jour : `docs/METHODE_18_SUR_20.html` et `SUIVI.md`.
+> ✅ Coefficients vérifiés : Maths 7 · Physique 4 · Anglais 3 · Info/Chimie/SVT/ECM/
+> Géo/Litt/Philo/EPS 2 · Langue Française 1 = **31 coefs = 620 pts** (TM facultatif hors total).
+> Références : `docs/METHODE_18_SUR_20.html`, `SUIVI.md`, `objectifs.html`.
 
 ---
 

@@ -8,9 +8,9 @@
 | Rang | Matière | Pourquoi à cette place |
 |---|---|---|
 | 1 | 🔨 TM (coef 1) | Volume minuscule, pratique |
-| 2 | 📚 ECM (coef 1) | Par cœur pur, 11 leçons — ✅ programme reçu |
+| 2 | 📚 ECM (coef 2) | Par cœur pur, 11 leçons — ✅ programme reçu |
 | 3 | 💻 Info (coef 2) | Logique + petit volume, tu codes déjà |
-| 4 | 🇬🇧 Anglais (coef 2) | Ton niveau est déjà haut, reste le format d'épreuve |
+| 4 | 🇬🇧 Anglais (coef 3) | Ton niveau est déjà haut, reste le format d'épreuve |
 | 5 | 🌍 Géographie (coef 2) | Par cœur + cartes — ✅ programme reçu |
 | 6 | 🧪 Chimie (coef 2) | Logique scientifique, petit volume |
 | 7 | 🧬 SVT (coef 2) | Volume par cœur + schémas à maîtriser |
@@ -18,24 +18,24 @@
 | 9 | 📖 Français (coef 1) | Méthodologie (dissertation, commentaire, contraction) |
 | 10 | 📚 Littérature (coef 2) | Œuvres à connaître + méthode |
 | 11 | 📐 Maths (coef 7) | Point fort mais volume + profondeur énormes |
-| 12 | ⚡ Physique (coef 6) | Volume + modélisation, TP/notions fines |
+| 12 | ⚡ Physique (coef 4) | Volume + modélisation, TP/notions fines |
 | 13 | 🤔 Philo (coef 2) | Notation la plus sévère, gains lents même avec du travail |
 
 ## 2. Rapport effort/points (heures estimées → objectif → pts/heure)
 
 | Matière | Pts max | Objectif | Heures ≈ | Pts/heure | Verdict |
 |---|---|---|---|---|---|
-| 💻 Info | 40 | 38 | 10h | **3,8** | 🟢 Jackpot |
-| 🇬🇧 Anglais | 40 | 38 | 10h | **3,8** | 🟢 Jackpot |
-| 📚 ECM | 20 | 19 | 8h | **2,4** | 🟢 Excellent |
-| 🌍 Géographie | 40 | 38 | 15h | **2,5** | 🟢 Excellent |
+| 🇬🇧 Anglais | 60 | 57 | 10h | **5,7** | 🟢 Jackpot n°1 (coef 3 + ton niveau) |
+| 📚 ECM | 40 | 38 | 8h | **4,8** | 🟢 Jackpot n°2 |
+| 💻 Info | 40 | 38 | 10h | **3,8** | 🟢 Jackpot n°3 |
 | 🏃 EPS (théorie) | 40 | 34 | 8h th + pratique | **~4 (théorie)** | 🟢 Théorie = points gratuits |
+| 🌍 Géographie | 40 | 38 | 15h | **2,5** | 🟢 Excellent |
 | 🧪 Chimie | 40 | 38 | 18h | **2,1** | 🟡 Bon |
-| 🧬 SVT | 40 | 34 | 20h | **1,7** | 🟡 Correct |
 | 📐 Maths | 140 | 133 | 80h | **1,7** | 🔴 Cher mais **levier ×7** |
-| ⚡ Physique | 120 | 108 | 70h | **1,5** | 🔴 Cher mais **levier ×6** |
+| 🧬 SVT | 40 | 34 | 20h | **1,7** | 🟡 Correct |
 | 📖 Français | 20 | 18 | 12h | **1,5** | 🟡 Petit volume, à sécuriser |
 | 📚 Littérature | 40 | 32 | 25h | **1,3** | 🟡 Lent |
+| ⚡ Physique | 80 | 72 | 65h | **1,1** | 🔴 Cher mais **levier ×4** |
 | 🤔 Philo | 40 | 32 | 30h | **1,1** | 🔴 Cher — viser 16, verrouiller la méthode |
 
 > 🎁 **TM (coef 1, facultatif, hors total)** : viser 18 → matelas de sécurité en plus des 562.
@@ -45,15 +45,16 @@
 
 | Bloc | Matières | Pts max | Objectif | Moy visée |
 |---|---|---|---|---|
-| 🛡️ Sécurisé | ECM + Info + Anglais + Géo | 140 | **133** | 19,0 |
-| 🚀 Science | Maths + Physique + Chimie | 300 | **279** | 18,6 |
+| 🛡️ Sécurisé | ECM + Info + Anglais + Géo | 180 | **171** | 19,0 |
+| 🚀 Science | Maths + Physique + Chimie | 260 | **243** | 18,7 |
 | 📝 Méthode | SVT + Litt + Philo + Fr + EPS | 180 | **150** | 16,7 |
-| **Total (12 matières)** | | **620** | **562** | **18,1** |
+| **Total (12 matières)** | | **620** | **564** | **18,2** |
 | 🎁 Bonus | TM facultatif (hors total) | — | 18 | sécurité |
 
-Lecture : objectif **562 = 558 requis + 4 de marge**. Les 133 pts du bloc sécurisé « paient »
+Lecture : objectif **564 = 558 requis + 6 de marge**. Les 171 pts du bloc sécurisé « paient »
 le droit de viser 16-17 au bloc méthode. TM (18 visés) = matelas supplémentaire.
-Ne jamais sacrifier Maths/Physique : 1 point perdu en Maths = 7 pts envolés.
+Ne jamais sacrifier Maths/Physique/Anglais : 1 point perdu en Maths = 7 pts envolés,
+en Anglais = 3 pts.
 
 ## 4. Ordre d'envoi des cours (à utiliser pour m'envoyer tes programmes/cours)
 
