@@ -41,6 +41,7 @@
 | **📥 Banque 120 Sujets** | 10 épreuves par matière, filtres par groupe/établissement |
 | **🎯 Hub Exercices** | 19 fiches corrigées par matière + par thème, recherche instantanée (`hub-exercices.html`) |
 | **🏆 Objectifs 18/20** | Notes à viser par matière (564 pts), suivi interactif de tes notes + marge (`objectifs.html`) |
+| **⚡ Rendement** | 13 matières classées par pts/heure, tris rendement/points/heures (`rendement.html`) |
 | **📄 Ressources** | Sujets Bac 2024-2025 + liens officiels MINESEC/OBC |
 | **🌙 Thème clair/sombre** | Warm Scientific Neutral, mode sombre activable |
 | **📡 100% Hors-ligne** | Aucune dépendance CDN, fonctionne sans Internet |
