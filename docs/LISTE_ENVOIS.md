@@ -8,6 +8,7 @@
 
 - [x] **Programme annuel** (7 Modules, UA 0 → UA 8 — voir `matieres/info/README.md`)
 - [ ] Module 1 : UA 0 (IA, projet et insertion) + UA 1 (architecture système) + UA 2 (protection)
+  - [x] UA 0 – UE 1 : Principes des modèles d'apprentissage automatique (reçu 2026-09-19)
 - [ ] Module 2 : UA 3 (conception d'un système d'information)
 - [ ] Module 3 : UA 4 (algorithmes + structures de données — exo 13 en stock)
 - [ ] Module 4 : UA 5 (classeur — exo 13 en stock)

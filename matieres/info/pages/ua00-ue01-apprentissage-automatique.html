@@ -1,0 +1,202 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Info UA 0 – UE 1 : Apprentissage automatique — Fiche de révision</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Inter:wght@500;600;700;800&display=swap');
+  *{margin:0;padding:0;box-sizing:border-box}
+  body{background:#f1f5f9;font-family:'Inter',sans-serif;color:#1e293b;padding:24px 16px}
+  .header{max-width:800px;margin:0 auto 18px auto;background:linear-gradient(135deg,#0f172a,#4c1d95 60%,#7c3aed);border-radius:20px;padding:22px 24px;color:white}
+  .header h1{font-size:21px;font-weight:800}
+  .header h1 span{color:#c4b5fd}
+  .header p{font-size:12px;opacity:.88;margin-top:4px}
+  .badge{display:inline-block;background:rgba(255,255,255,.15);border:1px solid rgba(255,255,255,.3);padding:4px 11px;border-radius:999px;font-size:10.5px;letter-spacing:.8px;text-transform:uppercase;font-weight:700;margin-bottom:10px}
+  .container{max-width:800px;margin:0 auto}
+  .card{background:#fff;border:1px solid #e2e8f0;border-radius:16px;overflow:hidden;margin-bottom:14px}
+  .card-head{padding:12px 16px;color:#fff;font-size:13px;font-weight:800;background:linear-gradient(135deg,#7c3aed,#4c1d95)}
+  .card-body{padding:14px 16px;font-size:12.5px;line-height:1.65;color:#334155}
+  .card-body ul,.card-body ol{margin-left:18px}
+  .card-body li{margin-bottom:4px}
+  .def{background:#f5f3ff;border:1px solid #ddd6fe;border-left:4px solid #7c3aed;border-radius:8px;padding:9px 12px;margin:7px 0}
+  .def b{color:#4c1d95}
+  table.cmp{width:100%;border-collapse:collapse;margin-top:8px;font-size:12px;background:#fff;border:1px solid #e2e8f0;border-radius:8px;overflow:hidden}
+  table.cmp th{background:#0f172a;color:#fff;padding:8px 10px;text-align:left;font-size:11px}
+  table.cmp td{padding:8px 10px;border-bottom:1px solid #f1f5f9;vertical-align:top}
+  .steps{display:grid;grid-template-columns:1fr 1fr 1fr;gap:8px;margin-top:8px}
+  .steps div{background:#f8fafc;border:1px solid #e2e8f0;border-radius:10px;padding:10px;text-align:center}
+  .steps .n{font-size:20px;font-weight:800;color:#7c3aed}
+  .steps b{font-size:12px;display:block;color:#0f172a}
+  .steps span{font-size:11px;color:#64748b}
+  .ex-grid{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-top:8px}
+  .ex{background:#f8fafc;border:1px solid #e2e8f0;border-radius:10px;padding:10px 12px}
+  .ex b{font-size:12px;color:#0f172a}
+  .ex p{font-size:11.5px;color:#475569;margin-top:2px}
+  .tag{display:inline-block;font-size:10px;font-weight:800;padding:2px 8px;border-radius:999px;color:#fff;margin-bottom:4px}
+  .tag-S{background:#059669}.tag-NS{background:#d97706}
+  details.cor{margin-top:10px;background:#ecfdf5;border:1px solid #6ee7b7;border-radius:10px;padding:10px 14px}
+  details.cor summary{font-weight:800;font-size:12.5px;color:#065f46;cursor:pointer}
+  details.cor p,details.cor ul{font-size:12px;margin-top:6px}
+  details.cor ul{margin-left:16px}
+  .ffc-grid{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-top:8px}
+  .ffc{background:#fff;border:1px solid #c4b5fd;border-radius:10px;padding:10px 12px;cursor:pointer;min-height:86px;display:flex;align-items:center}
+  .ffc .a{display:none;font-size:11.5px;color:#4c1d95}
+  .ffc .q{font-size:11.5px;font-weight:700;color:#1e293b}
+  .ffc.flipped{background:#f5f3ff}
+  .ffc.flipped .q{display:none}.ffc.flipped .a{display:block}
+  .quiz-q{background:#f8fafc;border:1px solid #e2e8f0;border-radius:10px;padding:10px 12px;margin:8px 0}
+  .quiz-q p{font-size:12px;font-weight:700;color:#0f172a;margin-bottom:6px}
+  .quiz-q label{display:block;font-size:11.5px;color:#334155;padding:3px 0;cursor:pointer}
+  .quiz-q input{margin-right:6px}
+  .quiz-ok{color:#059669;font-weight:800}.quiz-ko{color:#dc2626;font-weight:800}
+  #quizScore{text-align:center;font-weight:800;font-size:14px;margin-top:10px}
+  .btn{background:#0f172a;color:#fff;border:none;padding:9px 20px;border-radius:999px;font-weight:800;font-size:12px;cursor:pointer}
+  .back{display:inline-block;margin-bottom:12px;font-size:12.5px;font-weight:700;color:#4c1d95;text-decoration:none}
+  .footer{text-align:center;margin-top:14px;font-size:11px;color:#94a3b8}
+  @media(max-width:700px){.steps,.ex-grid,.ffc-grid{grid-template-columns:1fr}}
+  @media print{body{background:#fff;padding:0}.no-print,.back{display:none}.card{break-inside:avoid}details.cor{open:true}}
+</style>
+</head>
+<body>
+<div class="container">
+<a class="back" href="../index.html">← Dashboard Info</a>
+<div class="header">
+  <div class="badge">Info · Module 1 · UA 0 – UE 1 · S1</div>
+  <h1>Principes des modèles <span>d'apprentissage automatique</span></h1>
+  <p>Définitions • Supervisé vs non supervisé • Entraînement → Test → Prédiction • 4 exemples • Exercice corrigé • 10 flashcards • Quiz 80%</p>
+</div>
+
+<div class="card">
+  <div class="card-head">🎯 Objectifs de la leçon</div>
+  <div class="card-body"><ul>
+    <li>Définir : <b>apprentissage supervisé, modèle, prédiction</b>.</li>
+    <li><b>Distinguer</b> l'apprentissage supervisé du non supervisé.</li>
+    <li>Expliquer les notions d'<b>entraînement, test et prédiction</b>.</li>
+    <li><b>Illustrer</b> ces modèles par des exemples concrets.</li>
+  </ul></div>
+</div>
+
+<div class="card">
+  <div class="card-head">1️⃣ Définitions des mots clés</div>
+  <div class="card-body">
+    <div class="def"><b>Apprentissage supervisé</b> : méthode où le programme s'entraîne sur des exemples <b>déjà associés à la bonne réponse</b>, pour prédire cette réponse sur de nouveaux cas.</div>
+    <div class="def"><b>Modèle</b> : résultat construit par le programme à l'issue de son entraînement, utilisé pour produire ses réponses.</div>
+    <div class="def"><b>Prédiction</b> : réponse donnée sur un <b>nouveau cas</b> grâce au modèle.</div>
+  </div>
+</div>
+
+<div class="card">
+  <div class="card-head">2️⃣ Supervisé vs non supervisé</div>
+  <div class="card-body">
+    <table class="cmp">
+      <tr><th></th><th>Supervisé ✅ étiquettes</th><th>Non supervisé 🔍 regroupement</th></tr>
+      <tr><td><b>Données</b></td><td>Chaque exemple + la bonne réponse</td><td>Aucune réponse fournie</td></tr>
+      <tr><td><b>Travail</b></td><td>Associer profil → réponse connue</td><td>Regrouper seul les données similaires</td></tr>
+      <tr><td><b>Exemple</b></td><td>Dossiers d'élèves <b>étiquetés</b> par filière → prédire la filière</td><td>Regrouper des élèves <b>sans savoir</b> ce qui les rapproche</td></tr>
+    </table>
+  </div>
+</div>
+
+<div class="card">
+  <div class="card-head">3️⃣ Entraînement → Test → Prédiction</div>
+  <div class="card-body">
+    <div class="steps">
+      <div><div class="n">1</div><b>Entraînement</b><span>Apprend sur beaucoup d'exemples passés</span></div>
+      <div><div class="n">2</div><b>Test</b><span>Vérifie sur des données <b>jamais vues</b></span></div>
+      <div><div class="n">3</div><b>Prédiction</b><span>Répond aux <b>nouveaux cas</b></span></div>
+    </div>
+  </div>
+</div>
+
+<div class="card">
+  <div class="card-head">4️⃣ Exemples concrets</div>
+  <div class="card-body">
+    <div class="ex-grid">
+      <div class="ex"><span class="tag tag-S">SUPERVISÉ</span><b>Ex. 1 — Fraude Mobile Money</b><p>Transactions déjà classées « frauduleuse / non ».</p></div>
+      <div class="ex"><span class="tag tag-NS">NON SUPERVISÉ</span><b>Ex. 2 — Clients</b><p>Regroupés par habitudes d'achat, sans catégories.</p></div>
+      <div class="ex"><span class="tag tag-S">SUPERVISÉ</span><b>Ex. 3 — Maintenance prédictive</b><p>Historique des pannes des machines.</p></div>
+      <div class="ex"><span class="tag tag-S">SUPERVISÉ</span><b>Ex. 4 — Orientation</b><p>Filières/métiers selon le profil scolaire.</p></div>
+    </div>
+  </div>
+</div>
+
+<div class="card">
+  <div class="card-head">✍️ Exercice (2 questions)</div>
+  <div class="card-body">
+    <p><b>1)</b> Propose un <b>exemple personnel</b> (futur métier) : domaine + type d'apprentissage <b>justifié</b>.</p>
+    <p><b>2)</b> Sur une application <b>supervisée</b>, identifie <b>entraînement, test, prédiction</b>.</p>
+    <details class="cor"><summary>✅ Voir le corrigé type</summary>
+      <p><b>Q1 — modèle :</b> détection des fraudes Mobile Money (futur métier data) → <b>supervisé</b>, car transactions étiquetées « frauduleuse / légitime ». Domaine (1 pt) + type (1 pt) + justification par les étiquettes (2 pts).</p>
+      <ul>
+        <li><b>Entraînement :</b> milliers de transactions passées étiquetées → construction du modèle.</li>
+        <li><b>Test :</b> taux de bonnes détections sur transactions <b>récentes jamais vues</b>.</li>
+        <li><b>Prédiction :</b> chaque nouvelle transaction classée <b>en temps réel</b> → alerte/blocage.</li>
+      </ul>
+      <p>⭐ Phrases qui rapportent : « supervisé <b>car les exemples sont étiquetés</b> » / « test sur données <b>non utilisées pour apprendre</b> ».</p>
+    </details>
+  </div>
+</div>
+
+<div class="card">
+  <div class="card-head">🃏 Flashcards — clique pour retourner (10)</div>
+  <div class="card-body">
+    <div class="ffc-grid" id="ffcGrid"></div>
+  </div>
+</div>
+
+<div class="card">
+  <div class="card-head">🧠 Quiz — 80% pour valider (8 Q)</div>
+  <div class="card-body">
+    <div id="quizBox"></div>
+    <div style="text-align:center;margin-top:10px" class="no-print"><button class="btn" onclick="corriger()">✅ Corriger</button></div>
+    <div id="quizScore"></div>
+  </div>
+</div>
+
+<p class="footer">Info · UA 0 – UE 1 · Fiche générée le 2026-09-19 — <span class="no-print"><a href="../index.html" style="color:#7c3aed">Dashboard Info</a></span></p>
+<div style="text-align:center" class="no-print"><button class="btn" style="margin-top:10px" onclick="window.print()">🖨️ Imprimer / PDF</button></div>
+</div>
+
+<script>
+const FC=[
+["Apprentissage supervisé ?","S'entraîne sur des exemples déjà associés à la bonne réponse, pour prédire des cas nouveaux."],
+["Modèle ?","Résultat construit à l'issue de l'entraînement, utilisé pour produire les réponses."],
+["Prédiction ?","Réponse donnée sur un nouveau cas grâce au modèle."],
+["Supervisé vs non supervisé ?","Supervisé = exemples + bonne réponse. Non supervisé = aucune réponse, regroupement seul."],
+["Entraînement ?","Apprend sur un grand nombre d'exemples passés."],
+["Test ?","Vérifie les performances sur des données jamais utilisées pour apprendre."],
+["Ordre des 3 étapes ?","Entraînement → Test → Prédiction."],
+["Fraude Mobile Money : quel type ?","Supervisé : transactions déjà classées (étiquettes)."],
+["Clients regroupés sans catégories : quel type ?","Non supervisé : regroupement seul."],
+["Maintenance prédictive (pannes) : quel type ?","Supervisé : historique des pannes = exemples étiquetés."]];
+const fg=document.getElementById('ffcGrid');
+FC.forEach(c=>{const d=document.createElement('div');d.className='ffc';
+d.innerHTML='<div class="q">Q: '+c[0]+'</div><div class="a">'+c[1]+'</div>';
+d.onclick=()=>d.classList.toggle('flipped');fg.appendChild(d);});
+
+const QZ=[
+["Transactions déjà classées « frauduleuse / non » → ?",["Supervisé","Non supervisé","Ni l'un ni l'autre","Test"],0],
+["En non supervisé, le programme reçoit… ?",["Des exemples avec réponses","Aucune réponse à l'avance","Un modèle validé","Des prédictions"],1],
+["Le modèle, c'est… ?",["La bonne réponse","Un nouveau cas","Le résultat de l'entraînement","L'étape de test"],2],
+["Le test sert à… ?",["Apprendre plus","Vérifier sur des données non vues","Produire les réponses","Étiqueter"],1],
+["Dossiers élèves étiquetés par filière → ?",["Supervisé","Non supervisé","Ni l'un","Test"],0],
+["Maintenance prédictive (historique pannes) → ?",["Supervisé","Non supervisé","Ni l'un","Sans entraînement"],0],
+["Bon ordre ?",["Test→Entr.→Préd.","Préd.→Test→Entr.","Entr.→Test→Préd.","Entr.→Préd.→Test"],2],
+["Clients regroupés sans catégories → ?",["Supervisé","Test","Entraînement","Non supervisé"],3]];
+const qb=document.getElementById('quizBox');
+QZ.forEach((q,i)=>{const d=document.createElement('div');d.className='quiz-q';
+let h='<p>'+(i+1)+'. '+q[0]+'</p>';
+q[1].forEach((o,j)=>{h+='<label><input type="radio" name="q'+i+'" value="'+j+'">'+o+'</label>';});
+h+='<div id="f'+i+'" style="font-size:11.5px;margin-top:4px"></div>';d.innerHTML=h;qb.appendChild(d);});
+function corriger(){let s=0;
+QZ.forEach((q,i)=>{const sel=document.querySelector('input[name="q'+i+'"]:checked');
+const f=document.getElementById('f'+i);
+if(sel&&+sel.value===q[2]){s++;f.innerHTML='<span class="quiz-ok">✅ Juste</span>';}
+else{f.innerHTML='<span class="quiz-ko">❌ Faux → '+q[1][q[2]]+'</span>';}});
+const pct=Math.round(s/QZ.length*100);
+document.getElementById('quizScore').innerHTML='Score : '+s+'/'+QZ.length+' ('+pct+'%) — '
++(pct>=80?'✅ <span class="quiz-ok">Validé, passe à la suite.</span>':'❌ <span class="quiz-ko">Refais la fiche et retente.</span>');}
+</script>
+</body>
+</html>
