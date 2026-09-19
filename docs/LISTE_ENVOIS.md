@@ -19,7 +19,7 @@
 
 ## Priorité 2 — 🇬🇧 Anglais (coef 3 · jackpot n°1)
 
-- [ ] **Programme annuel**
+- [ ] **Programme annuel** — ➖ non disponible, on reconstitue au fil des cours reçus
 - [ ] Grammar (tenses, voice, conditionals)
 - [ ] Essay Writing (argumentative, narrative)
 - [ ] Vocabulary (health, education, environment)
