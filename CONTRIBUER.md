@@ -12,7 +12,7 @@ Tu m'envoies tes programmes et cours, je m'occupe de tout :
 | ✍️ Texte direct | Copier-coller dans le chat | ✅ Idéal |
 | 📸 Photos | Cahier, fiche, tableau, polycopié photographié | ✅ Je retranscris |
 | 📄 PDF / Word | Cours scanné, polycopié | ✅ J'extrais le contenu |
-| 🎙️ Audio / vocal | Explication orale | ✅ Je retranscris |
+| 🎙️ Voix (dictée) | Tu parles, l'appareil écrit, tu me colles le texte (voir §8) | ✅ Idéal pour les gros cours |
 
 > Pas besoin de tout retaper proprement. Envoie **tel quel**, même en vrac —
 > la mise en forme, c'est mon travail.
@@ -87,3 +87,30 @@ Je le mets à jour à chaque push.
    Nouveau thème possible si le programme l'exige (le mettre aussi dans le README
    de la matière).
 4. Mettre à jour `SUIVI.md` (colonne Exercices) et le badge du lien sidebar dans `index.html`.
+
+## 8. Dicter un cours à la voix (sans rien taper)
+
+> ⚠️ Je ne peux pas écouter de fichiers audio (mp3, vocaux…) : la transcription
+> doit se faire **sur ton appareil**, puis tu me colles le texte obtenu.
+
+**Option A — PC Windows (recommandé) : Win+H**
+1. Clique dans n'importe quel champ de texte (ce chat, Bloc-notes, Word).
+2. Appuie sur **Win+H** → la barre micro apparaît, parle en français.
+3. Dicte la ponctuation : « point », « virgule », « nouvelle ligne ».
+4. Relis vite fait (noms propres, sigles), copie-colle ici avec juste
+   « [Matière], Leçon X : … » en première ligne.
+
+**Option B — Téléphone**
+- Android : micro du clavier Gboard dans n'importe quelle appli, puis colle ici.
+- iPhone : touche micro du clavier (Réglages → Général → Clavier → Activer Dictée).
+
+**Option C — Word (gros cours)**
+- Word (PC ou office.com gratuit) → Accueil → **Dicter** → français → parle
+  une leçon entière → m'envoie le texte (+ photos des schémas/formules).
+
+**Conseils pour une bonne dictée**
+- 1 session = 1 leçon ; commence par « Matière, Leçon X, titre ».
+- Épelle les sigles (« C-E-M-A-C ») et surveille les noms propres (COPAX, OIF…).
+- Ne dicte PAS les formules au caractère près : **photographie-les**,
+  écris juste « voir photo 1 » à l'endroit concerné (pareil pour les schémas).
+- Un gros cours = 2-3 messages, c'est parfait.
