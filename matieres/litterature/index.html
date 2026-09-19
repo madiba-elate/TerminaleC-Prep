@@ -76,7 +76,7 @@ th{background:var(--bg3);font-size:.66rem;text-transform:uppercase;letter-spacin
 <div class="tabs" id="tabs">
   <button class="tab-btn active" data-tab="t1">① Infos & Devoirs</button>
   <button class="tab-btn" data-tab="t2">② Programme annuel</button>
-  <button class="tab-btn" data-tab="t3">③ Cours optimisés</button>
+  <button class="tab-btn" data-tab="t3">③ Cours</button>
   <button class="tab-btn" data-tab="t4">④ Flashcards & Quiz</button>
   <button class="tab-btn" data-tab="t5">⑤ Évaluation</button>
 </div>
@@ -156,41 +156,21 @@ th{background:var(--bg3);font-size:.66rem;text-transform:uppercase;letter-spacin
   </div>
 </div>
 
-<!-- TAB 3 : COURS OPTIMISES -->
+<!-- TAB 3 : Cours -->
 <div class="tab-content" id="t3">
   <div class="card">
-    <div class="card-title">✍️ Cours recopiés & optimisés (sans bla-bla)</div>
-    <p style="font-size:.82rem;color:var(--text2);margin-bottom:.6rem">Tu saisis ton cours brut ci-dessous → je te rends une version <strong>optimisée pour révision</strong> (sans phrases longues, sans futilités, mais 100% infos). Colle 1 leçon à la fois.</p>
-    <div class="grid2">
-      <div>
-        <label style="font-size:.78rem;font-weight:700">📥 Ton cours brut (copie-colle)</label>
-        <textarea class="textarea" id="coursBrut" placeholder="Colle ici le cours de Leçon 1 par ex. : 'Les relations internationales sont l'ensemble des rapports entre États...'"></textarea>
-        <div style="display:flex;gap:.4rem;margin-top:.5rem">
-          <select class="select" id="leconSelect" style="flex:1">
-            <option>Leçon 1 : Relations internationales</option>
-            <option>Leçon 2 : Coopération internationale</option>
-            <option>Leçon 3 : Diplomatie camerounaise</option>
-            <option>Leçon 4 : Cameroun et ONU</option>
-            <option>Dossier 1 : Assistance humanitaire</option>
-            <option>Autre leçon...</option>
-          </select>
-          <button class="btn" onclick="optimiserCours()">✨ Optimiser</button>
-        </div>
-      </div>
-      <div>
-        <label style="font-size:.78rem;font-weight:700">✅ Version optimisée (à apprendre)</label>
-        <div id="coursOpti" style="background:var(--bg3);border:1px solid var(--border);border-radius:8px;padding:.8rem;min-height:140px;font-size:.82rem;color:var(--text2)">Choisis une leçon et clique "Optimiser" pour voir l'exemple. Exemple Leçon 1 optimisée s'affichera ici :<br><br><strong>Leçon 1 — Relations internationales</strong><br>• Déf : rapports entre États / OI / ONG (politiques, éco, culturels)<br>• Caractères : interdépendance, inégalité, institutionnalisation<br>• Acteurs : États, OI (ONU, UA), ONG, multinationales<br>• Enjeux : paix, développement, souveraineté</div>
-        <button class="btn btn-ghost" style="margin-top:.5rem" onclick="saveCours()">💾 Sauver cette leçon (local)</button>
-      </div>
-    </div>
-    <div class="alert" style="margin-top:.8rem">🎯 Règle d'optimisation : je garde <strong>définitions + dates + exemples chiffrés + schémas</strong>, je supprime les répétitions et phrases de liaison. Tu relis 1 page au lieu de 4.</div>
-  </div>
-  <div class="card">
-    <div class="card-title">📚 Mes leçons déjà optimisées</div>
-    <div id="coursList" style="font-size:.82rem;color:var(--text3)">Aucune leçon sauvée — optimise puis sauve la 1ère.</div>
+    <div class="card-title">📚 Cours — Litt&#233;rature</div>
+    <p style="font-size:.8rem;color:var(--text2);margin-bottom:.7rem">Toutes les leçons numérisées. Clique pour ouvrir la fiche complète (cours + flashcards + quiz + exercice).</p>
+    <div id="coursRecus" style="display:grid;gap:.4rem;font-size:.84rem"></div>
   </div>
 </div>
-
+<script>
+/* Visualiseur des cours reçus — ajouter un cours = 1 objet dans COURS (voir CONTRIBUER.md §4) */
+const COURS=[];
+(function(){var box=document.getElementById('coursRecus');
+if(!COURS.length){box.innerHTML='<div style="padding:.8rem;background:var(--bg3);border-radius:8px;color:var(--text2)">Aucun cours reçu pour l\u2019instant — envoie le programme puis les cours (voir Liste d\u2019envois), ils appara\u00eetront ici.</div>';return;}
+box.innerHTML=COURS.map(function(c){return '<a href="'+c.page+'" style="display:flex;justify-content:space-between;align-items:center;gap:.5rem;padding:.6rem .8rem;background:var(--bg3);border-radius:8px;text-decoration:none;color:var(--text);font-weight:700"><span>'+c.t+'<br><span style="font-weight:400;font-size:.72rem;color:var(--text2)">'+c.d+'</span></span><span style="display:flex;gap:.3rem;align-items:center;flex-shrink:0"><span style="font-size:.68rem;background:var(--accent);color:#fff;padding:.15rem .4rem;border-radius:6px">'+c.seq+'</span><span style="font-size:.68rem;background:#0f172a;color:#fff;padding:.15rem .4rem;border-radius:6px">Ouvrir \u2192</span></span></a>';}).join('');})();
+</script>
 <!-- TAB 4 : FLASHCARDS & QUIZ -->
 <div class="tab-content" id="t4">
   <div class="card">

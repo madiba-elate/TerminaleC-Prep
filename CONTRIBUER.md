@@ -48,6 +48,9 @@ Pour chaque matière, envoie **dans cet ordre** :
 
 Les fichiers bruts que tu m'envoies (photos, PDF) sont archivés dans
 `matieres/<matiere>/sources/` pour ne jamais rien perdre.
+Les cours apparaissent dans l'onglet ③ « Cours » du dashboard via le tableau
+`COURS` en bas de `matieres/<matiere>/index.html` : 1 cours = 1 objet
+`{t:"…", d:"…", seq:"S1", page:"pages/….html"}`.
 
 ## 5. Convention de nommage (je m'en charge, info seulement)
 
