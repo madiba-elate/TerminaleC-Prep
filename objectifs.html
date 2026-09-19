@@ -1,0 +1,197 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>🏆 Objectifs 18/20 — Notes à viser par matière</title>
+<style>
+  :root{--bg:#f8fafc;--bg2:#fff;--text:#0f172a;--text2:#475569;--text3:#94a3b8;
+    --border:#e2e8f0;--accent:#0f766e;--radius:12px}
+  *{margin:0;padding:0;box-sizing:border-box}
+  body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',system-ui,sans-serif;
+    background:var(--bg);color:var(--text);padding:20px 16px}
+  .wrap{max-width:900px;margin:0 auto}
+  .back{display:inline-block;margin-bottom:12px;font-size:12.5px;font-weight:700;
+    color:var(--accent);text-decoration:none}
+  .hero{background:linear-gradient(135deg,#0f172a,#0f766e 70%,#ca8a04);border-radius:18px;
+    padding:26px 28px;color:#fff;margin-bottom:16px}
+  .hero h1{font-size:24px;font-weight:900}
+  .hero h1 span{color:#fde68a}
+  .hero p{margin-top:6px;font-size:13px;opacity:.92;line-height:1.55}
+  .gauge{background:rgba(255,255,255,.18);border-radius:999px;height:22px;margin-top:14px;
+    overflow:hidden;position:relative}
+  .gauge-fill{background:linear-gradient(90deg,#fde68a,#4ade80);height:100%;width:0%;
+    border-radius:999px;transition:width .3s}
+  .gauge-txt{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;
+    font-size:11.5px;font-weight:800;color:#fff;text-shadow:0 1px 2px rgba(0,0,0,.4)}
+  .verdict{margin-top:12px;background:rgba(255,255,255,.12);border:1px solid rgba(255,255,255,.3);
+    border-radius:10px;padding:10px 14px;font-size:13px;font-weight:700}
+  .bloc{background:var(--bg2);border:1px solid var(--border);border-radius:var(--radius);
+    overflow:hidden;margin-bottom:14px}
+  .bloc-head{padding:12px 16px;color:#fff;font-size:14px;font-weight:800;
+    display:flex;justify-content:space-between;align-items:center}
+  .b-sec .bloc-head{background:linear-gradient(135deg,#065f46,#0f766e)}
+  .b-sci .bloc-head{background:linear-gradient(135deg,#1e3a8a,#0284c7)}
+  .b-met .bloc-head{background:linear-gradient(135deg,#7c3aed,#db2777)}
+  .b-bonus .bloc-head{background:linear-gradient(135deg,#92400e,#d97706)}
+  .bloc-head .sub{font-size:11px;font-weight:700;opacity:.9}
+  table{width:100%;border-collapse:collapse;font-size:12.5px}
+  th{background:#f1f5f9;font-size:10.5px;text-transform:uppercase;letter-spacing:.5px;
+    color:var(--text2);padding:8px 10px;text-align:left}
+  td{padding:8px 10px;border-top:1px solid var(--border)}
+  tr.total td{background:#f8fafc;font-weight:800}
+  .coef{display:inline-block;background:#0f172a;color:#fff;font-size:11px;font-weight:800;
+    border-radius:6px;padding:2px 8px}
+  .vise{font-weight:800;color:var(--accent)}
+  .pts{font-weight:800}
+  .ecart-neg{color:#dc2626;font-weight:700}
+  .ecart-pos{color:#059669;font-weight:700}
+  input.note{width:64px;border:1px solid var(--border);border-radius:8px;padding:7px 8px;
+    font-size:13px;font-weight:700;text-align:center;font-family:inherit}
+  input.note:focus{outline:2px solid var(--accent);border-color:var(--accent)}
+  .toolbar{display:flex;gap:8px;margin-bottom:14px;flex-wrap:wrap}
+  .btn{border:1px solid var(--border);background:var(--bg2);border-radius:8px;padding:9px 16px;
+    font-size:12.5px;font-weight:800;cursor:pointer;color:var(--text)}
+  .btn:hover{background:#f1f5f9}
+  .note-bas{font-size:11.5px;color:var(--text3);text-align:center;margin-top:14px;line-height:1.6}
+  .footer{text-align:center;margin-top:10px;font-size:11px;color:var(--text3)}
+  @media print{body{background:#fff;padding:0}.toolbar,.back{display:none}
+    .bloc{break-inside:avoid}.hero{break-after:avoid}}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <a class="back" href="index.html">← Retour au hub principal</a>
+
+  <div class="hero">
+    <h1>🏆 Objectifs 18/20 — <span>562 pts visés, 558 requis</span></h1>
+    <p>12 matières classées en 3 blocs (31 coefs = 620 pts). Marge de sécurité : <b>+4 pts</b>.
+       Renseigne tes notes de séquences : le total se calcule seul et te dit où rattraper.
+       TM (facultatif) = bonus hors total.</p>
+    <div class="gauge"><div class="gauge-fill" id="gaugeFill"></div>
+      <div class="gauge-txt" id="gaugeTxt">0 / 558 pts</div></div>
+    <div class="verdict" id="verdict">Renseigne tes notes ci-dessous pour suivre ta trajectoire.</div>
+  </div>
+
+  <div class="toolbar">
+    <button class="btn" onclick="resetNotes()">🗑️ Effacer mes notes</button>
+    <button class="btn" onclick="window.print()">🖨️ Imprimer</button>
+  </div>
+
+  <div id="blocs"></div>
+
+  <p class="note-bas">Cibles : voir <b>docs/ORDRE_REVISION.md §3</b> (133 + 279 + 150 = 562).
+     1 point en Maths = 7 pts · en Physique = 6 pts · le rattrapage le moins cher est
+     toujours dans le bloc sécurisé (Info, Anglais, Géo, ECM).</p>
+  <p class="footer">Objectifs 18/20 — TerminaleC-Prep • Données sauvegardées dans ton navigateur</p>
+</div>
+
+<script>
+/* Cibles officielles du plan — total visé 562 (marge +4 sur 558 requis) */
+const BLOCS = [
+  {id:"sec", cls:"b-sec", nom:"🛡️ Bloc sécurisé — les points faciles", obj:"133 pts · moy 19,0",
+   mat:[["ECM",1,19],["Info",2,19],["Anglais",2,19],["Géographie",2,19]]},
+  {id:"sci", cls:"b-sci", nom:"🚀 Bloc science — le levier ×7 ×6", obj:"279 pts · moy 18,6",
+   mat:[["Maths",7,19],["Physique",6,18],["Chimie",2,19]]},
+  {id:"met", cls:"b-met", nom:"📝 Bloc méthode — verrouiller", obj:"150 pts · moy 16,7",
+   mat:[["SVT",2,17],["EPS",2,17],["Littérature",2,16],["Philosophie",2,16],["Français",1,18]]}
+];
+const BONUS = ["TM (bonus)",1,18];
+const REQUIS = 558, VISE = 562;
+const KEY = "obj18notes";
+let notes = {};
+try { notes = JSON.parse(localStorage.getItem(KEY) || "{}"); } catch(e){ notes = {}; }
+
+function save(){ try{ localStorage.setItem(KEY, JSON.stringify(notes)); }catch(e){} }
+
+function rowHTML(name, coef, vise, isBonus){
+  const v = (notes[name] === undefined || notes[name] === "") ? "" : notes[name];
+  return `<tr data-mat="${name}" data-coef="${coef}" data-vise="${vise}" data-bonus="${isBonus?1:0}">`
+    + `<td><b>${name}</b></td><td><span class="coef">×${coef}</span></td>`
+    + `<td class="vise">${vise}/20</td>`
+    + `<td><input class="note" type="number" min="0" max="20" step="0.5" value="${v}" data-name="${name}"></td>`
+    + `<td class="pts" id="pts-${name}"></td><td id="ec-${name}"></td></tr>`;
+}
+
+function render(){
+  const box = document.getElementById("blocs");
+  let html = "";
+  BLOCS.forEach(b => {
+    html += `<div class="bloc ${b.cls}"><div class="bloc-head"><span>${b.nom}</span>`
+      + `<span class="sub">Objectif ${b.obj}</span></div>`
+      + `<table><tr><th>Matière</th><th>Coef</th><th>🎯 Viser</th><th>Ma note</th><th>Points</th><th>Écart</th></tr>`;
+    b.mat.forEach(m => { html += rowHTML(m[0], m[1], m[2], false); });
+    html += `<tr class="total"><td colspan="4">Sous-total ${b.nom.split("—")[0]}</td>`
+      + `<td id="sub-${b.id}"></td><td></td></tr></table></div>`;
+  });
+  html += `<div class="bloc b-bonus"><div class="bloc-head"><span>🎁 Bonus hors total</span>`
+    + `<span class="sub">matelas de sécurité</span></div>`
+    + `<table><tr><th>Matière</th><th>Coef</th><th>🎯 Viser</th><th>Ma note</th><th>Points</th><th>Écart</th></tr>`
+    + rowHTML(BONUS[0], BONUS[1], BONUS[2], true) + `</table></div>`;
+  box.innerHTML = html;
+  box.querySelectorAll("input.note").forEach(inp => {
+    inp.addEventListener("input", () => {
+      const n = inp.dataset.name;
+      if (inp.value === "") delete notes[n]; else notes[n] = parseFloat(inp.value);
+      save(); compute();
+    });
+  });
+  compute();
+}
+
+function compute(){
+  let total = 0, bonus = 0, worst = null;
+  document.querySelectorAll("#blocs tr[data-mat]").forEach(tr => {
+    const name = tr.dataset.mat, coef = +tr.dataset.coef, vise = +tr.dataset.vise;
+    const isB = tr.dataset.bonus === "1";
+    const note = notes[name];
+    const ptsCell = document.getElementById("pts-" + name);
+    const ecCell = document.getElementById("ec-" + name);
+    if (note === undefined || note === "" || isNaN(note)) {
+      ptsCell.textContent = "—"; ecCell.textContent = "—"; ecCell.className = "";
+      const gap = vise * coef;
+      if (!isB && (!worst || gap > worst.gap)) worst = {name, gap};
+      return;
+    }
+    const pts = note * coef;
+    if (isB) bonus += pts; else total += pts;
+    ptsCell.textContent = (Math.round(pts * 100) / 100) + " / " + (vise * coef);
+    const ec = (note - vise) * coef;
+    ecCell.textContent = (ec >= 0 ? "+" : "") + (Math.round(ec * 100) / 100);
+    ecCell.className = ec >= 0 ? "ecart-pos" : "ecart-neg";
+    if (!isB) {
+      const gap = (vise - note) * coef;
+      if (gap > 0 && (!worst || gap > worst.gap)) worst = {name, gap: Math.round(gap*100)/100};
+    }
+  });
+  BLOCS.forEach(b => {
+    let s = 0;
+    b.mat.forEach(m => { const n = notes[m[0]]; if (n !== undefined && n !== "" && !isNaN(n)) s += n * m[1]; });
+    document.getElementById("sub-" + b.id).textContent = (Math.round(s*100)/100) + " pts";
+  });
+  total = Math.round(total * 100) / 100;
+  const pct = Math.min(100, total / REQUIS * 100);
+  document.getElementById("gaugeFill").style.width = pct + "%";
+  document.getElementById("gaugeTxt").textContent = total + " / " + REQUIS + " pts"
+    + (bonus ? "  (+ " + (Math.round(bonus*100)/100) + " bonus TM)" : "");
+  const v = document.getElementById("verdict");
+  if (total >= REQUIS) {
+    v.textContent = "✅ Objectif 18/20 tenu : " + total + " pts (marge +" + (Math.round((total-REQUIS)*100)/100) + "). Verrouille en gardant le rythme Maths/Physique.";
+  } else if (total > 0) {
+    const miss = Math.round((REQUIS - total) * 100) / 100;
+    v.textContent = "🎯 Il manque " + miss + " pts."
+      + (worst ? " Priorité rattrapage : " + worst.name + " (jusqu'à +" + worst.gap + " pts possibles)." : "");
+  } else {
+    v.textContent = "Renseigne tes notes ci-dessous pour suivre ta trajectoire.";
+  }
+}
+
+function resetNotes(){
+  if (!confirm("Effacer toutes les notes saisies ?")) return;
+  notes = {}; save(); render();
+}
+
+render();
+</script>
+</body>
+</html>

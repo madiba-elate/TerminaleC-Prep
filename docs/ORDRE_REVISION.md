@@ -26,30 +26,34 @@
 | Matière | Pts max | Objectif | Heures ≈ | Pts/heure | Verdict |
 |---|---|---|---|---|---|
 | 💻 Info | 40 | 38 | 10h | **3,8** | 🟢 Jackpot |
-| 🇬🇧 Anglais | 40 | 36 | 10h | **3,6** | 🟢 Jackpot |
-| 🔨 TM | 20 | 18 | 6h | **3,0** | 🟢 Jackpot (petit total) |
+| 🇬🇧 Anglais | 40 | 38 | 10h | **3,8** | 🟢 Jackpot |
 | 📚 ECM | 20 | 19 | 8h | **2,4** | 🟢 Excellent |
-| 🌍 Géographie | 40 | 36 | 15h | **2,4** | 🟢 Excellent |
+| 🌍 Géographie | 40 | 38 | 15h | **2,5** | 🟢 Excellent |
 | 🏃 EPS (théorie) | 40 | 34 | 8h th + pratique | **~4 (théorie)** | 🟢 Théorie = points gratuits |
-| 🧪 Chimie | 40 | 36 | 18h | **2,0** | 🟡 Bon |
+| 🧪 Chimie | 40 | 38 | 18h | **2,1** | 🟡 Bon |
 | 🧬 SVT | 40 | 34 | 20h | **1,7** | 🟡 Correct |
-| 📐 Maths | 140 | 126 | 80h | **1,6** | 🔴 Cher mais **levier ×7** |
+| 📐 Maths | 140 | 133 | 80h | **1,7** | 🔴 Cher mais **levier ×7** |
 | ⚡ Physique | 120 | 108 | 70h | **1,5** | 🔴 Cher mais **levier ×6** |
-| 📖 Français | 20 | 16 | 12h | **1,3** | 🟡 Lent mais petit volume |
+| 📖 Français | 20 | 18 | 12h | **1,5** | 🟡 Petit volume, à sécuriser |
 | 📚 Littérature | 40 | 32 | 25h | **1,3** | 🟡 Lent |
-| 🤔 Philo | 40 | 30 | 30h | **1,0** | 🔴 Le plus cher — viser 15, pas 19 |
+| 🤔 Philo | 40 | 32 | 30h | **1,1** | 🔴 Cher — viser 16, verrouiller la méthode |
+
+> 🎁 **TM (coef 1, facultatif, hors total)** : viser 18 → matelas de sécurité en plus des 562.
+> Détail et suivi interactif : voir `objectifs.html`.
 
 ## 3. Stratégie 558 pts par blocs
 
 | Bloc | Matières | Pts max | Objectif | Moy visée |
 |---|---|---|---|---|
-| 🛡️ Sécurisé | ECM + Info + Anglais + Géo + TM | 160 | **152** | ~19/20 |
-| 🚀 Science | Maths + Physique + Chimie | 300 | **270** | 18/20 |
-| 📝 Méthode | SVT + Litt + Philo + Fr + EPS | 180 | **136** | ~15/20 |
-| **Total** | | **620** | **558** | **18/20** |
+| 🛡️ Sécurisé | ECM + Info + Anglais + Géo | 140 | **133** | 19,0 |
+| 🚀 Science | Maths + Physique + Chimie | 300 | **279** | 18,6 |
+| 📝 Méthode | SVT + Litt + Philo + Fr + EPS | 180 | **150** | 16,7 |
+| **Total (12 matières)** | | **620** | **562** | **18,1** |
+| 🎁 Bonus | TM facultatif (hors total) | — | 18 | sécurité |
 
-Lecture : les 152 pts du bloc sécurisé « paient » le droit de viser 15 au bloc méthode.
-Ne jamais sacrifier Maths/Physique : 1 point perdu en Maths = 7 pts envolés (il en manque 62 de marge).
+Lecture : objectif **562 = 558 requis + 4 de marge**. Les 133 pts du bloc sécurisé « paient »
+le droit de viser 16-17 au bloc méthode. TM (18 visés) = matelas supplémentaire.
+Ne jamais sacrifier Maths/Physique : 1 point perdu en Maths = 7 pts envolés.
 
 ## 4. Ordre d'envoi des cours (à utiliser pour m'envoyer tes programmes/cours)
 
