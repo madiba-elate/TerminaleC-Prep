@@ -34,7 +34,7 @@ th{background:var(--bg3);font-size:.66rem;text-transform:uppercase;letter-spacin
 .grid2{display:grid;grid-template-columns:1fr 1fr;gap:1rem}
 @media(max-width:800px){.grid2{grid-template-columns:1fr}}
 .pill{font-size:.7rem;font-weight:700;padding:.2rem .5rem;border-radius:8px;display:inline-block}
-.pill-ecm{background:#d1fae5;color:#065f46}
+.pill-info{background:#ccfbf1;color:#115e59}
 .fc-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(230px,1fr));gap:.6rem}
 .fc{background:var(--bg2);border:1px solid var(--border);border-radius:10px;padding:1rem;cursor:pointer;min-height:110px;display:flex;flex-direction:column;justify-content:center;transition:.15s}
 .fc:hover{border-color:var(--accent);transform:translateY(-1px)}
@@ -64,12 +64,12 @@ th{background:var(--bg3);font-size:.66rem;text-transform:uppercase;letter-spacin
 <div class="hero">
   <div style="display:inline-block;background:rgba(255,255,255,.18);border:1px solid rgba(255,255,255,.25);font-size:.68rem;font-weight:700;padding:.2rem .6rem;border-radius:20px;letter-spacing:.04em">1er Groupe • Coef 2 • 40 pts • 6,5% du BAC</div>
   <h1>💻 Informatique</h1>
-  <p>Terminale C • 11 Leçons + 2 TD + 5 Dossiers • Méthode 18/20 — Dashboard unique 5 onglets</p>
+  <p>Terminale C • 7 Modules (UA 0 → UA 8) • Méthode 18/20 — Dashboard unique 5 onglets</p>
   <div class="badges">
     <div class="badge-hero"><strong>Coef 2</strong> / 31</div>
     <div class="badge-hero"><strong>40 pts</strong> / 620</div>
     <div class="badge-hero"><strong>2h / sem</strong></div>
-    <div class="badge-hero"><strong>18/20</strong> → 36 pts</div>
+    <div class="badge-hero"><strong>19/20</strong> → 38 pts</div>
   </div>
 </div>
 
@@ -90,13 +90,13 @@ th{background:var(--bg3);font-size:.66rem;text-transform:uppercase;letter-spacin
         <tr><td>Matière</td><td><strong>Informatique</strong> <span class="pill" style="background:#ccfbf1;color:#115e59">1er Groupe</span></td></tr>
         <tr><td>Coefficient</td><td><span class="badge-coef">2</span></td></tr>
         <tr><td>% points total</td><td><strong>6,5%</strong> (40 / 620)</td></tr>
-        <tr><td>Heures / semaine</td><td><strong>2h (Mar 2h)</strong></td></tr>
-        <tr><td>Groupe Bac</td><td>2e Groupe avec Chimie + SVT (120 pts ensemble)</td></tr>
-        <tr><td>Objectif 18</td><td><strong>18/20 → 36/40 pts</strong> (voir calculateur)</td></tr>
+        <tr><td>Heures / semaine</td><td><strong>2h / sem</strong> (créneau exact à confirmer)</td></tr>
+        <tr><td>Groupe Bac</td><td>1er Groupe avec Maths + Physique + Anglais (320 pts ensemble)</td></tr>
+        <tr><td>Objectif 19</td><td><strong>19/20 → 38/40 pts</strong> (voir page Objectifs)</td></tr>
       </table>
-      <div class="alert" style="margin-top:.8rem">💡 Informatique = matière <strong>à fort rendement</strong> : peu d'heures, beaucoup de points si méthodo maîtrisée. 2h/semaine bien utilisées = 36 pts garantis.</div>
+      <div class="alert" style="margin-top:.8rem">💡 Informatique = matière <strong>jackpot (3,8 pts/h)</strong> : petit volume, logique, 2h/semaine bien utilisées = 38 pts. Programme reçu ✅, classe à UA 0–UE 1.</div>
       <div style="background:var(--bg3);padding:.7rem;border-radius:8px;font-size:.78rem">
-        <strong>À me dire pour compléter :</strong> Nom du prof ? Livre utilisé (ex: ECM Terminale C — CEPER) ? Autres infos utiles (ex: cahier 100p, exposés prévus) ? Dis-moi et j'ajoute ici.
+        <strong>À me dire pour compléter :</strong> Nom du prof ? Livre utilisé (ex: Informatique Terminale C) ? Salle machine / TP ? Dis-moi et j'ajoute ici.
       </div>
     </div>
     <div class="card">
@@ -113,14 +113,14 @@ th{background:var(--bg3);font-size:.66rem;text-transform:uppercase;letter-spacin
         <input class="input" id="devDate" type="date" style="flex:1;min-width:120px">
         <button class="btn" onclick="addDevoir()">Ajouter</button>
       </div>
-      <p style="font-size:.72rem;color:var(--text3);margin-top:.5rem">Astuce : en classe, note immédiatement "ECM : Leçon X exo Y p.Z pour [date]" → dicte-le moi le soir, je l'ajoute ici + dans planning.</p>
+      <p style="font-size:.72rem;color:var(--text3);margin-top:.5rem">Astuce : en classe, note immédiatement "Info : UA X exo Y p.Z pour [date]" → dicte-le moi le soir, je l'ajoute ici + dans planning.</p>
     </div>
   </div>
   <div class="card">
     <div class="card-title">📦 Infos utiles pour t'aider (à compléter ensemble)</div>
     <div class="grid2" style="font-size:.82rem">
-      <div><strong>Livre / support :</strong><br><span style="color:var(--text2)">À préciser (titre, édition). Ex: "ECM Terminale — Hachette"</span><br><input class="input" placeholder="Titre du livre ECM" id="infoLivre" style="margin-top:.4rem"></div>
-      <div><strong>Cahiers :</strong><br><span style="color:var(--text2)">Géo et ECM séparés ? 2 cahiers + livres comme tu l'as dit mardi</span><br><input class="input" placeholder="Ex: 1 cahier 200p ECM" id="infoCahier" style="margin-top:.4rem"></div>
+      <div><strong>Livre / support :</strong><br><span style="color:var(--text2)">À préciser (titre, édition). Ex: "Informatique Terminale C"</span><br><input class="input" placeholder="Titre du livre Info" id="infoLivre" style="margin-top:.4rem"></div>
+      <div><strong>Cahiers :</strong><br><span style="color:var(--text2)">Cahier unique ou séparé (cours + TP machine) ?</span><br><input class="input" placeholder="Ex: 1 cahier 200p Info" id="infoCahier" style="margin-top:.4rem"></div>
     </div>
     <div style="margin-top:.7rem"><button class="btn btn-ghost" onclick="saveInfos()">💾 Enregistrer ces infos (local)</button> <span id="saveMsg" style="font-size:.78rem;color:var(--accent);margin-left:.5rem"></span></div>
   </div>
@@ -162,7 +162,7 @@ th{background:var(--bg3);font-size:.66rem;text-transform:uppercase;letter-spacin
     <div class="grid2">
       <div>
         <label style="font-size:.78rem;font-weight:700">📥 Ton cours brut (copie-colle)</label>
-        <textarea class="textarea" id="coursBrut" placeholder="Colle ici le cours de Leçon 1 par ex. : 'Les relations internationales sont l'ensemble des rapports entre États...'"></textarea>
+        <textarea class="textarea" id="coursBrut" placeholder="Colle ici le cours d'une UA par ex. : 'L'apprentissage supervisé est une méthode où le programme...'"></textarea>
         <div style="display:flex;gap:.4rem;margin-top:.5rem">
           <select class="select" id="leconSelect" style="flex:1">
             <option>UA 0 : IA, projet et insertion</option>
@@ -180,7 +180,7 @@ th{background:var(--bg3);font-size:.66rem;text-transform:uppercase;letter-spacin
       </div>
       <div>
         <label style="font-size:.78rem;font-weight:700">✅ Version optimisée (à apprendre)</label>
-        <div id="coursOpti" style="background:var(--bg3);border:1px solid var(--border);border-radius:8px;padding:.8rem;min-height:140px;font-size:.82rem;color:var(--text2)">Choisis une leçon et clique "Optimiser" pour voir l'exemple. Exemple Leçon 1 optimisée s'affichera ici :<br><br><strong>Leçon 1 — Relations internationales</strong><br>• Déf : rapports entre États / OI / ONG (politiques, éco, culturels)<br>• Caractères : interdépendance, inégalité, institutionnalisation<br>• Acteurs : États, OI (ONU, UA), ONG, multinationales<br>• Enjeux : paix, développement, souveraineté</div>
+        <div id="coursOpti" style="background:var(--bg3);border:1px solid var(--border);border-radius:8px;padding:.8rem;min-height:140px;font-size:.82rem;color:var(--text2)">Choisis une UA et clique "Optimiser" pour voir l'exemple. Exemple UA 0–UE 1 optimisée s'affichera ici :<br><br><strong>UA 0–UE 1 — Apprentissage automatique</strong><br>• Déf : supervisé = exemples + bonne réponse → prédit cas nouveaux<br>• Modèle = résultat de l'entraînement ; Prédiction = réponse sur nouveau cas<br>• Non supervisé = aucune réponse, regroupement seul<br>• Étapes : entraînement → test (données non vues) → prédiction<br>• Ex : fraude Mobile Money (S), clients regroupés (NS)</div>
         <button class="btn btn-ghost" style="margin-top:.5rem" onclick="saveCours()">💾 Sauver cette leçon (local)</button>
       </div>
     </div>
@@ -240,7 +240,7 @@ th{background:var(--bg3);font-size:.66rem;text-transform:uppercase;letter-spacin
 <div class="tab-content" id="t5">
   <div class="grid2">
     <div class="card">
-      <div class="card-title">⏱️ Chrono épreuve ECM</div>
+      <div class="card-title">⏱️ Chrono épreuve Info</div>
       <div class="timer" id="chrono">00:00:00</div>
       <div style="display:flex;gap:.4rem;margin-top:.7rem;justify-content:center">
         <button class="btn" onclick="startChrono()">▶ Démarrer</button><button class="btn btn-ghost" onclick="pauseChrono()">⏸ Pause</button><button class="btn btn-ghost" onclick="resetChrono()">↺ Reset</button>
@@ -248,8 +248,8 @@ th{background:var(--bg3);font-size:.66rem;text-transform:uppercase;letter-spacin
       <div style="margin-top:.8rem;font-size:.82rem">
         <label>Durée d'épreuve :</label>
         <select class="select" id="dureeSelect" onchange="setDuree(this.value)">
-          <option value="60">ECM Bac : 60 min (1h)</option>
-          <option value="120">Blanc complet : 120 min</option>
+          <option value="120">Info Bac : 120 min (2h — durée à confirmer)</option>
+          <option value="60">Devoir surveillé : 60 min</option>
           <option value="30">Flash test : 30 min</option>
         </select>
         <div id="chronoAlert" style="margin-top:.5rem;font-weight:700;color:#dc2626;display:none">⏰ Temps écoulé ! Pose le stylo.</div>
@@ -257,46 +257,47 @@ th{background:var(--bg3);font-size:.66rem;text-transform:uppercase;letter-spacin
       <p style="font-size:.74rem;color:var(--text3);margin-top:.6rem">Entraîne-toi en conditions réelles : sujet devant toi, chrono lancé, sans cours. C'est l'onglet qui fait gagner 2 points au BAC.</p>
     </div>
     <div class="card">
-      <div class="card-title">📝 Méthodologie composition ECM — pour 18/20</div>
+      <div class="card-title">📝 Méthodologie épreuve Info — pour 19/20</div>
       <div style="font-size:.82rem">
-        <strong>1. Introduction (10% du temps)</strong>
+        <strong>1. Définitions (mots clés, formulations exactes)</strong>
         <ul style="margin:.3rem 0 .6rem 1.1rem;color:var(--text2)">
-          <li>Accroche (fait actuel) → définition du thème → problématique → annonce plan (2 parties)</li>
-          <li>Ex: "La participation du Cameroun à l'ONU..." → Problématique : En quoi...</li>
+          <li>1 terme = 1 phrase : catégorie + exemple (ex: supervisé = exemples + bonne réponse)</li>
+          <li>Épelle les sigles (IA, SI, TCP/IP) et donne un exemple à chaque définition</li>
         </ul>
-        <strong>2. Développement (70%) — 2 parties / 2 sous-parties</strong>
+        <strong>2. Exercices d'analyse (distinguer, expliquer, illustrer)</strong>
         <ul style="margin:.3rem 0 .6rem 1.1rem;color:var(--text2)">
-          <li>Partie 1 : faits / aspects (ex: Leçon 1-2)</li>
-          <li>Partie 2 : cas Cameroun + bilan critique (ex: Dossier 2, problèmes)</li>
-          <li>1 idée = 1 paragraphe = 1 exemple précis (date, sigle, pays)</li>
+          <li>Toujours <strong>justifier</strong> : « supervisé <b>car</b> les exemples sont étiquetés »</li>
+          <li>Étapes <strong>dans l'ordre</strong> : entraînement → test (données non vues) → prédiction</li>
+          <li>1 idée = 1 exemple concret (Mobile Money, dossiers d'élèves, pannes…)</li>
         </ul>
-        <strong>3. Conclusion (20%)</strong>
+        <strong>3. Algorithmique & C (précision syntaxique)</strong>
         <ul style="margin:.3rem 0 .6rem 1.1rem;color:var(--text2)">
-          <li>Bilan → réponse problématique → ouverture (perspective)</li>
+          <li>Algo : Variables → Lire → Tableau → boucles POUR → Moyenne = Somme/N → Écrire</li>
+          <li>C : <b>const</b> (pas #define), <b>&R</b> dans scanf, <b>%.2f</b>, <b>4.0/3.0</b> (jamais 4/3)</li>
         </ul>
         <div style="background:var(--bg3);padding:.6rem;border-radius:8px;font-size:.76rem">
-          <strong>Barème ECM (sur 20) :</strong> Fond (connaissances) 10 pts • Forme/plan 6 pts • Exemples précis 4 pts. Sans exemples (CEMAC, COPAX, ONU) → max 12/20.
+          <strong>Barème indicatif (sur 20) :</strong> Connaissances exactes • Démarche justifiée • Résultat (programme/calcul) • Présentation. Sans justification ni exemple → max 12/20.
         </div>
       </div>
     </div>
   </div>
   <div class="card">
-    <div class="card-title">💡 Conseils pratiques BAC ECM</div>
+    <div class="card-title">💡 Conseils pratiques BAC Info</div>
     <ul style="font-size:.82rem;color:var(--text2);margin-left:1.1rem">
-      <li><strong>Mots-clés obligatoires :</strong> souveraineté, coopération bilatérale/multilatérale, non-ingérence, intégration sous-régionale, aide au développement vs humanitaire.</li>
-      <li><strong>Sigles à maîtriser :</strong> ONU, UA, UE, CEMAC, CEEAC, CBLT, OCEAC, COPAX — définis chacun en 1 ligne.</li>
-      <li><strong>Piège n°1 :</strong> confondre aide humanitaire (urgence) et aide au développement (long terme — Dossier 3).</li>
-      <li><strong>Piège n°2 :</strong> oublier le Cameroun dans sa sous-région (Leçon 11) → toujours citer CEMAC/CEEAC.</li>
-      <li><strong>Entraînement :</strong> 1 sujet/semaine dès S2 (ex: "Le Cameroun et l'ONU" — Dossier 2). Chrono 60 min.</li>
+      <li><strong>Mots-clés obligatoires :</strong> supervisé = étiquettes, test = données non vues, modèle, prédiction, const, tableau.</li>
+      <li><strong>Sigles à maîtriser :</strong> IA, SI, TCP/IP, SQL — définis chacun en 1 ligne + 1 exemple.</li>
+      <li><strong>Piège n°1 :</strong> écrire <b>4/3</b> au lieu de <b>4.0/3.0</b> en C, ou oublier le <b>&amp;</b> dans scanf.</li>
+      <li><strong>Piège n°2 :</strong> confondre supervisé / non supervisé → le test décisif : « les exemples sont-ils étiquetés ? ».</li>
+      <li><strong>Entraînement :</strong> 1 exo/semaine (exercice UA 0–UE 1 + exo 13 déjà en stock). Quiz à 80% min avant de passer.</li>
     </ul>
   </div>
   <div class="card">
-    <div class="card-title">📥 Sujets ECM à faire (Banque 120)</div>
-    <p style="font-size:.8rem;color:var(--text2)">Va dans <a href="../../index.html#bank">Banque 120 Sujets → filtre ECM</a> ou fais ces 3 pour commencer :</p>
+    <div class="card-title">📥 Sujets Info à faire (déjà en stock)</div>
+    <p style="font-size:.8rem;color:var(--text2)">Va dans <a href="../../hub-exercices.html">Hub Exercices → filtre Info</a> ou fais ces 3 pour commencer :</p>
     <ul style="font-size:.82rem;margin:.5rem 0 0 1.1rem">
-      <li>Sujet 1 : "Les principes de la diplomatie camerounaise" (Leçon 3)</li>
-      <li>Sujet 2 : "Le Cameroun et l'Union européenne" (Leçon 5)</li>
-      <li>Sujet 3 : "CEMAC et CEEAC : atouts et limites pour le Cameroun" (Leçon 11)</li>
+      <li>Sujet 1 : <a href="pages/ua00-ue01-apprentissage-automatique.html">Exercice UA 0–UE 1</a> (exemple personnel + 3 étapes)</li>
+      <li>Sujet 2 : <a href="exercices/exo_13_info_programmation.html">Exo 13</a> (définitions + programme C + algorithme)</li>
+      <li>Sujet 3 : <a href="pages/ua00-ue01-apprentissage-automatique.html">Quiz UA 0–UE 1</a> — 80% min avant de passer</li>
     </ul>
   </div>
 </div>
@@ -313,6 +314,9 @@ document.querySelectorAll('.tab-btn[data-tab]').forEach(b=>{
     window.scrollTo({top:0,behavior:'smooth'});
   });
 });
+// Lien direct : index.html#t2 .. #t5
+(function(){const h=(location.hash||'').replace('#','');
+if(/^t[1-5]$/.test(h)){const b=document.querySelector('.tab-btn[data-tab="'+h+'"]');if(b)b.click();}})();
 // Devoirs
 function addDevoir(){
   const n=document.getElementById('devName').value.trim();
@@ -326,18 +330,18 @@ function addDevoir(){
   document.getElementById('devName').value=''; document.getElementById('devDate').value='';
   saveDevoirs();
 }
-function saveDevoirs(){ localStorage.setItem('ecm-devoirs', document.getElementById('devoirBody').innerHTML); }
-(function(){ const s=localStorage.getItem('ecm-devoirs'); if(s) document.getElementById('devoirBody').innerHTML=s; })();
+function saveDevoirs(){ localStorage.setItem('info-devoirs', document.getElementById('devoirBody').innerHTML); }
+(function(){ const s=localStorage.getItem('info-devoirs'); if(s) document.getElementById('devoirBody').innerHTML=s; })();
 // Infos
 function saveInfos(){
-  localStorage.setItem('ecm-livre', document.getElementById('infoLivre').value);
-  localStorage.setItem('ecm-cahier', document.getElementById('infoCahier').value);
+  localStorage.setItem('info-livre', document.getElementById('infoLivre').value);
+  localStorage.setItem('info-cahier', document.getElementById('infoCahier').value);
   document.getElementById('saveMsg').textContent='✓ Sauvé';
   setTimeout(()=>document.getElementById('saveMsg').textContent='',1500);
 }
 (function(){
-  document.getElementById('infoLivre').value=localStorage.getItem('ecm-livre')||'';
-  document.getElementById('infoCahier').value=localStorage.getItem('ecm-cahier')||'';
+  document.getElementById('infoLivre').value=localStorage.getItem('info-livre')||'';
+  document.getElementById('infoCahier').value=localStorage.getItem('info-cahier')||'';
 })();
 // Cours optimisé
 function optimiserCours(){
@@ -355,16 +359,16 @@ function optimiserCours(){
 function saveCours(){
   const lecon=document.getElementById('leconSelect').value;
   const content=document.getElementById('coursOpti').innerHTML;
-  let list=JSON.parse(localStorage.getItem('ecm-cours')||'[]');
+  let list=JSON.parse(localStorage.getItem('info-cours')||'[]');
   list.push({lecon, content, date: new Date().toLocaleDateString()});
-  localStorage.setItem('ecm-cours', JSON.stringify(list));
+  localStorage.setItem('info-cours', JSON.stringify(list));
   renderCoursList();
 }
 function renderCoursList(){
-  let list=JSON.parse(localStorage.getItem('ecm-cours')||'[]');
+  let list=JSON.parse(localStorage.getItem('info-cours')||'[]');
   const el=document.getElementById('coursList');
   if(!list.length){ el.innerHTML='Aucune leçon sauvée — optimise puis sauve la 1ère.'; return; }
-  el.innerHTML=list.map((c,i)=>`<div style="background:var(--bg3);padding:.6rem;border-radius:8px;margin-bottom:.4rem"><strong>${c.lecon}</strong> <span style="font-size:.72rem;color:var(--text3)">— ${c.date}</span> <a href="#" onclick="event.preventDefault(); if(confirm('Supprimer ?')){let l=JSON.parse(localStorage.getItem('ecm-cours')||'[]'); l.splice(${i},1); localStorage.setItem('ecm-cours', JSON.stringify(l)); renderCoursList();}" style="float:right;font-size:.72rem;color:#dc2626">Supprimer</a><div style="margin-top:.4rem;font-size:.8rem">${c.content}</div></div>`).join('');
+  el.innerHTML=list.map((c,i)=>`<div style="background:var(--bg3);padding:.6rem;border-radius:8px;margin-bottom:.4rem"><strong>${c.lecon}</strong> <span style="font-size:.72rem;color:var(--text3)">— ${c.date}</span> <a href="#" onclick="event.preventDefault(); if(confirm('Supprimer ?')){let l=JSON.parse(localStorage.getItem('info-cours')||'[]'); l.splice(${i},1); localStorage.setItem('info-cours', JSON.stringify(l)); renderCoursList();}" style="float:right;font-size:.72rem;color:#dc2626">Supprimer</a><div style="margin-top:.4rem;font-size:.8rem">${c.content}</div></div>`).join('');
 }
 renderCoursList();
 // Pomodoro
