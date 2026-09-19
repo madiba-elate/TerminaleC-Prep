@@ -5,6 +5,7 @@
 > **ton programme reçu fera foi** et remplacera ces lignes.
 
 ## Priorité 1 — 💻 Info (coef 2 · 3,8 pts/h : jackpot) — ✅ programme reçu le 2026-09-19
+> ⏸️ **En pause : la classe est à UA 0–UE 1, tout est numérisé.** Reprendre à l'UA 1 quand elle commencera en classe.
 
 - [x] **Programme annuel** (7 Modules, UA 0 → UA 8 — voir `matieres/info/README.md`)
 - [ ] Module 1 : UA 0 (IA, projet et insertion) + UA 1 (architecture système) + UA 2 (protection)
