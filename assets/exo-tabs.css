@@ -1,0 +1,32 @@
+/* Onglets standard des fiches d'exercices — TerminaleC-Prep
+   Inclus via <link> dans chaque fiche (matieres/.../exercices/).
+   Piloté par assets/exo-tabs.js + config window.EXO_CONFIG par fiche. */
+.xt-bar{display:flex;gap:8px;flex-wrap:wrap;background:#ffffff;border:1px solid #e2e8f0;
+  border-radius:12px;padding:10px 12px;margin:0 auto 14px auto;max-width:1100px;
+  position:sticky;top:10px;z-index:50;box-shadow:0 4px 16px rgba(15,23,42,.08)}
+.xt-btn{flex:1;min-width:150px;border:1px solid #cbd5e1;background:#f1f5f9;color:#334155;
+  border-radius:8px;padding:10px 12px;font-size:13px;font-weight:800;cursor:pointer;
+  font-family:inherit;transition:all .15s}
+.xt-btn:hover{background:#e2e8f0}
+.xt-btn.xt-active{background:#0f172a;color:#fff;border-color:#0f172a}
+.xt-panel{display:none;max-width:1100px;margin:0 auto}
+.xt-panel.xt-show{display:block}
+.xt-sec{font-size:13px;font-weight:800;color:#0f172a;margin:14px 0 8px 0;padding-left:10px;
+  border-left:4px solid #0ea5e9}
+.xt-sec:first-child{margin-top:0}
+.xt-h4{font-size:13.5px;font-weight:800;color:#0f172a;margin:16px 0 8px 0}
+.xt-mblock{background:#f8fafc;border:1px solid #e2e8f0;border-radius:10px;padding:12px 14px;
+  font-size:12.5px;line-height:1.65;color:#334155}
+.xt-mblock ol,.xt-mblock ul{margin-left:18px}
+.xt-mblock li{margin-bottom:4px}
+.xt-mblock b{color:#0f172a}
+.xt-empty{background:#fffbeb;border:1px dashed #f59e0b;border-radius:10px;padding:14px;
+  font-size:12.5px;color:#92400e;text-align:center}
+.xt-consigne{background:#fffbeb;border:1px solid #fde68a;border-radius:12px;padding:14px 16px;
+  font-size:12.5px;line-height:1.65;color:#44403c;max-width:750px;margin:0 auto 14px auto}
+.xt-consigne b{color:#0f172a}
+@media print{
+  .xt-bar{display:none !important}
+  .xt-panel{display:block !important;margin-bottom:10px}
+  .xt-h4{break-after:avoid}
+}

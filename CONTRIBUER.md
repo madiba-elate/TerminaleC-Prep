@@ -66,6 +66,18 @@ Je le mets à jour à chaque push.
 
 1. Copier la fiche dans `matieres/<matiere>/exercices/` (nom : `exo-XX-titre-court.html`,
    minuscules, sans accents ; l'original brut reste dans `matieres/<matiere>/sources/`).
+   Chaque fiche **doit afficher 3 onglets** (📝 Énoncé · ✅ Résolution · 🧭 Méthode & Rédaction) :
+   ajouter avant `</head>` → `<link rel="stylesheet" href="../../../assets/exo-tabs.css">`,
+   et avant `</body>` → la config + les 2 scripts partagés :
+   `<script>window.EXO_CONFIG = {theme:"…"}</script>` puis
+   `<script src="../../../assets/methodos.js"></script>` puis
+   `<script src="../../../assets/exo-tabs.js"></script>`.
+   Cas standards : sections `.exo` + blocs `.enonce` (onglet 1) et `.rappel` (onglet 3) —
+   le moteur découpe seul. Cas spéciaux : voir les configs de `formal_letter.html`
+   (panneaux directs), `english_tenses.html` (sections `.card`) et `exo_12` (`splitQA`).
+   Thèmes dispo dans `assets/methodos.js` : incertitudes, mecanique, electricite,
+   optique, moderne, info, grammaire, expression (plusieurs possibles en tableau).
+   Lien direct vers un onglet : `…/exo-XX.html#t2` (résolution) ou `#t3` (méthode).
 2. Ajouter **une ligne** au `REGISTRE` dans `hub-exercices.html` :
    `{mat:"…", theme:"…", titre:"…", desc:"…", file:"matieres/<matiere>/exercices/<fichier>"}`
    — le compteur, les vues matière/thème et la recherche se mettent à jour seuls.

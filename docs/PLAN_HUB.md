@@ -48,7 +48,11 @@ TerminaleC-Prep/
 ## 🎯 Hub Exercices (19 fiches)
 
 Page `hub-exercices.html` — registre inline (fonctionne en `file://`, imprimable),
-2 vues + recherche instantanée :
+2 vues + recherche instantanée. **Chaque fiche = 3 onglets** (📝 Énoncé · ✅ Résolution ·
+🧭 Méthode & Rédaction avec méthodologie et phrases modèles de copie BAC par thème),
+via `assets/exo-tabs.css` + `assets/exo-tabs.js` + `assets/methodos.js`
+(8 thèmes : incertitudes, mecanique, electricite, optique, moderne, info, grammaire,
+expression). Liens directs `#t2` / `#t3` :
 
 | Matière | Thèmes | Fiches |
 |---|---|---|

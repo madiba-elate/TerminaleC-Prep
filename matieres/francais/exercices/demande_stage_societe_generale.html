@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html lang="en">
 <head>
 <meta charset="UTF-8">
@@ -150,12 +150,22 @@
     .top-bar, .print-btn, .no-print { display: none; }
   }
 </style>
+<link rel="stylesheet" href="../../../assets/exo-tabs.css">
 </head>
 <body>
 
 <div class="top-bar">
   <span>Formal Letter — Internship Request</span>
   <span>Data Engineer • Societe Generale</span>
+</div>
+
+<div class="xt-consigne">
+<b>📝 Consigne — Lettre de demande de stage (anglais formel) :</b><br>
+• <b>Profil :</b> élève en 1ère C (Lycée Joss, Douala), passionné d'informatique (Python, SQL via DataCamp).<br>
+• <b>Destinataire :</b> Human Resources Manager, Société Générale Cameroun, Douala.<br>
+• <b>Objet :</b> stage d'observation <b>non rémunéré</b> au département Data, du <b>15 juillet au 15 août 2026</b>.<br>
+• <b>Contenu attendu :</b> présentation + motivation (banque data-driven) + qualités et résultats (3e de classe, 15,2/20) + disponibilités + pièces jointes.<br>
+• <b>Objectif :</b> obtenir un entretien — ton formel, sans contractions, anglais britannique.
 </div>
 
 <div class="paper">
@@ -227,5 +237,8 @@
 <button class="print-btn no-print" onclick="window.print()">🖨️ Print / Save as PDF</button>
 <p class="no-print" style="font-family:'Inter',sans-serif; font-size:11px; color:#9ca3af; margin-top:10px; text-align:center;">Double-click to print • Formal tone • No contractions • British English formatting</p>
 
+<script>window.EXO_CONFIG = {theme:"expression",panels:{tab1:".xt-consigne",tab2:".paper"},labels:{t1:"Consigne",t2:"Lettre mod\u00E8le"}};</script>
+<script src="../../../assets/methodos.js"></script>
+<script src="../../../assets/exo-tabs.js"></script>
 </body>
 </html>
