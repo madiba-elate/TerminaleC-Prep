@@ -24,7 +24,7 @@
 Fichiers dans `matieres/<matiere>/exercices/`, originaux dans `archives/default-project/`
 (voir `archives/default-project/LISEZMOI.md`).
 
-## Prochain envoi attendu (voir `docs/ORDRE_REVISION.md`)
+## Prochain envoi attendu (voir `docs/ORDRE_REVISION.md`, détail item par item : `docs/LISTE_ENVOIS.md`)
 
 1. Programme annuel d'**Info** (puis cours), puis **Anglais**, **Chimie**, **SVT**
 2. Puis Maths + Physique **par chapitres** (chapitre du moment en priorité)
