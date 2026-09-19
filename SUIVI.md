@@ -15,7 +15,7 @@
 | Anglais (coef 3) | ⏳ | 0 | 0 | 0 | 0 | 2 ✅² |
 | Philosophie (coef 2) | ⏳ | 0 | 0 | 0 | 0 | 0 |
 | Français (coef 1) | ⏳ | 0 | 0 | 0 | 0 | 1 ✅² |
-| Info (coef 2) | ⏳ | 0 | 0 | 0 | 0 | 1 ✅² |
+| Info (coef 2) | ✅ | 0 | 0 | 0 | 0 | 1 ✅² |
 | ECM (coef 2) | ✅ | 0 | 0 | 0 | 0 | 0 |
 | EPS (coef 2) | ⏳ | 0 | 0 | 0 | 0 | 0 |
 | TM (coef 1) | ⏳ | 0 | 0 | 0 | 0 | 0 |

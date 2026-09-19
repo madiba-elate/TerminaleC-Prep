@@ -4,13 +4,16 @@
 > Coche `[x]` au fur et à mesure. Contenu « indicatif » = chapitres usuels Terminale C —
 > **ton programme reçu fera foi** et remplacera ces lignes.
 
-## Priorité 1 — 💻 Info (coef 2 · 5,7→3,8 pts/h : jackpot)
+## Priorité 1 — 💻 Info (coef 2 · 3,8 pts/h : jackpot) — ✅ programme reçu le 2026-09-19
 
-- [ ] **Programme annuel** (Leçons + TP + Dossiers)
-- [ ] Algorithmique (variables, boucles, fonctions)
-- [ ] Programmation (langage C, Python, algorithmes)
-- [ ] Bases de données (SQL, modélisation)
-- [ ] Réseaux (TCP/IP, sécurité)
+- [x] **Programme annuel** (7 Modules, UA 0 → UA 8 — voir `matieres/info/README.md`)
+- [ ] Module 1 : UA 0 (IA, projet et insertion) + UA 1 (architecture système) + UA 2 (protection)
+- [ ] Module 2 : UA 3 (conception d'un système d'information)
+- [ ] Module 3 : UA 4 (algorithmes + structures de données — exo 13 en stock)
+- [ ] Module 4 : UA 5 (classeur — exo 13 en stock)
+- [ ] Module 5 : UA 6 (réseau informatique)
+- [ ] Module 6 : UA 7 (langage C — exo 13 en stock)
+- [ ] Module 7 : UA 8 (bases de données — ⚠️ titre du module à confirmer)
 
 ## Priorité 2 — 🇬🇧 Anglais (coef 3 · jackpot n°1)
 
