@@ -36,14 +36,13 @@
 - [ ] Module 2 : Leç 6 (généralités) + Leç 7 (force, couples) + Leç 8 (dosage)
 - [ ] Module 3 : Leç 9 (cinétique)
 
-## Priorité 4 — 🧬 SVT / EEHB (coef 2)
+## Priorité 4 — 🧬 SVT / EEHB (coef 2) — ✅ programme reçu le 2026-09-19
 
-- [ ] **Programme annuel**
-- [ ] Génétique (Mendel, hérédité, biotechnologie)
-- [ ] Géologie (tectonique, séismes)
-- [ ] Physiologie (neuro, endocrinien, reproduction)
-- [ ] Écologie (écosystèmes, pollution)
-- [ ] Hygiène (maladies, prévention)
+- [x] **Programme annuel** (3 Modules, Séq 1-11 + 13-15 — voir `matieres/svteehb/README.md`)
+- [ ] Module 1 : Séq 1 (cellule) + Séq 2 (échanges) + Séq 3 (gène-protéine) + Séq 4 (reproduction) + Séq 5 (hérédité) + Séq 6 (génétique humaine) + Séq 7 (neurones)
+- [ ] Module 2 : Séq 8 (immunité) + Séq 9 (dysfonctionnement) + Séq 10 (santé reproductive) + Séq 11 (santé nutritionnelle)
+- [ ] Module 3 : Séq 13 (fruits) + Séq 14 (biocarburant) + Séq 15 (déchets)
+- [ ] ⚠️ Séq 12 : vérifier dans le cahier (absente de l'envoi)
 
 ## Priorité 5 — 📐 Maths (coef 7 · par chapitres, celui du moment d'abord)
 
