@@ -32,6 +32,7 @@
 
 - [x] **Programme annuel** (3 Modules, 9 Leçons — voir `matieres/chimie/README.md`)
 - [ ] Module 1 : Leç 1 (alcools) + Leç 2 (carboxyliques) + Leç 3 (amines) + Leç 4 (alpha-aminés) + Leç 5 (stéréochimie)
+  - [x] Leç 1 : Propriétés chimiques des alcools (généré 2026-09-19 : tout savoir + 3 exos BAC)
 - [ ] Module 2 : Leç 6 (généralités) + Leç 7 (force, couples) + Leç 8 (dosage)
 - [ ] Module 3 : Leç 9 (cinétique)
 

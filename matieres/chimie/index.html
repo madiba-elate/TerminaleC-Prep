@@ -134,7 +134,7 @@ th{background:var(--bg3);font-size:.66rem;text-transform:uppercase;letter-spacin
     <p style="font-size:.8rem;color:var(--text2);margin-bottom:.7rem">Programme officiel corrigé le 2026-09-19 — 3 Modules, 9 Leçons. Découpage S1-S6 indiqué par badge.</p>
         <div style="display:grid;grid-template-columns:1fr;gap:.35rem;font-size:.84rem">
       <div style="padding:.6rem .8rem;background:#eef2ff;border-radius:8px;font-weight:800;font-size:.8rem">Module 1 : Chimie organique</div>
-      <div style="padding:.6rem .8rem;background:var(--bg3);border-radius:8px;display:flex;justify-content:space-between;align-items:center"><span><strong>Leçon 1</strong> : Propriétés chimiques des alcools</span><span style="font-size:.68rem;background:var(--accent);color:#fff;padding:.15rem .4rem;border-radius:6px">S1</span></div>
+      <div style="padding:.6rem .8rem;background:var(--bg3);border-radius:8px;display:flex;justify-content:space-between;align-items:center"><span><strong>Leçon 1</strong> : Propriétés chimiques des alcools ✅</span><span style="font-size:.68rem;background:var(--accent);color:#fff;padding:.15rem .4rem;border-radius:6px">S1</span></div>
       <div style="padding:.6rem .8rem;background:var(--bg3);border-radius:8px;display:flex;justify-content:space-between;align-items:center"><span><strong>Leçon 2</strong> : Les acides carboxyliques</span><span style="font-size:.68rem;background:var(--accent);color:#fff;padding:.15rem .4rem;border-radius:6px">S1</span></div>
       <div style="padding:.6rem .8rem;background:var(--bg3);border-radius:8px;display:flex;justify-content:space-between;align-items:center"><span><strong>Leçon 3</strong> : Les amines</span><span style="font-size:.68rem;background:#065f46;color:#fff;padding:.15rem .4rem;border-radius:6px">S2</span></div>
       <div style="padding:.6rem .8rem;background:var(--bg3);border-radius:8px;display:flex;justify-content:space-between;align-items:center"><span><strong>Leçon 4</strong> : Les acides alpha-aminés</span><span style="font-size:.68rem;background:#065f46;color:#fff;padding:.15rem .4rem;border-radius:6px">S2</span></div>
@@ -160,7 +160,7 @@ th{background:var(--bg3);font-size:.66rem;text-transform:uppercase;letter-spacin
 </div>
 <script>
 /* Visualiseur des cours reçus — ajouter un cours = 1 objet dans COURS (voir CONTRIBUER.md §4) */
-const COURS=[];
+const COURS=[{t:"Leçon 1 : Propriétés chimiques des alcools",d:"Module 1 : Chimie organique",seq:"S1",page:"pages/lecon-01-alcools.html"}];
 (function(){var box=document.getElementById('coursRecus');
 if(!COURS.length){box.innerHTML='<div style="padding:.8rem;background:var(--bg3);border-radius:8px;color:var(--text2)">Aucun cours reçu pour l\u2019instant — envoie le programme puis les cours (voir Liste d\u2019envois), ils appara\u00eetront ici.</div>';return;}
 box.innerHTML=COURS.map(function(c){return '<a href="'+c.page+'" style="display:flex;justify-content:space-between;align-items:center;gap:.5rem;padding:.6rem .8rem;background:var(--bg3);border-radius:8px;text-decoration:none;color:var(--text);font-weight:700"><span>'+c.t+'<br><span style="font-weight:400;font-size:.72rem;color:var(--text2)">'+c.d+'</span></span><span style="display:flex;gap:.3rem;align-items:center;flex-shrink:0"><span style="font-size:.68rem;background:var(--accent);color:#fff;padding:.15rem .4rem;border-radius:6px">'+c.seq+'</span><span style="font-size:.68rem;background:#0f172a;color:#fff;padding:.15rem .4rem;border-radius:6px">Ouvrir \u2192</span></span></a>';}).join('');})();
@@ -177,25 +177,25 @@ box.innerHTML=COURS.map(function(c){return '<a href="'+c.page+'" style="display:
     </div>
     <div class="tabs" style="margin-bottom:.6rem">
       <button class="tab-btn active" onclick="filterFC('all',this)">Tous</button>
-      <button class="tab-btn" onclick="filterFC('L1',this)">Leçon 1-3</button>
-      <button class="tab-btn" onclick="filterFC('L4',this)">Leçon 4-6</button>
-      <button class="tab-btn" onclick="filterFC('L8',this)">Leçon 8-11</button>
+      <button class="tab-btn" onclick="filterFC('L1',this)">Leçon 1 – Alcools</button>
     </div>
-    <div class="fc-grid" id="fcGrid">
-      <div class="fc" data-cat="L1" onclick="this.classList.toggle('flipped')"><div class="fc-q">Q: Définis "relations internationales"</div><div class="fc-a">Ensemble des rapports (politiques, éco, culturels) entre États, OI, ONG. Caractères : interdépendance + institutionnalisation.</div></div>
-      <div class="fc" data-cat="L1" onclick="this.classList.toggle('flipped')"><div class="fc-q">Q: 2 formes de coopération internationale ?</div><div class="fc-a">1. Bilatérale (2 États) 2. Multilatérale (plusieurs États/OI). Ex: Cameroun-France = bilatérale, Cameroun-ONU = multilatérale.</div></div>
-      <div class="fc" data-cat="L1" onclick="this.classList.toggle('flipped')"><div class="fc-q">Q: Documents de voyage (TD1) — liste 3</div><div class="fc-a">Passeport, visa, carte consulaire, laissez-passer. Rôle : identification + autorisation de circuler.</div></div>
-      <div class="fc" data-cat="L1" onclick="this.classList.toggle('flipped')"><div class="fc-q">Q: Assistance humanitaire — principe clé ?</div><div class="fc-a">Aide d'urgence sans contrepartie, principes : neutralité, impartialité, humanité (Croix-Rouge, ONU).</div></div>
-      <div class="fc" data-cat="L4" onclick="this.classList.toggle('flipped')"><div class="fc-q">Q: Principes diplomatie camerounaise (Leç3) — 3</div><div class="fc-a">Non-ingérence, non-alignement, coopération, pacifisme, respect souveraineté.</div></div>
-      <div class="fc" data-cat="L4" onclick="this.classList.toggle('flipped')"><div class="fc-q">Q: Cameroun et ONU — date adhésion ?</div><div class="fc-a">20 septembre 1960 (après indépendance 1er jan 1960). Membre actif, participe aux OMP.</div></div>
-      <div class="fc" data-cat="L4" onclick="this.classList.toggle('flipped')"><div class="fc-q">Q: Cameroun & Union européenne — type de lien ?</div><div class="fc-a">Coopération via Accord de Cotonou / APE. Aide au développement, commerce.</div></div>
-      <div class="fc" data-cat="L8" onclick="this.classList.toggle('flipped')"><div class="fc-q">Q: CEMAC vs CEEAC — différence ?</div><div class="fc-a">CEMAC = 6 pays Afrique centrale (FCFA), CEEAC = 11 pays (plus large). Cameroun membre des deux.</div></div>
-      <div class="fc" data-cat="L8" onclick="this.classList.toggle('flipped')"><div class="fc-q">Q: COPAX — rôle ?</div><div class="fc-a">Conseil de Paix et de Sécurité de l'Afrique Centrale (CEEAC) — prévention/gestion conflits.</div></div>
-      <div class="fc" data-cat="L8" onclick="this.classList.toggle('flipped')"><div class="fc-q">Q: Problèmes Cameroun relations inter — cite 2</div><div class="fc-a">Dépendance aide, crises frontalières (Bakassi), image, dette, ingérence.</div></div>
+        <div class="fc-grid" id="fcGrid">
+      <div class="fc" data-cat="L1" onclick="this.classList.toggle('flipped')"><div class="fc-q">Q: Alcool + 3 classes ?</div><div class="fc-a">R–OH. I = 1 C voisin, II = 2, III = 3.</div></div>
+      <div class="fc" data-cat="L1" onclick="this.classList.toggle('flipped')"><div class="fc-q">Q: 1 exemple par classe ?</div><div class="fc-a">Éthanol (I), propan-2-ol (II), 2-méthylpropan-2-ol (III).</div></div>
+      <div class="fc" data-cat="L1" onclick="this.classList.toggle('flipped')"><div class="fc-q">Q: Test sodium ?</div><div class="fc-a">2R–OH + 2Na → alcoolate + H2. Les 3 classes.</div></div>
+      <div class="fc" data-cat="L1" onclick="this.classList.toggle('flipped')"><div class="fc-q">Q: Alcool + soude ?</div><div class="fc-a">Rien : acides très faibles (pKa 16-18).</div></div>
+      <div class="fc" data-cat="L1" onclick="this.classList.toggle('flipped')"><div class="fc-q">Q: Tableau oxydation ?</div><div class="fc-a">I → aldéhyde → acide. II → cétone. III → rien.</div></div>
+      <div class="fc" data-cat="L1" onclick="this.classList.toggle('flipped')"><div class="fc-q">Q: Demi-équation (I) ?</div><div class="fc-a">R–CH2OH → R–CHO + 2H+ + 2e−.</div></div>
+      <div class="fc" data-cat="L1" onclick="this.classList.toggle('flipped')"><div class="fc-q">Q: Couleurs oxydants ?</div><div class="fc-a">Violet→incolore (Mn), orange→vert (Cr).</div></div>
+      <div class="fc" data-cat="L1" onclick="this.classList.toggle('flipped')"><div class="fc-q">Q: Déshydratation ?</div><div class="fc-a">H2SO4 chaud : alcool → alcène + H2O.</div></div>
+      <div class="fc" data-cat="L1" onclick="this.classList.toggle('flipped')"><div class="fc-q">Q: Zaïtsev ?</div><div class="fc-a">Alcène le plus substitué majoritaire.</div></div>
+      <div class="fc" data-cat="L1" onclick="this.classList.toggle('flipped')"><div class="fc-q">Q: Identifier un inconnu ?</div><div class="fc-a">Na → H2, puis oxydation : I/II/rien.</div></div>
+      <div class="fc" data-cat="L1" onclick="this.classList.toggle('flipped')"><div class="fc-q">Q: Nomenclature ?</div><div class="fc-a">Alcane + -ol + position (butan-2-ol).</div></div>
+      <div class="fc" data-cat="L1" onclick="this.classList.toggle('flipped')"><div class="fc-q">Q: 3 alcools courants ?</div><div class="fc-a">Éthanol, méthanol toxique, glycérol.</div></div>
     </div>
   </div>
   <div class="card">
-    <div class="card-title">🧠 Quiz ECM — 80% pour valider</div>
+    <div class="card-title">🧠 Quiz Chimie — 80% pour valider</div>
     <div id="quizArea"></div>
     <div style="margin-top:.7rem;display:flex;gap:.5rem;align-items:center">
       <button class="btn" onclick="renderQuiz()">🔄 Nouveau quiz (5 Q)</button>
@@ -354,14 +354,16 @@ function filterFC(cat,btn){
 }
 // Quiz
 const quizBank=[
-  {q:"Le Cameroun adhère à l'ONU en ?", opts:["1960","1962","1972","1960 et 1961"], ok:0},
-  {q:"Document de voyage non valide ?", opts:["Passeport","Visa","Carte d'électeur","Laissez-passer"], ok:2},
-  {q:"Principe diplomatie camerounaise ?", opts:["Ingérence","Non-alignement","Isolation","Protectionnisme"], ok:1},
-  {q:"CEMAC compte ?", opts:["6 pays","11 pays","4 pays","15 pays"], ok:0},
-  {q:"COPAX dépend de ?", opts:["CEEAC","ONU","UE","UA"], ok:0},
-  {q:"Aide humanitaire vs développement ?", opts:["Même chose","Urgence vs long terme","Seulement argent","Seulement ONU"], ok:1},
-  {q:"Leçon 6 : Organisation citée ?", opts:["OTAN","Francophonie","ASEAN","MERCOSUR"], ok:1},
-  {q:"Cameroun et Chine : continent ?", opts:["Asie","Amérique","Europe","Océanie"], ok:0},
+  {q:"Classe de CH3CH2OH ?", opts:["Primaire","Secondaire","Tertiaire","Aucune"], ok:0},
+  {q:"Classe de (CH3)3COH ?", opts:["Primaire","Secondaire","Tertiaire","Aucune"], ok:2},
+  {q:"Nom de CH3CH(OH)CH3 ?", opts:["propan-1-ol","propan-2-ol","propan-3-ol","dipropanol"], ok:1},
+  {q:"R–OH + sodium ?", opts:["Alcoolate + H2","Sel + eau","Rien","Alcène"], ok:0},
+  {q:"Primaire + excès KMnO4 ?", opts:["Cétone","Rien","Acide (excès)","Alcène"], ok:2},
+  {q:"Secondaire + dichromate ?", opts:["Aldéhyde","Cétone","Acide","Rien"], ok:1},
+  {q:"Tertiaire + oxydant ?", opts:["Aldéhyde","Cétone","Acide","Rien"], ok:3},
+  {q:"Dichromate après oxydation ?", opts:["Violet→vert","Orange→incolore","Orange→vert","Vert→orange"], ok:2},
+  {q:"Permanganate violet → ?", opts:["Incolore","Vert","Orange","Bleu"], ok:0},
+  {q:"Déshydratation éthanol ?", opts:["Éthanal","Éthène + H2O","Acide","Méthane"], ok:1},
 ];
 function renderQuiz(){
   const area=document.getElementById('quizArea'); area.innerHTML=''; let pick=[...quizBank].sort(()=>0.5-Math.random()).slice(0,5);

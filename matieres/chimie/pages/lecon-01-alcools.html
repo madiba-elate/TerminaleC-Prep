@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Chimie Leçon 1 : Alcools — Tout savoir</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Inter:wght@500;600;700;800&family=JetBrains+Mono:wght@600&display=swap');
+  *{margin:0;padding:0;box-sizing:border-box}
+  body{background:#f1f5f9;font-family:'Inter',sans-serif;color:#1e293b;padding:24px 16px}
+  .header{max-width:800px;margin:0 auto 18px auto;background:linear-gradient(135deg,#0f172a,#065f46 60%,#10b981);border-radius:20px;padding:22px 24px;color:white}
+  .header h1{font-size:21px;font-weight:800}
+  .header h1 span{color:#6ee7b7}
+  .header p{font-size:12px;opacity:.88;margin-top:4px}
+  .badge{display:inline-block;background:rgba(255,255,255,.15);border:1px solid rgba(255,255,255,.3);padding:4px 11px;border-radius:999px;font-size:10.5px;letter-spacing:.8px;text-transform:uppercase;font-weight:700;margin-bottom:10px}
+  .container{max-width:800px;margin:0 auto}
+  .card{background:#fff;border:1px solid #e2e8f0;border-radius:16px;overflow:hidden;margin-bottom:14px}
+  .card-head{padding:12px 16px;color:#fff;font-size:13px;font-weight:800;background:linear-gradient(135deg,#065f46,#047857)}
+  .card-body{padding:14px 16px;font-size:12.5px;line-height:1.65;color:#334155}
+  .card-body ul,.card-body ol{margin-left:18px}
+  .mol{font-family:'JetBrains Mono',monospace;font-size:11.5px;background:#ecfdf5;border:1px solid #6ee7b7;border-radius:8px;padding:8px 10px;margin:6px 0;color:#065f46;text-align:center;font-weight:700}
+  .def{background:#f0fdf4;border:1px solid #a7f3d0;border-left:4px solid #059669;border-radius:8px;padding:9px 12px;margin:7px 0}
+  .def b{color:#065f46}
+  table.ox{width:100%;border-collapse:collapse;margin-top:8px;font-size:12px;background:#fff;border:1px solid #e2e8f0}
+  table.ox th{background:#065f46;color:#fff;padding:8px 10px;text-align:left;font-size:11px}
+  table.ox td{padding:8px 10px;border-bottom:1px solid #f1f5f9;vertical-align:top}
+  table.ox td b{font-family:'JetBrains Mono',monospace;font-size:11px}
+  .colors{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-top:8px}
+  .colors div{border-radius:10px;padding:10px;text-align:center;font-size:11.5px;font-weight:700}
+  .c1{background:linear-gradient(135deg,#a855f7,#fff);border:1px solid #c4b5fd}
+  .c2{background:linear-gradient(135deg,#fb923c,#4ade80);border:1px solid #fdba74}
+  .warn{background:#fffbeb;border:1px solid #fde68a;border-left:4px solid #d97706;border-radius:8px;padding:9px 12px;margin:7px 0}
+  .warn b{color:#92400e}
+  details.cor{margin-top:10px;background:#ecfdf5;border:1px solid #6ee7b7;border-radius:10px;padding:10px 14px}
+  details.cor summary{font-weight:800;font-size:12.5px;color:#065f46;cursor:pointer}
+  details.cor ol{font-size:12px;margin:6px 0 0 16px}
+  details.cor p{font-size:12px;margin-top:6px}
+  .ffc-grid{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-top:8px}
+  .ffc{background:#fff;border:1px solid #6ee7b7;border-radius:10px;padding:10px 12px;cursor:pointer;min-height:86px;display:flex;align-items:center}
+  .ffc .a{display:none;font-size:11.5px;color:#065f46}
+  .ffc .q{font-size:11.5px;font-weight:700;color:#1e293b}
+  .ffc.flipped{background:#ecfdf5}
+  .ffc.flipped .q{display:none}.ffc.flipped .a{display:block}
+  .quiz-q{background:#f8fafc;border:1px solid #e2e8f0;border-radius:10px;padding:10px 12px;margin:8px 0}
+  .quiz-q p{font-size:12px;font-weight:700;color:#0f172a;margin-bottom:6px}
+  .quiz-q label{display:block;font-size:11.5px;color:#334155;padding:3px 0;cursor:pointer}
+  .quiz-q input{margin-right:6px}
+  .quiz-ok{color:#059669;font-weight:800}.quiz-ko{color:#dc2626;font-weight:800}
+  #quizScore{text-align:center;font-weight:800;font-size:14px;margin-top:10px}
+  .btn{background:#065f46;color:#fff;border:none;padding:9px 20px;border-radius:999px;font-weight:800;font-size:12px;cursor:pointer}
+  .back{display:inline-block;margin-bottom:12px;font-size:12.5px;font-weight:700;color:#059669;text-decoration:none}
+  .footer{text-align:center;margin-top:14px;font-size:11px;color:#94a3b8}
+  @media(max-width:700px){.ffc-grid,.colors{grid-template-columns:1fr}}
+  @media print{body{background:#fff;padding:0}.no-print,.back{display:none}.card{break-inside:avoid}}
+</style>
+</head>
+<body>
+<div class="container">
+<a class="back" href="../index.html">← Dashboard Chimie</a>
+<div class="header">
+  <div class="badge">Chimie · Module 1 · Leçon 1 · S1</div>
+  <h1>Propriétés chimiques des <span>alcools</span> — tout savoir</h1>
+  <p>Classes & noms • Sodium • Oxydation (tableau + équations + couleurs) • Déshydratation • Tests • 3 exos corrigés • 12 flashcards • Quiz 80%</p>
+</div>
+
+<div class="card">
+  <div class="card-head">1️⃣ Alcool : classes & noms (la base)</div>
+  <div class="card-body">
+    <div class="def"><b>Alcool</b> = R–OH : groupe <b>–OH</b> sur carbone tétraédrique. <b>Classe</b> = nombre de carbones voisins du C porteur : <b>I</b> (1 C) · <b>II</b> (2 C) · <b>III</b> (3 C).</div>
+    <div class="mol">Primaire : CH<sub>3</sub>–CH<sub>2</sub>OH (éthanol) · Secondaire : CH<sub>3</sub>–CH(OH)–CH<sub>3</sub> (propan-2-ol) · Tertiaire : (CH<sub>3</sub>)<sub>3</sub>C–OH</div>
+    <p><b>Nom</b> = alcane + <b>-ol</b> + position du –OH (ex : butan-2-ol).</p>
+  </div>
+</div>
+
+<div class="card">
+  <div class="card-head">2️⃣ Acidité — le test au sodium</div>
+  <div class="card-body">
+    <div class="mol">2 R–OH + 2 Na → 2 R–ONa (alcoolate) + H<sub>2</sub>↑</div>
+    <p>Effervescence (H<sub>2</sub>). Acides <b>très faibles</b> (pKa ≈ 16-18) → <b>pas de réaction avec NaOH diluée</b>. Révèle <b>les 3 classes</b>.</p>
+  </div>
+</div>
+
+<div class="card">
+  <div class="card-head">3️⃣ Oxydation — LE tableau à savoir par cœur</div>
+  <div class="card-body">
+    <p>Oxydants : <b>KMnO<sub>4</sub></b>, <b>K<sub>2</sub>Cr<sub>2</sub>O<sub>7</sub></b> (milieu acide).</p>
+    <table class="ox">
+      <tr><th>Classe</th><th>Oxydant en défaut</th><th>Oxydant en excès</th></tr>
+      <tr><td><b>Primaire</b> R–CH<sub>2</sub>OH</td><td><b>Aldéhyde</b> R–CHO</td><td><b>Acide</b> R–COOH</td></tr>
+      <tr><td><b>Secondaire</b> R<sub>2</sub>CH–OH</td><td colspan="2"><b>Cétone</b> R<sub>2</sub>C=O</td></tr>
+      <tr><td><b>Tertiaire</b> R<sub>3</sub>C–OH</td><td colspan="2"><b>RIEN</b> (résiste)</td></tr>
+    </table>
+    <div class="mol">R–CH<sub>2</sub>OH → R–CHO + 2H<sup>+</sup> + 2e<sup>−</sup> · R–CHO + H<sub>2</sub>O → R–COOH + 2H<sup>+</sup> + 2e<sup>−</sup></div>
+    <div class="mol">R<sub>2</sub>CH–OH → R<sub>2</sub>C=O + 2H<sup>+</sup> + 2e<sup>−</sup></div>
+    <div class="colors">
+      <div class="c1">MnO<sub>4</sub><sup>−</sup> <b>violet → incolore</b> (Mn<sup>2+</sup>)</div>
+      <div class="c2">Cr<sub>2</sub>O<sub>7</sub><sup>2−</sup> <b>orange → vert</b> (Cr<sup>3+</sup>)</div>
+    </div>
+  </div>
+</div>
+
+<div class="card">
+  <div class="card-head">4️⃣ Déshydratation + combustion</div>
+  <div class="card-body">
+    <div class="mol">CH<sub>3</sub>–CH<sub>2</sub>OH → CH<sub>2</sub>=CH<sub>2</sub> + H<sub>2</sub>O <span style="font-weight:400">(H<sub>2</sub>SO<sub>4</sub> conc., ≈180 °C)</span></div>
+    <div class="warn"><b>Zaïtsev :</b> l'alcène le <b>plus substitué</b> est majoritaire (butan-2-ol → <b>but-2-ène</b>).</div>
+    <p>Combustion complète : alcool + O<sub>2</sub> → <b>CO<sub>2</sub> + H<sub>2</sub>O</b> (biocarburant).</p>
+  </div>
+</div>
+
+<div class="card">
+  <div class="card-head">5️⃣ Identifier un inconnu (méthode BAC)</div>
+  <div class="card-body"><ol>
+    <li><b>Sodium → H<sub>2</sub></b> : c'est un alcool (classe inconnue).</li>
+    <li><b>Oxydation</b> : aldéhyde/acide = <b>I</b> · cétone = <b>II</b> · rien = <b>III</b>.</li>
+    <li>Bonus : aldéhyde → <b>Fehling</b> (rouge) ou <b>Tollens</b> (miroir).</li>
+  </ol></div>
+</div>
+
+<div class="card">
+  <div class="card-head">✍️ 3 exercices types BAC + corrigés</div>
+  <div class="card-body">
+    <p><b>Ex.1</b> Classe + nomme : éthanol (I) · propan-2-ol (II) · 2-méthylpropan-2-ol (III) · butan-2-ol (II).</p>
+    <p><b>Ex.2</b> 3 tubes + K<sub>2</sub>Cr<sub>2</sub>O<sub>7</sub> : A,B <b>orange→vert</b>, C inchangé. A = aldéhyde/acide → <b>I</b> · B = cétone → <b>II</b> · C = rien → <b>III</b>.</p>
+    <details class="cor"><summary>✅ Demi-équations de l'Ex.2</summary>
+      <p>A : R–CH<sub>2</sub>OH → R–CHO + 2H<sup>+</sup> + 2e<sup>−</sup> ; R–CHO + H<sub>2</sub>O → R–COOH + 2H<sup>+</sup> + 2e<sup>−</sup>. B : R<sub>2</sub>CH–OH → R<sub>2</sub>C=O + 2H<sup>+</sup> + 2e<sup>−</sup>.</p>
+    </details>
+    <p><b>Ex.3</b> Butan-2-ol + H<sub>2</sub>SO<sub>4</sub> chaud → but-1-ène + <b>but-2-ène majoritaire (Zaïtsev)</b>.</p>
+  </div>
+</div>
+
+<div class="card">
+  <div class="card-head">🃏 Flashcards — clique pour retourner (12)</div>
+  <div class="card-body"><div class="ffc-grid" id="ffcGrid"></div></div>
+</div>
+
+<div class="card">
+  <div class="card-head">🧠 Quiz — 80% pour valider (10 Q)</div>
+  <div class="card-body">
+    <div id="quizBox"></div>
+    <div style="text-align:center;margin-top:10px" class="no-print"><button class="btn" onclick="corriger()">✅ Corriger</button></div>
+    <div id="quizScore"></div>
+  </div>
+</div>
+
+<p class="footer">Chimie · Leçon 1 : Alcools · 2026-09-19 — <span class="no-print"><a href="../index.html" style="color:#059669">Dashboard Chimie</a></span></p>
+<div style="text-align:center" class="no-print"><button class="btn" style="margin-top:10px" onclick="window.print()">🖨️ Imprimer / PDF</button></div>
+</div>
+
+<script>
+const FC=[
+["Alcool + 3 classes?","R–OH. I = 1 C voisin, II = 2, III = 3."],
+["1 exemple par classe?","Éthanol (I), propan-2-ol (II), 2-méthylpropan-2-ol (III)."],
+["Nomenclature?","Alcane + -ol + position (butan-2-ol)."],
+["Test sodium?","2R–OH + 2Na → 2R–ONa + H2. Les 3 classes."],
+["Alcool + soude?","Rien : acides très faibles (pKa 16-18)."],
+["Tableau oxydation?","I → aldéhyde → acide. II → cétone. III → rien."],
+["Demi-équations (I)?","R–CH2OH → R–CHO + 2H+ + 2e−, puis + H2O → acide."],
+["Couleurs oxydants?","Violet→incolore (Mn), orange→vert (Cr)."],
+["Déshydratation?","H2SO4 chaud : alcool → alcène + H2O."],
+["Zaïtsev?","Alcène le plus substitué majoritaire."],
+["Identifier un inconnu?","Na → H2, puis oxydation : I/II/rien."],
+["3 alcools courants?","Éthanol, méthanol toxique, glycérol."]];
+const fg=document.getElementById('ffcGrid');
+FC.forEach(c=>{const d=document.createElement('div');d.className='ffc';
+d.innerHTML='<div class="q">Q: '+c[0]+'</div><div class="a">'+c[1]+'</div>';
+d.onclick=()=>d.classList.toggle('flipped');fg.appendChild(d);});
+
+const QZ=[
+["CH3CH2OH?",["Primaire","Secondaire","Tertiaire","Aucune"],0],
+["(CH3)3COH?",["Primaire","Secondaire","Tertiaire","Aucune"],2],
+["CH3CH(OH)CH3?",["propan-1-ol","propan-2-ol","propan-3-ol","dipropanol"],1],
+["R–OH + Na → ?",["Alcoolate + H2","Sel + eau","Rien","Alcène"],0],
+["Primaire + excès KMnO4?",["Cétone","Rien","Acide (excès)","Alcène"],2],
+["Secondaire + dichromate?",["Aldéhyde","Cétone","Acide","Rien"],1],
+["Tertiaire + oxydant?",["Aldéhyde","Cétone","Acide","Rien"],3],
+["Dichromate après oxydation?",["Violet→vert","Orange→incolore","Orange→vert","Vert→orange"],2],
+["Permanganate violet → ?",["Incolore","Vert","Orange","Bleu"],0],
+["Déshydratation éthanol?",["Éthanal","Éthène + H2O","Acide","Méthane"],1]];
+const qb=document.getElementById('quizBox');
+QZ.forEach((q,i)=>{const d=document.createElement('div');d.className='quiz-q';
+let h='<p>'+(i+1)+'. '+q[0]+'</p>';
+q[1].forEach((o,j)=>{h+='<label><input type="radio" name="q'+i+'" value="'+j+'">'+o+'</label>';});
+h+='<div id="f'+i+'" style="font-size:11.5px;margin-top:4px"></div>';d.innerHTML=h;qb.appendChild(d);});
+function corriger(){let s=0;
+QZ.forEach((q,i)=>{const sel=document.querySelector('input[name="q'+i+'"]:checked');
+const f=document.getElementById('f'+i);
+if(sel&&+sel.value===q[2]){s++;f.innerHTML='<span class="quiz-ok">✅ Juste</span>';}
+else{f.innerHTML='<span class="quiz-ko">❌ Faux → '+q[1][q[2]]+'</span>';}});
+const pct=Math.round(s/QZ.length*100);
+document.getElementById('quizScore').innerHTML='Score : '+s+'/'+QZ.length+' ('+pct+'%) — '
++(pct>=80?'✅ <span class="quiz-ok">Validé, passe à la Leçon 2.</span>':'❌ <span class="quiz-ko">Refais la fiche et retente.</span>');}
+</script>
+</body>
+</html>
