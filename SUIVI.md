@@ -12,7 +12,7 @@
 | SVT/EEHB (coef 2) | ⏳ | 0 | 0 | 0 | 0 | 0 |
 | Littérature (coef 2) | ⏳ | 0 | 0 | 0 | 0 | 0 |
 | Géographie (coef 2) | ✅ | 0 | 0 | 16 ✅ | 8 Q ✅ | 0 |
-| Anglais (coef 3) | ➖ (cours directs) | 2 (Lessons 1-2) | 2 | 30 | 22 Q | 2 ✅² + 2 |
+| Anglais (coef 3) | ➖ (cours directs) | 3 (Lessons 1-3) | 3 | 40 | 30 Q | 2 ✅² + 3 |
 | Philosophie (coef 2) | ⏳ | 0 | 0 | 0 | 0 | 0 |
 | Français (coef 1) | ⏳ | 0 | 0 | 0 | 0 | 1 ✅² |
 | Info (coef 2) | ✅ | 1 (UA0-UE1) | 1 | 10 | 8 Q | 1 ✅² + 1 |
