@@ -113,3 +113,15 @@
 3. Montre que 101 est premier (méthode √n).
 4. Remonte Euclide : 47u+39v=1.
 5. Résous 47x=28y (Gauss en 3 lignes).
+
+## 📓 En classe (cahier, 2026-09-20)
+
+- **L1** : Situation (partage, 7500) → Activité (encadrement) → Solution.
+  Application vérifiée : **2014 = 132×15+34** (q = 15, r = 34).
+  Appli 2 (à confirmer) : (2m−1) par (m+1) → q = 1, r = m−2.
+- **L2** : Situation (codage) → Activité (tableau) → Remarque (écriture des naturels).
+- **L3** : Situation → Activité a) b) → Solution → Résumé → Propriétés → Exercice.
+  Rappel vu en classe : Th.4 |b| ≤ |a|.
+- **L4 (nouveau)** : Congruence dans Z — Situation → Activité → Solution →
+  Résumé → Remarque → Propriétés → Exemple → Démonstration.
+- Transcription complète : `ch01-cahier-classe.md` + 8 photos.

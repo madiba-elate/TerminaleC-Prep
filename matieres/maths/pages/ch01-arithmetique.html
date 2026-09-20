@@ -192,6 +192,17 @@
 </div>
 
 <div class="card">
+  <div class="card-head">📓 En classe — méthodes et exemples du cahier</div>
+  <div class="card-body">
+    <p><b>L1 :</b> Situation (partage) → encadrement → Solution.
+    Application : <b>2014 = 132×15+34</b> (q=15, r=34) — refais-la sans fiche.</p>
+    <p><b>L2 :</b> Situation (codage) → tableau → Remarque (écriture des naturels).</p>
+    <p><b>L3 :</b> Situation → Activité → Solution → <b>Résumé</b> → Propriétés → Exercice. Retiens : <b>|b| ≤ |a|</b>.</p>
+    <p><b>L4 (nouveau) :</b> Congruence dans Z — Situation → Activité → Solution → Résumé → Propriétés → Exemple → Démonstration.</p>
+  </div>
+</div>
+
+<div class="card">
   <div class="card-head">✍️ 6 exercices types BAC + corrigés</div>
   <div class="card-body">
     <p><b>Ex.1</b> Diviseurs de 12, 150, 7 → 7 premier. <b>Ex.2</b> 456 divisible par 3 (10≡1) ; 12345 : oui/3, non/9, non/5.</p>
@@ -203,12 +214,12 @@
 </div>
 
 <div class="card">
-  <div class="card-head">🃏 Flashcards — clique pour retourner (24)</div>
+  <div class="card-head">🃏 Flashcards — clique pour retourner (25)</div>
   <div class="card-body"><div class="ffc-grid" id="ffcGrid"></div></div>
 </div>
 
 <div class="card">
-  <div class="card-head">🧠 Quiz — 80% pour valider (17 Q)</div>
+  <div class="card-head">🧠 Quiz — 80% pour valider (18 Q)</div>
   <div class="card-body">
     <div id="quizBox"></div>
     <div style="text-align:center;margin-top:10px" class="no-print"><button class="btn" onclick="corriger()">✅ Corriger</button></div>
@@ -245,7 +256,7 @@ const FC=[
 ["47x=28y?","47∧28=1 → 47|y → (28k,47k)."],
 ["Remontée 47u+39v=1?","u=5, v=−6 (47×5−39×6=1)."],
 ["1011₂+1101₂? 101₂×11₂?","11000₂ (24). 1111₂ (15). Retenues : 1+1=10.",
-["-121 par 19 ? Et 121 par -19 ?","q=-7, r=12 (-121 = 19×(-7)+12). q=-6, r=7."]]];
+["-121 par 19 ? Et 121 par -19 ?","q=-7, r=12 (-121 = 19×(-7)+12). q=-6, r=7."],["2014 par 132 ?","q=15, r=34 (132x15+34=2014)."]]];
 const fg=document.getElementById('ffcGrid');
 FC.forEach(c=>{const d=document.createElement('div');d.className='ffc';
 d.innerHTML='<div class="q">Q: '+c[0]+'</div><div class="a">'+c[1]+'</div>';
@@ -268,7 +279,7 @@ const QZ=[
 ["47x=28y ?",["(47k,28k)","(28k,47k)","(k,47k)","(28k,k)"],1],
 ["1011₂+1101₂ ?",["11000₂","10111₂","11001₂","10000₂"],0,
 ["-121 par 19 ?",["q=-7, r=12","q=-6, r=-7","q=-7, r=-12","q=6, r=7"],0],
-["121 par -19 ?",["q=-6, r=7","q=6, r=7","q=-6, r=-7","q=-7, r=12"],0]]];
+["121 par -19 ?",["q=-6, r=7","q=6, r=7","q=-6, r=-7","q=-7, r=12"],0],["2014 par 132 ?",["q=15, r=34","q=14, r=166","q=15, r=0","q=16, r=-98"],0]]];
 const qb=document.getElementById('quizBox');
 QZ.forEach((q,i)=>{const d=document.createElement('div');d.className='quiz-q';
 let h='<p>'+(i+1)+'. '+q[0]+'</p>';

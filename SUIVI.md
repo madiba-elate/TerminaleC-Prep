@@ -6,7 +6,7 @@
 
 | Matière | Programme | Cours reçus | Pages web | Flashcards | Quiz | Exercices |
 |---|---|---|---|---|---|---|
-| Maths (coef 7) | ✅ | 1 (Ch 1, 6 leçons + cahier L1-L4) | 1 | 24 | 17 Q | 6 |
+| Maths (coef 7) | ✅ | 1 (Ch 1, 6 leçons + cahier L1-L4) | 1 | 25 | 18 Q | 6 |
 | Physique (coef 4) | ⏳ | 0 | 0 | 0 | 0 | 15 ✅² |
 | Chimie (coef 2) | ✅ | 1 (Leç 1) | 1 | 12 | 10 Q | 3 |
 | SVT/EEHB (coef 2) | ✅ | 0 | 0 | 0 | 0 | 0 |
