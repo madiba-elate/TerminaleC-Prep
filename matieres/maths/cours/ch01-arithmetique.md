@@ -34,8 +34,10 @@
   Ex : 1011₂+1101₂ = 11000₂ (11+13=24).
   Multiplication = décalages + additions : 101₂×11₂ = 101+1010 = 1111₂ (15).
 
-### Leçon 3 — Divisibilité dans ℤ et congruences
-**Objectifs (proposés) :** caractériser a∣b ; utiliser transitivité et combinaisons linéaires ; traduire a≡b[n] par n∣(a−b) ; appliquer les compatibilités ; résoudre les applications types.
+### Leçon 3 — Division euclidienne dans Z, divisibilité dans Z
+**Objectifs :** déterminer le quotient et le reste de la division d'un entier relatif A par un entier relatif B non nul ; traduire une division euclidienne à l'aide d'une égalité.
+- **Traduire par une égalité (Z, reste positif ou nul)** : -121 par 19 donne **-121 = 19×(-7)+12** (q = -7, r = 12 : on descend d'un cran pour garder r ≥ 0) ; 121 par -19 donne **121 = (-19)×(-6)+7** (q = -6, r = 7).
+
 - **Déf** : b∣a ⟺ ∃k, a = kb. Diviseurs de 8 : {±1,±2,±4,±8}.
   Signes : b∣a ⟺ (−b)∣a ⟺ b∣(−a). Diviseurs positifs en nombre **fini**.
 - **Propriétés + preuves** : combinaisons linéaires ma+nb ; **transitivité**.

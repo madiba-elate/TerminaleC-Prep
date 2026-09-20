@@ -207,7 +207,8 @@ box.innerHTML=COURS.map(function(c){return '<a href="'+c.page+'" style="display:
       <div class="fc" data-cat="L1" onclick="this.classList.toggle('flipped')"><div class="fc-q">Q: 101 premier ? 17640 ?</div><div class="fc-a">√≈10, ni 2,3,5,7 → oui. 17640 → 72 diviseurs.</div></div>
       <div class="fc" data-cat="L1" onclick="this.classList.toggle('flipped')"><div class="fc-q">Q: 47x=28y ?</div><div class="fc-a">47∧28=1 → (28k,47k).</div></div>
       <div class="fc" data-cat="L1" onclick="this.classList.toggle('flipped')"><div class="fc-q">Q: Remontée 47u+39v=1 ?</div><div class="fc-a">u=5, v=−6 (vérifié : 235−234).</div></div>
-      <div class="fc" data-cat="L1" onclick="this.classList.toggle('flipped')"><div class="fc-q">Q: 1011₂+1101₂ ? Règle ?</div><div class="fc-a">11000₂. Retenues : 1+1=10.</div></div>
+      <div class="fc" data-cat="L1" onclick="this.classList.toggle('flipped')"><div class="fc-q">Q: 1011₂+1101₂ ? Règle ?</div><div class="fc-a">11000₂. Retenues : 1+1=10.</div>
+      <div class="fc" data-cat="L1" onclick="this.classList.toggle('flipped')"><div class="fc-q">Q: -121 par 19 ? Et 121 par -19 ?</div><div class="fc-a">q=-7, r=12. q=-6, r=7. Reste positif.</div></div></div></div>
     </div>
   </div>
   <div class="card">
@@ -385,7 +386,7 @@ const quizBank=[
   {q:"17640 : diviseurs ?", opts:["36","60","72","90"], ok:2},
   {q:"47x=28y ?", opts:["(47k,28k)","(28k,47k)","(k,47k)","(28k,k)"], ok:1},
   {q:"1011₂+1101₂ ?", opts:["11000₂","10111₂","11001₂","10000₂"], ok:0},
-];
+,`n  {q:"-121 par 19 ?", opts:["q=-7, r=12","q=-6, r=-7","q=-7, r=-12","q=6, r=7"], ok:0},`n  {q:"121 par -19 ?", opts:["q=-6, r=7","q=6, r=7","q=-6, r=-7","q=-7, r=12"], ok:0}];
 function renderQuiz(){
   const area=document.getElementById('quizArea'); area.innerHTML=''; let pick=[...quizBank].sort(()=>0.5-Math.random()).slice(0,5);
   let score=0, answered=0;

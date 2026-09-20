@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html lang="fr">
 <head>
 <meta charset="UTF-8">
@@ -72,7 +72,8 @@
   <div class="card-body">
     <div class="th">a = bq + r avec 0 ≤ r &lt; b (dans ℤ : 0 ≤ r &lt; |b|) — couple (q,r) UNIQUE</div>
     <div class="demo"><b>Unicité :</b> r₁−r₂ = multiple de b, or −b &lt; r₁−r₂ &lt; b ⇒ = 0, puis q₁=q₂. Dividende a, diviseur b, quotient q, reste r.</div>
-  </div>
+
+    <div class="demo"><b>Dans Z (reste positif ou nul) :</b> -121 par 19 donne <b>-121 = 19×(-7)+12</b> (q = -7, r = 12) ; 121 par -19 donne <b>121 = (-19)×(-6)+7</b> (q = -6, r = 7).</div>  </div>
 </div>
 
 <div class="card">
@@ -146,7 +147,7 @@
   <div class="card-body"><ol>
     <li><b>Leçon 1 — Division euclidienne dans ℕ.</b> <i>Objectifs :</i> propriétés des parties de ℕ ; traduire a = bq + r, 0 ≤ r &lt; b. (121=19×6+7 · a consécutifs → multiple de a)</li>
     <li><b>Leçon 2 — Système binaire, système décimal.</b> <i>Objectifs :</i> écrire un naturel en binaire/décimal ; opérations en binaire (1001₂ · 122₃ · 202₃ · 1011₂+1101₂)</li>
-    <li><b>Leçon 3 — Divisibilité dans ℤ + congruences</b> (3n+2np=9 · n+1∣2n+5)</li>
+    <li><b>Leçon 3 — Division dans ℤ, divisibilité, congruences.</b> <i>Objectifs :</i> quotient et reste de A par B non nul ; traduire par une égalité (−121 = 19×(−7)+12 ; 3n+2np=9 · n+1∣2n+5)</li>
     <li><b>Leçon 4 — Nombres premiers</b> (101 · 17640 → 72 diviseurs · infinité)</li>
     <li><b>Leçon 5 — PGCD et PPCM</b> (12∧78=6 · Euclide 1554∧136=2 · pgcd×ppcm=ab)</li>
     <li><b>Leçon 6 — Bézout, Gauss, diophantiennes</b> (remontée 47/39 · 47x=28y · 9x+6y=15)</li>
@@ -184,12 +185,12 @@
 </div>
 
 <div class="card">
-  <div class="card-head">🃏 Flashcards — clique pour retourner (23)</div>
+  <div class="card-head">🃏 Flashcards — clique pour retourner (24)</div>
   <div class="card-body"><div class="ffc-grid" id="ffcGrid"></div></div>
 </div>
 
 <div class="card">
-  <div class="card-head">🧠 Quiz — 80% pour valider (15 Q)</div>
+  <div class="card-head">🧠 Quiz — 80% pour valider (17 Q)</div>
   <div class="card-body">
     <div id="quizBox"></div>
     <div style="text-align:center;margin-top:10px" class="no-print"><button class="btn" onclick="corriger()">✅ Corriger</button></div>
@@ -225,7 +226,8 @@ const FC=[
 ["17640? Diviseurs?","2³·3²·5·7² → 4×3×2×3 = 72 diviseurs."],
 ["47x=28y?","47∧28=1 → 47|y → (28k,47k)."],
 ["Remontée 47u+39v=1?","u=5, v=−6 (47×5−39×6=1)."],
-["1011₂+1101₂? 101₂×11₂?","11000₂ (24). 1111₂ (15). Retenues : 1+1=10."]];
+["1011₂+1101₂? 101₂×11₂?","11000₂ (24). 1111₂ (15). Retenues : 1+1=10.",
+["-121 par 19 ? Et 121 par -19 ?","q=-7, r=12 (-121 = 19×(-7)+12). q=-6, r=7."]]];
 const fg=document.getElementById('ffcGrid');
 FC.forEach(c=>{const d=document.createElement('div');d.className='ffc';
 d.innerHTML='<div class="q">Q: '+c[0]+'</div><div class="a">'+c[1]+'</div>';
@@ -246,7 +248,9 @@ const QZ=[
 ["n+1 divise 2n+5 (naturels) ?",["n=1 ou 3","n=0 ou 2","n=2 ou 4","n=1 ou 2"],1],
 ["17640 : diviseurs ?",["36","60","72","90"],2],
 ["47x=28y ?",["(47k,28k)","(28k,47k)","(k,47k)","(28k,k)"],1],
-["1011₂+1101₂ ?",["11000₂","10111₂","11001₂","10000₂"],0]];
+["1011₂+1101₂ ?",["11000₂","10111₂","11001₂","10000₂"],0,
+["-121 par 19 ?",["q=-7, r=12","q=-6, r=-7","q=-7, r=-12","q=6, r=7"],0],
+["121 par -19 ?",["q=-6, r=7","q=6, r=7","q=-6, r=-7","q=-7, r=12"],0]]];
 const qb=document.getElementById('quizBox');
 QZ.forEach((q,i)=>{const d=document.createElement('div');d.className='quiz-q';
 let h='<p>'+(i+1)+'. '+q[0]+'</p>';
