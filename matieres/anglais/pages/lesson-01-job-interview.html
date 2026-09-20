@@ -101,6 +101,21 @@
 </div>
 
 <div class="card">
+  <div class="card-head">2️⃣bis Expressions related to job interview</div>
+  <div class="card-body">
+    <table class="voc">
+      <tr><th>Expression</th><th>Meaning</th></tr>
+      <tr><td>Work well under pressure</td><td>be able to work in stressful situations</td></tr>
+      <tr><td>Good at multitasking</td><td>complete many different tasks at the same time</td></tr>
+      <tr><td>Rush hour</td><td>the time of day when traffic is heavy</td></tr>
+      <tr><td>I am trustworthy</td><td>I am honest and truthful, you can rely on me</td></tr>
+      <tr><td>Teamwork</td><td>the ability to work with others in harmony</td></tr>
+      <tr><td>Work overtime</td><td>working above (beyond) normal working time</td></tr>
+    </table>
+  </div>
+</div>
+
+<div class="card">
   <div class="card-head">✍️ Homework (2 tasks)</div>
   <div class="card-body">
     <div class="hw"><b>1)</b> Write down the <b>structure of a formal letter</b> (9 parts).
@@ -154,7 +169,13 @@ const FC=[
 ["Trustworthy?","Honest and truthful."],
 ["Reference?","Recommendation, testimonial."],
 ["Resign? + synonyms","Leave / quit / abandon / give up."],
-["Application? Achievements?","Formal request for a job. Success, awards."]];
+["Application? Achievements?","Formal request for a job. Success, awards."],
+["Work well under pressure?","Be able to work in stressful situations."],
+["Good at multitasking?","Complete many different tasks at the same time."],
+["Rush hour?","The time of day when traffic is heavy."],
+["I am trustworthy?","Honest and truthful — you can rely on me."],
+["Teamwork?","Ability to work with others in harmony."],
+["Work overtime?","Working above normal working time."]];
 const fg=document.getElementById('ffcGrid');
 FC.forEach(c=>{const d=document.createElement('div');d.className='ffc';
 d.innerHTML='<div class="q">Q: '+c[0]+'</div><div class="a">'+c[1]+'</div>';
@@ -168,7 +189,11 @@ const QZ=[
 ["Punctual = ?",["On time","Honest","Late","Unemployed"],0],
 ["Trustworthy = ?",["On time","Early","Honest and truthful","Qualified"],2],
 ["A reference is…?",["A diploma","A recommendation","A resignation","An interview"],1],
-["Resign = ?",["Leave / quit","Apply","Hire","Be on time"],0]];
+["Resign = ?",["Leave / quit","Apply","Hire","Be on time"],0],
+["'Work well under pressure' = ?",["Work in stressful situations","Avoid all work","Work very slowly","Arrive late"],0],
+["'Good at multitasking' = ?",["One task only","Many tasks at the same time","No tasks","Late tasks"],1],
+["'Rush hour' = ?",["Early morning","Heavy traffic time","Lunch break","Night shift"],1],
+["'Work overtime' = ?",["Normal hours","Above normal time","No work","Paid leave"],1]];
 const qb=document.getElementById('quizBox');
 QZ.forEach((q,i)=>{const d=document.createElement('div');d.className='quiz-q';
 let h='<p>'+(i+1)+'. '+q[0]+'</p>';

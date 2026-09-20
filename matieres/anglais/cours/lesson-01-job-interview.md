@@ -42,6 +42,15 @@ and experiences for the job.
 | Resign | leave / quit / abandon / give up |
 | Trustworthy | honest and truthful |
 
+### 2bis. Expressions related to job interview
+
+- **Work well under pressure** : be able to work in stressful situations.
+- **Good at multitasking** : be able to complete many different tasks at the same time.
+- **Rush hour** : the time of day when traffic is heavy.
+- **I am trustworthy** : I am honest and truthful, you can rely on me.
+- **Teamwork** : the ability to work with other people in harmony.
+- **Work overtime** : working above (beyond) normal working time.
+
 ### 3. Homework (devoir)
 
 1. **Write down the structure of a formal letter** → voir fiche stock :
@@ -72,3 +81,4 @@ and experiences for the job.
 2. Applicant, employer, employee — who is who?
 3. Give 3 synonyms of "recruit" and 2 of "resign".
 4. What are the 9 parts of a formal letter?
+5. Use 3 new expressions (pressure, multitasking, overtime) in your own sentences.

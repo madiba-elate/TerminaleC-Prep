@@ -180,6 +180,11 @@ box.innerHTML=COURS.map(function(c){return '<a href="'+c.page+'" style="display:
       <div class="fc" data-cat="L1" onclick="this.classList.toggle('flipped')"><div class="fc-q">Q: 9 parts of a formal letter?</div><div class="fc-a">Sender, date, recipient, subject, salutation, intro, body, conclusion, close.</div></div>
       <div class="fc" data-cat="L1" onclick="this.classList.toggle('flipped')"><div class="fc-q">Q: Past simple: use + example?</div><div class="fc-a">Finished past action. I visited / didn't visit / Did you visit?</div></div>
       <div class="fc" data-cat="L1" onclick="this.classList.toggle('flipped')"><div class="fc-q">Q: Present perfect: use + example?</div><div class="fc-a">Past action, present result. I have finished / haven't / Have you?</div></div>
+      <div class="fc" data-cat="L1" onclick="this.classList.toggle('flipped')"><div class="fc-q">Q: Work well under pressure?</div><div class="fc-a">Be able to work in stressful situations.</div></div>
+      <div class="fc" data-cat="L1" onclick="this.classList.toggle('flipped')"><div class="fc-q">Q: Good at multitasking?</div><div class="fc-a">Complete many tasks at the same time.</div></div>
+      <div class="fc" data-cat="L1" onclick="this.classList.toggle('flipped')"><div class="fc-q">Q: Rush hour?</div><div class="fc-a">Time of day when traffic is heavy.</div></div>
+      <div class="fc" data-cat="L1" onclick="this.classList.toggle('flipped')"><div class="fc-q">Q: I am trustworthy?</div><div class="fc-a">Honest and truthful — rely on me.</div></div>
+      <div class="fc" data-cat="L1" onclick="this.classList.toggle('flipped')"><div class="fc-q">Q: Teamwork? Work overtime?</div><div class="fc-a">Work in harmony. / Above normal time.</div></div>
     </div>
   </div>
   <div class="card">
@@ -350,6 +355,10 @@ const quizBank=[
   {q:"Trustworthy = ?", opts:["On time","Early","Honest and truthful","Qualified"], ok:2},
   {q:"A reference is…?", opts:["A diploma","A recommendation","A resignation","An interview"], ok:1},
   {q:"Resign = ?", opts:["Leave / quit","Apply","Hire","Be on time"], ok:0},
+  {q:"'Work well under pressure' = ?", opts:["Work in stressful situations","Avoid all work","Work very slowly","Arrive late"], ok:0},
+  {q:"'Good at multitasking' = ?", opts:["One task only","Many tasks at the same time","No tasks","Late tasks"], ok:1},
+  {q:"'Rush hour' = ?", opts:["Early morning","Heavy traffic time","Lunch break","Night shift"], ok:1},
+  {q:"'Work overtime' = ?", opts:["Normal hours","Above normal time","No work","Paid leave"], ok:1},
 ];
 function renderQuiz(){
   const area=document.getElementById('quizArea'); area.innerHTML=''; let pick=[...quizBank].sort(()=>0.5-Math.random()).slice(0,5);
