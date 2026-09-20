@@ -133,7 +133,7 @@ th{background:var(--bg3);font-size:.66rem;text-transform:uppercase;letter-spacin
     <div class="card-title">📖 Programme annuel — Mathématiques — 18 Chapitres</div>
     <p style="font-size:.8rem;color:var(--text2);margin-bottom:.7rem">Programme officiel corrigé le 2026-09-19 — 18 Chapitres. Découpage S1-S6 indiqué par badge.</p>
         <div style="display:grid;grid-template-columns:1fr;gap:.35rem;font-size:.84rem">
-      <div style="padding:.6rem .8rem;background:var(--bg3);border-radius:8px;display:flex;justify-content:space-between;align-items:center"><span><strong>Chapitre 1</strong> : Arithmétique dans Z</span><span style="font-size:.68rem;background:var(--accent);color:#fff;padding:.15rem .4rem;border-radius:6px">S1</span></div>
+      <div style="padding:.6rem .8rem;background:var(--bg3);border-radius:8px;display:flex;justify-content:space-between;align-items:center"><span><strong>Chapitre 1</strong> : Arithmétique dans Z ✅</span><span style="font-size:.68rem;background:var(--accent);color:#fff;padding:.15rem .4rem;border-radius:6px">S1</span></div>
       <div style="padding:.6rem .8rem;background:var(--bg3);border-radius:8px;display:flex;justify-content:space-between;align-items:center"><span><strong>Chapitre 2</strong> : Nombres complexes : approche algébrique</span><span style="font-size:.68rem;background:var(--accent);color:#fff;padding:.15rem .4rem;border-radius:6px">S1</span></div>
       <div style="padding:.6rem .8rem;background:var(--bg3);border-radius:8px;display:flex;justify-content:space-between;align-items:center"><span><strong>Chapitre 3</strong> : Fonctions numériques d'une variable réelle</span><span style="font-size:.68rem;background:var(--accent);color:#fff;padding:.15rem .4rem;border-radius:6px">S1</span></div>
       <div style="padding:.6rem .8rem;background:var(--bg3);border-radius:8px;display:flex;justify-content:space-between;align-items:center"><span><strong>Chapitre 4</strong> : Espaces vectoriels et applications linéaires (dim. 3)</span><span style="font-size:.68rem;background:#065f46;color:#fff;padding:.15rem .4rem;border-radius:6px">S2</span></div>
@@ -166,7 +166,7 @@ th{background:var(--bg3);font-size:.66rem;text-transform:uppercase;letter-spacin
 </div>
 <script>
 /* Visualiseur des cours reçus — ajouter un cours = 1 objet dans COURS (voir CONTRIBUER.md §4) */
-const COURS=[];
+const COURS=[{t:"Chapitre 1 : Arithmétique dans Z",d:"Cours intégral (Lise Jean-Claude, 16 p.)",seq:"S1",page:"pages/ch01-arithmetique.html"}];
 (function(){var box=document.getElementById('coursRecus');
 if(!COURS.length){box.innerHTML='<div style="padding:.8rem;background:var(--bg3);border-radius:8px;color:var(--text2)">Aucun cours reçu pour l\u2019instant — envoie le programme puis les cours (voir Liste d\u2019envois), ils appara\u00eetront ici.</div>';return;}
 box.innerHTML=COURS.map(function(c){return '<a href="'+c.page+'" style="display:flex;justify-content:space-between;align-items:center;gap:.5rem;padding:.6rem .8rem;background:var(--bg3);border-radius:8px;text-decoration:none;color:var(--text);font-weight:700"><span>'+c.t+'<br><span style="font-weight:400;font-size:.72rem;color:var(--text2)">'+c.d+'</span></span><span style="display:flex;gap:.3rem;align-items:center;flex-shrink:0"><span style="font-size:.68rem;background:var(--accent);color:#fff;padding:.15rem .4rem;border-radius:6px">'+c.seq+'</span><span style="font-size:.68rem;background:#0f172a;color:#fff;padding:.15rem .4rem;border-radius:6px">Ouvrir \u2192</span></span></a>';}).join('');})();
@@ -183,25 +183,27 @@ box.innerHTML=COURS.map(function(c){return '<a href="'+c.page+'" style="display:
     </div>
     <div class="tabs" style="margin-bottom:.6rem">
       <button class="tab-btn active" onclick="filterFC('all',this)">Tous</button>
-      <button class="tab-btn" onclick="filterFC('L1',this)">Leçon 1-3</button>
-      <button class="tab-btn" onclick="filterFC('L4',this)">Leçon 4-6</button>
-      <button class="tab-btn" onclick="filterFC('L8',this)">Leçon 8-11</button>
+      <button class="tab-btn" onclick="filterFC('L1',this)">Ch 1 – Arithmétique</button>
     </div>
-    <div class="fc-grid" id="fcGrid">
-      <div class="fc" data-cat="L1" onclick="this.classList.toggle('flipped')"><div class="fc-q">Q: Définis "relations internationales"</div><div class="fc-a">Ensemble des rapports (politiques, éco, culturels) entre États, OI, ONG. Caractères : interdépendance + institutionnalisation.</div></div>
-      <div class="fc" data-cat="L1" onclick="this.classList.toggle('flipped')"><div class="fc-q">Q: 2 formes de coopération internationale ?</div><div class="fc-a">1. Bilatérale (2 États) 2. Multilatérale (plusieurs États/OI). Ex: Cameroun-France = bilatérale, Cameroun-ONU = multilatérale.</div></div>
-      <div class="fc" data-cat="L1" onclick="this.classList.toggle('flipped')"><div class="fc-q">Q: Documents de voyage (TD1) — liste 3</div><div class="fc-a">Passeport, visa, carte consulaire, laissez-passer. Rôle : identification + autorisation de circuler.</div></div>
-      <div class="fc" data-cat="L1" onclick="this.classList.toggle('flipped')"><div class="fc-q">Q: Assistance humanitaire — principe clé ?</div><div class="fc-a">Aide d'urgence sans contrepartie, principes : neutralité, impartialité, humanité (Croix-Rouge, ONU).</div></div>
-      <div class="fc" data-cat="L4" onclick="this.classList.toggle('flipped')"><div class="fc-q">Q: Principes diplomatie camerounaise (Leç3) — 3</div><div class="fc-a">Non-ingérence, non-alignement, coopération, pacifisme, respect souveraineté.</div></div>
-      <div class="fc" data-cat="L4" onclick="this.classList.toggle('flipped')"><div class="fc-q">Q: Cameroun et ONU — date adhésion ?</div><div class="fc-a">20 septembre 1960 (après indépendance 1er jan 1960). Membre actif, participe aux OMP.</div></div>
-      <div class="fc" data-cat="L4" onclick="this.classList.toggle('flipped')"><div class="fc-q">Q: Cameroun & Union européenne — type de lien ?</div><div class="fc-a">Coopération via Accord de Cotonou / APE. Aide au développement, commerce.</div></div>
-      <div class="fc" data-cat="L8" onclick="this.classList.toggle('flipped')"><div class="fc-q">Q: CEMAC vs CEEAC — différence ?</div><div class="fc-a">CEMAC = 6 pays Afrique centrale (FCFA), CEEAC = 11 pays (plus large). Cameroun membre des deux.</div></div>
-      <div class="fc" data-cat="L8" onclick="this.classList.toggle('flipped')"><div class="fc-q">Q: COPAX — rôle ?</div><div class="fc-a">Conseil de Paix et de Sécurité de l'Afrique Centrale (CEEAC) — prévention/gestion conflits.</div></div>
-      <div class="fc" data-cat="L8" onclick="this.classList.toggle('flipped')"><div class="fc-q">Q: Problèmes Cameroun relations inter — cite 2</div><div class="fc-a">Dépendance aide, crises frontalières (Bakassi), image, dette, ingérence.</div></div>
+        <div class="fc-grid" id="fcGrid">
+      <div class="fc" data-cat="L1" onclick="this.classList.toggle('flipped')"><div class="fc-q">Q: N, Z + axiomes ?</div><div class="fc-a">Plus petit élément, plus grand (majorée), suites décroissantes finies.</div></div>
+      <div class="fc" data-cat="L1" onclick="this.classList.toggle('flipped')"><div class="fc-q">Q: a divise b ?</div><div class="fc-a">∃q entier : b = aq.</div></div>
+      <div class="fc" data-cat="L1" onclick="this.classList.toggle('flipped')"><div class="fc-q">Q: 5 théorèmes ?</div><div class="fc-a">Transitivité, combinaisons linéaires, |a|≤|b|, a=±b.</div></div>
+      <div class="fc" data-cat="L1" onclick="this.classList.toggle('flipped')"><div class="fc-q">Q: Premier ? Exclus ?</div><div class="fc-a">≠1, diviseurs 1 et lui-même. 0 et 1 NON premiers.</div></div>
+      <div class="fc" data-cat="L1" onclick="this.classList.toggle('flipped')"><div class="fc-q">Q: Division euclidienne ?</div><div class="fc-a">a = bq + r, 0 ≤ r < b. Unique.</div></div>
+      <div class="fc" data-cat="L1" onclick="this.classList.toggle('flipped')"><div class="fc-q">Q: Unicité : idée ?</div><div class="fc-a">r1−r2 multiple de b entre −b et b → 0.</div></div>
+      <div class="fc" data-cat="L1" onclick="this.classList.toggle('flipped')"><div class="fc-q">Q: Congruence ?</div><div class="fc-a">Même reste mod n. a≡b ⟺ n|(a−b).</div></div>
+      <div class="fc" data-cat="L1" onclick="this.classList.toggle('flipped')"><div class="fc-q">Q: Compatibilités ?</div><div class="fc-a">+, −, ×, puissances.</div></div>
+      <div class="fc" data-cat="L1" onclick="this.classList.toggle('flipped')"><div class="fc-q">Q: Critères 3 et 9 ?</div><div class="fc-a">Somme des chiffres. 456 → 15 → oui.</div></div>
+      <div class="fc" data-cat="L1" onclick="this.classList.toggle('flipped')"><div class="fc-q">Q: Euclide ?</div><div class="fc-a">Dernier reste non nul. pgcd(48,64)=16.</div></div>
+      <div class="fc" data-cat="L1" onclick="this.classList.toggle('flipped')"><div class="fc-q">Q: Bézout ?</div><div class="fc-a">pgcd=d ⟺ au+bv=d.</div></div>
+      <div class="fc" data-cat="L1" onclick="this.classList.toggle('flipped')"><div class="fc-q">Q: Gauss ?</div><div class="fc-a">a|bc et a∧b=1 → a|c.</div></div>
+      <div class="fc" data-cat="L1" onclick="this.classList.toggle('flipped')"><div class="fc-q">Q: Diophantienne ?</div><div class="fc-a">d|c ? → simplifier → Bézout → Gauss.</div></div>
+      <div class="fc" data-cat="L1" onclick="this.classList.toggle('flipped')"><div class="fc-q">Q: PGCD×PPCM ? Test premier ?</div><div class="fc-a">= ab. Test : aucun premier ≤ √n.</div></div>
     </div>
   </div>
   <div class="card">
-    <div class="card-title">🧠 Quiz ECM — 80% pour valider</div>
+    <div class="card-title">🧠 Quiz Maths — 80% pour valider</div>
     <div id="quizArea"></div>
     <div style="margin-top:.7rem;display:flex;gap:.5rem;align-items:center">
       <button class="btn" onclick="renderQuiz()">🔄 Nouveau quiz (5 Q)</button>
@@ -360,14 +362,16 @@ function filterFC(cat,btn){
 }
 // Quiz
 const quizBank=[
-  {q:"Le Cameroun adhère à l'ONU en ?", opts:["1960","1962","1972","1960 et 1961"], ok:0},
-  {q:"Document de voyage non valide ?", opts:["Passeport","Visa","Carte d'électeur","Laissez-passer"], ok:2},
-  {q:"Principe diplomatie camerounaise ?", opts:["Ingérence","Non-alignement","Isolation","Protectionnisme"], ok:1},
-  {q:"CEMAC compte ?", opts:["6 pays","11 pays","4 pays","15 pays"], ok:0},
-  {q:"COPAX dépend de ?", opts:["CEEAC","ONU","UE","UA"], ok:0},
-  {q:"Aide humanitaire vs développement ?", opts:["Même chose","Urgence vs long terme","Seulement argent","Seulement ONU"], ok:1},
-  {q:"Leçon 6 : Organisation citée ?", opts:["OTAN","Francophonie","ASEAN","MERCOSUR"], ok:1},
-  {q:"Cameroun et Chine : continent ?", opts:["Asie","Amérique","Europe","Océanie"], ok:0},
+  {q:"a|b signifie ?", opts:["∃q : b = aq","b > a","a+b entier","q = b/a entier"], ok:0},
+  {q:"a|b et b|c → ?", opts:["Faux","b|a","a|c","c|a"], ok:2},
+  {q:"NON premiers ?", opts:["0","Ni 0 ni 1","2","Tous"], ok:1},
+  {q:"150 par 12 ?", opts:["q=12, r=6","q=11, r=18","q=12, r=0","q=13"], ok:0},
+  {q:"a≡b[n] ⟺ ?", opts:["a+b multiple","a = b","n divise a−b","r = n"], ok:2},
+  {q:"Critère /3 ?", opts:["Pair","Somme chiffres","Finit par 5","Alternée"], ok:1},
+  {q:"pgcd(48,64) ?", opts:["16","12","8","32"], ok:0},
+  {q:"Bézout ?", opts:["au+bv=0","au−bv=d","∃u,v : au+bv=d","u+v=d"], ok:2},
+  {q:"Gauss → ?", opts:["a|b","a|c","b|c","c|1"], ok:1},
+  {q:"ppcm(12,15) ?", opts:["60","30","180","12"], ok:0},
 ];
 function renderQuiz(){
   const area=document.getElementById('quizArea'); area.innerHTML=''; let pick=[...quizBank].sort(()=>0.5-Math.random()).slice(0,5);
