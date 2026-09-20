@@ -2,7 +2,7 @@
 
 > **Sources fusionnées :** ① Lise Jean-Claude, *Cours d'arithmétique Terminale S* (16 p.)
 > ② F. Gaudon, *Arithmétique Terminale maths expertes* (14 p., 2024).
-> **Structure : ta progression de classe en 6 étapes** · S1 · 2026-09-19.
+> **Structure : tes 6 leçons de classe** · S1 · 2026-09-19.
 
 ---
 
@@ -25,11 +25,14 @@
 - **Théorème** : parmi **a entiers consécutifs, l'un est multiple de a**.
   *Preuve.* n = aq+r (0≤r<a) → a(q+1) figure dans la série. Ex : parmi n,n+1,n+2, un multiple de 3.
 
-### Leçon 2 — Numérations binaire et décimale
-**Objectifs (proposés) :** écrire un entier en base b (unicité) ; convertir décimal ↔ binaire ; lire correctement 1001₂.
+### Leçon 2 — Système binaire, système décimal
+**Objectifs :** écrire un nombre entier naturel dans le système binaire ou dans le système décimal ; effectuer des opérations dans le système binaire.
 - Principe positionnel, écriture **unique** a = aₙbⁿ+…+a₀.
 - **Binaire** (machines) : 1001₂ chiffre à chiffre. Décimal : 8345 = 8×10³+3×10²+4×10+5.
 - Exo corrigé : 17 points = **122₃**, 20 points = **202₃**.
+- **Opérations en binaire (objectif officiel)** : addition bit à bit avec retenues (0+0=0, 1+0=1, 1+1=10, 1+1+1=11).
+  Ex : 1011₂+1101₂ = 11000₂ (11+13=24).
+  Multiplication = décalages + additions : 101₂×11₂ = 101+1010 = 1111₂ (15).
 
 ### Leçon 3 — Divisibilité dans ℤ et congruences
 **Objectifs (proposés) :** caractériser a∣b ; utiliser transitivité et combinaisons linéaires ; traduire a≡b[n] par n∣(a−b) ; appliquer les compatibilités ; résoudre les applications types.

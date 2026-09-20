@@ -136,6 +136,7 @@
   <div class="card-body">
     <p><b>Bases :</b> écriture unique a=aₙbⁿ+…+a₀. Binaire (machines) : 1001₂ se lit chiffre à chiffre. Base 12 : 0-9,α,β. 8345=8×10³+3×10²+4×10+5.</p>
     <p><b>Exo corrigé (base 3) :</b> 17 points = 122₃ (9+6+2) · 20 points = 202₃ (18+0+2).</p>
+    <p><b>Opérations en binaire :</b> 1+1=10 (retenue), 1+1+1=11. Ex : 1011₂+1101₂ = 11000₂ (24 ✓) · 101₂×11₂ = 1111₂ (15 ✓).</p>
     <p style="font-size:11.5px;color:#64748b"><b>Culture :</b> Mersenne 2ᵖ−1, Fermat Fₙ=2^(2ⁿ)+1 (faux dès n=5, Euler). Records 1998 du document.</p>
   </div>
 </div>
@@ -144,7 +145,7 @@
   <div class="card-head">🔀 Découpage officiel — les 6 leçons du chapitre</div>
   <div class="card-body"><ol>
     <li><b>Leçon 1 — Division euclidienne dans ℕ.</b> <i>Objectifs :</i> propriétés des parties de ℕ ; traduire a = bq + r, 0 ≤ r &lt; b. (121=19×6+7 · a consécutifs → multiple de a)</li>
-    <li><b>Leçon 2 — Numérations</b> binaire et décimale (1001₂ · 122₃ · 202₃)</li>
+    <li><b>Leçon 2 — Système binaire, système décimal.</b> <i>Objectifs :</i> écrire un naturel en binaire/décimal ; opérations en binaire (1001₂ · 122₃ · 202₃ · 1011₂+1101₂)</li>
     <li><b>Leçon 3 — Divisibilité dans ℤ + congruences</b> (3n+2np=9 · n+1∣2n+5)</li>
     <li><b>Leçon 4 — Nombres premiers</b> (101 · 17640 → 72 diviseurs · infinité)</li>
     <li><b>Leçon 5 — PGCD et PPCM</b> (12∧78=6 · Euclide 1554∧136=2 · pgcd×ppcm=ab)</li>
@@ -183,12 +184,12 @@
 </div>
 
 <div class="card">
-  <div class="card-head">🃏 Flashcards — clique pour retourner (22)</div>
+  <div class="card-head">🃏 Flashcards — clique pour retourner (23)</div>
   <div class="card-body"><div class="ffc-grid" id="ffcGrid"></div></div>
 </div>
 
 <div class="card">
-  <div class="card-head">🧠 Quiz — 80% pour valider (14 Q)</div>
+  <div class="card-head">🧠 Quiz — 80% pour valider (15 Q)</div>
   <div class="card-body">
     <div id="quizBox"></div>
     <div style="text-align:center;margin-top:10px" class="no-print"><button class="btn" onclick="corriger()">✅ Corriger</button></div>
@@ -223,7 +224,8 @@ const FC=[
 ["101 premier?","√≈10, ni 2,3,5,7 → oui."],
 ["17640? Diviseurs?","2³·3²·5·7² → 4×3×2×3 = 72 diviseurs."],
 ["47x=28y?","47∧28=1 → 47|y → (28k,47k)."],
-["Remontée 47u+39v=1?","u=5, v=−6 (47×5−39×6=1)."]];
+["Remontée 47u+39v=1?","u=5, v=−6 (47×5−39×6=1)."],
+["1011₂+1101₂? 101₂×11₂?","11000₂ (24). 1111₂ (15). Retenues : 1+1=10."]];
 const fg=document.getElementById('ffcGrid');
 FC.forEach(c=>{const d=document.createElement('div');d.className='ffc';
 d.innerHTML='<div class="q">Q: '+c[0]+'</div><div class="a">'+c[1]+'</div>';
@@ -243,7 +245,8 @@ const QZ=[
 ["121 par 19 ?",["19×6+7","6×20+7","19×5+26","6×19+7"],0],
 ["n+1 divise 2n+5 (naturels) ?",["n=1 ou 3","n=0 ou 2","n=2 ou 4","n=1 ou 2"],1],
 ["17640 : diviseurs ?",["36","60","72","90"],2],
-["47x=28y ?",["(47k,28k)","(28k,47k)","(k,47k)","(28k,k)"],1]];
+["47x=28y ?",["(47k,28k)","(28k,47k)","(k,47k)","(28k,k)"],1],
+["1011₂+1101₂ ?",["11000₂","10111₂","11001₂","10000₂"],0]];
 const qb=document.getElementById('quizBox');
 QZ.forEach((q,i)=>{const d=document.createElement('div');d.className='quiz-q';
 let h='<p>'+(i+1)+'. '+q[0]+'</p>';
