@@ -28,14 +28,12 @@
 - [ ] Vocabulary (health, education, environment)
 - [ ] Reading (comprehension, inference)
 
-## Priorité 3 — 🧪 Chimie (coef 2)
+## Priorité 3 — 🧪 Chimie (coef 2) — ✅ programme reçu le 2026-09-19
 
-- [ ] **Programme annuel**
-- [ ] Cinétique (vitesse, facteurs cinétiques)
-- [ ] Équilibres (acido-basiques, pH, titrages)
-- [ ] Oxydoréduction (piles, électrolyse)
-- [ ] Chimie organique (estérification, saponification)
-- [ ] Chimie industrielle (Haber, contact)
+- [x] **Programme annuel** (3 Modules, 9 Leçons — voir `matieres/chimie/README.md`)
+- [ ] Module 1 : Leç 1 (alcools) + Leç 2 (carboxyliques) + Leç 3 (amines) + Leç 4 (alpha-aminés) + Leç 5 (stéréochimie)
+- [ ] Module 2 : Leç 6 (généralités) + Leç 7 (force, couples) + Leç 8 (dosage)
+- [ ] Module 3 : Leç 9 (cinétique)
 
 ## Priorité 4 — 🧬 SVT / EEHB (coef 2)
 

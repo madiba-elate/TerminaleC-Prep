@@ -8,7 +8,7 @@
 |---|---|---|---|---|---|---|
 | Maths (coef 7) | ⏳ | 0 | 0 | 0 | 0 | 0 |
 | Physique (coef 4) | ⏳ | 0 | 0 | 0 | 0 | 15 ✅² |
-| Chimie (coef 2) | ⏳ | 0 | 0 | 0 | 0 | 0 |
+| Chimie (coef 2) | ✅ | 0 | 0 | 0 | 0 | 0 |
 | SVT/EEHB (coef 2) | ⏳ | 0 | 0 | 0 | 0 | 0 |
 | Littérature (coef 2) | ⏳ | 0 | 0 | 0 | 0 | 0 |
 | Géographie (coef 2) | ✅ | 0 | 0 | 16 ✅ | 8 Q ✅ | 0 |
