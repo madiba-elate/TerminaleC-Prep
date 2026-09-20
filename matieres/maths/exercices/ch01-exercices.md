@@ -45,5 +45,35 @@ Calcule ppcm(12,15) via le PGCD.
   (ex : 409 = 7×58+3, = 11×37+2, = 17×24+1) → **409 premier**.
 - pgcd(12,15) = 3 → ppcm = 12×15/3 = **60**.
 
+### Ex. 6 — Applications du 2e cours + Python (6 pts)
+
+a) Résous en naturels : 3n+2np=9. b) Trouve n ∈ ℕ tel que n+1∣2n+5.
+c) Résous dans ℤ : 47x=28y. d) 101 premier ? (test √n).
+
+**Corrigé.** a) n(3+2p)=9, n∣9 → n∈{1,3,9} : **(1,3),(3,0)** (p=−1 rejeté).
+b) Différence 3 → n+1∣3 → **n=0 ou 2** (1∣7 ✓, 3∣9 ✓).
+c) 47∧28=1 → 47∣y → **(28k,47k)**.
+d) √101≈10 : 2,3,5,7 ∤ 101 → **premier**.
+
+### 🐍 Bonus Python (teste les algos)
+
+```python
+def estPremier(n):
+    k = 2
+    while k*k <= n:
+        if n % k == 0:
+            return False
+        k += 1
+    return True
+
+def pgcd(a, b):
+    r = a % b
+    while r != 0:
+        a, b = b, r
+        r = a % b
+    return b
+```
+Versions nettoyées du 2e cours (Bézout étendu = remontée automatique).
+
 > ⭐ Phrases qui rapportent : « **dernier reste non nul** » / « 10≡1[3] donc… » /
 > « √n ≈ … : je teste les premiers jusqu'à… » / « d∣c donc je simplifie ».

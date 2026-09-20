@@ -133,7 +133,7 @@ th{background:var(--bg3);font-size:.66rem;text-transform:uppercase;letter-spacin
     <div class="card-title">📖 Programme annuel — Mathématiques — 18 Chapitres</div>
     <p style="font-size:.8rem;color:var(--text2);margin-bottom:.7rem">Programme officiel corrigé le 2026-09-19 — 18 Chapitres. Découpage S1-S6 indiqué par badge.</p>
         <div style="display:grid;grid-template-columns:1fr;gap:.35rem;font-size:.84rem">
-      <div style="padding:.6rem .8rem;background:var(--bg3);border-radius:8px;display:flex;justify-content:space-between;align-items:center"><span><strong>Chapitre 1</strong> : Arithmétique dans Z ✅</span><span style="font-size:.68rem;background:var(--accent);color:#fff;padding:.15rem .4rem;border-radius:6px">S1</span></div>
+      <div style="padding:.6rem .8rem;background:var(--bg3);border-radius:8px;display:flex;justify-content:space-between;align-items:center"><span><strong>Chapitre 1</strong> : Arithmétique dans Z ✅ (6 étapes, 2 cours)</span><span style="font-size:.68rem;background:var(--accent);color:#fff;padding:.15rem .4rem;border-radius:6px">S1</span></div>
       <div style="padding:.6rem .8rem;background:var(--bg3);border-radius:8px;display:flex;justify-content:space-between;align-items:center"><span><strong>Chapitre 2</strong> : Nombres complexes : approche algébrique</span><span style="font-size:.68rem;background:var(--accent);color:#fff;padding:.15rem .4rem;border-radius:6px">S1</span></div>
       <div style="padding:.6rem .8rem;background:var(--bg3);border-radius:8px;display:flex;justify-content:space-between;align-items:center"><span><strong>Chapitre 3</strong> : Fonctions numériques d'une variable réelle</span><span style="font-size:.68rem;background:var(--accent);color:#fff;padding:.15rem .4rem;border-radius:6px">S1</span></div>
       <div style="padding:.6rem .8rem;background:var(--bg3);border-radius:8px;display:flex;justify-content:space-between;align-items:center"><span><strong>Chapitre 4</strong> : Espaces vectoriels et applications linéaires (dim. 3)</span><span style="font-size:.68rem;background:#065f46;color:#fff;padding:.15rem .4rem;border-radius:6px">S2</span></div>
@@ -200,6 +200,13 @@ box.innerHTML=COURS.map(function(c){return '<a href="'+c.page+'" style="display:
       <div class="fc" data-cat="L1" onclick="this.classList.toggle('flipped')"><div class="fc-q">Q: Gauss ?</div><div class="fc-a">a|bc et a∧b=1 → a|c.</div></div>
       <div class="fc" data-cat="L1" onclick="this.classList.toggle('flipped')"><div class="fc-q">Q: Diophantienne ?</div><div class="fc-a">d|c ? → simplifier → Bézout → Gauss.</div></div>
       <div class="fc" data-cat="L1" onclick="this.classList.toggle('flipped')"><div class="fc-q">Q: PGCD×PPCM ? Test premier ?</div><div class="fc-a">= ab. Test : aucun premier ≤ √n.</div></div>
+      <div class="fc" data-cat="L1" onclick="this.classList.toggle('flipped')"><div class="fc-q">Q: 121 par 19 ? Et par 6 ?</div><div class="fc-a">19×6+7. Par 6 : 6×20+1 (7>6).</div></div>
+      <div class="fc" data-cat="L1" onclick="this.classList.toggle('flipped')"><div class="fc-q">Q: n, n+1, n+2 ?</div><div class="fc-a">L'un est multiple de 3.</div></div>
+      <div class="fc" data-cat="L1" onclick="this.classList.toggle('flipped')"><div class="fc-q">Q: 3n+2np=9 ?</div><div class="fc-a">n(3+2p)=9 → (1,3),(3,0).</div></div>
+      <div class="fc" data-cat="L1" onclick="this.classList.toggle('flipped')"><div class="fc-q">Q: n+1 divise 2n+5 ?</div><div class="fc-a">Différence 3 → n=0 ou 2.</div></div>
+      <div class="fc" data-cat="L1" onclick="this.classList.toggle('flipped')"><div class="fc-q">Q: 101 premier ? 17640 ?</div><div class="fc-a">√≈10, ni 2,3,5,7 → oui. 17640 → 72 diviseurs.</div></div>
+      <div class="fc" data-cat="L1" onclick="this.classList.toggle('flipped')"><div class="fc-q">Q: 47x=28y ?</div><div class="fc-a">47∧28=1 → (28k,47k).</div></div>
+      <div class="fc" data-cat="L1" onclick="this.classList.toggle('flipped')"><div class="fc-q">Q: Remontée 47u+39v=1 ?</div><div class="fc-a">u=5, v=−6 (vérifié : 235−234).</div></div>
     </div>
   </div>
   <div class="card">
@@ -372,6 +379,10 @@ const quizBank=[
   {q:"Bézout ?", opts:["au+bv=0","au−bv=d","∃u,v : au+bv=d","u+v=d"], ok:2},
   {q:"Gauss → ?", opts:["a|b","a|c","b|c","c|1"], ok:1},
   {q:"ppcm(12,15) ?", opts:["60","30","180","12"], ok:0},
+  {q:"121 par 19 ?", opts:["19×6+7","6×20+7","19×5+26","6×19+7"], ok:0},
+  {q:"n+1 divise 2n+5 ?", opts:["n=1 ou 3","n=0 ou 2","n=2 ou 4","n=1 ou 2"], ok:1},
+  {q:"17640 : diviseurs ?", opts:["36","60","72","90"], ok:2},
+  {q:"47x=28y ?", opts:["(47k,28k)","(28k,47k)","(k,47k)","(28k,k)"], ok:1},
 ];
 function renderQuiz(){
   const area=document.getElementById('quizArea'); area.innerHTML=''; let pick=[...quizBank].sort(()=>0.5-Math.random()).slice(0,5);
