@@ -44,17 +44,15 @@
 - [ ] Module 3 : Séq 12 (catastrophes — intitulé à confirmer, cours à envoyer)
 - [ ] Module 4 : Séq 13 (fruits) + Séq 14 (biocarburant) + Séq 15 (déchets)
 
-## Priorité 5 — 📐 Maths (coef 7 · par chapitres, celui du moment d'abord)
+## Priorité 5 — 📐 Maths (coef 7 · par chapitres, celui du moment d'abord) — ✅ programme reçu le 2026-09-19
 
-- [ ] **Programme annuel**
-- [ ] Nombres complexes (formes, opérations, géométrie)
-- [ ] Fonctions (exp, ln, puissances, polynômes)
-- [ ] Analyse (dérivées, intégrales, primitives)
-- [ ] Suites (arithmétiques, géométriques, convergence)
-- [ ] Probabilités (loi binomiale, espérance, variance)
-- [ ] Géométrie spatiale (droites, plans, intersections)
-- [ ] Arithmétique (divisibilité, congruences)
-- [ ] Équations différentielles (linéaires, homogènes)
+- [x] **Programme annuel** (18 Chapitres — voir `matieres/maths/README.md`)
+- [ ] S1 : Ch 1 (arithmétique ℤ) + Ch 2 (complexes algébriques) + Ch 3 (fonctions)
+- [ ] S2 : Ch 4 (espaces vectoriels) + Ch 5 (stats) + Ch 6 (produit vectoriel)
+- [ ] S3 : Ch 7 (suites) + Ch 8 (graphes) + Ch 9 (complexes géométriques)
+- [ ] S4 : Ch 10 (similitudes) + Ch 11 (primitives) + Ch 12 (logarithmes)
+- [ ] S5 : Ch 13 (probas) + Ch 14 (exponentielles) + Ch 15 (coniques)
+- [ ] S6 : Ch 16 (intégrales) + Ch 17 (isométrie) + Ch 18 (équa diff)
 
 ## Priorité 6 — ⚡ Physique (coef 4 · par chapitres, celui du moment d'abord)
 
