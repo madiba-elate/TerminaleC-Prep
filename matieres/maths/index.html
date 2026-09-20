@@ -64,12 +64,12 @@ th{background:var(--bg3);font-size:.66rem;text-transform:uppercase;letter-spacin
 <div class="hero">
   <div style="display:inline-block;background:rgba(255,255,255,.18);border:1px solid rgba(255,255,255,.25);font-size:.68rem;font-weight:700;padding:.2rem .6rem;border-radius:20px;letter-spacing:.04em">1er Groupe • Coef 7 • 140 pts • 22,6% du BAC</div>
   <h1>📐 Mathématiques</h1>
-  <p>Terminale C • 11 Leçons + 2 TD + 5 Dossiers • Méthode 18/20 — Dashboard unique 5 onglets</p>
+  <p>Terminale C • 18 Chapitres • Méthode 18/20 — Dashboard unique 5 onglets</p>
   <div class="badges">
     <div class="badge-hero"><strong>Coef 7</strong> / 31</div>
     <div class="badge-hero"><strong>140 pts</strong> / 620</div>
     <div class="badge-hero"><strong>7h / sem</strong></div>
-    <div class="badge-hero"><strong>18/20</strong> → 126 pts</div>
+    <div class="badge-hero"><strong>19/20</strong> → 133 pts</div>
   </div>
 </div>
 
@@ -90,13 +90,13 @@ th{background:var(--bg3);font-size:.66rem;text-transform:uppercase;letter-spacin
         <tr><td>Matière</td><td><strong>Mathématiques</strong> <span class="pill" style="background:#dbeafe;color:#1e3a8a">1er Groupe</span></td></tr>
         <tr><td>Coefficient</td><td><span class="badge-coef">7</span></td></tr>
         <tr><td>% points total</td><td><strong>22,6%</strong> (140 / 620)</td></tr>
-        <tr><td>Heures / semaine</td><td><strong>7h (Lun 3h + Mer 3h + Jeu 1h)</strong></td></tr>
-        <tr><td>Groupe Bac</td><td>2e Groupe avec Chimie + SVT (120 pts ensemble)</td></tr>
-        <tr><td>Objectif 18</td><td><strong>18/20 → 126/140 pts</strong> (voir calculateur)</td></tr>
+        <tr><td>Heures / semaine</td><td><strong>7h / sem</strong> (détail des jours à confirmer)</td></tr>
+        <tr><td>Groupe Bac</td><td>1er Groupe avec Physique + Anglais + Info (320 pts ensemble)</td></tr>
+        <tr><td>Objectif 19</td><td><strong>19/20 → 133/140 pts</strong> (voir page Objectifs)</td></tr>
       </table>
-      <div class="alert" style="margin-top:.8rem">💡 Mathématiques = matière <strong>à fort rendement</strong> : peu d'heures, beaucoup de points si méthodo maîtrisée. 2h/semaine bien utilisées = 36 pts garantis.</div>
+      <div class="alert" style="margin-top:.8rem">💡 Mathématiques = <strong>levier ×7</strong> : 1 point = 7 pts au BAC. 7h/semaine, Ch.1 reçu ✅ (6 leçons). Objectif 133 pts — travail quotidien obligatoire.</div>
       <div style="background:var(--bg3);padding:.7rem;border-radius:8px;font-size:.78rem">
-        <strong>À me dire pour compléter :</strong> Nom du prof ? Livre utilisé (ex: ECM Terminale C — CEPER) ? Autres infos utiles (ex: cahier 100p, exposés prévus) ? Dis-moi et j'ajoute ici.
+        <strong>À me dire pour compléter :</strong> Nom du prof ? Livre utilisé (ex: Mathématiques Terminale C) ? Calculatrice autorisée au BAC ? Dis-moi et j'ajoute ici.
       </div>
     </div>
     <div class="card">
@@ -105,22 +105,22 @@ th{background:var(--bg3);font-size:.66rem;text-transform:uppercase;letter-spacin
       <table id="devoirTable">
         <thead><tr><th>Devoir (n° livre p.)</th><th>Pour le</th><th>Fait</th></tr></thead>
         <tbody id="devoirBody">
-          <tr><td colspan="3" style="text-align:center;color:var(--text3);padding:1rem">Aucun devoir noté — dis-moi le 1er (ex: "Leçon 1 exo 2 p.12 pour mardi") et j'ajoute</td></tr>
+          <tr><td colspan="3" style="text-align:center;color:var(--text3);padding:1rem">Aucun devoir noté — dis-moi le 1er (ex: "Ch 1 exo 2 p.12 pour mardi") et j'ajoute</td></tr>
         </tbody>
       </table>
       <div style="display:flex;gap:.4rem;margin-top:.6rem;flex-wrap:wrap">
-        <input class="input" id="devName" placeholder="Ex: Leçon 1 exo 2 p.12" style="flex:2;min-width:140px">
+        <input class="input" id="devName" placeholder="Ex: Ch 1 exo 2 p.12" style="flex:2;min-width:140px">
         <input class="input" id="devDate" type="date" style="flex:1;min-width:120px">
         <button class="btn" onclick="addDevoir()">Ajouter</button>
       </div>
-      <p style="font-size:.72rem;color:var(--text3);margin-top:.5rem">Astuce : en classe, note immédiatement "ECM : Leçon X exo Y p.Z pour [date]" → dicte-le moi le soir, je l'ajoute ici + dans planning.</p>
+      <p style="font-size:.72rem;color:var(--text3);margin-top:.5rem">Astuce : en classe, note immédiatement "Maths : Ch X exo Y p.Z pour [date]" → dicte-le moi le soir, je l'ajoute ici + dans planning.</p>
     </div>
   </div>
   <div class="card">
     <div class="card-title">📦 Infos utiles pour t'aider (à compléter ensemble)</div>
     <div class="grid2" style="font-size:.82rem">
-      <div><strong>Livre / support :</strong><br><span style="color:var(--text2)">À préciser (titre, édition). Ex: "ECM Terminale — Hachette"</span><br><input class="input" placeholder="Titre du livre ECM" id="infoLivre" style="margin-top:.4rem"></div>
-      <div><strong>Cahiers :</strong><br><span style="color:var(--text2)">Géo et ECM séparés ? 2 cahiers + livres comme tu l'as dit mardi</span><br><input class="input" placeholder="Ex: 1 cahier 200p ECM" id="infoCahier" style="margin-top:.4rem"></div>
+      <div><strong>Livre / support :</strong><br><span style="color:var(--text2)">À préciser (titre, édition). Ex: "Mathématiques Terminale C"</span><br><input class="input" placeholder="Titre du livre Maths" id="infoLivre" style="margin-top:.4rem"></div>
+      <div><strong>Cahiers :</strong><br><span style="color:var(--text2)">Cahier unique ou séparé (cours + exos) ?</span><br><input class="input" placeholder="Ex: 1 cahier 200p Maths" id="infoCahier" style="margin-top:.4rem"></div>
     </div>
     <div style="margin-top:.7rem"><button class="btn btn-ghost" onclick="saveInfos()">💾 Enregistrer ces infos (local)</button> <span id="saveMsg" style="font-size:.78rem;color:var(--accent);margin-left:.5rem"></span></div>
   </div>
@@ -226,7 +226,7 @@ box.innerHTML=COURS.map(function(c){return '<a href="'+c.page+'" style="display:
 <div class="tab-content" id="t5">
   <div class="grid2">
     <div class="card">
-      <div class="card-title">⏱️ Chrono épreuve ECM</div>
+      <div class="card-title">⏱️ Chrono épreuve Maths</div>
       <div class="timer" id="chrono">00:00:00</div>
       <div style="display:flex;gap:.4rem;margin-top:.7rem;justify-content:center">
         <button class="btn" onclick="startChrono()">▶ Démarrer</button><button class="btn btn-ghost" onclick="pauseChrono()">⏸ Pause</button><button class="btn btn-ghost" onclick="resetChrono()">↺ Reset</button>
@@ -234,8 +234,8 @@ box.innerHTML=COURS.map(function(c){return '<a href="'+c.page+'" style="display:
       <div style="margin-top:.8rem;font-size:.82rem">
         <label>Durée d'épreuve :</label>
         <select class="select" id="dureeSelect" onchange="setDuree(this.value)">
-          <option value="60">ECM Bac : 60 min (1h)</option>
-          <option value="120">Blanc complet : 120 min</option>
+          <option value="240">Maths Bac : 240 min (4h — à confirmer)</option>
+          <option value="120">Devoir surveillé : 120 min</option>
           <option value="30">Flash test : 30 min</option>
         </select>
         <div id="chronoAlert" style="margin-top:.5rem;font-weight:700;color:#dc2626;display:none">⏰ Temps écoulé ! Pose le stylo.</div>
@@ -243,46 +243,45 @@ box.innerHTML=COURS.map(function(c){return '<a href="'+c.page+'" style="display:
       <p style="font-size:.74rem;color:var(--text3);margin-top:.6rem">Entraîne-toi en conditions réelles : sujet devant toi, chrono lancé, sans cours. C'est l'onglet qui fait gagner 2 points au BAC.</p>
     </div>
     <div class="card">
-      <div class="card-title">📝 Méthodologie composition ECM — pour 18/20</div>
+      <div class="card-title">📝 Méthodologie épreuve Maths — pour 19/20</div>
       <div style="font-size:.82rem">
-        <strong>1. Introduction (10% du temps)</strong>
+        <strong>1. Lecture + plan (15 min)</strong>
         <ul style="margin:.3rem 0 .6rem 1.1rem;color:var(--text2)">
-          <li>Accroche (fait actuel) → définition du thème → problématique → annonce plan (2 parties)</li>
-          <li>Ex: "La participation du Cameroun à l'ONU..." → Problématique : En quoi...</li>
+          <li>Survole tout le sujet → classe les exos (sûr / moyen / dur) → commence par les points sûrs</li>
         </ul>
-        <strong>2. Développement (70%) — 2 parties / 2 sous-parties</strong>
+        <strong>2. Rédaction mathématique</strong>
         <ul style="margin:.3rem 0 .6rem 1.1rem;color:var(--text2)">
-          <li>Partie 1 : faits / aspects (ex: Leçon 1-2)</li>
-          <li>Partie 2 : cas Cameroun + bilan critique (ex: Dossier 2, problèmes)</li>
-          <li>1 idée = 1 paragraphe = 1 exemple précis (date, sigle, pays)</li>
+          <li>Définitions citées + théorèmes nommés (Bézout, Gauss) + étapes numérotées</li>
+          <li>Démos exigibles rédigées par cœur puis adaptées · résultats <strong>encadrés</strong></li>
         </ul>
-        <strong>3. Conclusion (20%)</strong>
+        <strong>3. Vérification + temps</strong>
         <ul style="margin:.3rem 0 .6rem 1.1rem;color:var(--text2)">
-          <li>Bilan → réponse problématique → ouverture (perspective)</li>
+          <li>Ordres de grandeur, cas particuliers, relecture des calculs</li>
+          <li>Bloqué &gt; 15 min → passe à la suite, reviens après</li>
         </ul>
         <div style="background:var(--bg3);padding:.6rem;border-radius:8px;font-size:.76rem">
-          <strong>Barème ECM (sur 20) :</strong> Fond (connaissances) 10 pts • Forme/plan 6 pts • Exemples précis 4 pts. Sans exemples (CEMAC, COPAX, ONU) → max 12/20.
+          <strong>Barème indicatif :</strong> démarche justifiée + résultat exact + rédaction. Sans justification → la moitié des points perdue.
         </div>
       </div>
     </div>
   </div>
   <div class="card">
-    <div class="card-title">💡 Conseils pratiques BAC ECM</div>
+    <div class="card-title">💡 Conseils pratiques BAC Maths</div>
     <ul style="font-size:.82rem;color:var(--text2);margin-left:1.1rem">
-      <li><strong>Mots-clés obligatoires :</strong> souveraineté, coopération bilatérale/multilatérale, non-ingérence, intégration sous-régionale, aide au développement vs humanitaire.</li>
-      <li><strong>Sigles à maîtriser :</strong> ONU, UA, UE, CEMAC, CEEAC, CBLT, OCEAC, COPAX — définis chacun en 1 ligne.</li>
-      <li><strong>Piège n°1 :</strong> confondre aide humanitaire (urgence) et aide au développement (long terme — Dossier 3).</li>
-      <li><strong>Piège n°2 :</strong> oublier le Cameroun dans sa sous-région (Leçon 11) → toujours citer CEMAC/CEEAC.</li>
-      <li><strong>Entraînement :</strong> 1 sujet/semaine dès S2 (ex: "Le Cameroun et l'ONU" — Dossier 2). Chrono 60 min.</li>
+      <li><strong>Phrases obligatoires :</strong> « dernier reste non nul » · « d∣c donc je simplifie » · « √n ≈ … : je teste jusqu'à… ».</li>
+      <li><strong>Réflexes Ch.1 :</strong> reste toujours ≥ 0 (ℤ !) · unicité (q,r) · 121 = 6×20+1 (pas +7) · premier ≠ premiers entre eux.</li>
+      <li><strong>Piège n°1 :</strong> oublier de vérifier d∣c avant de résoudre une diophantienne.</li>
+      <li><strong>Piège n°2 :</strong> tester la primalité sans s'arrêter à √n (perte de temps).</li>
+      <li><strong>Entraînement :</strong> 1 exo Ch.1/semaine sans fiche + quiz à 80% avant le Ch.2.</li>
     </ul>
   </div>
   <div class="card">
-    <div class="card-title">📥 Sujets ECM à faire (Banque 120)</div>
-    <p style="font-size:.8rem;color:var(--text2)">Va dans <a href="../../index.html#bank">Banque 120 Sujets → filtre ECM</a> ou fais ces 3 pour commencer :</p>
+    <div class="card-title">📥 Sujets Maths à faire (déjà en stock)</div>
+    <p style="font-size:.8rem;color:var(--text2)">Va dans <a href="../../hub-exercices.html">Hub Exercices → filtre Physique/Maths</a> ou fais ces 3 pour commencer :</p>
     <ul style="font-size:.82rem;margin:.5rem 0 0 1.1rem">
-      <li>Sujet 1 : "Les principes de la diplomatie camerounaise" (Leçon 3)</li>
-      <li>Sujet 2 : "Le Cameroun et l'Union européenne" (Leçon 5)</li>
-      <li>Sujet 3 : "CEMAC et CEEAC : atouts et limites pour le Cameroun" (Leçon 11)</li>
+      <li>Sujet 1 : <a href="pages/ch01-arithmetique.html">Exercices Ch.1</a> (diviseurs, critères, Euclide, diophantienne, primalité)</li>
+      <li>Sujet 2 : <a href="pages/ch01-arithmetique.html">Quiz Ch.1</a> — 80% min avant le Ch.2</li>
+      <li>Sujet 3 : Remontée de Bézout 47u+39v=1 <strong>sans fiche</strong>, puis vérifie (u=5, v=−6)</li>
     </ul>
   </div>
 </div>
@@ -299,6 +298,14 @@ document.querySelectorAll('.tab-btn[data-tab]').forEach(b=>{
     window.scrollTo({top:0,behavior:'smooth'});
   });
 });
+// Lien direct : index.html#t2 .. #t5 (sans scroll, le navigateur gère l'ancre)
+(function(){const h=(location.hash||'').replace('#','');
+if(/^t[1-5]$/.test(h)){
+document.querySelectorAll('.tab-btn[data-tab]').forEach(x=>x.classList.remove('active'));
+const b=document.querySelector('.tab-btn[data-tab="'+h+'"]');
+if(b){b.classList.add('active');
+document.querySelectorAll('.tab-content').forEach(c=>c.classList.remove('active'));
+document.getElementById(h).classList.add('active');}}})();
 // Devoirs
 function addDevoir(){
   const n=document.getElementById('devName').value.trim();
@@ -312,18 +319,18 @@ function addDevoir(){
   document.getElementById('devName').value=''; document.getElementById('devDate').value='';
   saveDevoirs();
 }
-function saveDevoirs(){ localStorage.setItem('ecm-devoirs', document.getElementById('devoirBody').innerHTML); }
-(function(){ const s=localStorage.getItem('ecm-devoirs'); if(s) document.getElementById('devoirBody').innerHTML=s; })();
+function saveDevoirs(){ localStorage.setItem('maths-devoirs', document.getElementById('devoirBody').innerHTML); }
+(function(){ const s=localStorage.getItem('maths-devoirs'); if(s) document.getElementById('devoirBody').innerHTML=s; })();
 // Infos
 function saveInfos(){
-  localStorage.setItem('ecm-livre', document.getElementById('infoLivre').value);
-  localStorage.setItem('ecm-cahier', document.getElementById('infoCahier').value);
+  localStorage.setItem('maths-livre', document.getElementById('infoLivre').value);
+  localStorage.setItem('maths-cahier', document.getElementById('infoCahier').value);
   document.getElementById('saveMsg').textContent='✓ Sauvé';
   setTimeout(()=>document.getElementById('saveMsg').textContent='',1500);
 }
 (function(){
-  document.getElementById('infoLivre').value=localStorage.getItem('ecm-livre')||'';
-  document.getElementById('infoCahier').value=localStorage.getItem('ecm-cahier')||'';
+  document.getElementById('infoLivre').value=localStorage.getItem('maths-livre')||'';
+  document.getElementById('infoCahier').value=localStorage.getItem('maths-cahier')||'';
 })();
 // Cours optimisé
 function optimiserCours(){
@@ -341,16 +348,16 @@ function optimiserCours(){
 function saveCours(){
   const lecon=document.getElementById('leconSelect').value;
   const content=document.getElementById('coursOpti').innerHTML;
-  let list=JSON.parse(localStorage.getItem('ecm-cours')||'[]');
+  let list=JSON.parse(localStorage.getItem('maths-cours')||'[]');
   list.push({lecon, content, date: new Date().toLocaleDateString()});
-  localStorage.setItem('ecm-cours', JSON.stringify(list));
+  localStorage.setItem('maths-cours', JSON.stringify(list));
   renderCoursList();
 }
 function renderCoursList(){
-  let list=JSON.parse(localStorage.getItem('ecm-cours')||'[]');
-  const el=document.getElementById('coursList');
+  let list=JSON.parse(localStorage.getItem('maths-cours')||'[]');
+  const el=document.getElementById('coursList'); if(!el) return;
   if(!list.length){ el.innerHTML='Aucune leçon sauvée — optimise puis sauve la 1ère.'; return; }
-  el.innerHTML=list.map((c,i)=>`<div style="background:var(--bg3);padding:.6rem;border-radius:8px;margin-bottom:.4rem"><strong>${c.lecon}</strong> <span style="font-size:.72rem;color:var(--text3)">— ${c.date}</span> <a href="#" onclick="event.preventDefault(); if(confirm('Supprimer ?')){let l=JSON.parse(localStorage.getItem('ecm-cours')||'[]'); l.splice(${i},1); localStorage.setItem('ecm-cours', JSON.stringify(l)); renderCoursList();}" style="float:right;font-size:.72rem;color:#dc2626">Supprimer</a><div style="margin-top:.4rem;font-size:.8rem">${c.content}</div></div>`).join('');
+  el.innerHTML=list.map((c,i)=>`<div style="background:var(--bg3);padding:.6rem;border-radius:8px;margin-bottom:.4rem"><strong>${c.lecon}</strong> <span style="font-size:.72rem;color:var(--text3)">— ${c.date}</span> <a href="#" onclick="event.preventDefault(); if(confirm('Supprimer ?')){let l=JSON.parse(localStorage.getItem('maths-cours')||'[]'); l.splice(${i},1); localStorage.setItem('maths-cours', JSON.stringify(l)); renderCoursList();}" style="float:right;font-size:.72rem;color:#dc2626">Supprimer</a><div style="margin-top:.4rem;font-size:.8rem">${c.content}</div></div>`).join('');
 }
 renderCoursList();
 // Pomodoro
@@ -386,7 +393,9 @@ const quizBank=[
   {q:"17640 : diviseurs ?", opts:["36","60","72","90"], ok:2},
   {q:"47x=28y ?", opts:["(47k,28k)","(28k,47k)","(k,47k)","(28k,k)"], ok:1},
   {q:"1011₂+1101₂ ?", opts:["11000₂","10111₂","11001₂","10000₂"], ok:0},
-,`n  {q:"-121 par 19 ?", opts:["q=-7, r=12","q=-6, r=-7","q=-7, r=-12","q=6, r=7"], ok:0},`n  {q:"121 par -19 ?", opts:["q=-6, r=7","q=6, r=7","q=-6, r=-7","q=-7, r=12"], ok:0}];
+,
+  {q:"-121 par 19 ?", opts:["q=-7, r=12","q=-6, r=-7","q=-7, r=-12","q=6, r=7"], ok:0},
+  {q:"121 par -19 ?", opts:["q=-6, r=7","q=6, r=7","q=-6, r=-7","q=-7, r=12"], ok:0}];
 function renderQuiz(){
   const area=document.getElementById('quizArea'); area.innerHTML=''; let pick=[...quizBank].sort(()=>0.5-Math.random()).slice(0,5);
   let score=0, answered=0;

@@ -287,7 +287,12 @@ document.querySelectorAll('.tab-btn[data-tab]').forEach(b=>{
 });
 // Lien direct : index.html#t2 .. #t5
 (function(){const h=(location.hash||'').replace('#','');
-if(/^t[1-5]$/.test(h)){const b=document.querySelector('.tab-btn[data-tab="'+h+'"]');if(b)b.click();}})();
+if(/^t[1-5]$/.test(h)){
+document.querySelectorAll('.tab-btn[data-tab]').forEach(x=>x.classList.remove('active'));
+const b=document.querySelector('.tab-btn[data-tab="'+h+'"]');
+if(b){b.classList.add('active');
+document.querySelectorAll('.tab-content').forEach(c=>c.classList.remove('active'));
+document.getElementById(h).classList.add('active');}}})();
 // Devoirs
 function addDevoir(){
   const n=document.getElementById('devName').value.trim();
@@ -337,7 +342,7 @@ function saveCours(){
 }
 function renderCoursList(){
   let list=JSON.parse(localStorage.getItem('info-cours')||'[]');
-  const el=document.getElementById('coursList');
+  const el=document.getElementById('coursList'); if(!el) return;
   if(!list.length){ el.innerHTML='Aucune leçon sauvée — optimise puis sauve la 1ère.'; return; }
   el.innerHTML=list.map((c,i)=>`<div style="background:var(--bg3);padding:.6rem;border-radius:8px;margin-bottom:.4rem"><strong>${c.lecon}</strong> <span style="font-size:.72rem;color:var(--text3)">— ${c.date}</span> <a href="#" onclick="event.preventDefault(); if(confirm('Supprimer ?')){let l=JSON.parse(localStorage.getItem('info-cours')||'[]'); l.splice(${i},1); localStorage.setItem('info-cours', JSON.stringify(l)); renderCoursList();}" style="float:right;font-size:.72rem;color:#dc2626">Supprimer</a><div style="margin-top:.4rem;font-size:.8rem">${c.content}</div></div>`).join('');
 }

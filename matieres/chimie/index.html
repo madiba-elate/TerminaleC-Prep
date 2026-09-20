@@ -295,18 +295,18 @@ function addDevoir(){
   document.getElementById('devName').value=''; document.getElementById('devDate').value='';
   saveDevoirs();
 }
-function saveDevoirs(){ localStorage.setItem('ecm-devoirs', document.getElementById('devoirBody').innerHTML); }
-(function(){ const s=localStorage.getItem('ecm-devoirs'); if(s) document.getElementById('devoirBody').innerHTML=s; })();
+function saveDevoirs(){ localStorage.setItem('chimie-devoirs', document.getElementById('devoirBody').innerHTML); }
+(function(){ const s=localStorage.getItem('chimie-devoirs'); if(s) document.getElementById('devoirBody').innerHTML=s; })();
 // Infos
 function saveInfos(){
-  localStorage.setItem('ecm-livre', document.getElementById('infoLivre').value);
-  localStorage.setItem('ecm-cahier', document.getElementById('infoCahier').value);
+  localStorage.setItem('chimie-livre', document.getElementById('infoLivre').value);
+  localStorage.setItem('chimie-cahier', document.getElementById('infoCahier').value);
   document.getElementById('saveMsg').textContent='✓ Sauvé';
   setTimeout(()=>document.getElementById('saveMsg').textContent='',1500);
 }
 (function(){
-  document.getElementById('infoLivre').value=localStorage.getItem('ecm-livre')||'';
-  document.getElementById('infoCahier').value=localStorage.getItem('ecm-cahier')||'';
+  document.getElementById('infoLivre').value=localStorage.getItem('chimie-livre')||'';
+  document.getElementById('infoCahier').value=localStorage.getItem('chimie-cahier')||'';
 })();
 // Cours optimisé
 function optimiserCours(){
@@ -324,16 +324,16 @@ function optimiserCours(){
 function saveCours(){
   const lecon=document.getElementById('leconSelect').value;
   const content=document.getElementById('coursOpti').innerHTML;
-  let list=JSON.parse(localStorage.getItem('ecm-cours')||'[]');
+  let list=JSON.parse(localStorage.getItem('chimie-cours')||'[]');
   list.push({lecon, content, date: new Date().toLocaleDateString()});
-  localStorage.setItem('ecm-cours', JSON.stringify(list));
+  localStorage.setItem('chimie-cours', JSON.stringify(list));
   renderCoursList();
 }
 function renderCoursList(){
-  let list=JSON.parse(localStorage.getItem('ecm-cours')||'[]');
-  const el=document.getElementById('coursList');
+  let list=JSON.parse(localStorage.getItem('chimie-cours')||'[]');
+  const el=document.getElementById('coursList'); if(!el) return;
   if(!list.length){ el.innerHTML='Aucune leçon sauvée — optimise puis sauve la 1ère.'; return; }
-  el.innerHTML=list.map((c,i)=>`<div style="background:var(--bg3);padding:.6rem;border-radius:8px;margin-bottom:.4rem"><strong>${c.lecon}</strong> <span style="font-size:.72rem;color:var(--text3)">— ${c.date}</span> <a href="#" onclick="event.preventDefault(); if(confirm('Supprimer ?')){let l=JSON.parse(localStorage.getItem('ecm-cours')||'[]'); l.splice(${i},1); localStorage.setItem('ecm-cours', JSON.stringify(l)); renderCoursList();}" style="float:right;font-size:.72rem;color:#dc2626">Supprimer</a><div style="margin-top:.4rem;font-size:.8rem">${c.content}</div></div>`).join('');
+  el.innerHTML=list.map((c,i)=>`<div style="background:var(--bg3);padding:.6rem;border-radius:8px;margin-bottom:.4rem"><strong>${c.lecon}</strong> <span style="font-size:.72rem;color:var(--text3)">— ${c.date}</span> <a href="#" onclick="event.preventDefault(); if(confirm('Supprimer ?')){let l=JSON.parse(localStorage.getItem('chimie-cours')||'[]'); l.splice(${i},1); localStorage.setItem('chimie-cours', JSON.stringify(l)); renderCoursList();}" style="float:right;font-size:.72rem;color:#dc2626">Supprimer</a><div style="margin-top:.4rem;font-size:.8rem">${c.content}</div></div>`).join('');
 }
 renderCoursList();
 // Pomodoro
