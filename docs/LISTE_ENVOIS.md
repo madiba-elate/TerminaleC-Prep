@@ -21,6 +21,7 @@
 
 - [ ] **Programme annuel** — ➖ non disponible, on reconstitue au fil des cours reçus
   - [x] Module 1 (Family and social) / Lesson: Job Interview (reçu 2026-09-19)
+  - [x] Lesson: Grammar Review — All Tenses (généré 2026-09-19 : 7 temps + pièges + irréguliers + drill)
 - [ ] Grammar (tenses, voice, conditionals)
 - [ ] Essay Writing (argumentative, narrative)
 - [ ] Vocabulary (health, education, environment)

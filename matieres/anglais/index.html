@@ -135,6 +135,7 @@ th{background:var(--bg3);font-size:.66rem;text-transform:uppercase;letter-spacin
         <div style="display:grid;grid-template-columns:1fr;gap:.35rem;font-size:.84rem">
       <div style="padding:.6rem .8rem;background:#eef2ff;border-radius:8px;font-weight:800;font-size:.8rem">Module 1: Family and social</div>
       <div style="padding:.6rem .8rem;background:var(--bg3);border-radius:8px;display:flex;justify-content:space-between;align-items:center"><span><strong>Lesson: Job Interview</strong> — Speaking: discuss about the job interview + vocabulary + homework</span><span style="font-size:.68rem;background:#065f46;color:#fff;padding:.15rem .4rem;border-radius:6px">S1 ✅</span></div>
+      <div style="padding:.6rem .8rem;background:var(--bg3);border-radius:8px;display:flex;justify-content:space-between;align-items:center"><span><strong>Lesson: Grammar Review</strong> — All 7 tenses + 4 traps + 20 irregulars + drill</span><span style="font-size:.68rem;background:#065f46;color:#fff;padding:.15rem .4rem;border-radius:6px">S1 ✅</span></div>
     </div>
     <div class="alert" style="margin-top:.8rem">📌 Toute l'année : S1 (Leç1-3), S2 (Leç4-5), S3 (Leç6-7), S4 (Leç8-9), S5 (Leç10-11), S6 (Dossiers 4-5 + TD2) → BAC = révision croisée. Ne pas attendre S6 pour apprendre Leçon 1.</div>
   </div>
@@ -150,7 +151,7 @@ th{background:var(--bg3);font-size:.66rem;text-transform:uppercase;letter-spacin
 </div>
 <script>
 /* Visualiseur des cours reçus — ajouter un cours = 1 objet dans COURS (voir CONTRIBUER.md §4) */
-const COURS=[{t:"Lesson 1: Job Interview (Speaking)",d:"Module 1: Family and social",seq:"S1",page:"pages/lesson-01-job-interview.html"}];
+const COURS=[{t:"Lesson 1: Job Interview (Speaking)",d:"Module 1: Family and social",seq:"S1",page:"pages/lesson-01-job-interview.html"},{t:"Lesson 2: Grammar Review — All Tenses",d:"Complete: 7 tenses + traps + irregulars",seq:"S1",page:"pages/lesson-02-grammar-tenses.html"}];
 (function(){var box=document.getElementById('coursRecus');
 if(!COURS.length){box.innerHTML='<div style="padding:.8rem;background:var(--bg3);border-radius:8px;color:var(--text2)">Aucun cours reçu pour l\u2019instant — envoie le programme puis les cours (voir Liste d\u2019envois), ils appara\u00eetront ici.</div>';return;}
 box.innerHTML=COURS.map(function(c){return '<a href="'+c.page+'" style="display:flex;justify-content:space-between;align-items:center;gap:.5rem;padding:.6rem .8rem;background:var(--bg3);border-radius:8px;text-decoration:none;color:var(--text);font-weight:700"><span>'+c.t+'<br><span style="font-weight:400;font-size:.72rem;color:var(--text2)">'+c.d+'</span></span><span style="display:flex;gap:.3rem;align-items:center;flex-shrink:0"><span style="font-size:.68rem;background:var(--accent);color:#fff;padding:.15rem .4rem;border-radius:6px">'+c.seq+'</span><span style="font-size:.68rem;background:#0f172a;color:#fff;padding:.15rem .4rem;border-radius:6px">Ouvrir \u2192</span></span></a>';}).join('');})();
@@ -168,6 +169,7 @@ box.innerHTML=COURS.map(function(c){return '<a href="'+c.page+'" style="display:
     <div class="tabs" style="margin-bottom:.6rem">
       <button class="tab-btn active" onclick="filterFC('all',this)">Tous</button>
       <button class="tab-btn" onclick="filterFC('L1',this)">Lesson 1 – Job interview</button>
+      <button class="tab-btn" onclick="filterFC('L2',this)">Lesson 2 – Tenses</button>
     </div>
         <div class="fc-grid" id="fcGrid">
       <div class="fc" data-cat="L1" onclick="this.classList.toggle('flipped')"><div class="fc-q">Q: Define: job interview</div><div class="fc-a">Formal meeting applicant/employer about qualifications, skills, experience.</div></div>
@@ -185,6 +187,12 @@ box.innerHTML=COURS.map(function(c){return '<a href="'+c.page+'" style="display:
       <div class="fc" data-cat="L1" onclick="this.classList.toggle('flipped')"><div class="fc-q">Q: Rush hour?</div><div class="fc-a">Time of day when traffic is heavy.</div></div>
       <div class="fc" data-cat="L1" onclick="this.classList.toggle('flipped')"><div class="fc-q">Q: I am trustworthy?</div><div class="fc-a">Honest and truthful — rely on me.</div></div>
       <div class="fc" data-cat="L1" onclick="this.classList.toggle('flipped')"><div class="fc-q">Q: Teamwork? Work overtime?</div><div class="fc-a">Work in harmony. / Above normal time.</div></div>
+      <div class="fc" data-cat="L2" onclick="this.classList.toggle('flipped')"><div class="fc-q">Q: Past vs perfect?</div><div class="fc-a">Dated (yesterday) = past. No date + link (just) = perfect.</div></div>
+      <div class="fc" data-cat="L2" onclick="this.classList.toggle('flipped')"><div class="fc-q">Q: Will vs going to?</div><div class="fc-a">No clue/promise = will. Visible clue = going to.</div></div>
+      <div class="fc" data-cat="L2" onclick="this.classList.toggle('flipped')"><div class="fc-q">Q: 2 inviolable rules?</div><div class="fc-a">Did + base verb. He/she/it + s.</div></div>
+      <div class="fc" data-cat="L2" onclick="this.classList.toggle('flipped')"><div class="fc-q">Q: Past perfect? Golden rule?</div><div class="fc-a">Had+V3 first. Continuous + when + simple.</div></div>
+      <div class="fc" data-cat="L2" onclick="this.classList.toggle('flipped')"><div class="fc-q">Q: 5 irregulars?</div><div class="fc-a">go-went-gone, have-had-had, do-did-done, be-was-been, write-wrote-written.</div></div>
+      <div class="fc" data-cat="L2" onclick="this.classList.toggle('flipped')"><div class="fc-q">Q: Present continuous signals?</div><div class="fc-a">now, at the moment, Look! am/is/are + ing.</div></div>
     </div>
   </div>
   <div class="card">
@@ -359,6 +367,11 @@ const quizBank=[
   {q:"'Good at multitasking' = ?", opts:["One task only","Many tasks at the same time","No tasks","Late tasks"], ok:1},
   {q:"'Rush hour' = ?", opts:["Early morning","Heavy traffic time","Lunch break","Night shift"], ok:1},
   {q:"'Work overtime' = ?", opts:["Normal hours","Above normal time","No work","Paid leave"], ok:1},
+  {q:"…visited London yesterday?", opts:["Perfect","Past simple (dated)","Continuous","Future"], ok:1},
+  {q:"She has just …?", opts:["Perfect (just)","Past","Past perfect","Future"], ok:0},
+  {q:"…had finished before he arrived?", opts:["Past","Present","Perfect+past","Continuous"], ok:2},
+  {q:"Clouds! It ___ rain.", opts:["Will","Present","Past","Going to (clue)"], ok:3},
+  {q:"…was sleeping when he arrived?", opts:["Past","Perfect","Cont. + simple","Future"], ok:2},
 ];
 function renderQuiz(){
   const area=document.getElementById('quizArea'); area.innerHTML=''; let pick=[...quizBank].sort(()=>0.5-Math.random()).slice(0,5);
