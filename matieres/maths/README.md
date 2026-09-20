@@ -5,7 +5,7 @@
 
 ## Chapitres
 
-1. **Chapitre 1** : Arithmétique dans ℤ
+1. **Chapitre 1** : Arithmétique dans ℤ (6 leçons : Euclide ℕ, numérations, divisibilité/congruences, premiers, PGCD/PPCM, Bézout/Gauss/diophantiennes)
 2. **Chapitre 2** : Nombres complexes — approche algébrique
 3. **Chapitre 3** : Fonctions numériques d'une variable réelle
 4. **Chapitre 4** : Espaces vectoriels et applications linéaires en dimension 3

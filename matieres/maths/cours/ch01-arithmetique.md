@@ -1,4 +1,4 @@
-# 📐 Maths — Chapitre 1 : Arithmétique dans ℤ (VERSION 6 ÉTAPES)
+﻿# 📐 Maths — Chapitre 1 : Arithmétique dans ℤ (VERSION 6 ÉTAPES)
 
 > **Sources fusionnées :** ① Lise Jean-Claude, *Cours d'arithmétique Terminale S* (16 p.)
 > ② F. Gaudon, *Arithmétique Terminale maths expertes* (14 p., 2024).
@@ -16,7 +16,8 @@
 
 ## 📖 Cours — les 6 étapes
 
-### Étape 1 — Division euclidienne dans ℕ
+### Leçon 1 — Division euclidienne dans ℕ
+**Objectifs :** connaître quelques propriétés des parties de ℕ (axiomes) ; traduire la division d'un naturel a par un naturel b par l'égalité a = bq + r avec 0 ≤ r < b.
 - **Théorème** : ∃! (q,r), **a = bq+r, 0 ≤ r < b**. Dividende, diviseur, quotient, reste.
 - **Ex** : 121 = 19×6+7 (q=6, r=7). ⚠️ 121 = 6×20+1 (pas 6×…+7 : 7 > 6 !).
 - Dans ℤ : a = bq+r, **0 ≤ r < ∣b∣**.
@@ -24,12 +25,14 @@
 - **Théorème** : parmi **a entiers consécutifs, l'un est multiple de a**.
   *Preuve.* n = aq+r (0≤r<a) → a(q+1) figure dans la série. Ex : parmi n,n+1,n+2, un multiple de 3.
 
-### Étape 2 — Numérations binaire et décimale
+### Leçon 2 — Numérations binaire et décimale
+**Objectifs (proposés) :** écrire un entier en base b (unicité) ; convertir décimal ↔ binaire ; lire correctement 1001₂.
 - Principe positionnel, écriture **unique** a = aₙbⁿ+…+a₀.
 - **Binaire** (machines) : 1001₂ chiffre à chiffre. Décimal : 8345 = 8×10³+3×10²+4×10+5.
 - Exo corrigé : 17 points = **122₃**, 20 points = **202₃**.
 
-### Étape 3 — Divisibilité dans ℤ et congruences
+### Leçon 3 — Divisibilité dans ℤ et congruences
+**Objectifs (proposés) :** caractériser a∣b ; utiliser transitivité et combinaisons linéaires ; traduire a≡b[n] par n∣(a−b) ; appliquer les compatibilités ; résoudre les applications types.
 - **Déf** : b∣a ⟺ ∃k, a = kb. Diviseurs de 8 : {±1,±2,±4,±8}.
   Signes : b∣a ⟺ (−b)∣a ⟺ b∣(−a). Diviseurs positifs en nombre **fini**.
 - **Propriétés + preuves** : combinaisons linéaires ma+nb ; **transitivité**.
@@ -40,7 +43,8 @@
   Propriétés : réflexivité, **transitivité**, +, ×, puissances (bⁿ−aⁿ factorisé),
   a∣m ⟺ a≡0[m] (preuves complètes).
 
-### Étape 4 — Nombres premiers
+### Leçon 4 — Nombres premiers
+**Objectifs (proposés) :** reconnaître un nombre premier (définition, test √n) ; démontrer l'infinité ; décomposer et exploiter (diviseurs, PGCD, PPCM).
 - **Déf** : exactement 2 diviseurs (1 et lui-même). **2 = seul premier pair.**
   0 et 1 non premiers. ⚠️ Premier ≠ premiers entre eux (10 et 27 : pgcd 1, non premiers).
 - **Théorème** : tout non premier admet un **diviseur premier** (descente infinie impossible).
@@ -52,7 +56,8 @@
   Diviseurs positifs = p₁^r¹…pₖ^rᵏ (rᵢ ≤ nᵢ).
 - Bonus : crible d'Ératosthène (rayer jusqu'à p²>N), 409 premier, curiosités Mersenne/Fermat.
 
-### Étape 5 — PGCD et PPCM
+### Leçon 5 — PGCD et PPCM
+**Objectifs (proposés) :** calculer un PGCD par Euclide ; utiliser pgcd×ppcm = ab ; simplifier par d (a = da′, b = db′).
 - **Déf** : plus grand diviseur commun (ex : diviseurs de 12 et 78 → **pgcd = 6**).
 - **Propriétés + preuves** : b∣a ⇒ pgcd=b ; **pgcd(a,b) = pgcd(a−kb,b)** (mêmes diviseurs) ;
   **pgcd(a,b) = pgcd(b,r)** (reste euclidien).
@@ -62,7 +67,8 @@
   a′∧b′=1 (preuve).
 - **PPCM** : pgcd×ppcm = ab (preuve complète). Ex : ppcm(12,15) = 60.
 
-### Étape 6 — Bézout, Gauss, diophantiennes
+### Leçon 6 — Bézout, Gauss, équations diophantiennes
+**Objectifs (proposés) :** déterminer u, v de Bézout (remontée) ; appliquer Gauss ; résoudre ax+by = c en 4 étapes.
 - **Bézout-Bachet** : a∧b=1 ⟺ ∃u,v, **au+bv=1**. Corollaire : pgcd=d ⇒ au+bv=d.
 - **Remontée d'Euclide (47u+39v=1)** : 47=39+8 ; 39=8×4+7 ; 8=7+1 →
   1 = 8−7 = 8×5−39 = (47−39)×5−39 → **u=5, v=−6** ✓ (47×5−39×6=1).
