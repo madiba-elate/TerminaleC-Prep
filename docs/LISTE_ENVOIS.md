@@ -20,6 +20,7 @@
 ## Priorité 2 — 🇬🇧 Anglais (coef 3 · jackpot n°1)
 
 - [ ] **Programme annuel** — ➖ non disponible, on reconstitue au fil des cours reçus
+  - [x] Module 1 (Family and social) / Lesson: Job Interview (reçu 2026-09-19)
 - [ ] Grammar (tenses, voice, conditionals)
 - [ ] Essay Writing (argumentative, narrative)
 - [ ] Vocabulary (health, education, environment)

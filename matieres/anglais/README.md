@@ -1,19 +1,14 @@
-# anglais — Terminale C
+# 🇬🇧 English — Terminale C (coef 3 · 60 pts · 1er Groupe)
 
-> Matière du programme Terminale C (Baccalauréat Cameroun)
+> **Programme reconstitué au fil des cours reçus** (pas de programme annuel envoyé).
+> Objectif : 19/20 → 57/60 pts.
 
-## 📚 Contenu
+## Module 1: Family and social
 
-- [ ] Fiches de cours
-- [ ] Exercices corrigés
-- [ ] Quiz interactifs
-- [ ] Flashcards
-- [ ] Sujets Bac corrigés
+- **Lesson: Job Interview (Speaking)** ✅ reçu et numérisé le 2026-09-19
+  (definition, vocabulary, homework → formal letter + tenses)
 
-## 🎯 Objectif
+## Stock utile
 
-Maîtriser cette matière pour le Bac C.
-
----
-
-📝 *Contenu en cours de développement*
+- `exercices/formal_letter.html` — structure lettre formelle (9 parties)
+- `exercices/english_tenses.html` — temps anglais (emploi + exemples)
