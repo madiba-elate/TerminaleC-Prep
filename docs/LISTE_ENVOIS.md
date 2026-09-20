@@ -41,8 +41,8 @@
 - [x] **Programme annuel** (3 Modules, Séq 1-11 + 13-15 — voir `matieres/svteehb/README.md`)
 - [ ] Module 1 : Séq 1 (cellule) + Séq 2 (échanges) + Séq 3 (gène-protéine) + Séq 4 (reproduction) + Séq 5 (hérédité) + Séq 6 (génétique humaine) + Séq 7 (neurones)
 - [ ] Module 2 : Séq 8 (immunité) + Séq 9 (dysfonctionnement) + Séq 10 (santé reproductive) + Séq 11 (santé nutritionnelle)
-- [ ] Module 3 : Séq 13 (fruits) + Séq 14 (biocarburant) + Séq 15 (déchets)
-- [ ] Séq 12 : Les catastrophes (intitulé + module à confirmer, cours à envoyer)
+- [ ] Module 3 : Séq 12 (catastrophes — intitulé à confirmer, cours à envoyer)
+- [ ] Module 4 : Séq 13 (fruits) + Séq 14 (biocarburant) + Séq 15 (déchets)
 
 ## Priorité 5 — 📐 Maths (coef 7 · par chapitres, celui du moment d'abord)
 

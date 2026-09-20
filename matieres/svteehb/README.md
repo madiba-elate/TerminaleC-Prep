@@ -1,7 +1,7 @@
 # 🧬 SVT / EEHB — Terminale C (coef 2 · 40 pts · 2e Groupe)
 
-> **Programme annuel officiel corrigé le 2026-09-19** — 3 Modules,
-> Séquences 1→11 + 13→15 (⚠️ Séquence 12 absente de l'envoi — voir note).
+> **Programme annuel officiel corrigé le 2026-09-19** — 4 Modules,
+> Séquences 1→15 (⚠️ intitulé exact de la Séq 12 à confirmer).
 > Orthographe et accents normalisés. Envoi vocal retranscrit.
 
 ## Module 1 : Le monde vivant
@@ -21,14 +21,16 @@
 - **Séquence 10** : La santé reproductive
 - **Séquence 11** : La santé nutritionnelle
 
-## Module 3 : Biotechnologie
+## Module 3 : Éducation à l'environnement et au développement durable
+
+- **Séquence 12** : Les catastrophes ⚠️ intitulé exact à confirmer
+  (« les catastrophes » — naturelles ? reste à préciser).
+
+## Module 4 : Biotechnologie
 
 - **Séquence 13** : Transformation et conservation des fruits de saison
 - **Séquence 14** : Énergie renouvelable — production du biocarburant
 - **Séquence 15** : Valorisation des déchets de l'environnement de l'homme
-
-- **Séquence 12** : Les catastrophes ⚠️ intitulé exact + module à confirmer
-  (reçu 2026-09-19 : « les catastrophes » — naturelles ? sanitaires ?).
 
 ## Découpage indicatif S1-S6 + BAC
 
