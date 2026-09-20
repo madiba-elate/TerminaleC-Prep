@@ -27,9 +27,8 @@
 - **Séquence 14** : Énergie renouvelable — production du biocarburant
 - **Séquence 15** : Valorisation des déchets de l'environnement de l'homme
 
-> ⚠️ **Séquence 12 manquante** : ton envoi saute de la Séquence 11 à la 13.
-> Vérifie ton cahier : oubli de dictée, ou le prof a sauté ce numéro ?
-> Dis-moi et je complète.
+- **Séquence 12** : Les catastrophes ⚠️ intitulé exact + module à confirmer
+  (reçu 2026-09-19 : « les catastrophes » — naturelles ? sanitaires ?).
 
 ## Découpage indicatif S1-S6 + BAC
 
@@ -40,7 +39,7 @@
 | S3 | Séq 5-6 (hérédité, génétique humaine) |
 | S4 | Séq 7-8 (neurones, immunité) |
 | S5 | Séq 9-11 (dysfonctionnement, santés) |
-| S6 | Séq 13-15 (biotechnologies) |
+| S6 | Séq 12-15 (catastrophes, biotechnologies) |
 | BAC | Révision croisée |
 
 > Découpage indicatif (à ajuster selon la progression réelle en classe).
