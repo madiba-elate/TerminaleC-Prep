@@ -49,6 +49,7 @@
 - [x] **Programme annuel** (18 Chapitres — voir `matieres/maths/README.md`)
 - [ ] S1 : Ch 1 (arithmétique ℤ) + Ch 2 (complexes algébriques) + Ch 3 (fonctions)
   - [x] Ch 1 : Arithmétique dans ℤ (reçu 2026-09-19 : 2 PDF fusionnés, découpé en 6 leçons + objectifs, bonus Python)
+  - [x] Cahier Ch.1 scanné (8 photos 2026-09-20 : Leçons 1-4, transcription + 6 points à confirmer)
 - [ ] S2 : Ch 4 (espaces vectoriels) + Ch 5 (stats) + Ch 6 (produit vectoriel)
 - [ ] S3 : Ch 7 (suites) + Ch 8 (graphes) + Ch 9 (complexes géométriques)
 - [ ] S4 : Ch 10 (similitudes) + Ch 11 (primitives) + Ch 12 (logarithmes)
